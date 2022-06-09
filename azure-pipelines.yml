@@ -1,0 +1,25 @@
+trigger:
+- master
+
+pool:
+  name: atgPool
+  demands:
+  - agent.name -equals atgBuildJava8
+
+workspace:
+  clean: all
+
+steps:
+
+- task: Gradle@2
+  inputs:
+    workingDirectory: '.'
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    options: '--info --project-prop dynamoHome=/opt/app/ATG/ATG11.3.2/home'
+    javaHomeOption: 'JDKVersion'
+    #jdkVersionOption: '1.7'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'clean all'
