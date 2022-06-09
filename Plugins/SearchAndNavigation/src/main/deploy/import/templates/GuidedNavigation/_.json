@@ -1,0 +1,39 @@
+{
+    "@description": "${template.description}",
+    "@group": "SecondaryContent",
+    "ecr:createDate": "2016-12-06T06:06:16.715-08:00",
+    "@thumbnailUrl": "thumbnail.jpg",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": [{
+            "editor": "editors/GuidedNavigationEditor",
+            "propertyName": "navigation",
+            "contentItemMapping": {
+                "names": [
+                    {"dimensionProperty": "display_name"},
+                    {"dimensionProperty": "endeca:name"}
+                ],
+                "propertys": [
+                    {
+                        "dimensionProperty": "endeca:name",
+                        "name": "dimensionName"
+                    },
+                    {
+                        "dimensionProperty": "endeca:identifier",
+                        "name": "dimensionId"
+                    }
+                ]
+            }
+        }]
+    },
+    "typeInfo": {"navigation": {
+        "@propertyType": "ContentItemList",
+        "@group": "Navigation"
+    }},
+    "defaultContentItem": {
+        "@name": "Navigation Container",
+        "navigation": []
+    },
+    "locales": {}
+}

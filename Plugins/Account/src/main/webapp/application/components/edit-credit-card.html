@@ -1,0 +1,202 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2>{{ 'account.heading.editCreditCardDetails' | i18n }}</h2>
+    <form action="#" role="form" class="ws-validate" data-bind="submit: updateCard, recheckValidity: formPopulatedFromSavedAddress">
+
+      <div class="checkbox csa-checkbox">
+        <input type="checkbox"
+          data-bind="checked: setAsDefaultCard,
+                     uniqueId: 'defaultCard'">
+        <label data-bind="uniqueFor: 'defaultCard'">{{ 'account.label.makeDefaultCard' | i18n }}</label>
+      </div>
+
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'cardNumber'">{{ 'account.label.cardNumber' | i18n }} </label>
+        <p>{{ 'account.text.endingInNoBrackets' | i18n:creditCardNumber }}</p>
+      </div>
+
+      <div class="csa-cc" data-bind="css: setCardType">
+        <div class="mc"></div>
+        <div class="vc"></div>
+        <div class="dc"></div>
+        <div class="ac"></div>
+      </div>
+      <div class="clearfix"></div>
+
+      <fieldset>
+        <label>{{ 'account.label.expirationMonth' | i18n }} *</label>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'expirationDateMonth'" class="sr-only">{{ 'account.label.expirationDateMonth' | i18n }}</label>
+          <select name="expirationMonth" class="form-control" required
+            data-bind="value: expirationMonth,
+                       uniqueId: 'expirationDateMonth'">
+            <option value="">{{ 'account.text.selectMonth' | i18n }}</option>
+            <option value="01">{{ 'account.expiryMonth.01' | i18n }}</option>
+            <option value="02">{{ 'account.expiryMonth.02' | i18n }}</option>
+            <option value="03">{{ 'account.expiryMonth.03' | i18n }}</option>
+            <option value="04">{{ 'account.expiryMonth.04' | i18n }}</option>
+            <option value="05">{{ 'account.expiryMonth.05' | i18n }}</option>
+            <option value="06">{{ 'account.expiryMonth.06' | i18n }}</option>
+            <option value="07">{{ 'account.expiryMonth.07' | i18n }}</option>
+            <option value="08">{{ 'account.expiryMonth.08' | i18n }}</option>
+            <option value="09">{{ 'account.expiryMonth.09' | i18n }}</option>
+            <option value="10">{{ 'account.expiryMonth.10' | i18n }}</option>
+            <option value="11">{{ 'account.expiryMonth.11' | i18n }}</option>
+            <option value="12">{{ 'account.expiryMonth.12' | i18n }}</option>
+          </select>
+        </div>
+
+        <label>{{ 'account.label.expirationYear' | i18n }} *</label>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'expirationDateYear'" class="sr-only">{{ 'account.label.expirationDateYear' | i18n }}</label>
+          <select class="form-control" name="expirationDateYear" required
+            data-bind="options: expiryYears,
+                       value: expirationYear,
+                       optionsCaption: selectYearOptionsText(),
+                       uniqueId: 'expirationDateYear'">
+          </select>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'nickname'">{{ 'account.label.nickname' | i18n }} *</label>
+        <input type="text" name="nickname" class="form-control" required
+          data-bind="value: cardNickname,
+                     uniqueId: 'nickname'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <p>
+        <a href="#" data-bypass data-bind="click: function() {getProfileAddresses(); showSelectSavedAddress();}">
+          {{ 'account.link.chooseSavedAddress' | i18n }}
+        </a>
+      </p>
+
+      <fieldset>
+        <legend>{{ 'account.subheading.billingAddress' | i18n }}</legend>
+
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'firstName'">{{ 'account.label.firstName' | i18n }} *</label>
+          <input type="text" name="firstName" class="form-control" required maxlength="40"
+            data-bind="value: billingAddress().firstName,
+                       uniqueId: 'firstName'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'lastName'">{{ 'account.label.lastName' | i18n }} *</label>
+          <input type="text" name="lastName" class="form-control" required maxlength="40"
+            data-bind="value: billingAddress().lastName,
+                       uniqueId: 'lastName'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'addressLine1'">{{ 'account.label.addressLine1' | i18n }} *</label>
+          <input type="text" name="addressLine1" class="form-control" required maxlength="50"
+            data-bind="value: billingAddress().address1,
+                       uniqueId: 'addressLine1'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'addressLine2'">{{ 'account.label.addressLine2' | i18n }}</label>
+          <input type="text" name="addressLine2" class="form-control"
+            data-bind="value: billingAddress().address2,
+                       uniqueId: 'addressLine2'">
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'zip'">{{ 'account.label.zipOrPostalCode' | i18n }} *</label>
+          <input type="text" name="zip" class="form-control" required maxlength="10"
+            data-bind="value: billingAddress().postalCode,
+                       uniqueId: 'zip'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'city'">{{ 'account.label.city' | i18n }} *</label>
+          <input type="text" name="city" class="form-control" required
+            data-bind="value: billingAddress().city,
+                       uniqueId: 'city'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'state'">{{ 'account.label.stateOrProvince' | i18n }} *</label>
+          <select class="form-control" name="state" required
+            data-bind="options: billingAddress().states,
+                       optionsText: 'displayName',
+                       optionsValue: 'code',
+                       value: billingAddress().state,
+                       optionsCaption: selectStateOptionsText(),
+                       valueAllowUnset: true,
+                       uniqueId: 'state'">
+          </select>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'country'">{{ 'account.label.country' | i18n }} *</label>
+          <select class="form-control" name="country" required
+            data-bind="options: countries,
+                       optionsText: 'displayName',
+                       optionsValue: 'code',
+                       value: billingAddress().country, event: { change: getStatesForCountry },
+                       optionsCaption: selectCountryOptionsText(),
+                       uniqueId: 'country'">
+          </select>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'phone'">{{ 'account.label.phoneNumber' | i18n }} *</label>
+          <input type="tel" name="phone" class="form-control" required maxlength="15"
+            data-bind="value: billingAddress().phoneNumber,
+                       uniqueId: 'phone'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </fieldset>
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-block csa-btn">
+            {{ 'account.button.save' | i18n }}
+          </button>
+        </div>
+        <div class="col-xs-6">
+          <button data-bind="click: cancel" type="submit" class="btn btn-block btn-default">
+            {{ 'account.button.cancel' | i18n }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="selectAddressModal" tabindex="-1" role="dialog" aria-labelledby="selectAddressModalTitle" aria-hidden="true" data-bind="modal: isSavedAddressModalVisible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4 class="modal-title" id="selectAddressModalTitle">{{ 'account.subheading.chooseSavedAddress' | i18n }}</h4>
+
+        <table class="table table-striped" summary="{{ 'account.label.savedAddressesSummary' | i18n }}">
+          <thead>
+          <tr>
+            <th scope="col" class="sr-only">{{ 'account.subheading.nickname' | i18n }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <!-- ko foreach: $data.profile.addresses().secondaryAddresses -->
+          <tr>
+            <td>
+              <strong> {{addressNickname}} <input type="radio" data-bind="value: $index, checked: $parent.selectedAddressIndex" class="pull-right"/> </strong>
+            </td>
+          </tr>
+          <!-- /ko -->
+          </tbody>
+        </table>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block csa-btn" data-bind="click: copyAddressFields" data-dismiss="modal">{{ 'account.button.apply' | i18n }}</button>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block btn-default" data-dismiss="modal">{{ 'account.button.cancel' | i18n }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

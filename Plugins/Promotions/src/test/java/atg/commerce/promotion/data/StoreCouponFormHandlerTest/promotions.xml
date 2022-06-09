@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <!--
+      Promotions.
+    -->
+    <add-item id="promo0001" item-descriptor="Shipping Discount">
+      <set-property name="uses"><![CDATA[1]]></set-property>
+      <set-property name="allowMultiple"><![CDATA[true]]></set-property>
+      <!-- <set-property add="false" name="sites" remove="false"><![CDATA[storeSiteDE,storeSiteUS]]></set-property> -->
+      <set-property name="pmdlVersion"><![CDATA[2]]></set-property>
+      <set-property name="creationDate"><![CDATA[6/27/2014 15:57:00]]></set-property>
+      <set-property name="template"><![CDATA[/shipping/getShippingDiscount.pmdt]]></set-property>
+      <set-property name="displayNameDefault"><![CDATA[Free Shipping Promotion]]></set-property>
+      <set-property name="media"><![CDATA[large=promoCouponFreeShipping]]></set-property>
+      <set-property add="false" name="descriptionDefault" remove="false"><![CDATA[Free shipping when you spend over $100]]></set-property>
+      <set-property name="type"><![CDATA[Shipping Discount]]></set-property>
+      <set-property name="pmdlRule"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!DOCTYPE pricing-model SYSTEM "dynamosystemresource:/atg/dtds/pmdl/pmdl_1.0.dtd">
+          <pricing-model>
+            <qualifier/>
+            <offer>
+              <discount-structure calculator-type="standard"
+                                  discount-type="fixedPrice"
+                                  adjuster="0"/>
+            </offer>
+          </pricing-model>]]></set-property>
+      <set-property name="templateValues"><![CDATA[display-name-L3NoaXBwaW5nL2dldFNoaXBwaW=Get Shipping Discount,discount_type_value=fixedPrice,discount_value=0]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlatepromo0001,de=de_xlatepromo0001]]></set-property>
+    </add-item>
+    <!--
+      Translations.
+    -->
+    <add-item id="es_xlatepromo0001" item-descriptor="promotionTranslation">
+      <set-property name="displayName"><![CDATA[Promoción de envío gratis]]></set-property>
+      <set-property name="description"><![CDATA[Envío gratis por compras superiores a $100]]></set-property>
+    </add-item>
+    <add-item id="de_xlatepromo0001" item-descriptor="promotionTranslation">
+      <set-property name="displayName"><![CDATA[Promotion für kostenlosen Versand]]></set-property>
+      <set-property name="description"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €]]></set-property>
+    </add-item>
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Promotions/src/test/java/atg/commerce/promotion/data/StoreCouponFormHandlerTest/promotions.xml#1 $$Change: 1385662 $-->

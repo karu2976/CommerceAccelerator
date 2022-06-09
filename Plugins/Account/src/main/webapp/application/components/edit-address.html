@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2>{{ 'account.heading.editAddress' | i18n }}</h2>
+
+    <form action="" role="form" class="ws-validate" data-bind="submit: updateAddress">
+      <div class="checkbox csa-checkbox">
+        <input type="checkbox"
+          data-bind="checked: useAsDefaultShippingAddress,
+                              uniqueId: 'defaultAddress'" > 
+        <label data-bind="uniqueFor: 'defaultAddress'">{{ 'account.label.makeDefaultAddress' | i18n }}</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'firstName'">{{ 'account.label.firstName' | i18n }} *</label>
+        <input type="text" name="firstName" class="form-control" required maxlength="40"
+          data-bind="value: firstName,
+                     uniqueId: 'firstName'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label"  data-bind="uniqueFor: 'lastName'">{{ 'account.label.lastName' | i18n }} *</label>
+        <input type="text" name="lastName" class="form-control" required maxlength="40"
+          data-bind="value: lastName,
+                     uniqueId: 'lastName'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'addressLine1'">{{ 'account.label.addressLine1' | i18n }} *</label>
+        <input type="text" name="addressLine1" class="form-control" required maxlength="50"
+          data-bind="value: address1,
+                     uniqueId: 'addressLine1'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'addressLine2'">{{ 'account.label.addressLine2' | i18n }}</label>
+        <input type="text" name="addressLine2"  class="form-control"
+          data-bind="value: address2,
+                     uniqueId: 'addressLine2'">
+      </div>
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'zip'">{{ 'account.label.zipOrPostalCode' | i18n }} *</label>
+        <input type="text" name="zip" class="form-control" required maxlength="10"
+          data-bind="value: postalCode,
+                     uniqueId: 'zip'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'city'">{{ 'account.label.city' | i18n }} *</label>
+        <input type="text" name="city" class="form-control" required
+          data-bind="value: city,
+                     uniqueId: 'city'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'state'">{{ 'account.label.stateOrProvince' | i18n }} *</label>
+        <select class="form-control" type="text" name="state" required
+          data-bind="options: states,
+                     optionsText: 'displayName',
+                     optionsValue: 'code',
+                     value: $data.state,
+                     optionsCaption: selectStateOptionsText(),
+                     valueAllowUnset: true,
+                     uniqueId: 'state'">
+        </select>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'country'">{{ 'account.label.country' | i18n }} *</label>
+        <select class="form-control" type="text" name="country" required
+          data-bind="options: countries,
+                     optionsText: 'displayName',
+                     optionsValue: 'code',
+                     value: $data.country, event: { change: getStatesForCountry },
+                     optionsCaption: selectCountryOptionsText(),
+                     uniqueId: 'country'">
+        </select>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label"  data-bind="uniqueFor: 'phone'">{{ 'account.label.phoneNumber' | i18n }} *</label>
+        <input type="tel" name="phone" class="form-control" required maxlength="15"
+          data-bind="value: phoneNumber,
+                     uniqueId: 'phone'">
+      </div>
+      <div class="form-group">
+        <label class="control-label"  data-bind="uniqueFor: 'addressNickname'">{{ 'account.label.nickname' | i18n }} *</label>
+        <input type="text" name="addressNickname" class="form-control" required maxlength="42"
+          data-bind="value: addressNickname,
+                     uniqueId: 'addressNickname'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-block csa-btn">
+            {{ 'account.button.save' | i18n }}
+          </button>
+        </div>
+        <div class="col-xs-6">
+          <button data-bind="click: cancel" type="submit" class="btn btn-block btn-default">
+            {{ 'account.button.cancel' | i18n }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

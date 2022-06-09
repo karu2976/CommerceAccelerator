@@ -1,0 +1,44 @@
+{
+    "workflowNote": "",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-12-06T06:07:05.809-08:00",
+    "contentType": "Page",
+    "ecr:createDate": "2016-12-06T06:07:05.809-08:00",
+    "ecr:type": "page",
+    "contentItem": {
+        "@name": "Two-Column Page",
+        "metaKeywords": "",
+        "@type": "TwoColumnPage",
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce Accelerator News page content.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "mainContent": [{
+            "@name": "Rich Text",
+            "@type": "RichTextMain",
+            "content": "<h2>Novedades<\/h2><h3><strong>CSA lanza su moda para hombre<\/strong><\/h3><p><span>CSA ha anunciado la incorporación de una categoría de moda masculina en su sitio web. ¡Sea el primero en comprar en esta categoría de moda para hombre, que incluye productos de CSA de su estilo preferido, perfectamente adaptados a su estilo de vida!<\/span><\/p><h3><strong><span>CSA nombra a Jessica Zakszewski como directora general de marketing<\/span><\/strong><\/h3><p><span>CSA ha anunciado el nombramiento de Jessica Zakszewski como directora general de marketing de la firma. Zakszewski se incorpora a CSA y aporta más de 18 años de experiencia acumulada en marketing en diversas empresas del sector minorista.<\/span><\/p>"
+        }],
+        "secondaryContent": [{
+            "ruleLimit": "1",
+            "@name": "Static Page Navigation",
+            "templateTypes": ["SecondaryContent"],
+            "templateIds": [],
+            "@type": "ContentSlotSecondary",
+            "contentPaths": ["/content/Web/Static Page Navigation"]
+        }],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }]
+    }
+}

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Retrieve the formatted pricing information for each product in the results list.
+ -->
+<actor-template default-chain-id="getPricingInfo"
+                xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <actor-chain id="getPricingInfo">
+
+        <!--
+          Retrieve the price ranges for sale and list price lists and add the product object from
+          the currentContentItem to the output modelMap.
+        -->
+        <actor id="productPriceRanges" name="/atg/commerce/pricing/PricingActor"
+               return-model-var="productPriceRanges" chain-id="productPriceRanges">
+            <input name="productId" value="${currentContentItem.product.repositoryId}"/>
+            <output id="product" name="product" value="${currentContentItem.product}"/>
+        </actor>
+
+        <!--
+          Determine whether or not to display a sale price for a particular product. When the
+          high list price and high sale price are not equal OR the low list price and low sale
+          price are not equal, the sale price should be displayed.
+
+          Input Parameters:
+            value
+              The condition to determine if the high list price is the same as the high sale
+              price OR if the low list price is the same as the low sale price.
+
+          Open Parameters:
+            true
+              When the high list price is not the same as the high sale price OR the low list
+              price is not the same as the low sale price.
+            false
+              When the high list price is the same as the high sale price OR the low list
+              price is the same as the low sale price.
+
+          Output Parameters:
+            showSalePrice
+              'true' or 'false' depending on the outcome of the Switch.
+        -->
+        <droplet id="salePriceSwitch" name="/atg/dynamo/droplet/Switch" var="salePriceSwitch">
+            <input name="value"
+                   value="${(productPriceRanges.highestListPrice.equals(productPriceRanges.highestSalePrice) != true) ||
+                   productPriceRanges.lowestListPrice.equals(productPriceRanges.lowestSalePrice) != true}"/>
+            <oparam name="true">
+                <output id="showSalePrice" name="product.showSalePrice" value="${true}"/>
+            </oparam>
+            <oparam name="false">
+                <output id="showSalePrice" name="product.showSalePrice" value="${false}"/>
+            </oparam>
+        </droplet>
+
+        <!--
+          Retrieve the sale price or sale price range for a particular product. When the low
+          sale price and high sale price are the same, a single sale price will be set. If they
+          are different, a sale price range will be set.
+
+          Input Parameters:
+            value
+              The condition to determine if the low sale price and high sale price are the same.
+
+          Open Parameters:
+            true
+              When the low sale price and high sale price are the same. A single sale price will
+              be output.
+            false
+              When the low sale price and high sale price are the different. A sale price range
+              will be output.
+
+          Output Parameters:
+            salePriceLists
+              Array parameter that will be updated with the sale prices.
+        -->
+        <droplet id="singleSalePriceSwitch" name="/atg/dynamo/droplet/Switch">
+            <input name="value" value="${productPriceRanges.lowestSalePrice.equals(productPriceRanges.highestSalePrice)}"/>
+            <oparam name="true">
+                <output id="salePrices" name="product.salePrice" value="${productPriceRanges.lowestSalePrice}" />
+            </oparam>
+            <oparam name="false">
+                <output id="salePrices" name="product.salePrice"
+                    value="${productPriceRanges.lowestSalePrice} - ${productPriceRanges.highestSalePrice}" />
+            </oparam>
+        </droplet>
+
+        <!--
+          Retrieve the list price or list price range for a particular product. When the low
+          list price and high list price are the same, a single list price will be set. If they
+          are different, a list price range will be set.
+
+          Input Parameters:
+            value
+              The condition to determine if the low list price and high list price are the same.
+
+          Open Parameters:
+            true
+              When the low list price and high list price are the same.
+            false
+              When the low list price and high list price are the different.
+
+          Output Parameters:
+            listPriceLists
+              Array parameter that will be updated with the list prices.
+        -->
+        <droplet id="singleListPriceSwitch" name="/atg/dynamo/droplet/Switch">
+            <input name="value" value="${productPriceRanges.lowestListPrice.equals(productPriceRanges.highestListPrice)}"/>
+            <oparam name="true">
+                <output id="listPrices" name="product.listPrice" value="${productPriceRanges.lowestListPrice}"/>
+            </oparam>
+            <oparam name="false">
+                <output id="listPrices" name="product.listPrice"
+                        value="${productPriceRanges.lowestListPrice} - ${productPriceRanges.highestListPrice}" />
+            </oparam>
+        </droplet>
+
+        <!--
+            If a selectedSku exists in the content item ensure that its pricing information is
+            added.
+        -->
+        <droplet id="selectedSkuSwitch" name="/atg/dynamo/droplet/Switch">
+            <input name="value" value="${empty currentContentItem.selectedSku}"/>
+            <oparam name="false">
+
+                <!--
+                  Retrieve the sale and list price lists for the selectedSku.
+
+                  Input Parameters:
+                    value
+                      The repositoryId for the SKU.
+                -->
+                <actor id="skuPrices" name="/atg/commerce/pricing/PricingActor"
+                       return-model-var="skuPrices" chain-id="skuPrices">
+                    <input name="skuId" value="${currentContentItem.selectedSku.repositoryId}" />
+                    <output id="selectedSku" name="selectedSku" value="${currentContentItem.selectedSku}" />
+                </actor>
+
+                <!--
+                  Determine whether or not to add the list price to the selectedSku. When the list
+                  price is not null it should be displayed.
+
+                  Input Parameters:
+                    value
+                      The condition to determine if the list price is null.
+
+                  Open Parameters:
+                    true
+                      listPrice
+                        The list price for the selectedSku.
+                -->
+                <droplet id="listPriceSwitch" name="/atg/dynamo/droplet/Switch">
+                    <input name="value" value="${skuPrices.listPrice != null}"/>
+                    <oparam name="true">
+                        <output id="listPrice" name="selectedSku.listPrice" value="${skuPrices.listPrice}" />
+                    </oparam>
+                </droplet>
+
+                <!--
+                   Determine whether or not to add the sale price for the selectedSku. When the sale
+                   price is not null it should be displayed.
+
+                   Input Parameters:
+                     value
+                       The condition to determine if the sale price is null.
+
+                   Open Parameters:
+                     true
+                       salePrice
+                         The sale price of the selectedSku.
+                 -->
+                <droplet id="salePriceSwitch" name="/atg/dynamo/droplet/Switch">
+                    <input name="value" value="${skuPrices.salePrice != null}"/>
+                    <oparam name="true">
+                        <output id="formattedSalePrice" name="selectedSku.salePrice" value="${skuPrices.salePrice}" />
+                    </oparam>
+                </droplet>
+
+                <!--
+                  Determine whether or not to display a sale price for the SKU mapped to the product. When
+                  the list price and sale price are not equal, the sale price should be displayed.
+
+                  Input Parameters:
+                    value
+                      The condition to determine if the list price is the same as the sale price.
+
+                  Open Parameters:
+                    true
+                      When the list price is not the same as the sale price.
+                    false
+                      When the list price is the same as the sale price.
+
+                  Output Parameters:
+                    showSalePrice
+                      'true' or 'false' depending on the outcome of the Switch.
+                -->
+                <droplet id="skuSalePriceSwitch" name="/atg/dynamo/droplet/Switch" var="skuSalePriceSwitch">
+                    <input name="value" value="${skuPrices.salePrice != null}"/>
+                    <oparam name="true">
+                        <droplet id="skuSalePriceSwitch" name="/atg/dynamo/droplet/Switch" var="skuSalePriceSwitch">
+                            <input name="value" value="${(skuPrices.listPrice.equals(skuPrices.salePrice) != true)}"/>
+                            <oparam name="true">
+                                <output id="showSalePrice" name="selectedSku.showSalePrice" value="${true}"/>
+                            </oparam>
+                            <oparam name="false">
+                                <output id="showSalePrice" name="selectedSku.showSalePrice" value="${false}"/>
+                            </oparam>
+                        </droplet>
+                    </oparam>
+                    <oparam name="false">
+                        <output id="showSalePrice" name="selectedSku.showSalePrice" value="${false}"/>
+                    </oparam>
+                </droplet>
+            </oparam>
+        </droplet>
+
+    </actor-chain>
+
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/src/main/config/atg/endeca/assembler/cartridge/actor/productDetailsPricingActor.xml#1 $$Change: 1385662 $-->

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <actor-chain id="claimCoupon-success" transaction="TX_SUPPORTS" xml-combine="replace">
+    <actor id="confirmOrder" name="/atg/commerce/order/purchase/ConfirmOrderActor" chain-id="confirmOrder">
+    </actor>
+    <component id="shoppingCart" name="/atg/commerce/ShoppingCart" component-var="shoppingCart">
+      <output id="order" name="order" value="${shoppingCart.current}" filter-id="summary"/>
+    </component>
+  </actor-chain>
+  <actor-chain id="removeCoupon" transaction="TX_SUPPORTS" xml-combine="replace">
+    <form id="couponHandler" name="/atg/commerce/promotion/CouponFormHandler" handle="removeCoupon"
+          var="couponHandler">
+      <input name="couponClaimCode" value="${param.couponCode}"/>
+      <input name="removeCouponSuccessURL" value="/model/atg/commerce/promotion/CouponActor/removeCoupon-success" />
+      <input name="removeCouponErrorURL" value="/model/atg/commerce/promotion/CouponActor/removeCoupon-error" />
+    </form>
+  </actor-chain>
+  <actor-chain id="removeCoupon-error" transaction="TX_SUPPORTS" xml-combine="replace">
+    <actor id="error" name="/atg/commerce/promotion/CouponActor" chain-id="error" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+  <actor-chain id="removeCoupon-success" transaction="TX_SUPPORTS" xml-combine="replace">
+    <actor id="confirmOrder" name="/atg/commerce/order/purchase/ConfirmOrderActor" chain-id="confirmOrder">
+    </actor>
+    <component id="shoppingCart" name="/atg/commerce/ShoppingCart" component-var="shoppingCart">
+      <output id="order" name="order" value="${shoppingCart.current}" filter-id="summary"/>
+    </component>
+  </actor-chain>
+  <actor-chain id="error" transaction="TX_SUPPORTS" xml-combine="replace">
+    <component id="couponFormHandler" name="/atg/commerce/promotion/CouponFormHandler"
+               component-var="couponFormHandler">
+      <output id="formError" name="formError" value="${couponFormHandler.formError}" />
+      <output id="formExceptions" name="formExceptions" 
+              value="${couponFormHandler.formExceptions}" />
+    </component>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Promotions/src/main/config/atg/commerce/promotion/couponActor.xml#1 $$Change: 1385662 $-->

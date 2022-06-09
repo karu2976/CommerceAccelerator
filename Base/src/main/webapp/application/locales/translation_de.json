@@ -1,0 +1,27 @@
+{
+  "base": {
+    "alert": {
+      "itemUnavailable": "{{0}} ist momentan nicht auf Lager. Entfernen Sie den Artikel aus Ihrem Warenkorb, um mit dem Checkout fortzufahren."
+    },
+    "button": {
+      "apply": "Anwenden",
+      "cancel": "Abbrechen",
+      "close": "Schließen",
+      "save": "Speichern",
+      "toggleNavigation": "Navigation umschalten"
+    },
+    "label": {
+      "country": "Land",
+      "language": "Sprache",
+      "selectLanguage": "Sprache auswählen"
+    },
+    "link": {
+      "skipToMainContent": "Zum Hauptinhalt wechseln",
+      "switchLanguage": "<span class=\"sr-only\">Sprache wechseln, aktuelle Sprache ist</span> {{0}}",
+      "switchSite": "<span class=\"sr-only\">Site wechseln, aktuelle Site ist</span> {{0}}"
+    },
+    "subheading": {
+      "chooseCountryAndLanguage": "Land und Sprache auswählen"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "spotlights": {
+    "button": {
+      "pauseAnimation": "Pause animation",
+      "startAnimation": "Start animation"
+    },
+    "label": {
+      "featuredContentCarousel": "Featured content carousel"
+    },
+    "link": {
+      "goToSlide": "<span class=\"sr-only\">Go to slide</span> {{0}}",
+      "nextSlide": "Next slide",
+      "previousSlide": "Previous slide"
+    }
+  }
+}

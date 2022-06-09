@@ -1,0 +1,5 @@
+project(":Applications") {
+  description = "Project that contains demo and custom commerce applications."
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/build-ship.gradle#1 $$Change: 1385662 $

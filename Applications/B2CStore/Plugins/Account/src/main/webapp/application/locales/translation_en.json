@@ -1,0 +1,9 @@
+{
+  "account": {
+    "label": {
+      "color": "Color",
+      "size": "Size",
+      "woodFinish": "Wood finish"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "promotions": {
+    "button":{
+      "apply": "Apply",
+      "remove": "Remove"
+    },
+    "label": {
+      "actions": "Actions",
+      "claimACoupon": "Claim a coupon",
+      "couponCode": "Coupon code",
+      "couponTableSummary": "List of coupons that have been applied to this order"
+    },
+    "subheading":{
+      "claimedCoupon": "Claimed coupon"
+    }
+  }
+}

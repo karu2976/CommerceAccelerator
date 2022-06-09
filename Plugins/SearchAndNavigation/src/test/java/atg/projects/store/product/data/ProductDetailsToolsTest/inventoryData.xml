@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+    <import-items>
+
+        <add-item item-descriptor="inventory" id="invTestSku1">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSku1 - Color: Red]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSku1]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+        <add-item item-descriptor="inventory" id="invTestSku2">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSku2 - Color: Green]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSku2]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+        <add-item item-descriptor="inventory" id="invTestSku3">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSku3 - Color: Black]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSku3]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+    </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/src/test/java/atg/projects/store/product/data/ProductDetailsToolsTest/inventoryData.xml#1 $$Change: 1385662 $-->

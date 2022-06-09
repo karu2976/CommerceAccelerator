@@ -1,0 +1,101 @@
+<!-- ko if: showSelections() && validNavigationPath() === true -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title panel-primary text-capitalize">
+        {{ 'searchAndNavigation.subheading.yourSelections' | i18n }}
+      </h3>
+    </div>
+    <div class="panel-body">
+      <!-- ko if: searchCrumbs().length > 0 -->
+        <ul class="nav nav-pills nav-stacked" data-bind="foreach: searchCrumbs">
+          <li>
+            <a data-bind="attr: { href: './' + $component.contentPath() + $component.navigationStateNoShowFilter(removeAction.navigationState) }">
+              <span class="sr-only">{{ 'searchAndNavigation.link.removeSearchTerm' | i18n }}</span>
+              &quot;{{ correctedTerms || terms }}&quot;
+              <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      <!-- /ko -->
+      <!-- ko if: refinementCrumbs().length > 0 -->
+        <ul class="nav nav-pills nav-stacked">
+          <!-- ko foreach: refinementCrumbs -->
+            <!-- ko if: ancestors.length > 0 -->
+              <li>
+                <a class="csa-breadcrumb-remove-all" data-bind="attr: { href: './' + $component.contentPath() + $component.navigationStateNoShowFilter(removeAction.navigationState) }">
+                  <span class="sr-only">
+                    {{ 'searchAndNavigation.link.removeAllCategories' | i18n }}
+                  </span>
+                  <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+                </a>
+                <ol class="breadcrumb csa-breadcrumb">
+                  <!-- ko foreach: ancestors -->
+                    <li data-bind="css: {small: $index() > 0}">
+                      <a data-bind="attr: { href: './' + $component.contentPath() + $component.navigationStateNoShowFilter(navigationState) }, preview: {category: properties['category.repositoryId']}">
+                        <span class="sr-only">
+                          {{ 'searchAndNavigation.link.removeCategoriesBelow' | i18n }}
+                        </span>
+                        {{ label }}
+                      </a>
+                    </li>
+                  <!-- /ko -->
+                  <li class="active small" data-bind="preview: {category: properties['category.repositoryId']}">
+                    {{ label }}
+                  </li>
+                </ol>
+              </li>
+            <!-- /ko -->
+            <!-- ko if: ancestors.length === 0 -->
+              <li>
+                <a data-bind="attr: { href: './' + $component.contentPath() + $component.navigationStateNoShowFilter(removeAction.navigationState) }">
+                  <span class="sr-only">
+                    {{ 'searchAndNavigation.link.removeRefinement' | i18n }}
+                  </span>
+                  <!-- ko if: dimensionName === 'product.price_range' -->
+                    {{ label.split('-')[0] | currency }} - {{ label.split('-')[1] | currency }}
+                  <!-- /ko -->
+                  <!-- ko ifnot: dimensionName === 'product.price_range' -->
+                    <!-- ko if: dimensionName === 'product.category' -->
+                      <span data-bind="preview: {category: properties['category.repositoryId']}">
+                        {{ label }}
+                      </span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: dimensionName === 'product.category' -->
+                      {{ label }}
+                    <!-- /ko -->
+                  <!-- /ko -->
+                  <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+                </a>
+              </li>
+            <!-- /ko -->
+          <!-- /ko -->
+        </ul>
+      <!-- /ko -->
+      <!-- ko if: rangeFilterCrumbs -->
+        <ul class="nav nav-pills nav-stacked" data-bind="foreach: rangeFilterCrumbs">
+          <!-- ko if: propertyName === 'sku.activePrice' -->
+            <li>
+              <a data-bind="attr: { href: './' + $component.contentPath() + $component.navigationStateNoShowFilter(removeAction.navigationState) }">
+                <span class="sr-only">
+                  {{ 'searchAndNavigation.link.removeRefinement' | i18n }}
+                </span>
+                {{ lowerBound | currency }} - {{ upperBound | currency }}
+                <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+              </a>
+            </li>
+          <!-- /ko -->
+        </ul>
+      <!-- /ko -->
+      <!-- ko if: showRemoveAll -->
+        <ul class="nav nav-pills nav-stacked">
+          <li>
+            <a class="small pull-right" data-bind="attr: { href: './' + contentPath() + navigationStateNoShowFilter(removeAllAction().navigationState) }">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              {{{  'searchAndNavigation.link.clearAll' | i18n }}}
+            </a>
+          </li>
+        </ul>
+      <!-- /ko -->
+    </div>
+  </div>
+<!-- /ko -->

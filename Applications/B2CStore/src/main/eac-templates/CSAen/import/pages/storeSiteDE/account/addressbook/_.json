@@ -1,0 +1,43 @@
+{
+    "workflowNote": "",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2014-11-03T15:29:52.529Z",
+    "contentType": "Page",
+    "ecr:createDate": "2016-12-06T06:06:16.503-08:00",
+    "ecr:type": "page",
+    "contentItem": {
+        "@name": "Two-Column Page",
+        "metaKeywords": "",
+        "@type": "TwoColumnPage",
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce reference application.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "mainContent": [{
+            "@name": "ViewAddressBook",
+            "@type": "ViewAddressBook"
+        }],
+        "secondaryContent": [{
+            "ruleLimit": "1",
+            "@name": "Secondary Content Slot",
+            "templateTypes": ["SecondaryContent"],
+            "templateIds": [],
+            "@type": "ContentSlotSecondary",
+            "contentPaths": ["/content/Web/Account/Left Hand Menu"]
+        }],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }]
+    }
+}

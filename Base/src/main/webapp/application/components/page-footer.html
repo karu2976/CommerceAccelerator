@@ -1,0 +1,6 @@
+<div class="container">
+  <p data-bind="foreach: linkMenu().links">
+    <a class="csa-footer-link" data-bind="attr: { href: $parent.hrefFromLink(link), title: name }, text: name"></a>
+  </p>
+  <p data-bind="html: copyright"></p>
+</div>

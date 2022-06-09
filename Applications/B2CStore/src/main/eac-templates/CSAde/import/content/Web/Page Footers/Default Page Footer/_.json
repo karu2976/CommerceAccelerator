@@ -1,0 +1,79 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2014-06-09T13:59:12.912+01:00",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:05:26.016-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "Page Footer",
+        "copyright": "<p>Copyright &copy; 2017, Oracle und/oder verbundene Unternehmen. All rights reserved. Alle Rechte vorbehalten.<br />Oracle und Java sind eingetragene Marken von Oracle und/oder verbundenen Unternehmen. Andere Namen und Bezeichnungen können Marken ihrer jeweiligen Inhaber sein.<\/p>",
+        "@type": "PageFooter",
+        "linkMenu": {
+            "@name": "Footer Link Menu",
+            "@type": "FooterLinkMenu",
+            "links": [
+                {
+                    "@name": "Über uns",
+                    "@type": "FooterLink",
+                    "link": {
+                        "path": "/pages/storeSiteDE/about-us",
+                        "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                        "linkType": "Navigation State"
+                    }
+                },
+                {
+                    "@name": "Neuigkeiten",
+                    "@type": "FooterLink",
+                    "link": {
+                        "path": "/pages/storeSiteDE/news",
+                        "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                        "linkType": "Navigation State"
+                    }
+                },
+                {
+                    "@name": "FAQs",
+                    "@type": "FooterLink",
+                    "link": {
+                        "path": "/pages/storeSiteDE/faqs",
+                        "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                        "linkType": "Navigation State"
+                    }
+                },
+                {
+                    "@name": "Datenschutz",
+                    "@type": "FooterLink",
+                    "link": {
+                        "path": "/pages/storeSiteDE/privacy",
+                        "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                        "linkType": "Navigation State"
+                    }
+                },
+                {
+                    "@name": "Versand",
+                    "@type": "FooterLink",
+                    "link": {
+                        "path": "/pages/storeSiteDE/shipping",
+                        "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                        "linkType": "Navigation State"
+                    }
+                },
+                {
+                    "@name": "Kontakt",
+                    "@type": "FooterLink",
+                    "link": {
+                        "path": "/pages/storeSiteDE/contact-us",
+                        "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                        "linkType": "Navigation State"
+                    }
+                }
+            ]
+        }
+    },
+    "triggers": [{"exactLocation": false}]
+}

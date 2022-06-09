@@ -1,0 +1,44 @@
+<!-- ko if: refinements().length > 0 -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title panel-primary">
+        {{ 'searchAndNavigation.subheading.' + dimensionName() | i18n }}
+      </h3>
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills nav-stacked">
+        <!-- ko foreach: refinements -->
+          <li>
+            <a data-bind="attr: { href: $component.contentPath() + navigationState + $component.showFilterQueryStringName() + '=false' }">
+              <!-- ko if: $component.dimensionName() === 'product.category' -->
+                <span data-bind="preview: {category: properties['category.repositoryId']}">
+                  {{ label }}
+                </span>
+              <!-- /ko -->
+              <!-- ko ifnot: $component.dimensionName() === 'product.category' -->
+                {{ label }}
+              <!-- /ko -->
+              <span class="csa-text-in-link">
+                ({{{ 'searchAndNavigation.link.item' | i18nPlural:count }}})
+              </span>
+            </a>
+          </li>
+        <!-- /ko -->
+        <!-- ko if: $component.moreLink() -->
+          <li>
+            <a class="small pull-right" data-bind="attr: { href: contentPath() + moreLink().navigationState + showFilterQueryStringName() + '=true' }">
+              <span class="glyphicon glyphicon-plus"></span> {{ moreLink().label }}
+            </a>
+          </li>
+        <!-- /ko -->
+        <!-- ko if: $component.lessLink() -->
+          <li>
+            <a class="small pull-right" data-bind="attr: { href: contentPath() + lessLink().navigationState + showFilterQueryStringName() + '=true' }">
+              <span class="glyphicon glyphicon-minus"></span> {{ lessLink().label }}
+            </a>
+          </li>
+        <!-- /ko -->
+      </ul>
+    </div>
+  </div>
+<!-- /ko -->

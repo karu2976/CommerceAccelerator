@@ -1,0 +1,8 @@
+<actor-template>
+  <actor-chain id="states" transaction="TX_SUPPORTS">
+    <droplet id="stateListDroplet" name="/atg/commerce/util/StateListDroplet" var="result">
+      <input name="countryCode" value="${(countryCode != null) ? countryCode : param.countryCode}"/>
+    </droplet>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/main/config/atg/commerce/util/stateListActor.xml#1 $$Change: 1385662 $ -->

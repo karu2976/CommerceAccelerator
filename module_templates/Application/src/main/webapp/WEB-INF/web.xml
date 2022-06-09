@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+  version="2.5">
+  
+  <display-name>Commerce Accelerator Application</display-name>
+
+  <!-- 
+    Configure the Nucleus Servlet. This servlet definition is required
+    in each web application that uses dynamo functionality.  When mapped,
+    it exposes the nucleus component browser, but should not be
+    mapped to any paths on a live site.
+  -->
+  <context-param>
+    <param-name>atg.session.parentContextName</param-name>
+    <param-value>/dyn</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>atg.dafear.bootstrapContextName</param-name>
+    <param-value>/dyn</param-value>
+  </context-param>
+
+  <!--
+    If context-root is set here, then ServletContextWebAppRegistry will use
+    this setting as the context-root for this WebApp. This must match
+    the context-root setting in application.xml.
+  -->
+  <context-param>
+    <param-name>context-root</param-name>
+    <param-value><%= contextRoot %></param-value>
+  </context-param>
+
+  <!--
+    atg.assembler context parameter indicates that we want to execute the 
+    AssemblerPiplineServlet which will use the assembler api to return content
+    from Experience Manager or Guided Search.  
+  -->
+  <context-param>
+    <param-name>atg.assembler</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <!--
+    Called when a request is for a .jsp file, the PageFilter servlet is
+    the entry point into the DAF pipeline. PageFilter calls
+    atg/dynamo/servlet/dafpipeline/DynamoHandler to start the DAF servlet
+    pipeline for JSP requests. The DAF servlet pipeline relies on JBoss
+    to handle the complete page compilation process.
+  -->
+  <filter>
+    <filter-name>PageFilter</filter-name>
+    <filter-class>atg.filter.dspjsp.PageFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>ForwardFilter</filter-name>
+    <filter-class>atg.servlet.ForwardFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>ErrorFilter</filter-name>
+    <filter-class>atg.servlet.ErrorFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>ErrorFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>ForwardFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>PageFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>NucleusServlet</servlet-name>
+    <servlet-class>atg.nucleus.servlet.NucleusServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <!-- 
+    This servlet exposes the admin server of dynamo as a servlet in your
+    application server.  It is not necessary, but useful to access the
+    nucleus component browser, dynamo's configuration manager, and
+    performance monitor
+  -->
+
+  <servlet>
+    <servlet-name>AdminProxyServlet</servlet-name>
+    <servlet-class>atg.nucleus.servlet.NucleusProxyServlet</servlet-class>
+    <init-param>
+      <param-name>proxyServletPath</param-name>
+      <param-value>/atg/dynamo/servlet/adminpipeline/AdminHandler</param-value>
+    </init-param>  
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <!--
+    This servlet exposes the dynamo servlet pipeline.  It is necessary if
+    you want to support serving JHTML pages on your site.  The context path
+    and servlet path used by this servlet are prepended onto all URLs
+    for JHTML pages on your site.
+  -->
+  <servlet>
+    <servlet-name>DynamoProxyServlet</servlet-name>
+    <servlet-class>atg.nucleus.servlet.NucleusProxyServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  
+  <!-- This 'link' servlet is used by the Endeca Workbench preview invocation. -->
+  <servlet>
+    <servlet-name>link</servlet-name>
+    <servlet-class>atg.endeca.servlet.NucleusPreviewLinkServlet</servlet-class>
+    <init-param>
+      <description>
+        The Nucleus component path of the NavigationStateBuilder.
+      </description>
+      <param-name>navigationStateBuilderComponent</param-name>
+      <param-value>/atg/endeca/assembler/cartridge/manager/NavigationStateBuilder</param-value>
+    </init-param>
+    <init-param>
+      <description>
+        The Nucleus component path of the ContentSource.
+      </description>
+      <param-name>contentSourceComponent</param-name>
+      <param-value>/atg/endeca/assembler/cartridge/manager/WorkbenchContentSource</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>link</servlet-name>
+    <url-pattern>/link.json/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- 
+    Dynamo ELResolver event listener allowing JSTL expressions to refer to 
+    Nucleus component and dynamic bean properties (including repository item properties)   
+  -->
+  <listener>
+    <listener-class>atg.taglib.dspjsp.RegisterELResolverServletContextListener</listener-class>
+  </listener>
+  
+  <!-- Spring ContextLoaderListener -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- The Spring application configuration file location -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/spring-context.xml</param-value>
+  </context-param>
+  
+  <welcome-file-list>
+    <welcome-file>/index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <!-- the 404 error page -->
+  <!-- error-page>
+    <error-code>404</error-code>
+    <location>/PageNotFound.html</location>
+  </error-page -->
+
+  <!-- the 409 error page -->
+  <!-- error-page>
+    <error-code>409</error-code>
+    <location>/SessionExpired.html</location>
+  </error-page -->
+
+  <!-- the 500 error page -->
+  <!-- error-page>
+    <error-code>500</error-code>
+    <location>/InternalServerError.html</location>
+  </error-page -->
+
+  <!--
+    Default error page that will be used for uncaught exceptions. This will ensure
+    that attackers can't mine information from the application container's built-in
+    error response i.e. stack traces in the browser.
+  -->
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/InternalServerError.html</location>
+  </error-page>
+
+</web-app>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/module_templates/Application/src/main/webapp/WEB-INF/web.xml#1 $$Change: 1385662 $ -->

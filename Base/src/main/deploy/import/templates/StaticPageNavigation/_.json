@@ -1,0 +1,20 @@
+{
+    "@description": "${template.description}",
+    "@group": "SecondaryContent",
+    "ecr:createDate": "2016-12-06T06:06:16.873-08:00",
+    "@thumbnailUrl": "thumbnail.jpg",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": []
+    },
+    "typeInfo": {"links": {
+        "@propertyType": "ContentItemList",
+        "@group": "LinkContent"
+    }},
+    "defaultContentItem": {
+        "@name": "Static Page Navigation",
+        "links": []
+    },
+    "locales": {}
+}

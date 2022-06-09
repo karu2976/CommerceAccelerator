@@ -1,0 +1,23 @@
+{
+    "@description": "${template.description}",
+    "@group": "HeaderContent",
+    "ecr:createDate": "2016-12-06T06:06:16.857-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": []
+    },
+    "typeInfo": {
+        "searchText": {"@propertyType": "String"},
+        "templateIds": {"@propertyType": "List"},
+        "autoSuggestEnabled": {"@propertyType": "Boolean"}
+    },
+    "defaultContentItem": {
+        "searchText": "",
+        "@name": "Search",
+        "templateIds": [],
+        "autoSuggestEnabled": false
+    },
+    "locales": {}
+}

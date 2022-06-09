@@ -1,0 +1,33 @@
+{
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-03-30T08:20:23.431-07:00",
+    "ecr:createDate": "2016-03-30T08:20:23.380-07:00",
+    "ecr:type": "attributes-owner-folder",
+    "product.price_range": {
+        "ecr:lastModifiedBy": "admin",
+        "rangeComparisonType": "FLOAT",
+        "ecr:lastModified": "2016-03-30T08:20:23.431-07:00",
+        "displayOrder": 1,
+        "mergeAction": "UPDATE",
+        "ecr:createDate": "2016-03-30T08:20:23.380-07:00",
+        "ecr:type": "dimension"
+    },
+    "product.repositoryId": {
+        "ecr:lastModifiedBy": "admin",
+        "isRollupKey": true,
+        "isRecordFilterable": true,
+        "propertyDataType": "ALPHA",
+        "ecr:lastModified": "2016-03-30T08:20:23.431-07:00",
+        "mergeAction": "UPDATE",
+        "ecr:createDate": "2016-03-30T08:20:23.380-07:00",
+        "ecr:type": "property"
+    },
+    "record.id": {
+        "ecr:lastModifiedBy": "admin",
+        "isRecordFilterable": true,
+        "propertyDataType": "ALPHA",
+        "ecr:lastModified": "2016-03-30T08:20:23.431-07:00",
+        "ecr:createDate": "2016-03-30T08:20:23.380-07:00",
+        "ecr:type": "property"
+    }
+}

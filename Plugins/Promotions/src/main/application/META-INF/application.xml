@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<application xmlns="http://java.sun.com/xml/ns/j2ee" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd"
+  version="1.4">
+
+  <display-name>
+    CommerceAccelerator.Plugins.Promotions
+  </display-name>
+
+  <module>
+    <web>
+      <web-uri>
+        Plugins-Promotions.war
+      </web-uri>
+      <context-root>
+        csa/plugins/promotions
+      </context-root>
+    </web>
+  </module>
+
+</application>
+
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Promotions/src/main/application/META-INF/application.xml#1 $$Change: 1385662 $-->

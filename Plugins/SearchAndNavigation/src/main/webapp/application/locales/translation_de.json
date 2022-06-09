@@ -1,0 +1,77 @@
+{
+  "searchAndNavigation": {
+    "alert": {
+      "categoryNotAvailable": "Kategorie ist nicht verfügbar.",
+      "emptyFromOrToField": "Die Preisfelder \"Von\" und \"Bis\" müssen ausgefüllt werden.",
+      "fromMoreThanTo": "Der Preis für \"Von\" muss kleiner sein als der Preis für \"Bis\".",
+      "invalidToFromField": "Die Preisfelder \"Von\" und \"Bis\" müssen gültige Zahlen enthalten.",
+      "makeValidSelection": "Wählen Sie eine SKU aus, bevor Sie auf \"In den Warenkorb\" klicken.",
+      "noProductFound": "Kein Produkt gefunden.",
+      "noResults": "Keine Ergebnisse gefunden.",
+      "productNotAvailable": "Dieses Produkt ist momentan nicht verfügbar.",
+      "skuOutOfStock": "Die ausgewählte SKU ist derzeit nicht auf Lager.",
+      "skuUnavailable": "Die ausgewählte SKU ist derzeit nicht verfügbar."
+    },
+    "button":{
+      "addToCart": "Zum Warenkorb hinzufügen",
+      "apply": "Anwenden",
+      "filter": "Filtern",
+      "go": "Los",
+      "search": "Suchen"
+    },
+    "label": {
+      "maxPrice": "Höchstpreis",
+      "minPrice": "Mindestpreis",
+      "pagingControl": "Pagingsteuerelement",
+      "quantity": "Menge",
+      "searchByProductNameOrKeyword": "Nach Produktname oder Stichwort suchen",
+      "skuStatus": "SKU-Status",
+      "sortBy": "Sortieren nach"
+    },
+    "link": {
+      "allCategory": "{{0}}",
+      "clearAll": "Löschen Sie die gesamte <span class=\"sr-only\">Auswahl</span>",
+      "item": "{{0}}<span class=\"sr-only\">Artikel</span>",
+      "item_plural":"{{0}}<span class=\"sr-only\">Artikel</span>",
+      "nextPage": "Nächste Seite",
+      "page": "Seite",
+      "previousPage": "Vorherige Seite",
+      "removeAllCategories": "Alle Kategorien entfernen",
+      "removeCategoriesBelow": "Kategorien unten entfernen",
+      "removeRefinement": "Verfeinerung entfernen",
+      "removeSearchTerm": "Suchbegriff entfernen",
+      "showLess": "Weniger anzeigen",
+      "showMore": "Mehr anzeigen",
+      "to": "bis"
+    },
+    "placeholder": {
+      "select": "Auswählen"
+    },
+    "subheading": {
+      "yourSelections": "Ihre Auswahl",
+      "clothing-sku": {
+          "color": "Farbe",
+          "size": "Größe"
+        },
+        "furniture-sku": {
+          "woodFinish": "Holzoberfläche"
+        },
+        "product": {
+          "brand": "Marke",
+          "category": "Kategorie",
+          "price_range": "Preisbereich"
+        }
+    },
+    "text": {
+      "inStock": "Auf Lager",
+      "listPrice": "Listenpreis",   
+      "result": "{{0}} Treffer",
+      "result_plural": "{{0}} Treffer",
+      "outOfStock": "Nicht auf Lager",
+      "priceBeforeReduction": "Preis vor Reduzierung",
+      "salePrice": "Verkaufspreis",   
+      "unavailable": "Nicht verfügbar",
+      "sale": "VERKAUF"
+    }
+  }
+}

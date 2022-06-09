@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database-initializer SYSTEM "http://www.atg.com/dtds/dbinit_2_0.dtd">
+<database-initializer>
+
+  <!-- ************************************************************************ -->
+  <!--                     DATABASE EXTENSIONS                                  -->
+  <!-- ************************************************************************ -->
+
+  <!-- SEO SCHEMA -->
+  <schema id="seoPageSchema">
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_seo_page_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_seo_page_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+
+  <!-- VERSIONED SCHEMA -->
+  <schema id="versionedSchema">
+
+    <!-- 
+      Include the SEO Page DDL in here as we want a non versioned copy of the
+      table included as part of the Versioned schema.
+    -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_seo_page_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_seo_page_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+
+  <!-- ****************************************************************** -->
+  <!--                SERVER INSTANCE CONFIGURATION                       -->
+  <!--                                                                    -->
+  <!--   The datasources below are "named datasources" defined in         -->
+  <!--   commerce and platform.                                           -->
+  <!-- ****************************************************************** -->
+
+  <!-- Production -->
+  <server-instance-type id="production">
+
+    <!-- Non switching -->
+    <datasource id="nonswitchingCore">
+      <schema id="seoPageSchema" />
+    </datasource>
+
+    <!-- Switching -->
+    <datasource id="switchingCore">
+      <schema id="seoPageSchema" />
+    </datasource>
+
+  </server-instance-type>
+
+  <!-- Staging -->
+  <server-instance-type id="staging">
+
+    <!-- Non switching -->
+    <datasource id="stagingnonswitchingCore">
+      <schema id="seoPageSchema" />
+    </datasource>
+
+    <!-- Switching -->
+    <datasource id="stagingswitchingCore">
+      <schema id="seoPageSchema" />
+    </datasource>
+
+  </server-instance-type>
+  
+  <!-- Versioned -->
+  <server-instance-type id="management">
+
+    <datasource id="management">
+      <schema id="versionedSchema" />
+    </datasource>
+
+  </server-instance-type>
+
+</database-initializer>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SEO/cim/dbinit.xml#1 $$Change: 1385662 $-->

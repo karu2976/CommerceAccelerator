@@ -1,0 +1,21 @@
+<ul class="nav nav-pills nav-stacked hidden-xs">
+  <!-- ko if: profile.authenticated -->
+    <!-- ko foreach: authenticatedMenuOptions -->
+      <li role="presentation" data-bind="css: { active: $data.activeLink }">
+        <a data-bind="attr: { href: url }">{{ displayName }}</a>
+      </li>
+    <!-- /ko -->
+    <li role="presentation">
+      <a data-bind="click: logout" data-bypass href="#">
+        {{ 'account.link.notYou' | i18n:profile.firstName }}
+      </a>
+    </li>
+  <!-- /ko -->
+  <!-- ko ifnot: profile.authenticated -->
+    <!-- ko foreach: unauthenticatedMenuOptions -->
+      <li role="presentation" data-bind="css: { active: $data.activeLink }">
+        <a data-bind="attr: { href: url }">{{ displayName }}</a>
+      </li>
+    <!-- /ko -->
+  <!-- /ko -->
+</ul>

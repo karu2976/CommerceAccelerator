@@ -1,0 +1,77 @@
+{
+  "searchAndNavigation": {
+    "alert": {
+      "categoryNotAvailable": "Category is not available.",
+      "emptyFromOrToField": "From and To price fields must be populated.",
+      "fromMoreThanTo": "The From price must be less than the To price.",
+      "invalidToFromField": "The From and To prices must be valid numbers.",
+      "makeValidSelection": "Please select a SKU before clicking Add to Cart.",
+      "noProductFound": "No product found.",
+      "noResults": "No results found.",
+      "productNotAvailable": "This product is currently not available.",
+      "skuOutOfStock": "The selected SKU is currently out of stock.",
+      "skuUnavailable": "The selected SKU is currently unavailable."
+    },
+    "button":{
+      "addToCart": "Add to cart",
+      "apply": "Apply",
+      "filter": "Filter",
+      "go": "Go",
+      "search": "Search"
+    },
+    "label": {
+      "maxPrice": "Maximum price",
+      "minPrice": "Minimum price",
+      "pagingControl": "Paging control",
+      "quantity": "Quantity",
+      "searchByProductNameOrKeyword": "Search by product name or keyword",
+      "skuStatus": "SKU status",
+      "sortBy": "Sort by"
+    },
+    "link": {
+      "allCategory": "All {{0}}",
+      "clearAll": "Clear all <span class=\"sr-only\">selections</span>",
+      "item": "{{0}}<span class=\"sr-only\">item</span>",
+      "item_plural":"{{0}}<span class=\"sr-only\">items</span>",
+      "nextPage": "Next page",
+      "page": "Page",
+      "previousPage": "Previous page",
+      "removeAllCategories": "Remove all categories",
+      "removeCategoriesBelow": "Remove categories below",
+      "removeRefinement": "Remove refinement",
+      "removeSearchTerm": "Remove search term",
+      "showLess": "Show less",
+      "showMore": "Show more",
+      "to": "to"
+    },
+    "placeholder": {
+      "select": "Select"
+    },
+    "subheading": {
+      "yourSelections": "Your selections",
+      "clothing-sku": {
+          "color": "Color",
+          "size": "Size"
+        },
+        "furniture-sku": {
+          "woodFinish": "Wood finish"
+        },
+        "product": {
+          "brand": "Brand",
+          "category": "Category",
+          "price_range": "Price range"
+        }
+    },
+    "text": {
+      "inStock": "In stock",
+      "listPrice": "list price",    
+      "result": "{{0}} result",
+      "result_plural": "{{0}} results",
+      "outOfStock": "Out of stock",
+      "priceBeforeReduction": "price before reduction",
+      "salePrice": "sale price",    
+      "unavailable": "Unavailable",
+      "sale": "SALE"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<h2>{{ 'account.heading.addressBook' | i18n }}</h2>
+
+<p>
+  <strong><a data-bind="attr: {href: 'account/addressbook/add' }">{{ 'account.link.addAddress' | i18n }}</a></strong>
+</p>
+
+<table class="table table-striped table-condensed" summary="{{ 'account.label.addressBookTableSummary' | i18n }}">
+  <thead>
+    <tr>
+      <th scope="col">{{ 'account.subheading.nickname' | i18n }}</th>
+      <th scope="col" class="hidden-xs">{{ 'account.subheading.shipTo' | i18n }}</th>
+      <th scope="col" class="hidden-xs">{{ 'account.subheading.streetAddress' | i18n }}</th>
+      <th scope="col"><span class="sr-only">{{ 'account.subheading.actions' | i18n }}</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- ko foreach: addresses().secondaryAddresses -->
+      <tr>
+        <th scope="row">
+          <a data-bind="attr: { href: 'account/addressbook/edit?addressNickname=' + $data.addressNickname }">{{ addressNickname }}</a>
+          <!-- ko if: useAsDefaultShippingAddress -->
+            <span class="label label-primary">{{ 'account.label.default' | i18n }}</span>
+          <!-- /ko -->
+        </th>
+        <td class="hidden-xs">
+          <small>{{ firstName }} {{ lastName }}</small>
+        </td>
+        <td class="hidden-xs">
+          <small>{{ address1 }}</small>
+        </td>
+        <td class="text-right">
+          <button data-bind="click: $parent.removeAddress" class="btn btn-default">
+            <span class="sr-only visible-xs-inline">{{ 'account.button.delete' | i18n }}</span>
+            <span class="glyphicon glyphicon-trash"></span>
+            <span class="hidden-xs hidden-sm">{{ 'account.button.delete' | i18n }}</span>
+          </button>
+        </td>
+      </tr>
+    <!-- /ko -->
+  </tbody>
+</table>

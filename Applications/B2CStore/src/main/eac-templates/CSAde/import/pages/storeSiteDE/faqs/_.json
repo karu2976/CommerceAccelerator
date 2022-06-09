@@ -1,0 +1,44 @@
+{
+    "workflowNote": "",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-12-06T06:05:26.150-08:00",
+    "contentType": "Page",
+    "ecr:createDate": "2016-12-06T06:05:26.150-08:00",
+    "ecr:type": "page",
+    "contentItem": {
+        "@name": "Two-Column Page",
+        "metaKeywords": "",
+        "@type": "TwoColumnPage",
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce Accelerator FAQs page content.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "mainContent": [{
+            "@name": "Rich Text",
+            "@type": "RichTextMain",
+            "content": "<h2>Häufig gestellte Fragen (FAQs)<\/h2><p><strong>F: Warum wurde die Promotionaktion von der Website nicht im CSA-Geschäft in meinem Einkaufszentrum vor Ort angeboten?<\/strong><\/p><p><strong>A:<\/strong> Die Promotionaktionen, die wir auf unserer Website veröffentlichen, werden in den meisten unserer Ladengeschäfte im ganzen Land angeboten. Jedes CSA-Geschäft ist aber einzigartig, und so kann es sein, dass eine Promotion zum Zeitpunkt ihrer Veröffentlichung auf unserer Website nicht in allen Geschäften angeboten wird. Wenn Sie sichergehen möchten, dass in Ihrem CSA-Geschäft eine bestimmte Promotion durchgeführt wird, rufen Sie am besten in diesem Geschäft an. Wird dort die Promotion nicht angeboten, sollten die Mitarbeiter auf jeden Fall in der Lage sein, Ihnen mitzuteilen, welches CSA-Geschäft in Ihrer Nähe die Promotion durchführt.<\/p><p><strong>F: Wie kann ich meine E-Mail-Adresse ändern?<\/strong><\/p><p><strong>A:<\/strong> Sie können Ihre E-Mail-Adresse ändern, indem Sie sich anmelden und \"Mein Profil\" auswählen. Nehmen Sie alle erforderlichen Änderungen an Ihrem Profil vor, führen Sie einen Bildlauf nach unten durch, und klicken Sie auf \"Weiterleiten\", um die Änderungen zu speichern.<\/p><p><strong>F: Wie kann ich mich von Ihrer E-Mail-Liste abmelden?<\/strong><\/p><p><strong>A:<\/strong> Sie können die E-Mails von CSA abbestellen, indem Sie auf den Link unten in den Marketing-E-Mails klicken, die Sie von CSA erhalten. Beachten Sie dabei Folgendes: Es kann sein, dass Sie trotz der Abbestellung von E-Mails oder Ihrer nachfolgenden Bitte, von der E-Mail-Marketingliste von CSA entfernt zu werden, dennoch E-Mail-Bestätigungen für Einkäufe mit Geschenkkarten auf unserer Website, Bestätigungen für den Eingang von Ihnen übermittelter Fragen oder andere vorgangsbedingte E-Mails erhalten. Sie haben auch die Möglichkeit, sich anzumelden, Ihr Profil zu bearbeiten, und das Kontrollkästchen für \"E-Mails an mich senden\" zu deaktivieren.<\/p>"
+        }],
+        "secondaryContent": [{
+            "ruleLimit": "1",
+            "@name": "Static Page Navigation",
+            "templateTypes": ["SecondaryContent"],
+            "templateIds": [],
+            "@type": "ContentSlotSecondary",
+            "contentPaths": ["/content/Web/Static Page Navigation"]
+        }],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }]
+    }
+}

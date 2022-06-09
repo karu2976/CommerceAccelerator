@@ -1,0 +1,50 @@
+{
+  "searchAndNavigation": {
+    "alert": {
+      "validPrice": "Please enter a valid price"
+    },
+    "button": {
+      "close": "Close"
+    },
+    "label": {
+      "size": "Size",
+      "color": "Color",
+      "woodFinish": "Wood finish"
+    },
+    "link": {
+      "sizeChart": "Size chart"
+    },
+    "placeholder": {
+      "size": "Select size",
+      "color": "Select color",
+      "woodFinish": "Select wood finish"
+    },
+    "subheading": {
+      "bust": "Bust",
+      "chest": "Chest",
+      "europe": "Europe",
+      "euroSize": "Euro<br>size",
+      "hip": "Hip",
+      "inseam": "Inseam",
+      "japan": "Japan",
+      "mensShirts": "Men's shirts",
+      "mensShoes": "Men's shoes",
+      "mexico": "Mexico",
+      "neck": "Neck",
+      "sizeInfo": "Size information",
+      "sleeve": "Sleeve",
+      "uk": "UK",
+      "us": "US",
+      "usSize": "US<br>size",
+      "waist": "Waist",
+      "womensShirt": "Women's shirt",
+      "womensShoes": "Women's shoes"
+    },
+    "text": {
+      "mensShirtSizes": "Men's shirt sizes",
+      "mensShoeSizes": "Men's shoe sizes",
+      "womensShirtSizes": "Women's shirt sizes",
+      "womensShoeSizes": "Women's shoe sizes"
+    }
+  }
+}

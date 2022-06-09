@@ -1,0 +1,9 @@
+project(":Plugins:Spotlights") {
+  dependencies {
+    compile project(":Base")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Spotlights/build-ship.gradle#1 $$Change: 1385662 $

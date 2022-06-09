@@ -1,0 +1,44 @@
+{
+    "workflowNote": "",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-12-06T06:07:05.810-08:00",
+    "contentType": "Page",
+    "ecr:createDate": "2016-12-06T06:07:05.810-08:00",
+    "ecr:type": "page",
+    "contentItem": {
+        "@name": "Two-Column Page",
+        "metaKeywords": "",
+        "@type": "TwoColumnPage",
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce Accelerator Privacy Policy page content.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "mainContent": [{
+            "@name": "Rich Text",
+            "@type": "RichTextMain",
+            "content": "<h2>Política de privacidad<\/h2><p>En CSA respetamos la privacidad de todos los visitantes que acceden a nuestro sitio web y que lo utilizan. La información que recopilamos se utiliza para mejorar el sitio y su experiencia de compra. Esta política describe las circunstancias limitadas en las que recopilamos información personal, los motivos por los que lo hacemos y cómo la utilizamos. También describe las opciones de que dispone en relación al modo en que se recopilan y utilizan los datos.<\/p><p>Si nuestras prácticas de tratamiento de la información cambian en el futuro, publicaremos la versión actualizada en este sitio web. Para saber si la política ha cambiado, consulte la fecha de revisión que aparece al final de la política.<\/p><p>Revisado: marzo de 2015<\/p>"
+        }],
+        "secondaryContent": [{
+            "ruleLimit": "1",
+            "@name": "Static Page Navigation",
+            "templateTypes": ["SecondaryContent"],
+            "templateIds": [],
+            "@type": "ContentSlotSecondary",
+            "contentPaths": ["/content/Web/Static Page Navigation"]
+        }],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }]
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "devices": [
+        {
+            "userAgent": "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A537a Safari/419.3",
+            "name": "Handheld",
+            "height": 680,
+            "width": 400
+        },
+        {
+            "userAgent": "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10",
+            "name": "Tablet",
+            "height": 1224,
+            "width": 848
+        }
+    ],
+    "linkServiceUrl": "http://@@PREVIEW_HOST@@:@@PREVIEW_PORT@@/@@PREVIEW_CONTEXT_ROOT@@/link.json",
+    "ecr:type": "configuration-preview",
+    "previewUrl": "http://@@PREVIEW_HOST@@:@@PREVIEW_PORT@@/@@PREVIEW_CONTEXT_ROOT@@",
+    "assemblerServiceUrl": "http://@@PREVIEW_HOST@@:@@PREVIEW_PORT@@/@@PREVIEW_CONTEXT_ROOT@@"
+}

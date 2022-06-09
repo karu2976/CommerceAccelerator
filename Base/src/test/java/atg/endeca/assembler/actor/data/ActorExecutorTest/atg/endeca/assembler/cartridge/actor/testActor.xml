@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="testActorChain"
+                xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <actor-chain id="testActorChain" transaction="TX_SUPPORTS">
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Base/src/test/java/atg/endeca/assembler/actor/data/ActorExecutorTest/atg/endeca/assembler/cartridge/actor/testActor.xml#1 $$Change: 1385662 $-->

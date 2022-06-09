@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="billingWithAddressAndCardDetails"
+                xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--  This chain is used to update credit card payment group type. -->
+  <actor-chain id="billingWithAddressAndCardDetails" transaction="TX_SUPPORTS">
+    <form id="billingFormHandler" name="/atg/store/order/purchase/BillingFormHandler"
+          var="billingFormHandler" handle="billingWithAddressAndCardDetails">
+      <input name="creditCardUserInputValues.cardNickname" value="${param.cardNickName}"/>
+      <input name="creditCardUserInputValues.saveCreditCard" value="${param.saveCreditCardToProfile}"/>
+      <input name="creditCardUserInputValues.useSavedCreditCard" value="${param.useSavedCreditCard}"/>
+      <input name="creditCardUserInputValues.creditCardType" value="${param.creditCardType}"/>
+      <input name="creditCardUserInputValues.creditCardNumber" value="${param.creditCardNumber}"/>
+      <input name="creditCardUserInputValues.expirationMonth" value="${param.creditCardExpirationMonth}"/>
+      <input name="creditCardUserInputValues.expirationYear" value="${param.creditCardExpirationYear}"/>
+      <input name="creditCardVerificationNumber" value="${param.creditCardVerificationNumber}"/>
+      <input name="billingAddressUserInputValues.addressNickname" value="${param.billingNickName}"/>
+      <input name="billingAddressUserInputValues.email" value="${param.billingEmail}"/>
+      <input name="billingAddressUserInputValues.firstName" value="${param.billingFirstName}"/>
+      <input name="billingAddressUserInputValues.middleName" value="${param.billingMiddleName}"/>
+      <input name="billingAddressUserInputValues.lastName" value="${param.billingLastName}"/>
+      <input name="billingAddressUserInputValues.address1" value="${param.billingAddress1}"/>
+      <input name="billingAddressUserInputValues.address2" value="${param.billingAddress2}"/>
+      <input name="billingAddressUserInputValues.city" value="${param.billingCity}"/>
+      <input name="billingAddressUserInputValues.state" value="${param.billingState}"/>
+      <input name="billingAddressUserInputValues.postalCode" value="${param.billingPostalCode}"/>
+      <input name="billingAddressUserInputValues.country" value="${param.billingCountry}"/>
+      <input name="billingAddressUserInputValues.phoneNumber" value="${param.billingPhoneNumber}"/>
+      <input name="billingWithAddressAndCardDetailsSuccessURL" 
+             value= "/model/atg/store/order/purchase/BillingFormHandlerActor/billingWithAddressAndCardDetails-success"/>
+      <input name="billingWithAddressAndCardDetailsErrorURL"
+             value="/model/atg/store/order/purchase/BillingFormHandlerActor/billingWithAddressAndCardDetails-error"/>
+    </form>
+  </actor-chain>
+  <actor-chain id="billingWithAddressAndCardDetails-error" transaction="TX_SUPPORTS">
+    <actor id="error" name="/atg/store/order/purchase/BillingFormHandlerActor"
+           chain-id="error" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+  <actor-chain id="billingWithAddressAndCardDetails-success" transaction="TX_SUPPORTS">
+    <component id="shoppingCart" name="/atg/commerce/ShoppingCart" component-var="shoppingCart">
+      <output id="order" name="order" value="${shoppingCart.current}" filter-id="summary"/>
+    </component>
+  </actor-chain>
+  <actor-chain id="error" transaction="TX_SUPPORTS">
+    <component id="billingFormHandler" name="/atg/store/order/purchase/BillingFormHandler"
+               component-var="billingFormHandler">
+      <output id="formError" name="formError" value="${billingFormHandler.formError}"/>
+      <output id="formExceptions" name="formExceptions" value="${billingFormHandler.formExceptions}"/>
+    </component>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/main/config/atg/store/order/purchase/billingFormHandlerActor.xml#1 $$Change: 1385662 $ -->

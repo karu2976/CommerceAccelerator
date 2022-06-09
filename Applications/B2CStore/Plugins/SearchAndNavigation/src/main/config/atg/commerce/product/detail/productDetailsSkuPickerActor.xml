@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="getSelectedSku"
+  xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <actor-chain id="getSelectedSku">
+
+      <!--
+         Retrieve the SKU that matches the parameters that are passed in the objectParam.  This
+         actor will return a SKU Repository Item if a match is found.
+
+         Input Parameters:
+            type
+              The SKU type of the SKU that details are being requested for as defined in the
+              application.
+            productIdPropertyName
+              The repository id of the current product.
+            selectedWoodFinish (optional)
+              The value currently selected in the wood finish picker. For use with SKUs of type
+              furniture-sku.
+            selectedColor (optional)
+              The value currently selected in the color picker.  Used when working with SKUs of type
+              clothing-sku.
+            selectedSize (optional)
+              The value currently selected in the size picker.  Used when working with SKUs of type
+              clothing-sku.
+
+          Output Parameters:
+            selectedSku
+              The SKU repository item that matches the passed parameters.
+            repositoryId
+              Adds the SKUs repositoryId to the selectedSku model map with a key of "id".
+      -->
+      <component id="productDetailsPickers"
+                 name="/atg/commerce/product/detail/SkuPickers"
+                 method="getSelectedSkuForType" method-return-var="selectedSku"
+                 invoke-method-requires-session-confirmation="false">
+        <input name="options" class-name="java.util.Map" value="${objectParam}"/>
+        <output id="selectedSku" name="selectedSku" value="${selectedSku}" />
+        <output id="repositoryId" name="selectedSku.id" value="${selectedSku.repositoryId}" />
+      </component>
+
+      <!--
+         Determine whether or not a SKU has been returned.  If so get its pricing, stock level and
+         availability status information.
+
+         Input Parameters:
+            value
+              The condition to determine if the list price is null.
+      -->
+      <droplet id="skuPricesSwitch" name="/atg/dynamo/droplet/Switch" var="skuPricesSwitch">
+        <input name="value" value="${selectedSku != null}"/>
+        <oparam name="true">
+
+            <!--
+               Get the prices for the returned SKU by calling the PricingActor.  The returned prices
+               will be made available to the other actors through the return model variable
+               skuPrices.
+
+               Input Parameters:
+                 skuId
+                   The repositoryId for the SKU.
+            -->
+            <actor id="skuPrices" name="/atg/commerce/pricing/PricingActor"
+                   return-model-var="skuPrices" chain-id="skuPrices">
+                <input name="skuId" value="${selectedSku.repositoryId}" />
+            </actor>
+
+            <!--
+              Determine whether or not to add the list price for the SKU to the product output. When
+              the list price is not null it should be displayed.
+
+              Input Parameters:
+                value
+                  The condition to determine if the list price is null.
+
+              Open Parameters:
+                true
+                  Output Parameters:
+
+                    listPrice
+                      The list price of the SKU.
+            -->
+            <droplet id="listPriceSwitch" name="/atg/dynamo/droplet/Switch">
+                <input name="value" value="${skuPrices.listPrice != null}"/>
+                <oparam name="true">
+                    <output id="listPrice" name="selectedSku.listPrice" value="${skuPrices.listPrice}" />
+                </oparam>
+            </droplet>
+
+            <!--
+              Determine whether or not to add the sale price for the SKU to the product output. When
+              the sale price is not null it should be displayed.
+
+              Input Parameters:
+                value
+                  The condition to determine if the sale price is null.
+
+              Open Parameters:
+                true
+                  Output Parameters:
+
+                    salePrice
+                      The sale price of the SKU.
+            -->
+            <droplet id="salePriceSwitch" name="/atg/dynamo/droplet/Switch">
+                <input name="value" value="${skuPrices.salePrice != null}"/>
+                <oparam name="true">
+                    <output id="salePrice" name="selectedSku.salePrice" value="${skuPrices.salePrice}" />
+                </oparam>
+            </droplet>
+
+            <!--
+              Determine whether or not to display a sale price for the SKU mapped to the product.
+              When the list price and sale price are not equal or the sale price is not null, the
+              sale price should be displayed.
+
+              Input Parameters:
+                value
+                  The condition to determine if the sale price is null.
+
+              Open Parameters:
+                true
+                  Switch droplet element that tests if the salePrice equals the listPrice.
+
+                  Input Parameters:
+                    value
+                      The condition to determine if the sale price does not equal the listPrice.
+
+                  Open Parameters:
+                    true
+                      When the salePrice is not the same as the listPrice.
+
+                    false
+                      When the list price is the same as the sale price.
+
+                false
+                  When the list price is the same as the sale price.
+
+              Output Parameters:
+
+                showSalePrice
+                  'true' or 'false' depending on the outcome of the Switch.
+            -->
+            <droplet id="skuSalePriceSwitch" name="/atg/dynamo/droplet/Switch" var="skuSalePriceSwitch">
+                <input name="value" value="${skuPrices.salePrice != null}"/>
+                <oparam name="true">
+                    <droplet id="skuSalePriceSwitch" name="/atg/dynamo/droplet/Switch" var="skuSalePriceSwitch">
+                        <input name="value" value="${(skuPrices.listPrice.equals(skuPrices.salePrice) != true)}"/>
+                        <oparam name="true">
+                            <output id="showSalePrice" name="selectedSku.showSalePrice" value="${true}"/>
+                        </oparam>
+                        <oparam name="false">
+                            <output id="showSalePrice" name="selectedSku.showSalePrice" value="${false}"/>
+                        </oparam>
+                    </droplet>
+                </oparam>
+                <oparam name="false">
+                    <output id="showSalePrice" name="selectedSku.showSalePrice" value="${false}"/>
+                </oparam>
+            </droplet>
+
+            <!--
+               Get the stock status for the SKU and add the inStock property to the selectedSku
+               entry in the model map.
+
+               Input Parameters:
+                 pSkuId
+                   The repositoryId for the SKU.
+
+               Output Parameters:
+                 inStock
+                   The stock status for the passed SKU.  Will return either true or false.
+            -->
+            <component id="skuInStock" name="/atg/commerce/product/detail/ProductDetailsTools"
+                       method="isItemInStock" method-return-var="isInStock"
+                       invoke-method-requires-session-confirmation="false">
+                <input name="pSkuId" class-name="atg.repository.RepositoryItem" value="${selectedSku}"/>
+                <output id="inStock" name="selectedSku.inStock" value="${isInStock}" />
+            </component>
+
+            <!--
+               Get the availability status for the SKU and add the isAvailable property to the
+               selectedSku entry in the model map.
+
+               Input Parameters:
+                 pRepositoryItem
+                   The SKU RepositoryItem.
+
+               Output Parameters:
+                 isAvailable
+                   The availability status for the passed RepositoryItem.  Will return either true
+                   or false.
+            -->
+            <component id="skuIsAvailable" name="/atg/commerce/product/detail/ProductDetailsTools"
+                       method="isValidItem" method-return-var="isValid"
+                       invoke-method-requires-session-confirmation="false">
+                <input name="pRepositoryItem" class-name="atg.repository.RepositoryItem" value="${selectedSku}"/>
+                <output id="isAvailable" name="selectedSku.isAvailable" value="${isValid}" />
+            </component>
+
+        </oparam>
+      </droplet>
+
+  </actor-chain>
+  
+</actor-template>
+
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/SearchAndNavigation/src/main/config/atg/commerce/product/detail/productDetailsSkuPickerActor.xml#1 $$Change: 1385662 $ -->

@@ -1,0 +1,9 @@
+{
+  "checkout": {
+    "label": {
+      "color": "Color",
+      "size": "Size",
+      "woodFinish": "Wood finish"
+    }
+  }
+}

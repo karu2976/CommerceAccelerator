@@ -1,0 +1,21 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2014-12-05T09:04:12.178Z",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:05:26.028-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "ScrollableMediaContentSpotlight-ATGSlot",
+        "@type": "ScrollableMediaContentSpotlight-ATGSlot",
+        "componentPath": "/atg/registry/Slots/FeaturedMedia",
+        "randomizeItems": true,
+        "itemCount": "3"
+    },
+    "triggers": [{"exactLocation": false}]
+}

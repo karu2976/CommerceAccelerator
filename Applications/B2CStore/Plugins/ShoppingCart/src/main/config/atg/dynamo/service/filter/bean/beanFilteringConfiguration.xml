@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+  <repository name="/atg/commerce/catalog/ProductCatalog">
+    <item-descriptor name="clothing-sku">
+      <filter id="summary">
+        <property name="color" />
+        <property name="size" />
+      </filter>
+      <filter id="detailed" include-filter="summary">
+      </filter>
+    </item-descriptor>
+    <item-descriptor name="furniture-sku">
+      <filter id="summary">
+        <property name="woodFinish" />
+      </filter>
+      <filter id="detailed" include-filter="summary">
+      </filter>
+    </item-descriptor>
+  </repository>
+</bean-filtering>
+
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/dev/10.2/EStore/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#3 
+  $$Change: 1385662 $ -->

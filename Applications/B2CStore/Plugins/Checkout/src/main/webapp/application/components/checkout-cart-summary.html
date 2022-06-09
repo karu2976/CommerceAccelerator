@@ -1,0 +1,56 @@
+<table class="table table-striped table-condensed" summary="{{ 'checkout.label.orderSummaryTableSummary' | i18n }}">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">{{ 'checkout.subheading.itemInOrder' | i18nPlural: currentOrder.totalCommerceItemCount() }}:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- ko foreach: currentOrder.commerceItems -->
+      <tr>
+        <th scope="row">
+          <img data-bind="attr: { src: auxiliaryData.productRef.thumbnailImageUrl, alt: productDisplayName }">
+        </th>
+        <td>
+          <p>
+            <strong>{{ productDisplayName }}</strong><br>
+            <small>
+              <!-- ko if: auxiliaryData.catalogRef.color -->
+                {{ 'checkout.label.color' | i18n }}: <span data-bind="text: ko.toJS(auxiliaryData.catalogRef.color)"></span><br>
+              <!-- /ko -->
+              <!-- ko if: auxiliaryData.catalogRef.size -->
+                {{ 'checkout.label.size' | i18n }}: <span data-bind="text: ko.toJS(auxiliaryData.catalogRef.size)"></span><br>
+              <!-- /ko -->
+              <!-- ko if: auxiliaryData.catalogRef.woodFinish -->
+                {{ 'checkout.label.woodFinish' | i18n }}: <span data-bind="text: ko.toJS(auxiliaryData.catalogRef.woodFinish)"></span><br>
+              <!-- /ko -->
+              {{ catalogRefId }}: {{ 'checkout.text.' + inventoryInfo.availabilityStatus() | i18n }}
+            </small>
+          </p>
+          <p>
+            <!-- ko if: priceInfo.salePrice -->
+              <span class="sr-only">
+                {{ 'checkout.label.salePrice' | i18n }}
+              </span>
+              <span class="csa-sale-price">
+                {{ priceInfo.salePrice  | currency }}
+              </span>
+              <span class="sr-only">
+                {{ 'checkout.label.priceBeforeReduction' | i18n }}
+              </span>
+              {{ 'checkout.label.was' | i18n }}
+              <s class="csa-list-price">
+                {{ priceInfo.listPrice  | currency }}
+              </s>
+              &times; {{ quantity }}
+            <!-- /ko -->
+            <!-- ko ifnot: priceInfo.salePrice -->
+              {{ priceInfo.listPrice | currency }} &times; {{ quantity }}
+            <!-- /ko -->
+            <br>
+            <strong>{{ priceInfo.amount | currency }}</strong>
+          </p>
+        </td>
+      </tr>
+    <!-- /ko -->
+  </tbody>
+</table>

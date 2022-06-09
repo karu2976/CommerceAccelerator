@@ -1,0 +1,75 @@
+{
+    "workflowNote": "",
+    "userSegments": ["site.storeSiteUS"],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2015-02-09T13:08:33.536Z",
+    "startTime": "",
+    "endTime": "",
+    "ecr:operation": "add-or-replace",
+    "priority": 30,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:06:16.496-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "Static Page Navigation",
+        "@type": "StaticPageNavigation",
+        "links": [
+            {
+                "@name": "About Us",
+                "@type": "Link",
+                "link": {
+                    "path": "/pages/storeSiteUS/about-us",
+                    "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                    "linkType": "Navigation State"
+                }
+            },
+            {
+                "@name": "News",
+                "@type": "Link",
+                "link": {
+                    "path": "/pages/storeSiteUS/news",
+                    "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                    "linkType": "Navigation State"
+                }
+            },
+            {
+                "@name": "FAQs",
+                "@type": "Link",
+                "link": {
+                    "path": "/pages/storeSiteUS/faqs",
+                    "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                    "linkType": "Navigation State"
+                }
+            },
+            {
+                "@name": "Privacy",
+                "@type": "Link",
+                "link": {
+                    "path": "/pages/storeSiteUS/privacy",
+                    "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                    "linkType": "Navigation State"
+                }
+            },
+            {
+                "@name": "Shipping",
+                "@type": "Link",
+                "link": {
+                    "path": "/pages/storeSiteUS/shipping",
+                    "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                    "linkType": "Navigation State"
+                }
+            },
+            {
+                "@name": "Contact Us",
+                "@type": "Link",
+                "link": {
+                    "path": "/pages/storeSiteUS/contact-us",
+                    "@class": "com.endeca.infront.cartridge.model.LinkBuilder",
+                    "linkType": "Navigation State"
+                }
+            }
+        ]
+    },
+    "triggers": [{"exactLocation": false}]
+}

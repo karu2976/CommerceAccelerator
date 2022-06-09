@@ -1,0 +1,318 @@
+/*<ORACLECOPYRIGHT>
+ * Copyright (C) 1994, 2017, Oracle and/or its affiliates. All rights reserved.
+ * Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+ * Other names may be trademarks of their respective owners.
+ * UNIX is a registered trademark of The Open Group.
+ *
+ * This software and related documentation are provided under a license agreement
+ * containing restrictions on use and disclosure and are protected by intellectual property laws.
+ * Except as expressly permitted in your license agreement or allowed by law, you may not use, copy,
+ * reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+ * or display any part, in any form, or by any means. Reverse engineering, disassembly,
+ * or decompilation of this software, unless required by law for interoperability, is prohibited.
+ *
+ * The information contained herein is subject to change without notice and is not warranted to be error-free.
+ * If you find any errors, please report them to us in writing.
+ *
+ * U.S. GOVERNMENT RIGHTS Programs, software, databases, and related documentation and technical data delivered to U.S.
+ * Government customers are "commercial computer software" or "commercial technical data" pursuant to the applicable
+ * Federal Acquisition Regulation and agency-specific supplemental regulations.
+ * As such, the use, duplication, disclosure, modification, and adaptation shall be subject to the restrictions and
+ * license terms set forth in the applicable Government contract, and, to the extent applicable by the terms of the
+ * Government contract, the additional rights set forth in FAR 52.227-19, Commercial Computer Software License
+ * (December 2007). Oracle America, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+ *
+ * This software or hardware is developed for general use in a variety of information management applications.
+ * It is not developed or intended for use in any inherently dangerous applications, including applications that
+ * may create a risk of personal injury. If you use this software or hardware in dangerous applications,
+ * then you shall be responsible to take all appropriate fail-safe, backup, redundancy,
+ * and other measures to ensure its safe use. Oracle Corporation and its affiliates disclaim any liability for any
+ * damages caused by use of this software or hardware in dangerous applications.
+ *
+ * This software or hardware and documentation may provide access to or information on content,
+ * products, and services from third parties. Oracle Corporation and its affiliates are not responsible for and
+ * expressly disclaim all warranties of any kind with respect to third-party content, products, and services.
+ * Oracle Corporation and its affiliates will not be responsible for any loss, costs,
+ * or damages incurred due to your access to or use of third-party content, products, or services.
+ </ORACLECOPYRIGHT>*/
+
+package atg.projects.store.servlet;
+
+import atg.adapter.gsa.GSARepository;
+import atg.adapter.gsa.xml.TemplateParser;
+import atg.multisite.SiteContext;
+import atg.multisite.SiteContextException;
+import atg.multisite.SiteContextManager;
+import atg.nucleus.Nucleus;
+import atg.nucleus.NucleusTestUtils;
+import atg.nucleus.ServiceException;
+import atg.repository.MutableRepositoryItem;
+import atg.repository.RepositoryException;
+import atg.repository.RepositoryItem;
+import atg.servlet.*;
+import atg.servlet.ServletTestUtils;
+import atg.userprofiling.Profile;
+import atg.userprofiling.ProfileTools;
+import org.junit.*;
+import org.junit.runners.MethodSorters;
+
+import javax.servlet.ServletException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertFalse;
+
+/**
+ * This unit test will test the methods of the StoreRequestLocale class.
+ *
+ * Note that this class uses the FixSortOrder annotation to ensure that the test methods
+ * run in a particular order.
+ *
+ * @author Oracle
+ * @version $Id: //hosting-blueprint/CSA/version/11.3/Base/src/test/java/atg/projects/store/servlet/StoreRequestLocaleTest.java#1 $$Change: 1385662 $
+ * @updated $DateTime: 2017/03/09 10:29:42 $
+ */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class StoreRequestLocaleTest {
+
+  /** Class version string */
+  public static final String CLASS_VERSION =
+    "$Id: //hosting-blueprint/CSA/version/11.3/Base/src/test/java/atg/projects/store/servlet/StoreRequestLocaleTest.java#1 $$Change: 1385662 $";
+
+  //----------------------------------------------------------------------------
+  // STATIC MEMBERS
+  //----------------------------------------------------------------------------
+
+  /** The StoreRequestLocale that will be tested. */
+  private static StoreRequestLocale mStoreRequestLocale = null;
+
+  /** The SiteContextManager component to be used in the tests. */
+  private static SiteContextManager mSiteContextManager = null;
+
+  /** The SiteRepository instance to be used in the tests. */
+  private static GSARepository mSiteRepository = null;
+
+  /** The ProfileTools component to be used in the tests. */
+  private static ProfileTools mProfileTools = null;
+
+  /** The Nucleus to be used in this test class. */
+  private static Nucleus mNucleus = null;
+
+  //----------------------------------------------------------------------------
+  // SET-UP
+  //----------------------------------------------------------------------------
+
+  /**
+   * Start Nucleus with the required modules and retrieve a reference to
+   * the StoreRequestLocale instance to be used in this test.
+   *
+   * @throws Exception
+   *   When there's a problem starting Nucleus or resolving components.
+   */
+  @BeforeClass
+  public static void setUpBeforeClass() throws ServletException, RepositoryException, SiteContextException {
+    mNucleus = NucleusTestUtils.startNucleusWithModules(
+      new String[] { "CommerceAccelerator.Base" },
+      StoreRequestLocaleTest.class,
+      "StoreRequestLocaleTest",
+      "/atg/Initial");
+
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+
+    // Set up StoreRequestLocale.
+    mStoreRequestLocale = (StoreRequestLocale)
+      request.resolveName("/atg/dynamo/servlet/RequestLocale", true);
+
+    assertNotNull(mStoreRequestLocale);
+
+    mSiteRepository = (GSARepository) mNucleus.resolveName("/atg/multisite/SiteRepository", true);
+    String[] siteDataFileNames = { "sites.xml" };
+    TemplateParser.loadTemplateFiles(mSiteRepository, 1, siteDataFileNames,
+      true, new PrintWriter(System.out), null);
+
+    mSiteContextManager =
+      (SiteContextManager) mNucleus.resolveName("/atg/multisite/SiteContextManager", true);
+
+    RepositoryItem storeSiteUS = mSiteRepository.getItem("storeSiteUS");
+    SiteContext sc = mSiteContextManager.getSiteContext(storeSiteUS.getRepositoryId());
+    mSiteContextManager.pushSiteContext(sc);
+  }
+
+  /**
+   * Ensure Nucleus is shutdown properly and perform general clean-up of member variables.
+   *
+   * @throws Exception
+   *   When there's a problem shutting down Nucleus.
+   */
+  @AfterClass
+  public static void tearDownAfterClass() throws IOException, ServiceException {
+    if(mNucleus != null) {
+      NucleusTestUtils.shutdownNucleus(mNucleus);
+      mNucleus = null;
+    }
+
+    mStoreRequestLocale = null;
+    mSiteRepository = null;
+    mSiteContextManager = null;
+    mProfileTools = null;
+  }
+
+  //----------------------------------------------------------------------------
+  // TESTS
+  //----------------------------------------------------------------------------
+
+  /**
+   * Test the discernRequestLocale method when the locale has been set in the query parameter.
+   */
+  @Test
+  public void test1DiscernRequestLocaleWithValidSiteLocaleQueryParameter() {
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+    request.setParameter("locale", "de_DE");
+
+    Locale locale = mStoreRequestLocale.discernRequestLocale(request, request.getRequestLocale());
+    assertEquals("de-DE", locale.toLanguageTag());
+  }
+
+  /**
+   * Test the discernRequestLocale method when an invalid locale has been set in the query
+   * parameter.
+   */
+  @Test
+  public void test2DiscernRequestLocaleWithInvalidSiteLocaleQueryParameter()
+      throws RepositoryException {
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+    request.setParameter("locale", "fr_FR");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultLanguage", "es");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultCountry", "US");
+
+    Locale locale = mStoreRequestLocale.discernRequestLocale(request, request.getRequestLocale());
+    assertEquals("es-US", locale.toLanguageTag());
+  }
+
+  /**
+   * Test the discernRequestLocale method when a valid locale is in the URI path.
+   */
+  @Test
+  public void test3DiscernRequestLocaleInPath() throws RepositoryException {
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+    request.setRequestURI("/csa/storeus/de/home");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultLanguage", "de");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultCountry", "DE");
+
+    Locale locale = mStoreRequestLocale.discernRequestLocale(request, request.getRequestLocale());
+    assertEquals("de_DE", locale.getLanguage() + "_" + locale.getCountry());
+  }
+
+  /**
+   * Test the discernRequestLocale method when an invalid locale is in the URI path.
+   */
+  @Test
+  public void test4DiscernRequestInvalidLocaleInPath() throws RepositoryException {
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+    request.setRequestURI("/csa/storeus/xx/home");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultLanguage", "xx");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultCountry", "DE");
+
+    Locale locale = mStoreRequestLocale.getLocaleFromPath(request);
+    assertNull(locale);
+  }
+
+  /**
+   * Test the discernRequestLocale method when default store locale should be used.
+   */
+  @Test
+  public void test5DiscernRequestLocaleStoreDefault() throws RepositoryException {
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultLanguage", "es");
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultCountry", "US");
+
+    Locale locale = mStoreRequestLocale.discernRequestLocale(request, request.getRequestLocale());
+    assertEquals("es-US", locale.toLanguageTag());
+  }
+
+  /**
+   * Test that the validLanguageForCurrentSite returns null when a null Locale
+   * object is passed in.
+   */
+  @Test
+  public void test6ValidLanguageForCurrentSite() throws RepositoryException {
+    assertFalse(mStoreRequestLocale.validLanguageForCurrentSite(null));
+  }
+
+  /**
+   * Test the discernRequestLocale method when profile locale should be used.
+   */
+  @Test
+  public void test7DiscernRequestLocaleStoreDefault() throws RepositoryException {
+    DynamoHttpServletRequest request = setUpCurrentRequest();
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultLanguage", null);
+
+    ((MutableRepositoryItem) mSiteRepository.getItem("storeSiteUS"))
+      .setPropertyValue("defaultCountry", null);
+
+    mProfileTools = (ProfileTools) request.resolveName("/atg/userprofiling/ProfileTools");
+
+    TemplateParser.loadTemplateFiles((GSARepository) mProfileTools.getProfileRepository(), 1,
+      new String[]{"users.xml"}, true, new PrintWriter(System.out), null);
+
+    //Load imported Profile.
+    Profile profile = (Profile) request.resolveName("/atg/userprofiling/Profile");
+    mProfileTools.locateUserFromId("se-570090", profile);
+
+    Locale locale = mStoreRequestLocale.discernRequestLocale(request, request.getRequestLocale());
+    assertEquals("en_US", locale.getLanguage() + "_" + locale.getCountry());
+  }
+
+
+  /**
+   * Test that the getDefaultSiteLocaleCode returns null when no site context is set.
+   */
+  @Test
+  public void test8NullContextDefaultSiteLocaleCode() throws RepositoryException {
+    mSiteContextManager.clearSiteContextStack();
+    assertNull(mStoreRequestLocale.getDefaultSiteLocaleCode());
+  }
+
+  //---------------------------------------------------------------------------
+  // UTILITY METHODS
+  //---------------------------------------------------------------------------
+
+  /**
+   * Create a request to be used in our tests.
+   *
+   * @return request
+   */
+  public static DynamoHttpServletRequest setUpCurrentRequest() {
+    ServletUtil.setCurrentRequest(null);
+    ServletTestUtils utils = new ServletTestUtils();
+    DynamoHttpServletRequest request =
+      utils.createDynamoHttpServletRequestForSession(
+        mNucleus, "mySessionId", "new");
+    ServletUtil.setCurrentRequest(request);
+
+    return request;
+  }
+
+}

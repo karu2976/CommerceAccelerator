@@ -1,0 +1,6 @@
+ATG-Product: The Commerce Accelerator Spotlights Plugin Extension Module
+Manifest-Version: 1.0
+ATG-EAR-Module: build/libs/Applications-B2CStore-Plugins-Spotlights.ear
+ATG-J2EE: build/libs/Applications-B2CStore-Plugins-Spotlights.ear
+ATG-Config-Path: build/libs/config/config.jar
+ATG-Required: CommerceAccelerator.Applications.B2CStore.Base CommerceAccelerator.Plugins.Spotlights

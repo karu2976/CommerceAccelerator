@@ -1,0 +1,9 @@
+{
+  "account": {    
+    "label": {
+      "color": "Farbe",
+      "size": "Größe",
+      "woodFinish": "Holzoberfläche"
+    }
+  }
+}

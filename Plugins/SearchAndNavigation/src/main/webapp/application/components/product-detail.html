@@ -1,0 +1,55 @@
+<!-- ko ifnot: product -->
+  <div class="alert alert-info">
+    {{ 'searchAndNavigation.alert.noProductFound' | i18n }}
+  </div>
+<!-- /ko -->
+<!-- ko if: product -->
+  <!-- ko ifnot: product().isAvailable -->
+    <div class="alert alert-info">
+      {{ 'searchAndNavigation.alert.productNotAvailable' | i18n }}
+    </div>
+  <!-- /ko -->
+  <!-- ko if: product().isAvailable -->
+    <h2 data-bind="preview: {product: catalog.product().repositoryId}">
+      {{catalog.product().displayName}}
+    </h2>
+
+    <!-- ko ifnot: showSalePrice -->
+      <span class="csa-current-price">
+        <span class="sr-only">
+          {{ 'searchAndNavigation.text.listPrice' | i18n }}
+        </span>
+        {{ listPrice | currency}}
+      </span>
+    <!-- /ko -->
+
+    <!-- ko if: showSalePrice -->
+      <span class="csa-current-price">
+        <span class="sr-only">
+          {{ 'searchAndNavigation.text.salePrice' | i18n }}
+        </span>
+        {{ salePrice | currency}}
+      </span>
+      <span class="csa-previous-price">
+        <span class="sr-only">
+          {{ 'searchAndNavigation.text.priceBeforeReduction' | i18n }}
+        </span>
+        <s>
+          {{ listPrice | currency}}
+        </s>
+      </span>
+    <!-- /ko -->
+
+    <div class="row">
+      <div class="col-sm-6 col-md-7" data-bind="preview: {product: catalog.product().repositoryId}">
+        <img data-bind="img: { src: catalog.product().largeImageUrl, fallback: missingImagePath }, attr: { alt: catalog.product().displayName }" class="img-responsive center-block">
+      </div>
+
+      <div class="col-sm-6 col-md-5 csa-v-offset-10">
+        <!-- ko foreach: ProductInformation -->
+          <div data-bind="component: $data"></div>
+        <!-- /ko -->
+      </div>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->

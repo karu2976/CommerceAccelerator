@@ -1,0 +1,25 @@
+{
+    "@description": "${template.description}",
+    "@group": "Footer",
+    "ecr:createDate": "2016-12-06T06:06:16.666-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": [{"editor": "editors/DynamicSlotEditor"}]
+    },
+    "typeInfo": {
+        "ruleLimit": {"@propertyType": "String"},
+        "templateTypes": {"@propertyType": "List"},
+        "templateIds": {"@propertyType": "List"},
+        "contentPaths": {"@propertyType": "List"}
+    },
+    "defaultContentItem": {
+        "@name": "Footer Slot",
+        "ruleLimit": "1",
+        "templateTypes": ["Footer"],
+        "templateIds": [],
+        "contentPaths": []
+    },
+    "locales": {}
+}

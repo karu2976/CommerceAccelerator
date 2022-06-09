@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <!-- 1 item of type siteGroup -->
+
+    <add-item item-descriptor="siteGroup" id="sitesTest">
+      <set-property name="displayName"><![CDATA[Sites (Test)]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteTest]]></set-property>
+    </add-item>
+
+    <!-- 1 item of type siteConfiguration -->
+
+    <add-item item-descriptor="siteConfiguration" id="storeSiteTest">
+      <set-property name="changePasswordFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="defaultCountry"><![CDATA[US]]></set-property>
+      <set-property name="description"><![CDATA[CSA Store site]]></set-property>
+      <set-property name="sitePriority"><![CDATA[1]]></set-property>
+      <set-property name="languages"><![CDATA[en]]></set-property>
+      <set-property name="contextRoot"><![CDATA[/csa]]></set-property>
+      <set-property name="productionURL"><![CDATA[/csa/storetest]]></set-property>
+      <set-property name="registeredUserFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="defaultLanguage"><![CDATA[en]]></set-property>
+      <set-property name="creationTime"><![CDATA[6/24/2014 17:16:48]]></set-property>
+      <set-property name="newPasswordFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="enabled"><![CDATA[true]]></set-property>
+      <set-property name="siteTypes"><![CDATA[commerce]]></set-property>
+      <set-property name="lastModifiedBy"><![CDATA[portal-admin]]></set-property>
+      <set-property name="modificationTime"><![CDATA[6/26/2014 09:39:13]]></set-property>
+      <set-property name="defaultCatalog"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="endecaSiteId"><![CDATA[/storeSiteTest]]></set-property>
+      <set-property name="orderConfirmationFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="name"><![CDATA[CSATest]]></set-property>
+    </add-item>
+
+  </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SEO/src/test/java/atg/repository/seo/data/SitemapPageCacheRendererTest/sites.xml#1 $$Change: 1385662 $-->

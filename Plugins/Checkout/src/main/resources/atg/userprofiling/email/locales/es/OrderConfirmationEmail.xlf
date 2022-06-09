@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'utf-8'?>
+<xliff version="1.0">
+   <file original="OrderConfirmationEmail.xlf" source-language="en" datatype="atg-commerce" target-language="es-ES">
+      <body>
+         <trans-unit id="MY_ACCOUNT">
+            <source>My Account</source>
+            <target>Mi cuenta</target>
+         </trans-unit>
+         <trans-unit id="ORDER_CONFIRM_TEXT">
+            <source>{0} Order Confirmation</source>
+            <target>Confirmación de orden de {0}</target>
+         </trans-unit>
+         <trans-unit id="TRACK_ORDER_TEXT">
+            <source>To track the progress of your order, go to</source>
+            <target>Para comprobar el progreso de la orden, vaya a</target>
+         </trans-unit>
+         <trans-unit id="ORDER_DETAILS">
+            <source>Order Details</source>
+            <target>Detalles de orden</target>
+         </trans-unit>
+         <trans-unit id="ORDER_NUMBER">
+            <source>Order #:</source>
+            <target>Orden nº:</target>
+         </trans-unit>
+         <trans-unit id="ORDER_PLACED_ON">
+            <source>Place On:</source>
+            <target>Realizada el:</target>
+         </trans-unit>
+         <trans-unit id="ORDER_STATUS">
+            <source>Status:</source>
+            <target>Estado:</target>
+         </trans-unit>
+         <trans-unit id="BILL_TO">
+            <source>Bill To:</source>
+            <target>Facturación:</target>
+         </trans-unit>
+         <trans-unit id="ENDING_IN">
+            <source>ending in</source>
+            <target>termina por</target>
+         </trans-unit>
+         <trans-unit id="CARD_EXPIRY">
+            <source>Exp:</source>
+            <target>Caducidad:</target>
+         </trans-unit>
+         <trans-unit id="SHIP_TO">
+            <source>Ship To:</source>
+            <target>Enviar a:</target>
+         </trans-unit>
+         <trans-unit id="SHIP_VIA">
+            <source>Via:</source>
+            <target>Vía:</target>
+         </trans-unit>
+         <trans-unit id="ITEMS_TABLE_SUMMARY">
+            <source>List of items in this order</source>
+            <target>Lista de artículos en esta orden</target>
+         </trans-unit>
+         <trans-unit id="SITE">
+            <source>Site</source>
+            <target>Sitio</target>
+         </trans-unit>
+         <trans-unit id="ITEM">
+            <source>Item</source>
+            <target>Artículo</target>
+         </trans-unit>
+         <trans-unit id="QUANTITY">
+            <source>Quantity</source>
+            <target>Cantidad</target>
+         </trans-unit>
+         <trans-unit id="PRICE">
+            <source>Price</source>
+            <target>Precio</target>
+         </trans-unit>
+         <trans-unit id="ITEM_TOTAL">
+            <source>Total</source>
+            <target>Total</target>
+         </trans-unit>
+         <trans-unit id="SIZE">
+            <source>Size:</source>
+            <target>Talla:</target>
+         </trans-unit>
+         <trans-unit id="COLOR">
+            <source>Color:</source>
+            <target>Color:</target>
+         </trans-unit>
+         <trans-unit id="WOOD_FINISH">
+            <source>Wood Finish:</source>
+            <target>Acabado en madera:</target>
+         </trans-unit>
+         <trans-unit id="SUB_TOTAL">
+            <source>Subtotal</source>
+            <target>Subtotal</target>
+         </trans-unit>
+         <trans-unit id="SHIPPING">
+            <source>Shipping</source>
+            <target>Envío</target>
+         </trans-unit>
+         <trans-unit id="TAX">
+            <source>Tax</source>
+            <target>Impuestos</target>
+         </trans-unit>
+         <trans-unit id="ORDER_TOTAL">
+            <source>Total:</source>
+            <target>Total:</target>
+         </trans-unit>
+         <trans-unit id="ADD_EMAIL_TEXT1">
+            <source>Please add</source>
+            <target>Agregue</target>
+         </trans-unit>
+         <trans-unit id="ADD_EMAIL_TEXT2">
+            <source>to your address book to ensure delivery of future email notifications and promotions.</source>
+            <target>a su libreta de direcciones para garantizar la recepción de futuros mensajes con notificaciones y promociones.</target>
+         </trans-unit>
+         <trans-unit id="TERMS">
+            <source>Terms</source>
+            <target>Condiciones</target>
+         </trans-unit>
+         <trans-unit id="PRIVACY_POLICY">
+            <source>Privacy Policy</source>
+            <target>Política de privacidad</target>
+         </trans-unit>
+         <trans-unit id="SHIPPING">
+            <source>Shipping</source>
+            <target>Envío</target>
+         </trans-unit>
+         <trans-unit id="CONTACT_US">
+            <source>Contact Us</source>
+            <target>Contacto</target>
+         </trans-unit>
+         <trans-unit id="COPY_RIGHT1">
+            <source>Copyright  1994, 2014, Oracle and/or its affiliates. All rights reserved.</source>
+            <target>Copyright  1994, 2014, Oracle y/o sus filiales. Todos los derechos reservados.</target>
+         </trans-unit>
+         <trans-unit id="COPY_RIGHT2">
+            <source>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names
+          may be trademarks of their respective owners.</source>
+            <target>Oracle y Java son marcas comerciales registradas de Oracle y/o sus filiales. Todos los demás
+          nombres pueden ser marcas comerciales de sus respectivos propietarios.</target>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

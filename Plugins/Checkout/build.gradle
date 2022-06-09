@@ -1,0 +1,13 @@
+project(":Plugins:Checkout") {
+  description = "Contains cartridges, configuration and code for checkout process."
+  
+  dependencies {
+    compile project(":Base")
+    compile project(":Plugins:Account")
+    compile project(":Plugins:Promotions")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/build-ship.gradle#1 $$Change: 1385662 $

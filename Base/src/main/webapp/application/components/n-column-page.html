@@ -1,0 +1,34 @@
+<header role="banner">
+  <!-- ko foreach: header -->
+    <div data-bind="component: $data"></div>
+  <!-- /ko -->
+</header>
+<main class="container" role="main">
+  <!-- ko ifnot: secondaryContent().length -->
+    <!-- ko foreach: mainContent -->
+      <div data-bind="component: $data"></div>
+    <!-- /ko -->
+    <!-- ko foreach: mainProductContent -->
+      <div data-bind="component: $data"></div>
+    <!-- /ko -->
+  <!-- /ko -->
+  <!-- ko if: secondaryContent().length -->
+    <div class="row">
+      <div class="col-sm-4 col-lg-3">
+        <!-- ko foreach: secondaryContent -->
+          <div data-bind="component: $data"></div>
+        <!-- /ko -->
+      </div>
+      <div class="col-sm-8 col-lg-9">
+        <!-- ko foreach: mainContent -->
+          <div data-bind="component: $data"></div>
+        <!-- /ko -->
+      </div>
+    </div>
+  <!-- /ko -->
+</main>
+<footer role="contentinfo">
+  <!-- ko foreach: footer -->
+    <div data-bind="component: $data"></div>
+  <!-- /ko -->
+</footer>

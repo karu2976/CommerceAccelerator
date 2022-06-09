@@ -1,0 +1,31 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2015-02-20T11:43:07.827Z",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:05:26.026-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "buryStrata": [],
+        "@name": "Results List",
+        "boostStrata": [],
+        "@type": "ResultsList",
+        "recordsPerPage": "12",
+        "relRank": "nterms,maxfield,glom,exact,static(product.displayName,ascending)",
+        "sortOption": {
+            "@class": "com.endeca.infront.navigation.model.SortOption",
+            "label": "Default",
+            "sorts": [{
+                "@class": "com.endeca.infront.navigation.model.SortSpec",
+                "key": "product.displayName",
+                "descending": "false"
+            }]
+        }
+    },
+    "triggers": [{"exactLocation": false}]
+}

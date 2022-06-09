@@ -1,0 +1,18 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+project(":Base") {
+  description = "The base project containing all of the core functionality for creating a commerce store."
+
+  dependencies {
+    compile(files(project.file("lib/freemarker.jar")))
+  }
+
+  less {
+    args = [
+      "build/compile/main/webapp/application/styles/bootstrap.less",
+      "build/compile/main/webapp/application/styles/style.css"
+    ]
+  }
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Base/build-ship.gradle#1 $$Change: 1385662 $

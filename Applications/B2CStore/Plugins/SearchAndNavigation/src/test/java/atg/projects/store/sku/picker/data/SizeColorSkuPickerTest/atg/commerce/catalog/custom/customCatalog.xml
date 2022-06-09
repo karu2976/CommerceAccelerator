@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  This customCatalog.xml file defines all of the repository properties that are used by CSA.  This
+  file will be appended to any other customCatalog.xml file that has been defined else where.
+-->
+<gsa-template xml-combine="append">
+  <header xml-combine="replace">
+    <name>CSA Store Catalog</name>
+    <author>Oracle Commerce</author>
+    <version>$Revision: #1 $</version>
+  </header>
+
+  <!--///////////////////////////////-->
+  <!--          catalog              -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="catalog" xml-combine="append">
+    <table name="csa_catalog" type="auxiliary" id-column-name="catalog_id">
+      <!--
+        Adding an additional root category enabling the exclusion of NonNavigatableProducts if required 
+      -->
+      <property name="rootNavigationCategory" item-type="category" column-name="root_nav_cat"
+                category-resource="categoryCategorization" display-name-resource="rootNavigationCategory">
+        <attribute name="propertySortPriority" value="-10"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--          category             -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="category" xml-combine="append">
+    <table name="dcs_category" type="primary" id-column-name="category_id">
+      <!--
+        Remove the displayName, description, longDescription properties defined in DCS 
+      -->
+      <property name="displayName" xml-combine="remove"/>
+      <property name="description" xml-combine="remove"/>
+      <property name="longDescription" xml-combine="remove"/>
+      <!--
+        Default values for displayName, description and longDescription to fallback on if 
+        transations are not returned
+      -->
+      <property name="displayNameDefault" data-type="string" column-name="display_name" required="true"
+                category-resource="categoryBasics" display-name-resource="displayNameDefault">
+        <attribute name="propertySortPriority" value="-11"/>
+      </property>
+      <property name="descriptionDefault" data-type="string" column-name="description" 
+                category-resource="categoryPresentation" display-name-resource="descriptionDefault">
+        <attribute name="propertySortPriority" value="-7"/>
+      </property>
+      <property name="longDescriptionDefault" data-type="big string" column-name="long_description" 
+                category-resource="categoryPresentation" display-name-resource="longDescriptionDefault">
+        <attribute name="propertySortPriority" value="-6"/>
+      </property>
+    </table>
+  
+    <!--
+      derived properties for displayName, description and longDescription.  These properties will
+      return the translated string based on the locale of the request.
+    -->
+    <property name="displayName" data-type="string" writable="false" hidden="true" queryable="true" display-name-resource="displayName">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>displayNameDefault</expression>   
+      </derivation> 
+      <attribute name="defaultProperty" value="displayNameDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <property name="description" data-type="string" writable="false" hidden="true" queryable="true" display-name-resource="description">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>descriptionDefault</expression>    
+      </derivation> 
+      <attribute name="defaultProperty" value="descriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+    
+    <property name="longDescription"  data-type="big string"
+              writable="false" hidden="true" queryable="true" display-name-resource="longDescription">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>longDescriptionDefault</expression>   
+      </derivation>
+      <attribute name="defaultProperty" value="longDescriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <!--
+      Auxiliary table added to facilitate the inclusion of a hero image for categories
+    -->
+    <table name="csa_category" type="auxiliary" id-column-name="category_id">
+      <property name="heroImage" item-type="media" column-name="hero_image_id" 
+                category-resource="categoryImagesMedia" display-name-resource="heroImage">
+        <attribute name="propertySortPriority" value="1"/>
+        <attribute name="references" value="true"/>
+      </property>  
+    </table>
+
+    <table name="dcs_cat_keywrds" type="multi" id-column-name="category_id" multi-column-name="sequence_num">
+      <!--
+        Remove the keywords property defined in DCS an replace with the default value keywordsDefault 
+        to fallback on if transations are not returned
+      -->
+      <property name="keywords" xml-combine="remove"/>
+      <property category-resource="categoryCategorization" name="keywordsDefault" data-type="list" component-data-type="string" column-name="keyword" display-name-resource="keywordsDefault">
+        <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+
+    <!--
+      derived property for keywords.  This properties will return the translated string based on the 
+      locale of the request.
+    -->
+    <property name="keywords" data-type="list" component-data-type="string" writable="false" hidden="true" queryable="true"
+        display-name-resource="keywords">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>keywordsDefault</expression>   
+      </derivation>
+      <attribute name="defaultProperty" value="keywordsDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <!--
+      Translations table for mapping category translations
+    -->
+    <table name="csa_cat_cat_xlate" type="multi" multi-column-name="locale" id-column-names="category_id">
+      <property name="translations" display-name="Translations" column-name="translation_id" data-type="map"
+                component-item-type="categoryTranslation" category-resource="categoryAppearance"
+                display-name-resource="translations">
+         <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--     categoryTranslations      -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="categoryTranslation" id-space-name="categoryTranslation"
+                   display-name-resource="itemDescriptorCategoryTranslation" 
+                   display-property="displayName" item-cache-size="1000" query-cache-size="1000"
+                   cache-mode="simple">
+
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+
+    <!--
+      Translations table that holds all translations for translated category properties
+    -->
+    <table name="csa_cat_xlate" type="primary" id-column-name="translation_id">
+      <property name="displayName" column-names="display_name" data-type="string"
+                category-resource="categoryPresentation" display-name-resource="displayName"/>
+      <property name="description" column-names="description" data-type="string"
+                category-resource="categoryPresentation" display-name-resource="description"/>
+      <property name="longDescription" column-names="long_description" data-type="big string"
+                category-resource="categoryPresentation" display-name-resource="longDescription"/>
+    </table>
+
+    <!--
+      A translations table for mapping keyword translations
+    -->
+    <table name="csa_cat_xlate_kwr" type="multi" id-column-name="translation_id" multi-column-name="sequence_num">
+      <property category-resource="categoryCategorization" name="keywords" data-type="list"
+                component-data-type="string" column-name="keyword" display-name-resource="keywords">
+        <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--          product              -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="product" xml-combine="append">  
+    <table name="dcs_product" type="primary" id-column-name="product_id">
+      <!--
+        Remove the displayName, description, longDescription properties defined in DCS 
+      -->
+      <property name="displayName" xml-combine="remove"/>
+      <property name="description" xml-combine="remove"/>
+      <property name="longDescription" xml-combine="remove"/>
+
+      <!--
+        Default values for displayName, description and longDescription to fallback on if 
+        transations are not returned
+      -->
+      <property name="displayNameDefault" data-type="string" column-name="display_name" required="true"
+                category-resource="categoryBasics" display-name-resource="displayNameDefault">
+        <attribute name="propertySortPriority" value="-11"/>
+      </property>
+      <property name="descriptionDefault" data-type="string" column-name="description" 
+                category-resource="categoryPresentation" display-name-resource="descriptionDefault">
+        <attribute name="propertySortPriority" value="-7"/>
+      </property>
+      <property name="longDescriptionDefault" data-type="big string" column-name="long_description" 
+                category-resource="categoryPresentation" display-name-resource="longDescriptionDefault">
+        <attribute name="propertySortPriority" value="-6"/>
+      </property>
+    </table>
+
+    <!--
+      derived properties for displayName, description and longDescription.  These properties will
+      return the translated string based on the locale of the request.
+    -->
+    <property name="displayName" data-type="string"
+              writable="false" hidden="true" queryable="true" display-name-resource="displayName">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>displayNameDefault</expression>   
+      </derivation>
+      <attribute name="defaultProperty" value="displayNameDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <property name="description" data-type="string"
+              writable="false" hidden="true" queryable="true" display-name-resource="description">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>descriptionDefault</expression>   
+      </derivation>
+      <attribute name="defaultProperty" value="descriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <property name="longDescription" data-type="big string"
+              writable="false" hidden="true" queryable="true" display-name-resource="longDescription">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>longDescriptionDefault</expression>   
+      </derivation>
+      <attribute name="defaultProperty" value="longDescriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <!--
+      Auxiliary table added to facilitate the inclusion of a brief description
+    -->
+    <table name="csa_product" type="auxiliary" id-column-name="product_id">
+      <property name="briefDescriptionDefault" data-type="string" column-name="brief_description"
+                category-resource="categoryPresentation" display-name-resource="briefDescriptionDefault">
+        <attribute name="propertySortPriority" value="-5"/>
+      </property>
+    </table>
+
+    <!--
+      derived properties for briefDescription.  This properties will return the translated string 
+      based on the locale of the request.
+    -->
+    <property name="briefDescription" data-type="string"
+              writable="false" hidden="true" queryable="true" display-name-resource="briefDescription">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>briefDescriptionDefault</expression>   
+      </derivation>
+      <attribute name="defaultProperty" value="briefDescriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <!--
+      Remove the keywords property defined in DCS an replace with the default value keywordsDefault 
+      to fallback on if transations are not returned
+    -->
+    <table name="dcs_prd_keywrds" type="multi" id-column-name="product_id" multi-column-name="sequence_num">
+      <property name="keywords" xml-combine="remove"/>
+      <property category-resource="categoryAppearance" name="keywordsDefault" data-type="list" component-data-type="string" column-name="keyword" display-name-resource="keywordsDefault">
+        <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+
+    <!--
+      Derived property for keywords.  This properties will return the translated string based on the 
+      locale of the request.
+    -->
+    <property name="keywords" data-type="list"
+              component-data-type="string" writable="false" hidden="true" queryable="true" display-name-resource="keywords">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>keywordsDefault</expression>    
+      </derivation> 
+      <attribute name="defaultProperty" value="keywordsDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <!--
+      Translations table for mapping product translations
+    -->
+    <table name="csa_prd_prd_xlate" type="multi" multi-column-name="locale" id-column-names="product_id">
+      <property name="translations" display-name="Translations" column-name="translation_id" data-type="map"
+                component-item-type="productTranslation" category-resource="categoryAppearance"
+                display-name-resource="translations">
+        <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--     productTranslation        -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="productTranslation" id-space-name="productTranslation"
+                   display-name-resource="itemDescriptorProductTranslation" 
+                   display-property="displayName" item-cache-size="1000" query-cache-size="1000"
+                   cache-mode="simple">
+
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+
+    <!--
+      Translations table that holds all translations for translated product properties
+    -->
+    <table name="csa_prd_xlate" type="primary" id-column-name="translation_id">
+      <property name="displayName" column-name="display_name" data-type="string"
+                category-resource="categoryPresentation" display-name-resource="displayName"/>
+      <property name="description" column-name="description" data-type="string"
+                category-resource="categoryPresentation" display-name-resource="description"/>
+      <property name="longDescription" column-name="long_description" data-type="big string"
+                category-resource="categoryPresentation" display-name-resource="longDescription"/>
+      <property name="briefDescription" column-name="brief_description" data-type="string"
+                category-resource="categoryPresentation" display-name-resource="briefDescription"/>
+    </table>
+
+    <!--
+      A translations table for mapping product keyword translations
+    -->
+    <table name="csa_prd_xlate_kwr" type="multi" id-column-name="translation_id" multi-column-name="sequence_num">
+      <property category-resource="categoryCategorization" name="keywords" data-type="list"
+                component-data-type="string" column-name="keyword" display-name-resource="keywords">
+        <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--           sku                 -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="sku" sub-type-property="type" sub-type-value="sku" xml-combine="append">
+    
+    <table name="dcs_sku" type="primary" id-column-name="sku_id">
+
+      <!--
+        Remove the displayName, description properties defined in DCS 
+      -->
+      <property name="displayName" xml-combine="remove"/>
+      <property name="description" xml-combine="remove"/>
+
+      <!--
+        Default values for displayName, description to fallback on if transations are not returned
+      -->
+      <property name="displayNameDefault" data-type="string" column-name="display_name" required="true"
+                category-resource="categoryBasics" display-name-resource="displayNameDefault">
+        <attribute name="propertySortPriority" value="-11"/>
+      </property>
+      <property name="descriptionDefault" data-type="string" column-name="description" 
+                category-resource="categoryPresentation" display-name-resource="descriptionDefault">
+        <attribute name="propertySortPriority" value="-7"/>
+      </property>
+      <property name="type" data-type="enumerated" column-name="sku_type" expert="true">
+        <attribute name="uiwritable" value="false"/>
+        <attribute name="useCodeForValue" value="false"/>
+        <option value="sku" code="0"/>
+        <option value="clothing-sku" code="1"/>
+        <option value="furniture-sku" code="2"/>
+      </property>
+    </table>
+
+    <!--
+      Derived properties for displayName, description. These properties will return the translated 
+      string based on the locale of the request.
+    -->
+    <property name="displayName" data-type="string"
+              writable="false" hidden="true" queryable="true" display-name-resource="displayName">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>displayNameDefault</expression>    
+      </derivation>
+      <attribute name="defaultProperty" value="displayNameDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <property name="description" data-type="string"
+              writable="false" hidden="true" queryable="true" display-name-resource="description">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>descriptionDefault</expression>    
+      </derivation>
+      <attribute name="defaultProperty" value="descriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>      
+    </property>
+
+    <!--
+      Translations table for mapping sku translations
+    -->
+    <table name="csa_sku_sku_xlate" type="multi" multi-column-name="locale" id-column-names="sku_id">
+      <property name="translations" display-name="Translations" column-name="translation_id" data-type="map"
+                component-item-type="skuTranslation" category-resource="categoryAppearance"
+                display-name-resource="translations">
+        <attribute name="propertySortPriority" value="-12"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--      clothing sku             -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="clothing-sku" super-type="sku" sub-type-value="clothing-sku" display-name-resource="clothingSku">
+    
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+    <attribute name="plural-display-name-resource" value="clothingSku.plural"/>
+
+    <!--
+      Table for holding all default properties for skus of type clothing-sku
+    -->
+    <table name="csa_clothing_sku" type="auxiliary" id-column-name="sku_id">
+      <property name="sizeDefault" data-type="string" column-name="sku_size" 
+          category-resource="categoryPresentation" display-name-resource="sizeDefault">
+        <attribute name="propertySortPriority" value="-6"/>
+      </property>
+      <property name="colorDefault" data-type="string" column-name="color" 
+          category-resource="categoryPresentation" display-name-resource="colorDefault">
+        <attribute name="propertySortPriority" value="-4"/>
+      </property>
+    </table>
+
+    <!--
+      Derived properties for size and color. These properties will return the translated 
+      strings based on the locale of the request.
+    -->
+    <property name="size" data-type="string" writable="false" hidden="true" queryable="true" display-name-resource="size">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>sizeDefault</expression>    
+      </derivation>
+      <attribute name="defaultProperty" value="sizeDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>  
+    </property>
+
+    <property name="color" data-type="string" writable="false" hidden="true" queryable="true" display-name-resource="color">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>colorDefault</expression>    
+      </derivation>
+      <attribute name="defaultProperty" value="colorDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+    
+    <!--
+      Translations table for mapping clothing-sku translations
+    -->
+    <table name="csa_sku_sku_xlate" type="multi" multi-column-name="locale" id-column-name="sku_id">
+      <property name="translations" component-item-type="clothing-sku-translation" data-type="map" column-name="translation_id"
+          display-name-resource="translations"/>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--      furniture sku            -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="furniture-sku" super-type="sku" sub-type-value="furniture-sku" display-name-resource="furnitureSku">
+
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+    <attribute name="plural-display-name-resource" value="furnitureSku.plural"/>
+    
+    <!--
+      Table for holding the woodFinishDefault property for skus of type furniture-sku
+    -->
+    <table name="csa_furniture_sku" type="auxiliary" id-column-name="sku_id">
+      <property name="woodFinishDefault" data-type="string" column-name="wood_finish" 
+          category-resource="categoryPresentation" display-name-resource="woodFinishDefault">
+        <attribute name="propertySortPriority" value="-4"/>
+      </property>
+    </table>
+
+    <!--
+      Derived properties for woodFinish. These properties will return the translated strings based on 
+      the locale of the request.
+    -->
+    <property name="woodFinish" data-type="string" writable="false" hidden="true" queryable="true" display-name-resource="woodFinish">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>woodFinishDefault</expression>    
+      </derivation>
+      <attribute name="defaultProperty" value="woodFinishDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <!--
+      Translations table for mapping furniture-sku translations
+    -->
+    <table name="csa_sku_sku_xlate" type="multi" multi-column-name="locale" id-column-name="sku_id">
+      <property name="translations" component-item-type="furniture-sku-translation" data-type="map" column-name="translation_id"
+          display-name-resource="translations"/>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--       skuTranslation          -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="skuTranslation" id-space-name="skuTranslation"
+                   display-name-resource="itemDescriptorSkuTranslation" 
+                   display-property="displayName" item-cache-size="1000" query-cache-size="1000" 
+                   cache-mode="simple" sub-type-property="type" sub-type-value="sku-xlate">
+
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+
+    <!--
+      Translations table that holds all translations for translated sku properties
+    -->
+    <table name="csa_sku_xlate" type="primary" id-column-name="translation_id">
+      <property name="displayName" column-names="display_name" data-types="string"
+                category-resource="categoryPresentation" display-name-resource="displayName"/>
+      <property name="description" column-names="description" data-types="string"
+                category-resource="categoryPresentation" display-name-resource="description"/>
+      <property name="type" column-name="type" data-type="enumerated" hidden="true">
+        <option value="sku-xlate" code="0"/>
+        <option value="clothing-xlate" code="1"/>
+        <option value="furniture-xlate" code="2"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--   Clothing skuTranslation     -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="clothing-sku-translation" super-type="skuTranslation" sub-type-value="clothing-xlate"
+      display-name-resource="clothingSkuTranslation">
+
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+
+    <!--
+      Translations table that holds all translations for translated clothing-sku properties
+    -->
+    <table name="csa_clothing_xlate" id-column-name="translation_id" type="auxiliary">
+      <property name="size" column-names="sku_size" data-types="string"
+          category-resource="categoryPresentation" display-name-resource="size"/>
+      <property name="color" column-names="color" data-types="string"
+          category-resource="categoryPresentation" display-name-resource="color"/>
+    </table>
+  </item-descriptor>
+  
+  <!--///////////////////////////////-->
+  <!--   Furniture skuTranslation    -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="furniture-sku-translation" super-type="skuTranslation" sub-type-value="furniture-xlate"
+      display-name-resource="furnitureSkuTranslation">
+
+    <attribute name="resourceBundle" value="atg.commerce.CustomCatalogTemplateResources"/>
+
+    <!--
+      Translations table that holds all translations for translated furniture-sku properties
+    -->
+    <table name="csa_furni_xlate" id-column-name="translation_id" type="auxiliary">
+      <property name="woodFinish" column-names="wood_finish" data-types="string"
+          category-resource="categoryPresentation" display-name-resource="woodFinish"/>
+    </table>
+  </item-descriptor>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/SearchAndNavigation/src/test/java/atg/projects/store/sku/picker/data/SizeColorSkuPickerTest/atg/commerce/catalog/custom/customCatalog.xml#1 $$Change: 1385662 $-->

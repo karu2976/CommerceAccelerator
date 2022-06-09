@@ -1,0 +1,11 @@
+project(":Plugins:Preview") {
+  description = "Contains configuration and code for Experience Manager and BCC preview."
+  
+  dependencies {
+    compile project(":Base")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Preview/build-ship.gradle#1 $$Change: 1385662 $

@@ -1,0 +1,9 @@
+project(':Applications:B2CStore:DCS-CSR') {
+  defaultTasks "all";
+
+  dependencies {
+    compile project(":Applications:B2CStore")
+  }
+}
+
+//@version $Id: //hosting-blueprint/CSA/main/Applications/B2CStore/NoPublishing/build-ship.gradle#5 $$Change: 950937 $

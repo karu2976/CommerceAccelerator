@@ -1,0 +1,28 @@
+{
+    "@description": "${template.description}",
+    "@group": "LinkContent",
+    "ecr:createDate": "2016-12-06T06:06:16.722-08:00",
+    "@thumbnailUrl": "thumbnail.jpg",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": [
+            {
+                "editor": "GroupLabel",
+                "label": "${group.linkSettings.label}"
+            },
+            {
+                "editor": "editors/LinkBuilderEditor",
+                "propertyName": "link",
+                "label": "${property.link.label}",
+                "enabled": true
+            }
+        ]
+    },
+    "typeInfo": {"link": {"@propertyType": "Item"}},
+    "defaultContentItem": {
+        "@name": "Link",
+        "link": {"@class": "com.endeca.infront.cartridge.model.LinkBuilder"}
+    },
+    "locales": {}
+}

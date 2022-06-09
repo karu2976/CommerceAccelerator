@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <!-- 2 items of type SEOTags -->
+    <!-- =========================================== -->
+    <!--                   SEO TAGS                  -->
+    <!-- =========================================== -->
+    <add-item id="1100002" item-descriptor="SEOTags">
+      <set-property name="descriptionDefault"><![CDATA[Find New Styles at Great Prices. Shop and save on Women's Apparel, Footwear and more at csastore.com.]]></set-property>
+      <set-property name="displayNameDefault"><![CDATA[Home]]></set-property>
+      <set-property name="keywordsDefault"><![CDATA[shoes, shirts, pants, dresses, skirts, shorts, jackets, accessories, women's shoes, men's shoes, dress shoes, casual shoes, athletic shoes, csastore.com, shop csastore.com]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Powered by CSA]]></set-property>
+      <set-property name="key"><![CDATA[/]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100002,de=de_xlate1100002]]></set-property>
+    </add-item>
+    <add-item id="1100003" item-descriptor="SEOTags">
+      <set-property name="descriptionDefault"><![CDATA[Find New Styles at Great Prices. Shop and save on Women's Apparel, Footwear and more at csastore.com.]]></set-property>
+      <set-property name="displayNameDefault"><![CDATA[Home Page]]></set-property>
+      <set-property name="keywordsDefault"><![CDATA[shoes, shirts, pants, dresses, skirts, shorts, jackets, accessories, women's shoes, men's shoes, dress shoes, casual shoes, athletic shoes, csastore.com, shop csastore.com]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Powered by CSA]]></set-property>
+      <set-property name="key"><![CDATA[/home]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100003,de=de_xlate1100003]]></set-property>
+    </add-item>
+    <!-- /cart -->
+    <add-item id="1100004" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Shopping Cart]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Shopping Cart]]></set-property>
+      <set-property name="key"><![CDATA[/cart]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100004,de=de_xlate1100004]]></set-property>
+    </add-item>
+    <!-- /checkout/checkoutlogin -->
+    <add-item id="1100006" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Checkout Login]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Checkout - Login]]></set-property>
+      <set-property name="key"><![CDATA[/checkout/checkoutlogin]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100006,de=de_xlate1100006]]></set-property>
+    </add-item>
+    <!-- /checkout -->
+    <add-item id="1100008" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Checkout]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Checkout]]></set-property>
+      <set-property name="key"><![CDATA[/checkout]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100008,de=de_xlate1100008]]></set-property>
+    </add-item>
+    <!-- /checkout/confirmation -->
+    <add-item id="1100012" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Checkout Order Success]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Checkout - Order Success]]></set-property>
+      <set-property name="key"><![CDATA[/checkout/confirmation]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100030,de=de_xlate1100018]]></set-property>
+    </add-item>
+    <!-- /about-us -->
+    <add-item id="1100034" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[About Us]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - About Us]]></set-property>
+      <set-property name="key"><![CDATA[/about-us]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100034,de=de_xlate1100034]]></set-property>
+    </add-item>
+    <!-- /news -->
+    <add-item id="1100042" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[News]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - News]]></set-property>
+      <set-property name="key"><![CDATA[/news]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100042,de=de_xlate1100042]]></set-property>
+    </add-item>
+    <!-- /faqs -->
+    <add-item id="1100046" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[FAQs]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - FAQs]]></set-property>
+      <set-property name="key"><![CDATA[/faqs]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100046,de=de_xlate1100046]]></set-property>
+    </add-item>
+    <!-- /privacy -->
+    <add-item id="1100048" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Privacy Policy]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Privacy Policy]]></set-property>
+      <set-property name="key"><![CDATA[/privacy]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100048,de=de_xlate1100048]]></set-property>
+    </add-item>
+    <!-- /shipping -->
+    <add-item id="1100052" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Shipping Policy]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Shipping Policy]]></set-property>
+      <set-property name="key"><![CDATA[/shipping]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100052,de=de_xlate1100052]]></set-property>
+    </add-item>
+    <!-- /contact-us -->
+    <add-item id="1100056" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Contact Us]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Contact Us]]></set-property>
+      <set-property name="key"><![CDATA[/contact-us]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100056,de=de_xlate1100056]]></set-property>
+    </add-item>
+    <!-- /account/orders -->
+    <add-item id="1100058" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Orders]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Order History]]></set-property>
+      <set-property name="key"><![CDATA[/account/orders]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100058,de=de_xlate1100058]]></set-property>
+    </add-item>
+    <!-- /account -->
+    <add-item id="1100062" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Personal Information]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Personal Information]]></set-property>
+      <set-property name="key"><![CDATA[/account]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100062,de=de_xlate1100062]]></set-property>
+    </add-item>
+    <!-- /account/billing -->
+    <add-item id="1100070" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Payment Information]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Payment Information]]></set-property>
+      <set-property name="key"><![CDATA[/account/billing]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100070,de=de_xlate1100070]]></set-property>
+    </add-item>
+    <!-- /account/billing/edit -->
+    <add-item id="1100072" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Edit Credit Card Details]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Edit Credit Card Details]]></set-property>
+      <set-property name="key"><![CDATA[/account/billing/edit]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100072,de=de_xlate1100072]]></set-property>
+    </add-item>
+    <!-- /account/billing/add -->
+    <add-item id="1100074" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Add Credit Card Details]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Add Credit Card Details]]></set-property>
+      <set-property name="key"><![CDATA[/account/billing/add]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100074,de=de_xlate1100074]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/edit -->
+    <add-item id="1100076" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Edit Address]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Edit Address]]></set-property>
+      <set-property name="key"><![CDATA[/account/addressbook/edit]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100076,de=de_xlate1100076]]></set-property>
+    </add-item>
+    <!-- /account/addressbook -->
+    <add-item id="1100078" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Address Book]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Address Book]]></set-property>
+      <set-property name="key"><![CDATA[/account/addressbook]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100078,de=de_xlate1100078]]></set-property>
+    </add-item>
+    <!-- /login -->
+    <add-item id="1100092" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Login]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Login]]></set-property>
+      <set-property name="key"><![CDATA[/login]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100092,de=de_xlate1100092]]></set-property>
+    </add-item>
+    <!-- /account/changepassword -->
+    <add-item id="1100094" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Change Password]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Change Password]]></set-property>
+      <set-property name="key"><![CDATA[/account/changepassword]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100094,de=de_xlate1100094]]></set-property>
+    </add-item>
+    <!-- /account/defaults -->
+    <add-item id="1100096" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Checkout Defaults]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Checkout Defaults]]></set-property>
+      <set-property name="key"><![CDATA[/account/defaults]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100096,de=de_xlate1100096]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/add -->
+    <add-item id="1100098" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Add Address]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Add Address]]></set-property>
+      <set-property name="key"><![CDATA[/account/addressbook/add]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100098,de=de_xlate1100098]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/edit -->
+    <add-item id="1100100" item-descriptor="SEOTags">
+      <set-property name="displayNameDefault"><![CDATA[Edit Address]]></set-property>
+      <set-property name="titleDefault"><![CDATA[CSA Store - Edit Address]]></set-property>
+      <set-property name="key"><![CDATA[/account/addressbook/edit]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="translations"><![CDATA[es=es_xlate1100100,de=de_xlate1100100]]></set-property>
+    </add-item>
+    <!-- =========================================== -->
+    <!--             SEO TAGS TRANSLATIONS           -->
+    <!-- =========================================== -->
+    <!-- ============================ -->
+    <!--     SPANISH TRANSLATIONS     -->
+    <!-- ============================ -->
+    <add-item id="es_xlate1100002" item-descriptor="SEOTranslation">
+      <set-property name="description"><![CDATA[Nuevos estilos a precios inmejorables. Compre y ahorre en moda, calzado para mujer y mucho más, en csastore.com.]]></set-property>
+      <set-property name="keywords"><![CDATA[zapatos, camisas, pantalones, vestidos, faldas, pantalones cortos, chaquetas, accesorios, zapatos de mujer, zapatos de hombre, zapatos de vestir, calzado informal, deportivas, csastore.com, compre en csastore.com]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Con tecnología de CSA]]></set-property>
+      <set-property name="displayName"><![CDATA[Inicio]]></set-property>
+    </add-item>
+    <add-item id="es_xlate1100003" item-descriptor="SEOTranslation">
+      <set-property name="description"><![CDATA[Nuevos estilos a precios inmejorables. Compre y ahorre en moda, calzado para mujer y mucho más, en csastore.com.]]></set-property>
+      <set-property name="keywords"><![CDATA[zapatos, camisas, pantalones, vestidos, faldas, pantalones cortos, chaquetas, accesorios, zapatos de mujer, zapatos de hombre, zapatos de vestir, calzado informal, deportivas, csastore.com, compre en csastore.com]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Con tecnología de CSA]]></set-property>
+      <set-property name="displayName"><![CDATA[Página inicial]]></set-property>
+    </add-item>
+    <!--  /cart -->
+    <add-item id="es_xlate1100004" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Carro de compra]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Carro de compra]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!--  /checkout/checkoutlogin -->
+    <add-item id="es_xlate1100006" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Conexión de finalización de compra]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Finalización de compra - Conexión]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!--  /checkout -->
+    <add-item id="es_xlate1100008" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Finalizar]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Finalización de compra]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /checkout/confirmation -->
+    <add-item id="es_xlate1100030" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Finalización de compra de orden realizada correctamente]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Finalización de compra - Orden realizada]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /about-us -->
+    <add-item id="es_xlate1100034" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Acerca de nosotros]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Acerca de nosotros]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /news -->
+    <add-item id="es_xlate1100042" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Noticias]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Noticias]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /faqs -->
+    <add-item id="es_xlate1100046" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Preguntas frecuentes]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Preguntas frecuentes]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /privacy -->
+    <add-item id="es_xlate1100048" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Política de privacidad]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Política de privacidad]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /shipping -->
+    <add-item id="es_xlate1100052" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Política de envío]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Política de envío]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /contact-us -->
+    <add-item id="es_xlate1100056" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Contacto]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Contacto]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/orders -->
+    <add-item id="es_xlate1100058" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Órdenes]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Historial de órdenes]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account -->
+    <add-item id="es_xlate1100062" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Información personal]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Información personal]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/billing -->
+    <add-item id="es_xlate1100070" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Información de pago]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Información de pago]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/billing/edit -->
+    <add-item id="es_xlate1100072" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Editar detalles de tarjeta de crédito]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Editar detalles de tarjeta de crédito]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/billing/add -->
+    <add-item id="es_xlate1100074" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Agregar detalles de tarjeta de crédito]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Agregar detalles de tarjeta de crédito]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/edit -->
+    <add-item id="es_xlate1100076" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Editar dirección]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Editar dirección]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook -->
+    <add-item id="es_xlate1100078" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Libreta de direcciones]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Libreta de direcciones]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /login -->
+    <add-item id="es_xlate1100092" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Conexión]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Conexión]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/changepassword -->
+    <add-item id="es_xlate1100094" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Cambiar contraseña]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Cambiar contraseña]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/defaults -->
+    <add-item id="es_xlate1100096" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Valores por defecto de finalización de compra]]></set-property>
+      <set-property name="title"><![CDATA[CRS Store - Valores por defecto de finalización de compra]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/add -->
+    <add-item id="es_xlate1100098" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Agregar dirección]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Agregar dirección]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/edit -->
+    <add-item id="es_xlate1100100" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Editar dirección]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Editar dirección]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- =========================== -->
+    <!--     GERMAN TRANSLATIONS     -->
+    <!-- =========================== -->
+    <add-item id="de_xlate1100002" item-descriptor="SEOTranslation">
+      <set-property name="description"><![CDATA[Hier finden Sie die neueste Mode zu großartigen Preisen. Kaufen Sie bei uns ein, und profitieren Sie von unseren Rabatten für Damenbekleidung, -schuhe und mehr unter csastore.com.]]></set-property>
+      <set-property name="keywords"><![CDATA[Schuhe, Hemden, Hosen, Kleider, Röcke, Shorts, Jacken, Accessoires, Damenschuhe, Herrenschuhe, Abendschuhe, Freizeitschuhe, Sportschuhe, csastore.com, Einkaufen bei csastore.com]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Powered by CSA]]></set-property>
+      <set-property name="displayName"><![CDATA[Home]]></set-property>
+    </add-item>
+    <add-item id="de_xlate1100003" item-descriptor="SEOTranslation">
+      <set-property name="description"><![CDATA[Hier finden Sie die neueste Mode zu großartigen Preisen. Kaufen Sie bei uns ein, und profitieren Sie von unseren Rabatten für Damenbekleidung, -schuhe und mehr unter csastore.com.]]></set-property>
+      <set-property name="keywords"><![CDATA[Schuhe, Hemden, Hosen, Kleider, Röcke, Shorts, Jacken, Accessoires, Damenschuhe, Herrenschuhe, Abendschuhe, Freizeitschuhe, Sportschuhe, csastore.com, Einkaufen bei csastore.com]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Powered by CSA]]></set-property>
+      <set-property name="displayName"><![CDATA[Homepage]]></set-property>
+    </add-item>
+    <!--  /cart -->
+    <add-item id="de_xlate1100004" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Warenkorb]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Warenkorb]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!--  /checkout/checkoutlogin -->
+    <add-item id="de_xlate1100006" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Checkout Anmeldung]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Checkout - Anmeldung]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!--  /checkout -->
+    <add-item id="de_xlate1100008" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Checkout]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Checkout]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /checkout/confirmation -->
+    <add-item id="de_xlate1100018" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Checkout Bestellung erfolgreich]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Checkout - Bestellung erfolgreich]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /about-us -->
+    <add-item id="de_xlate1100034" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Über uns]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Über uns]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /news -->
+    <add-item id="de_xlate1100042" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Neuigkeiten]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Neuigkeiten]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /faqs -->
+    <add-item id="de_xlate1100046" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[FAQs]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - FAQs]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /privacy -->
+    <add-item id="de_xlate1100048" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Datenschutzrichtlinie]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Datenschutzrichtlinie]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /shipping -->
+    <add-item id="de_xlate1100052" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Versandrichtlinie]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Versandrichtlinie]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /contact-us -->
+    <add-item id="de_xlate1100056" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Kontakt]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Kontakt]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/orders -->
+    <add-item id="de_xlate1100058" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Bestellungen]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Bestellhistorie]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account -->
+    <add-item id="de_xlate1100062" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Persönliche Informationen]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Persönliche Informationen]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/billing -->
+    <add-item id="de_xlate1100070" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Zahlungsinformationen]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Zahlungsinformation]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/billing/edit -->
+    <add-item id="de_xlate1100072" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Kreditkartendetails bearbeiten]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Kreditkartendetails bearbeiten]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/billing/add -->
+    <add-item id="de_xlate1100074" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Kreditkartendetails hinzufügen]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Kreditkartendetails hinzufügen]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/edit -->
+    <add-item id="de_xlate1100076" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Adresse bearbeiten]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Adresse bearbeiten]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook -->
+    <add-item id="de_xlate1100078" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Adressbuch]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Adressbuch]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /login -->
+    <add-item id="de_xlate1100092" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Anmeldung]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Anmeldung]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/changepassword -->
+    <add-item id="de_xlate1100094" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Kennwort ändern]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Kennwort ändern]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/defaults -->
+    <add-item id="de_xlate1100096" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Checkout-Standardwerte]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Checkout-Standardwerte]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/add -->
+    <add-item id="de_xlate1100098" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Adresse hinzufügen]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Adresse hinzufügen]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+    <!-- /account/addressbook/edit -->
+    <add-item id="de_xlate1100100" item-descriptor="SEOTranslation">
+      <set-property name="displayName"><![CDATA[Adresse bearbeiten]]></set-property>
+      <set-property name="title"><![CDATA[CSA Store - Adresse bearbeiten]]></set-property>
+      <set-property name="description"><![CDATA[__NULL__]]></set-property>
+      <set-property name="keywords"><![CDATA[__NULL__]]></set-property>
+    </add-item>
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/sample-data/seotags.xml#1 $$Change: 1385662 $-->

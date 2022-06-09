@@ -1,0 +1,2 @@
+ATG-Product: The Commerce Accelerator Applications Module
+Manifest-Version: 1.0

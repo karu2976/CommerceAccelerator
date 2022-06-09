@@ -1,0 +1,7 @@
+ATG-Product: CSA Versioned Module
+Manifest-Version: 1.0
+ATG-Class-Path: build/libs/Versioned.jar
+ATG-Required: CommerceAccelerator.Base.Versioned CommerceAccelerator.Applications.B2CStore
+ATG-Config-Path: build/libs/config/config.jar
+ATG-PreviewConfig-Path: build/libs/configlayers/preview.jar
+ATG-Required-If-Present: DCS-UI SiteAdmin.Versioned

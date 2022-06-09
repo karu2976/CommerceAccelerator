@@ -1,0 +1,261 @@
+  <!-- ko if: validNavigationPath -->
+
+    <!-- ko if: totalNumRecs() > 0 -->
+      <div class="row">
+        <div class="col-sm-6 col-lg-8 csa-v-offset-10">
+          {{ 'searchAndNavigation.text.result' | i18nPlural:totalNumRecs() }}
+        </div>
+        <div class="col-sm-6 col-lg-4 csa-v-offset-10">
+          <form role="form">
+            <div class="form-group">
+              <label class="sr-only" data-bind="uniqueFor: 'sortSelection'">
+                {{ 'searchAndNavigation.label.sortBy' | i18n }}
+              </label>
+              <select name="sortSelection" class="form-control"
+                      data-bind="options: sortOptions,
+                                 optionsText: 'label',
+                                 optionsValue: sortOptionsValue,
+                                 optionsAfterRender: setSortOptionSelected,
+                                 value: selectedSortOption,
+                                 event: {change: sort},
+                                 uniqueId: 'sortSelection'">
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row text-center">
+      <!-- ko foreach: records -->
+          
+        <div class="col-xs-6 col-sm-4 col-lg-3 csa-v-offset-20" data-bind="preview: {product: attributes['product.repositoryId'] }">
+          <a data-bind="attr: { href: 'product' + detailsAction['recordState'] }">
+            <img class="img-responsive csa-border-bottom"
+              data-bind="attr: { src: attributes['product.largeImage.url'], alt: attributes['product.displayName'] }"/>
+            <span class="csa-inline-block">
+                {{ attributes['product.displayName'] }}
+                <br>
+                <span class="csa-text-in-link">
+                  <!-- ko if: attributes.product.showSalePrice == 'true' -->
+                    <span class="text-danger">
+                      {{ attributes.product.salePrice | currency }} {{ 'searchAndNavigation.text.sale' | i18n }}
+                    </span>
+                  <!-- /ko -->
+
+                  <!-- ko if: attributes.product.showSalePrice == 'false' && attributes.product.salePrice -->
+                    {{ attributes.product.salePrice | currency }}
+                  <!-- /ko -->
+
+                  <!-- ko if: attributes.product.showSalePrice == 'false' && !attributes.product.salePrice -->
+                    {{ attributes.product.listPrice | currency }}
+                  <!-- /ko -->
+                </span>
+            </span>
+          </a>
+        </div>
+
+        <!--
+          Sometimes columns don't float correctly if they are different heights
+          Use clearfix and responsive helpers to ensure columns line up correctly
+        -->
+
+        <!-- ko if: ( ($index() + 1) % 2 == 0 ) -->
+          <div class="clearfix visible-xs-block"></div>
+        <!-- /ko -->
+
+        <!-- ko if: ( ($index() + 1) % 3 == 0 ) -->
+          <div class="clearfix visible-sm-block visible-md-block"></div>
+        <!-- /ko -->
+
+        <!-- ko if: ( ($index() + 1) % 4 == 0 ) -->
+          <div class="clearfix visible-lg-block"></div>
+        <!-- /ko -->        
+        
+      <!-- /ko -->
+      </div>
+
+      <!-- ko if: totalNumRecs() > recsPerPage() -->
+        <span class="sr-only" id="paginationLabel">{{ 'searchAndNavigation.label.pagingControl' | i18n }}</span>
+        <ul class="pagination pagination-sm" data-bind="foreach: paginationLinks" role="navigation" aria-labelledby="paginationLabel">
+
+        <!-- Display the 'previous' link -->
+
+          <!-- ko if: $index() === 0 -->
+            <li data-bind="css: {'disabled': $component.currentPageNumber() === 1}">
+              <a data-bind="attr: { href: $component.paginationLinks()[$component.currentPageNumber() - 2] }" rel="prev">
+                <!-- ko if: $component.currentPageNumber() > 1 -->
+                  <span class="sr-only">{{ 'searchAndNavigation.link.previousPage' | i18n }}</span>
+                <!-- /ko -->
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          <!-- /ko -->
+
+          <!--
+            The following logic will ensure that the pagination links will appear in
+            the format below when the current page number is less than 5:
+
+              <  1 2 3 4 5 ... 20  >
+
+            If there are 6 or less pagination links in total, the following will be
+            displayed without any ellipsis:
+
+              <  1 2 3 4 5 6  >
+          -->
+
+          <!-- ko if: ($component.currentPageNumber() < 5 && $index() < 5) ||
+                         ($component.paginationLinks().length < 7 && $index() < 6) -->
+            <li data-bind="css: {'active': !($component.currentPageNumber() != $index() + 1)}">
+              <a data-bind="attr: { href: $component.paginationLinks()[$index()] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span>
+                {{ $index() + 1 }}
+              </a>
+            </li>
+          <!-- /ko -->
+
+          <!-- ko if: $component.currentPageNumber() < 5 && $index() === 4 && $component.paginationLinks().length > 6 -->
+            <li class="csa-pagination-more">
+              <span>
+                ...
+              </span>
+            </li>
+
+            <li>
+              <a data-bind="attr: { href: $component.paginationLinks()[$component.paginationLinks().length - 1] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span>
+                {{ $component.paginationLinks().length }}
+              </a>
+            </li>
+          <!-- /ko -->
+
+          <!--
+            This following logic will ensure that the pagination links will appear in
+            the format below when the total number of pagination links are
+            greater than 6, the current page number is greater than 4 and less
+            than the total number of links minus 5:
+
+              <  1 ... 5 6 7 ... 20  >
+                         or
+              <  1 ... 14 15 16 ... 20  >
+          -->
+
+          <!-- ko if: $component.paginationLinks().length > 6 &&
+                      $component.currentPageNumber() > 4 &&
+                      ($index() === $component.currentPageNumber() - 2) &&
+                      $component.currentPageNumber() < $component.paginationLinks().length - 4 -->
+            <li>
+              <a data-bind="attr: { href: $component.paginationLinks()[0] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span> 1
+              </a>
+            </li>
+
+
+            <li class="csa-pagination-more">
+              <span>
+                ...
+              </span>
+            </li>
+          <!-- /ko -->
+
+          <!-- ko if: $component.currentPageNumber() > 4 &&
+                      ( ($index() === $component.currentPageNumber() - 2) || ($index() === $component.currentPageNumber() - 1) || ($index() === $component.currentPageNumber()) ) &&
+                      $component.paginationLinks().length > 6 &&
+                      $component.currentPageNumber() < $component.paginationLinks().length - 4 -->
+            <li data-bind="css: {'active': !($component.currentPageNumber() != $index() + 1)}">
+              <a data-bind="attr: { href: $component.paginationLinks()[$index()] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span>
+                {{ $index() + 1 }}
+              </a>
+            </li>
+          <!-- /ko -->
+
+          <!-- ko if: $component.currentPageNumber() > 4 &&
+                      $index() === $component.currentPageNumber() &&
+                      $component.paginationLinks().length > 6 &&
+                      $component.currentPageNumber() < $component.paginationLinks().length - 4 -->
+
+            <li class="csa-pagination-more">
+              <span>
+                ...
+              </span>
+            </li>
+
+            <li>
+              <a data-bind="attr: { href: $component.paginationLinks()[$component.paginationLinks().length - 1] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span>
+                {{ $component.paginationLinks().length }}
+              </a>
+            </li>
+          <!-- /ko -->
+
+          <!--
+            This following code will ensure that the pagination links will appear
+            in the format below when the total number of pagination links are greater
+            than 6, the current page number is greater than 4 and less than the total
+            number of links minus 5:
+
+              <  1 ... 16 17 18 19 20  >
+          -->
+
+          <!-- ko if: $component.paginationLinks().length > 6 &&
+                      $component.currentPageNumber() > $component.paginationLinks().length - 5 &&
+                      $index() === $component.paginationLinks().length - 6  -->
+            <li>
+              <a data-bind="attr: { href: $component.paginationLinks()[0] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span> 1
+              </a>
+            </li>
+
+            <li class="csa-pagination-more">
+              <span>
+                ...
+              </span>
+            </li>
+          <!-- /ko -->
+
+          <!-- ko if: $component.paginationLinks().length > 6 &&
+                      $component.currentPageNumber() > $component.paginationLinks().length - 5 &&
+                      $index() > $component.paginationLinks().length - 6 -->
+            <li data-bind="css: {'active': !($component.currentPageNumber() != $index() + 1)}">
+              <a data-bind="attr: { href: $component.paginationLinks()[$index()] }">
+                <span class="sr-only">{{ 'searchAndNavigation.link.page' | i18n }}</span>
+                {{ $index() + 1 }}
+              </a>
+            </li>
+          <!-- /ko -->
+
+          <!-- Display the 'next' link -->
+
+          <!-- ko if: $index() === ($component.paginationLinks().length - 1) -->
+            <li data-bind="css: {'disabled': $component.currentPageNumber() === ($component.paginationLinks().length) }">
+              <a data-bind="attr: { href: $component.paginationLinks()[$component.currentPageNumber()] }" rel="next">
+                <!-- ko if: $component.currentPageNumber() < ($component.paginationLinks().length) -->
+                  <span class="sr-only">{{ 'searchAndNavigation.link.nextPage' | i18n }}</span>
+                <!-- /ko -->
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          <!-- /ko -->
+        </ul>
+      <!-- /ko -->
+
+    <!-- /ko -->
+
+    <!-- ko ifnot: totalNumRecs() > 0 -->
+      <div class="row csa-v-offset-10">
+        <div class="col-xs-12">
+          <div class="alert alert-info" role="alert">
+            <span data-bind="text: 'searchAndNavigation.alert.noResults' | i18n"></span>
+          </div>
+        </div>
+      </div>
+    <!-- /ko -->
+
+  <!-- /ko -->
+  <!-- ko ifnot: validNavigationPath -->
+    <div class="row csa-v-offset-10">
+      <div class="col-xs-12">
+        <div class="alert alert-info" role="alert">{{ 'searchAndNavigation.alert.categoryNotAvailable' | i18n }}</div>
+      </div>
+    </div>
+  <!-- /ko -->

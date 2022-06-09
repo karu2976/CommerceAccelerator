@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database-initializer SYSTEM "http://www.atg.com/dtds/dbinit_2_0.dtd">
+<database-initializer>
+
+  <!-- ************************************************************************ -->
+  <!--                     DATABASE EXTENSIONS                                  -->
+  <!-- ************************************************************************ -->
+
+  <!-- MULTISITE SCHEMA -->
+  <schema id="multiSiteSchema">
+
+    <!-- Multisite -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_multisite_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_multisite_ddl.sql
+        </drop>
+      </path>
+    </sql>
+
+  </schema>
+
+  <!-- VERSIONED SCHEMA -->
+  <schema id="versionedSchema">
+    <!-- 
+      This empty schema is present to avoid errors citing a missing versionedSchema appearing 
+      in the CIM log during schema creation.  The actual contents of the versioned schema 
+      should be defined in the application and will then be merged in during CIM processing.
+    -->
+  </schema>
+
+  <!-- ****************************************************************** -->
+  <!--                SERVER INSTANCE CONFIGURATION                       -->
+  <!--                                                                    -->
+  <!--   The datasources below are "named datasources" defined in         -->
+  <!--   commerce and platform.                                           -->
+  <!-- ****************************************************************** -->
+
+  <!-- Production -->
+  <server-instance-type id="production">
+
+    <!-- Non switching -->
+    <datasource id="nonswitchingCore">
+      <schema id="multiSiteSchema" />
+    </datasource>
+
+    <!-- Switching -->
+    <datasource id="switchingA">
+      <schema id="multiSiteSchema" />
+    </datasource>
+
+    <datasource id="switchingB">
+      <schema id="multiSiteSchema" />
+    </datasource>
+
+  </server-instance-type>
+
+  <!-- Staging -->
+  <server-instance-type id="staging">
+
+    <!-- Non switching -->
+    <datasource id="stagingnonswitchingCore">
+      <schema id="multiSiteSchema" />
+    </datasource>
+
+    <!-- Switching -->
+    <datasource id="stagingswitchingA">
+      <schema id="multiSiteSchema" />
+    </datasource>
+
+    <datasource id="stagingswitchingB">
+      <schema id="multiSiteSchema" />
+    </datasource>
+
+  </server-instance-type>
+
+  <!-- Management -->
+  <server-instance-type id="management">
+
+    <datasource id="management">
+      <schema id="versionedSchema" />
+    </datasource>
+
+  </server-instance-type>
+
+</database-initializer>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Base/cim/dbinit.xml#1 $$Change: 1385662 $-->

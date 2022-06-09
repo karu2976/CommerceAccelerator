@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+    <import-items>
+
+        <add-item item-descriptor="SEOPage" id="/csa/browse">
+            <set-property name="content"><![CDATA[<p> Mock Markup for /csa/browse </p>]]></set-property>
+        </add-item>
+
+    </import-items>
+</gsa-template>
+        <!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SEO/src/test/java/atg/servlet/pipeline/data/SEOPipelineServletTest/page.xml#1 $$Change: 1385662 $-->

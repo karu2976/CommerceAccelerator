@@ -1,0 +1,16 @@
+{
+    "workflowNote": "",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-12-06T06:05:26.145-08:00",
+    "contentType": "Page",
+    "ecr:createDate": "2016-12-06T06:05:26.145-08:00",
+    "ecr:type": "page",
+    "contentItem": {
+        "ruleLimit": "1",
+        "@name": "Cart Page Slot",
+        "templateTypes": ["Page"],
+        "templateIds": [],
+        "@type": "PageSlot",
+        "contentPaths": ["/content/Web/Cart Pages"]
+    }
+}

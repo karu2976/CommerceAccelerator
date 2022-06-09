@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+ATG-Class-Path: build/libs/B2CStore.jar
+ATG-EAR-Module: build/libs/Applications-B2CStore.ear
+ATG-J2EE: build/libs/Applications-B2CStore.ear
+ATG-Config-Path: build/libs/config/config.jar
+ATG-EndecaPreviewConfig-Path: build/libs/configlayers/endecapreview.jar
+ATG-PreviewConfig-Path: build/libs/configlayers/preview.jar
+ATG-Required-If-Present: DAF.Search.common
+ATG-Required: CommerceAccelerator.Applications.B2CStore.Base CommerceAcc
+ elerator.Applications.B2CStore.Plugins
+
+Name: keystore
+ATG-Assembler-Import-File: true

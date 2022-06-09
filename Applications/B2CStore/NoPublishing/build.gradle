@@ -1,0 +1,23 @@
+project(':Applications:B2CStore:NoPublishing') {
+  description =
+    "This module includes all file-based assets, such as targeters and scenarios " +
+    "for B2CStore. It allows you to see these assets in the running B2CStore application " +
+    "without performing a full deployment. Note that this project module should only be " +
+    "used in development environments. Typically, file-based assets should be imported into " +
+    "a Publishing server then deployed to a Production server through the Oracle Commerce  " +
+    "Business Control Center. This best-practice process ensures that file-based assets are " +
+    "managed properly through the Content Administration's versioned file store. However, it " +
+    "also requires that you set up Content Administration and run a full deployment. For " +
+    "demonstration purposes, where you don't want the overhead of setting up Content Administration " +
+    "you can choose to include the NoPublishing module, so that file-based assets appear in your " +
+    "application without a full deployment. This means, however, that the file-based assets are not " +
+    "accessible via the Business Control Center and cannot be easily removed from the site. For this " +
+    "reason, do not use this option for configurations that will ultimately be moved to a production " +
+    "environment."
+
+  dependencies {
+    compile project(":Applications:B2CStore")
+  }
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/NoPublishing/build-ship.gradle#1 $$Change: 1385662 $

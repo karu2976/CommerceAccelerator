@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <add-item item-descriptor="gift-list" id="xgl10001">
+      <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10002">
+      <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10003">
+      <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10004">
+      <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10005">
+      <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10006">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10007">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10008">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10009">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10010">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10011">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10012">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10013">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10014">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10015">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10016">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10017">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10018">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10019">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10020">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10021">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="gift-list" id="xgl10022">
+    <set-property name="creationDate"><![CDATA[11/21/2014 09:26:00]]></set-property>
+    </add-item>
+
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/sample-data/wishlists.xml#1 $$Change: 1385662 $-->

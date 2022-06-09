@@ -1,0 +1,8 @@
+project(":Applications:B2CStore:Plugins:SEO") {
+  dependencies {
+    compile project(":Plugins:SEO"),
+            project(":Applications:B2CStore:Base")
+  }
+}
+
+//@version $Id: //hosting-blueprint/CSA/main/Applications/B2CStore/Plugins/Account/build-ship.gradle#4 $$Change: 950937 $

@@ -1,0 +1,755 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+/**
+ * Use this buildscript method to include external (third party libraries/plugins)
+ * dependencies to build's classpath. These are plug-ins that are to be available
+ * to us NOT during our project’s compilation, but during the execution of the build
+ * script itself.
+ */
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+}
+
+/**
+ * When the 'devBuild' flag has been set to false in the properties
+ * file or command line, exclude a number development related
+ * tasks, e.g. unit tests.
+ */
+task excludeNonDevBuildTasks {
+  if (devBuild != "true") {
+    gradle.startParameter.setExcludedTaskNames([
+      "test"
+    ]);
+  }
+}
+
+/**
+ * Set HTTP and HTTPS system proxy environment settings to be used in tasks of type 'Exec'.
+ * For example, if an Exec task requires system proxy settings, add the following property
+ * to the task:
+ *
+ * task('myExecTask', type: Exec) {
+ *
+ *   environment proxySettings;
+ *
+ *   commandLine myCommandThatRequiresProxy
+ * }
+ *
+ * The values of these variables should be set in the gradle.properties file.
+ */
+task setProxy(
+    description: "Configuration task to set the 'httpProxy' and 'httpsProxy' properties.",
+    group: "CSA Custom") {
+
+  Map<String> proxy = new HashMap<>();
+
+  // HTTP_PROXY setting.
+  if (project.hasProperty("httpProxy") && "$httpProxy".length() > 0) {
+    proxy.put("HTTP_PROXY", "$httpProxy");
+  }
+
+  // HTTPS_PROXY setting.
+  if (project.hasProperty("httpsProxy") && "$httpsProxy".length() > 0) {
+    proxy.put("HTTPS_PROXY","$httpsProxy");
+  }
+
+  project.ext.proxySettings = proxy;
+}
+
+/**
+ * Set the Dynamo home path property. If this isn't defined in 
+ * the root gradle.properties file or command line, the DYNAMO_HOME 
+ * environment variable will be used.
+ * 
+ * The command line property will have higher precedence than the 
+ * properties file. If no dynamo home path is found, the build will
+ * fail by throwing a GradleException. 
+ */
+task setDynamoHome(
+    description: "Configuration task that sets the 'dynamoHome' property.",
+    group: "CSA Custom") {
+
+  if (!project.hasProperty("dynamoHome") || "$dynamoHome".length() == 0) {
+    if (System.getenv()["DYNAMO_HOME"] != null && System.getenv()["DYNAMO_HOME"] != "") {
+      logger.info("Setting 'dynamoHome' property from DYNAMO_HOME environment variable.")
+      project.ext.dynamoHome = System.getenv()["DYNAMO_HOME"]
+    }
+    else {
+      ant.fail("You must set your dynamo home property in gradle.properties/command " + 
+        "line arg or set as a system environment variable.")
+    }
+  }
+}
+
+/**
+ * Build the dynamo classpath and make it available as a script variable.
+ */
+task setDynamoClasspath(
+    description: "Configuration task to set the Dynamo classpath.",
+    group: "CSA Custom") {
+
+  // Define a task that sets a given property to the classpath 
+  // required by a given set of Dynamo modules, by examining the 
+  // module manifests.
+  ant.taskdef(
+      name:"dynamoclasspath",
+      classname: "atg.applauncher.taskdef.DynamoClasspathTask",
+      classpath: "$dynamoHome/lib/launcher.jar")
+
+  // Execute the dynamoclasspath task to generate the classpath.
+  ant.dynamoclasspath(
+      classpathproperty: "dynamo.classpath",
+      dynamoroot: "$dynamoHome/../",
+      modules: requiredPlatformModules)
+ 
+  project.ext.dynamoclasspath = ant.properties["dynamo.classpath"]
+}
+
+/**
+ * Configure all projects.
+ */
+allprojects {
+
+  defaultTasks "all"
+
+  apply plugin: "java"
+  apply plugin: "eclipse"
+
+  sourceCompatibility = "1.7"
+  targetCompatibility = "1.7"
+  
+  repositories {
+    mavenCentral()
+  }
+
+  /**
+   * Create some "convenience" extension  properties .
+   */
+  ext {
+    installationProjectPath = dynamoHome + "/../$rootProject.name" + project.path.toString().replace(":", "/")
+
+    // The ATG module name of the project.
+    atgModuleName = "$rootProject.name" + project.path.toString().replace(":", ".")
+
+    // The directory this project is shipped to in Dynamo.
+    shipProjectDir = "$dynamoHome/../$rootProject.name" + project.path.toString().replace(":", "/")
+  }
+
+  // This will make sure resource bundles get copied.
+  sourceSets.main.resources.srcDirs = [
+    "src/main/java",
+    "src/main/resources"
+  ];
+  
+  // This will be the location of the java source code.
+  sourceSets.main.java.srcDirs = [
+    "src/main/java"
+  ];
+  
+  dependencies {
+
+    /**
+     * Unit test dependencies.
+     */
+    testCompile(
+        [group: "junit", name: "junit", version: "4.11"],
+        [group: "hsqldb", name: "hsqldb", version: "1.8.0.7"],
+        [group: "org.apache.ddlutils", name: "ddlutils", version: "1.0"],
+        [group: "javax.el", name: "javax.el-api", version: "2.2.5"],
+        [group: "log4j", name: "log4j", version: "1.2.17"],
+        files("$project.rootDir/lib/atgdust-1.2.2.jar"),
+        files("src/test/java"))
+
+    /**
+     * Java compile dependencies.
+     */
+    compile(
+      files(dynamoclasspath.split(System.getProperty("path.separator")), "$project.rootDir/lib/testUtils-3.1.2.jar")
+    )
+
+    /**
+     * Java compilation configuration.
+     */
+    compileJava {
+
+      // Save the compiler from re-compiling everything, even if only one java source file changes.
+      options.useDepend=true
+
+      // Fork your compilation into a child process.
+      options.fork = true
+
+      // Incremental compilation.
+      options.incremental = true
+    }
+  }
+
+  /**
+   * Java unit test configurations.
+   */
+  test {
+
+    // Set the unit test logging level to ensure that we get meaningful reasons
+    // for failures, e.g.: "expected:<[prod10001]> but was:<[prod20002]>"
+    // We could also achieve the same result by running 'gradle test -i'
+    // on the cmd line.
+    //
+    // Also output 'PASSED' for unit tests that have succeeded.
+    testLogging {
+      exceptionFormat "full"
+      events "passed"
+    }
+
+    // When this property is either set to true in the gradle.properties file or on the
+    // command line, unit tests will be allowed to fail without failing the entire build.
+    // It set to false and a unit test fails, the build will fail at that point.
+    if (ignoreUnitTestFailures == "true") {
+      ignoreFailures true
+    }
+
+    // When the command-line property 'showTestOutput' is defined, show standard
+    // out and standard error of the test JVM(s) on the console.
+    if (project.hasProperty("showTestOutput")) {
+      testLogging.showStandardStreams = true;
+    }
+
+    // Gradle runs tests in a single thread per test JVM. Multiple tests access the
+    // same singleton and can possibly invalidate each others expectations of that
+    // object's initial state. To ensure this issue doesn't occur, we will fork every
+    // test.
+    forkEvery = 1
+
+    // Ensuring that only one fork runs at a time will prevent random bind exceptions
+    // when running tests that require Nucleus to be running.
+    maxParallelForks = 1
+  }
+
+  /**
+   * This task ensures that the 'gradle build' task is executed
+   * before copying all of the compiled/processed files to the
+   * correct Dynamo location.
+   */
+  task all(
+      dependsOn: [
+        build
+      ],
+      description: "This task executes all custom tasks after the 'build' task has been completed.",
+      group: "CSA Custom")
+
+  /**
+   * Install npm dependencies.
+   */
+  task npmInstall(
+      type: Exec,
+      description: "Install npm dependencies.",
+      group: "CSA Custom") {
+
+    def npm = Os.isFamily(Os.FAMILY_WINDOWS) ? "npm.cmd" : "npm"
+
+    inputs.file "$rootDir/.npmrc"
+    inputs.file "$rootDir/package.json"
+    inputs.file "$rootDir/npm-shrinkwrap.json"
+    outputs.dir "$rootDir/node_modules"
+
+    commandLine npm, "install"
+  }
+
+  npmInstall.onlyIf {
+    project.file("$rootDir/package.json").exists()
+  }
+
+  /**
+   * Build the config source into a JAR file in the build directory.
+   */
+  task configJarBuilder(
+     type: Jar,
+     description: "Build Jar files from the config directories contained within src/main/config.",
+     group: "CSA Custom") {
+
+     inputs.dir "src/main/config"
+     outputs.dir "${libsDir}/config"
+
+     from "src/main/config"
+     archiveName = "config.jar"
+     destinationDir = new File("${libsDir}/config")
+   }
+
+   configJarBuilder.onlyIf {
+     project.file("src/main/config").exists()
+   }
+
+   all.dependsOn configJarBuilder
+   test.dependsOn configJarBuilder
+
+  /**
+   * Build the configlayers/preview source into a JAR file in the build directory.
+   */
+  task configlayersPreviewJarBuilder(
+     type: Jar,
+     description: "Build Jar files from the src/main/configlayers/preview directories.",
+     group: "CSA Custom") {
+
+     inputs.dir "src/main/configlayers/preview"
+     outputs.dir "${libsDir}/configlayers/preview"
+
+     from "src/main/configlayers/preview"
+     archiveName = "preview.jar"
+     destinationDir = new File("${libsDir}/configlayers")
+   }
+
+   configlayersPreviewJarBuilder.onlyIf {
+     project.file("src/main/configlayers/preview").exists()
+   }
+
+   all.dependsOn configlayersPreviewJarBuilder
+
+  /**
+   * Build the configlayers/endecapreview source into a JAR file in the build directory.
+   */
+  task configlayersEndecaPreviewJarBuilder(
+    type: Jar,
+    description: "Build Jar files from the src/main/configlayers/endecapreview directories.",
+    group: "CSA Custom") {
+
+    inputs.dir "src/main/configlayers/endecapreview"
+    outputs.dir "${libsDir}/configlayers/endecapreview"
+
+    from "src/main/configlayers/endecapreview"
+    archiveName = "endecapreview.jar"
+    destinationDir = new File("${libsDir}/configlayers")
+  }
+
+  configlayersEndecaPreviewJarBuilder.onlyIf {
+    project.file("src/main/configlayers/endecapreview").exists()
+  }
+
+  all.dependsOn configlayersEndecaPreviewJarBuilder
+
+  /**
+   * Copy the relevant deployment templates into the application.
+   *
+   * This task uses the list of plug-ins defined in the properties file to build the
+   * deployment template for the application. It also copies the Base deployment
+   * configuration into the applications deploy folder.
+   */
+  task composeDeployFromBaseAndPlugins(
+    description: "Copy the Plugin and Base deployment templates into the new EAC application's deploy directory.",
+    group: "CSA Custom") << {
+
+    // The target directory for the deployment templates to be created relative from the
+    // root of a module.
+    def deploySrcDirectory = "/src/main/deploy";
+
+    // The location of the deployment template within the application being built.
+    def applicationDeployDirectory =
+      project(":Applications:" + applicationName).projectDir.toString() + "/build/deploy";
+
+    // The list of EAC Applications in the properties file is a comma separated list and
+    // needs to be split in order to iterate over them and create one deployment template
+    // per EAC application.
+    def String[] eacApps = eacApplications.split(",");
+
+    for (String eacApp : eacApps) {
+      def eacAppDirectory = applicationDeployDirectory + "/" + eacApp;
+
+      // Create a directory for the current EAC application.
+      ant.mkdir(dir: eacAppDirectory);
+
+      // Copy the Base deployment configuration into the application.
+      ant.copy(todir: eacAppDirectory) {
+        fileset(dir: project(":Base").projectDir.toString() + deploySrcDirectory, includes: "**/*")
+      }
+
+      // Copy the deployment configuration of the 'includedPlugins' into each EAC
+      // applications deployment template.
+      if (project.hasProperty("includedPlugins")) {
+
+        // The list of plug-ins in the properties file is a space separated list of dynamo modules. We
+        // must retrieve the actual module name from each value in the list. For example, the list could
+        // contain "CommerceAccelerator.Plugins.CartEditor CommerceAccelerator.Plugins.Checkout". We
+        // just need to retrieve the CartEditor and ProductDetail pieces from these strings.
+
+        def String[] plugins = includedPlugins.split(" ");
+
+        for (String plugin : plugins) {
+          def int lastDotSeparator = plugin.lastIndexOf(".");
+
+          if (lastDotSeparator != -1) {
+            def pluginName = plugin.substring(lastDotSeparator + 1);
+
+            File pluginDeploymentDir =
+              file(project(":Plugins:" + pluginName).projectDir.toString() + deploySrcDirectory);
+
+            if (pluginDeploymentDir.exists()) {
+
+              // Copy the deploy directory from the current plug-in to the application.
+              ant.copy(todir: eacAppDirectory, force: "true") {
+                fileset(dir: pluginDeploymentDir, includes: "**/*")
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  composeDeployFromBaseAndPlugins.onlyIf {
+    (project.file("src/main/deploy").exists() || project.hasProperty("eacApplications")) &&
+      project.hasProperty("applicationName") &&
+      project.hasProperty("eacApplications") &&
+      project.name.equals(project.applicationName)
+  }
+
+  /**
+   * Copies the common and EAC application specific elements that
+   * make up a deployment template into the current each
+   * application's directory.
+   */
+  task composeDeployFromEacTemplates(
+    dependsOn: "composeDeployFromBaseAndPlugins",
+    description: "Copies the common and EAC application specific elements that make up a deployment template into the current each application's directory.",
+    group: "CSA Custom") {
+
+    inputs.dir "src/main/eac-templates"
+    outputs.dir projectDir.toString() + "/build/deploy"
+
+    doLast {
+
+      // The source directory that contains the application specific EAC application
+      // templates and configuration.
+      def appTemplateSrcDirectory =
+        project(":Applications:" + project.applicationName).projectDir.toString() +
+          "/src/main/eac-templates";
+
+      // The target directory for the deployment templates to be created.
+      def deploySrcDirectory = "/src/main/deploy";
+
+      // The location of the deployment template within the application being built.
+      def applicationDeployDirectory =
+        project(":Applications:" + project.applicationName).projectDir.toString() + "/build/deploy";
+
+      // The list of EAC Applications in the properties file is a comma separated list and
+      // needs to be split in order to iterate over them and create one deployment template
+      // per EAC application.
+      def String[] eacApps = project.eacApplications.split(",");
+
+      for (String eacApp : eacApps) {
+        def eacAppDirectory = applicationDeployDirectory + "/" + eacApp;
+
+        // First copy the common components into the EAC application deployment template.
+        ant.copy(todir: eacAppDirectory, force: "true") {
+          fileset(dir: appTemplateSrcDirectory + "/common", includes: "**/*")
+        }
+
+        // Next copy the application specific templates and configuration into the
+        // EAC application template.  Overwrites files of the same path that were
+        // copied from the common directory.
+        ant.copy(todir: eacAppDirectory, force: "true", overwrite: "true") {
+          fileset(dir: appTemplateSrcDirectory + "/" + eacApp, includes: "**/*")
+        }
+      }
+    }
+  }
+
+  composeDeployFromEacTemplates.onlyIf {
+    (project.file("src/main/deploy").exists() || project.hasProperty("eacApplications")) &&
+      project.hasProperty("applicationName") &&
+      project.hasProperty("eacApplications") &&
+      project.name.equals(project.applicationName)
+  }
+
+  all.dependsOn composeDeployFromEacTemplates
+}
+
+/**
+ * Configure the ATG Module manifest generator task.
+ */
+configure(subprojects.findAll { 
+  it.file("META-INF").exists() && it.hasProperty("applicationName") && it.hasProperty("includedPlugins") && it.name.equals(it.applicationName)
+}) {
+
+  /**
+   * Write the Applications/_app_name_/Plugins/META-INF/MANIFEST.MF including all 
+   * of the CSA/Plugins defined in 'includedPlugins' property in the gradle.properties 
+   * file.
+   *
+   * For example, the plug-ins defined in the 'includedPlugins' property will be added 
+   * to the ATG-Required attribute in a new Applications/_app_name_/Plugins/META-INF/manifest.txt 
+   * file.
+   *
+   * Because a MANIFEST.MF file line length can't be longer than 72 bytes, this 'Jar' task will 
+   * create the MANIFEST.MF from the manifest.txt file so that the lines are formatted to the
+   * correct length.
+   */
+  task pluginsManifestBuilder(
+      type: Jar,
+      description: "Include plugins defined in gradle.properties into to the application.",
+      group: "CSA Custom") {
+
+    inputs.file project.file("gradle.properties")
+    outputs.dir project.file("Plugins").toString() + "/META-INF/manifest.txt"
+
+    def String requiredPlugins = "ATG-Required: " + includedPlugins;
+
+    def pluginsModuleManifest = project.file("Plugins").toString() + "/META-INF/manifest.txt";
+
+    // Create a MANIFEST.MF file if one doesn't already exist.
+    def File manifestFile = new File(pluginsModuleManifest);
+    manifestFile.getParentFile().mkdirs();
+    manifestFile.createNewFile();
+
+    def String manifestText = "";
+
+    if (requiredPlugins.length() > 0) {
+      manifestText = "Manifest-Version: 1.0\n" + requiredPlugins;
+    }
+    else {
+      manifestText = "Manifest-Version: 1.0\n";
+    }
+
+    manifestFile.write(manifestText);
+
+    manifest {
+      from pluginsModuleManifest
+      writeTo project.file("Plugins").toString() + "/META-INF/MANIFEST.MF"
+    }
+  }
+
+  all.dependsOn pluginsManifestBuilder
+  all.mustRunAfter pluginsManifestBuilder
+}
+
+configure(subprojects.findAll {
+  it.file("META-INF").exists() && it.hasProperty("applicationName") && it.hasProperty("includedPlugins") && it.name.equals(it.applicationName)
+}) {
+  /**
+   * This task removes all of the EAC deployment templates that
+   * were created in the deploy folder during the previous build.
+   */
+  task cleanEacApps(
+    description: "This task removes all of the EAC deployment templates that were created in the deploy folder during the previous build.",
+    group: "CSA Custom") << {
+
+    // Clean the eac-templates/common/lib directory to ensure that applications
+    // always have a fresh copy of the DAF/Endeca/AppTemplate/lib jars.
+    def String eacTemplatesLibDir = "/src/main/eac-templates/common/lib";
+
+    if (project.file(eacTemplatesLibDir).exists()) {
+      ant.delete(dir: project.file(eacTemplatesLibDir))
+    }
+  }
+
+  clean.dependsOn cleanEacApps
+}
+
+/**
+ * Configure the CSA Webapp build tasks.
+ */
+configure(subprojects.findAll { 
+  it.file("src/main/webapp").exists() && it.file("src/main/application").exists()
+}) {
+
+  /**
+   * JSHint the JavaScript source files.
+   */
+  task jshint(
+      type: Exec,
+      description: "JSHint the JavaScript source files.",
+      group: "CSA Custom",
+      dependsOn: npmInstall) {
+
+    def jshint = Os.isFamily(Os.FAMILY_WINDOWS) ? "$rootDir/node_modules/.bin/jshint.cmd" : "$rootDir/node_modules/.bin/jshint"
+    def jsSrc = fileTree("src/").include("**/*.js")
+
+    inputs.file "$rootDir/.jshintingnore"
+    inputs.file "$rootDir/.jshintrc"
+    inputs.files jsSrc
+    outputs.files jsSrc
+
+    commandLine jshint, "src"
+  }
+
+  /**
+   * JSCS the JavaScript source files.
+   */
+  jshint.onlyIf {
+    project.file("$rootDir/.jshintrc").exists()
+  }
+
+  task jscs(
+      type: Exec,
+      description: "JSCS the JavaScript source files.",
+      group: "CSA Custom",
+      dependsOn: npmInstall) {
+
+    def jscs = Os.isFamily(Os.FAMILY_WINDOWS) ? "$rootDir/node_modules/.bin/jscs.cmd" : "$rootDir/node_modules/.bin/jscs"
+    def jsSrc = fileTree("src/").include("**/*.js")
+
+    inputs.file "$rootDir/.jscsrc"
+    inputs.files jsSrc
+    outputs.files jsSrc
+
+    commandLine jscs, "src", "-r", "inline"
+  }
+
+  jscs.onlyIf {
+    project.file("$rootDir/.jscsrc").exists()
+  }
+
+  /**
+   * Copy the webapp source to the build directory.
+   */
+  task copyWebapp(
+      description: "Copy the webapp source to the build directory.",
+      group: "CSA Custom") {
+
+    inputs.dir "src/main/webapp"
+    inputs.dir "src/test/webapp"
+    outputs.dir "build/compile/main/webapp"
+    outputs.dir "build/compile/test/webapp"
+
+    doLast {
+      ant.copy(todir: "build/compile") {
+        fileset(dir: "src", includes: "main/webapp/**")
+        fileset(dir: "src", includes: "test/webapp/**")
+      }
+    }
+  }
+
+  /**
+   * Install the webapp's bower dependencies.
+   */
+  task bowerInstall(
+      type: Exec,
+      description: "Install the webapp's bower dependencies.",
+      group: "CSA Custom",
+      dependsOn: [
+        npmInstall,
+        copyWebapp
+      ]) {
+
+    def bower = Os.isFamily(Os.FAMILY_WINDOWS) ? "$rootDir/node_modules/.bin/bower.cmd" : "$rootDir/node_modules/.bin/bower"
+
+    inputs.file ".bowerrc"
+    inputs.files fileTree("src/").include("**/bower.json")
+    outputs.dir "build/compile/main/webapp"
+
+    environment proxySettings
+
+    commandLine bower, "install", "--force", "--silent"
+  }
+
+  bowerInstall.onlyIf {
+    project.file(".bowerrc").exists()
+  }
+
+  /**
+   * Transpile the webapp LESS source files to CSS.
+   */
+  task less(
+      type: Exec,
+      description: "Transpile the webapp LESS source files to CSS.",
+      group: "CSA Custom",
+      dependsOn: [
+        copyWebapp,
+        bowerInstall
+      ]) {
+
+    def lessc = Os.isFamily(Os.FAMILY_WINDOWS) ? "$rootDir/node_modules/.bin/lessc.cmd" : "$rootDir/node_modules/.bin/lessc"
+
+    inputs.files fileTree("build/compile/main/webapp/").include("**/*.less")
+    outputs.files fileTree("build/compile/main/webapp/").include("**/*.css")
+
+    executable = lessc
+  }
+
+  less.onlyIf {
+    !project.fileTree("src/main/webapp/").include("**/*.less").getFiles().isEmpty()
+  }
+
+  /**
+   * Compile the webapp.
+   */
+  task compileWebapp(
+      description: "Compile the webapp.",
+      group: "CSA Custom",
+      dependsOn: [
+        copyWebapp,
+        bowerInstall,
+        less,
+        jshint,
+        jscs
+      ])
+
+  /**
+   * Package the application as an EAR.
+   */
+  task packageApplication(
+      description: "Package the application as an EAR.",
+      group: "CSA Custom",
+      dependsOn: [
+        compileWebapp
+      ]) {
+
+    // Contruct the archive package names using the project paths e.g. :Plugins:ShoppingCart will
+    // become Plugins-ShoppingCart.ear and Plugins-ShoppingCart.war. This ensures that project
+    // archives extended in the application layer i.e. Applications/B2CStore/... 
+    // won't have duplicate names. For example, The root Base module archives will be named
+    // Base.ear/Base.war but the application's Base arcive will be named 
+    // Applications-B2CStore-Base.ear/Applications-B2CStore-Base.war.
+    def packageName = 
+      project.getPath().substring(1, project.getPath().length()).replace(":", "-")
+    
+    inputs.dir "src/main/application"
+    inputs.dir "build/compile/main/webapp"
+    outputs.dir "$libsDir/${packageName}.ear"
+
+    doLast {
+      ant.copy(todir: "$libsDir/${packageName}.ear") {
+        fileset(dir: "src/main/application", includes: "**/*")
+      }
+
+      ant.copy(todir: "$libsDir/${packageName}.ear/${packageName}.war") {
+        fileset(dir: "build/compile/main/webapp", includes:"**/*")
+      }
+    }
+  }
+
+  all.dependsOn packageApplication
+
+  /**
+   * Run the JavaScript unit tests.
+   */
+  task karma(
+      type: Exec,
+      description: "Run the JavaScript unit tests.",
+      group: "CSA Custom",
+      dependsOn: [
+        compileWebapp
+      ]) {
+
+    def karma = Os.isFamily(Os.FAMILY_WINDOWS) ? "$rootDir/node_modules/.bin/karma.cmd" : "$rootDir/node_modules/.bin/karma"
+
+    inputs.file "$rootDir/.karma.conf.js"
+    inputs.file "$rootDir/.karma.main.js"
+    inputs.file "karma.conf.js"
+    inputs.file "karma.main.js"
+    inputs.dir "src/main/webapp"
+    inputs.dir "src/test/webapp"
+    outputs.dir "build/compile/main/webapp"
+    outputs.dir "build/compile/test/webapp"
+
+    commandLine karma, "start"
+  }
+
+  karma.onlyIf {
+    // Diable karma test until fixed
+    //devBuild == "true" && project.file("karma.conf.js").exists() && project.file("karma.main.js").exists()
+    false
+  }
+
+  all.dependsOn karma
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/build-ship.gradle#1 $$Change: 1385662 $

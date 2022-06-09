@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database-initializer SYSTEM "http://www.atg.com/dtds/dbinit_2_0.dtd">
+<database-initializer> 
+
+  <!-- CATALOG SCHEMA -->
+  <schema id="versionedCatalogSchema">
+
+    <!-- Multisite -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/versioned_csa_multisite_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_versioned_csa_multisite_ddl.sql
+        </drop>
+      </path>
+    </sql>
+    
+  </schema>
+
+  <server-instance-type id="management">
+
+    <datasource id="management">
+      <schema id="versionedCatalogSchema"/>
+    </datasource>
+
+  </server-instance-type>
+  
+</database-initializer>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Base/Versioned/cim/dbinit.xml#1 $$Change: 1385662 $-->

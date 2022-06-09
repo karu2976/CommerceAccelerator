@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators SYSTEM "http://www.atg.com/dtds/validator_1_0.dtd">
+<validators>
+  <validator id="CSAEnabledValidator" class="atg.cim.worker.common.ProductSelectionAddOnValidator">
+    <property name="addOnIds">
+      <value>csa_b2c_store</value>
+    </property>
+  </validator>
+</validators>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/cim/plugins/validators.xml#1 $$Change: 1385662 $-->

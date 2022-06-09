@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+  <bean name="atg.commerce.order.CommerceItem">
+    <filter id="summary">
+      <property name="auxiliaryData"/>
+    </filter>
+    <filter id="detailed">
+      <property name="auxiliaryData"/>
+    </filter>
+  </bean>
+  <bean name="atg.commerce.pricing.ItemPriceInfo">
+    <filter id="summary">
+      <property name="listPrice"/>
+      <property name="rawTotalPrice"/>
+      <property name="salePrice"/>
+      <property name="onSale"/>
+      <property name="quantityDiscounted"/>
+    </filter>
+    <filter id="detailed">
+      <property name="listPrice"/>
+      <property name="rawTotalPrice"/>
+      <property name="salePrice"/>
+      <property name="onSale"/>
+      <property name="quantityDiscounted"/>
+    </filter>
+  </bean>
+  <bean name="atg.commerce.order.AuxiliaryData" default-filter="summary">
+    <filter id="summary">
+      <property name="productRef" />
+      <property name="catalogRef" />
+    </filter> 
+    <filter id="detailed" include-filter="summary">
+    </filter> 
+  </bean>
+</bean-filtering>
+
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/dev/10.2/EStore/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#3 
+  $$Change: 1385662 $ -->

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wizards SYSTEM "http://www.atg.com/dtds/wizard_1_0.dtd">
+<wizards>
+
+  <!-- This wizard is always executed when custom cim plugin is launched -->
+  <wizard id="KeyStoreMenu">
+    <title resource-key="wizards.xml.csa.main.menu.title" resource-bundle="atg.cim.ProductResources">
+     Set security credentials for CSA key store
+    </title>
+    <detail></detail>
+        
+    <process id="keystoreconfiguration">
+      <step id="DisplayKeyStoreMenu">
+        <title resource-key="wizards.xml.csa.configuration.title" resource-bundle="atg.cim.ProductResources">
+          Key store configuration
+        </title>
+        <detail resource-key="wizards.xml.csa.configuration.detail" resource-bundle="atg.cim.ProductResources">
+          Key store in CSA is used to store encryption/decryption keys for securing credit card numbers. The passwords you specify here would be used to protect a freshly generated key and a key store. As these passwords are saved in the OPSS file, you must deploy it using OPSS security option from main menu after this step. Additionally, CSA application data must be reloaded to get credit cards encrypted using newly generated key.
+        </detail>
+
+        <navoptionprovider class="atg.cim.worker.base.KeyStorePasswordMenuNavigation" />
+        
+        <validator id="CSAEnabledValidator" phase="PRESTEP">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Oracle Commerce Store Accelerator needs to be selected in order to proceed with key store configuration."/>
+            <command type="NEXT_STEP"/>
+          </if-false>
+        </validator>
+
+        <error>
+          <step id="KeyStoreMenuErrorStep">
+            <title resource-key="wizards.xml.csa.configuration.error.title" resource-bundle="atg.cim.ProductResources">
+              Unexpected error
+            </title>
+            <detail resource-key="wizards.xml.csa.configuration.error.detail" resource-bundle="atg.cim.ProductResources">
+              An unexpected error has occurred. Please check the cim.log for details
+            </detail>
+            <navoption id="continue">
+              <label resource-key="wizards.xml.csa.configuration.common.continue" resource-bundle="atg.cim.ProductResources">
+                Continue
+              </label>
+              <command type="GOTO_STEP" value="DisplayKeyStoreMenu"/>
+            </navoption>
+          </step>
+        </error>
+      </step>
+    </process>
+  </wizard>
+
+  <wizard id="KeyStoreConfigurationWizard" wizard-type="base">
+    <title></title>
+    <detail></detail>
+    <process id="keystorepasswordset">
+      <step id="KeyStorePasswordTemplateStep" type="template" class="atg.cim.productconfig.productselector.KeyStorePasswordTemplate" />
+    </process>  
+  </wizard>
+</wizards>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/cim/plugins/wizards.xml#1 $$Change: 1385662 $-->

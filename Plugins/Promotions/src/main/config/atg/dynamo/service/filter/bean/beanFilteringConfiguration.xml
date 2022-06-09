@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+  <bean name="atg.commerce.order.Order" default-filter="summary">
+    <filter id="summary">
+      <property name="shippingGroupCount"/>
+      <property name="shippingGroups"/>
+      <property name="taxPriceInfo"/>
+      <property name="couponCode" property-customizer="/atg/commerce/promotion/filter/bean/ClaimedCouponPropertyCustomizer"/>
+    </filter>
+    <filter id="detailed">
+      <property name="couponCode" property-customizer="/atg/commerce/promotion/filter/bean/ClaimedCouponPropertyCustomizer"/>
+    </filter> 
+  </bean>
+  <bean name="atg.commerce.pricing.AmountInfo" default-filter="summary">
+    <filter id="summary">
+      <property name="amount" />
+      <property name="adjustments" property-customizer="/atg/dynamo/service/filter/bean/RemoveNullsFromListPropertyCustomizer">
+        <attribute name="propertyName" value="pricingModel"/>
+      </property>
+    </filter>
+    <filter id="detailed">
+      <property name="amount" />
+      <property name="adjustments" property-customizer="/atg/dynamo/service/filter/bean/RemoveNullsFromListPropertyCustomizer">
+        <attribute name="propertyName" value="pricingModel"/>
+      </property>
+    </filter>  
+  </bean>
+  <bean name="atg.commerce.pricing.PricingAdjustment">
+    <filter id="summary">
+      <property name="promotionDescription" target="pricingModel.description"/>
+    </filter>
+    <filter id="detailed">
+      <property name="promotionDescription" target="pricingModel.description"/>
+    </filter>
+  </bean>
+</bean-filtering>
+
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Promotions/src/main/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#1 $$Change: 1385662 $ -->

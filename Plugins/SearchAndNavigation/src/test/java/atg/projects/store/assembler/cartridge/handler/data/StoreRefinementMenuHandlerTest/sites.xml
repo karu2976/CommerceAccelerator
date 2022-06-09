@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <add-item item-descriptor="siteConfiguration" id="storeSiteUS">
+      <set-property name="description"><![CDATA[CSA Store site]]></set-property>
+      <set-property name="modificationTime"><![CDATA[9/8/2009 13:39:51]]></set-property>
+      <set-property name="name"><![CDATA[CSA Store]]></set-property>
+      <set-property name="sitePriority"><![CDATA[1]]></set-property>
+      <set-property name="enabled"><![CDATA[true]]></set-property>
+      <set-property name="siteTypes"><![CDATA[commerce]]></set-property>
+      <set-property name="siteIcon"><![CDATA[/csadocroot/content/images/storefront/atgStore_logo_small.png]]></set-property>
+      <set-property name="defaultCatalog"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="favicon"><![CDATA[/csadocroot/content/images/storefront/site/storeUS/favicon.png]]></set-property>
+      <set-property name="contextRoot"><![CDATA[/csa]]></set-property>
+      <set-property name="productionURL"><![CDATA[/csa/storeus]]></set-property>
+    </add-item>
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/src/test/java/atg/projects/store/assembler/cartridge/handler/data/StoreRefinementMenuHandlerTest/sites.xml#1 $$Change: 1385662 $-->

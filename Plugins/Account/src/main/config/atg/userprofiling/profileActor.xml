@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template>
+
+  <!--
+    init:
+      Called to return the initial profile data to the client.
+
+    The following is returned from the profile:
+      - firstName
+      - middleName
+      - lastName
+      - securityStatus
+  -->
+  <actor-chain id="init" transaction="TX_SUPPORTS">
+    <component id="profile" name="/atg/userprofiling/Profile" component-var="profile">
+      <output id="profile" name="profile" value="${profile.dataSource}" filter-id="short"/>
+    </component>
+  </actor-chain>
+
+  <!--
+    create:
+      Override of the platform create service always to confirm that the users entered password
+      matches the password entered in the confirmation input.
+  -->
+  <actor-chain id="create">
+    <form id="profileFormHandler-create" name="/atg/userprofiling/ProfileFormHandler" handle="create" var="profileFormHandler">
+      <input name="confirmPassword" value="true"/>
+      <input name="birthday" value="${param.birthday}"/>
+    </form>
+  </actor-chain>
+
+  <!--
+    create-success:
+      Called on the successful creation of an account.
+
+    The following is returned from the profile:
+      - firstName
+      - middleName
+      - lastName
+      - securityStatus
+  -->
+  <actor-chain id="create-success">
+    <actor id="profileActor" name="/atg/userprofiling/ProfileActor" chain-id="init" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+
+  <!--
+    update:
+      Override of the platform create service.
+  -->
+  <actor-chain id="update">
+    <form id="profileFormHandler-update" name="/atg/userprofiling/ProfileFormHandler" handle="update" var="profileFormHandler">
+      <input name="birthday" value="${param.birthday}"/>
+    </form>
+  </actor-chain>
+
+  <!--
+    emailCheck:
+      Server side check for a valid email address. Format & whether or not its in use.
+  -->
+  <actor-chain id="emailCheck">
+    <form id="profileFormHandler" name="/atg/userprofiling/ProfileFormHandler" handle="emailCheck" var="profileFormHandler">
+      <input name="value.email" value="${param.email}"/>
+      <input name="emailCheckSuccessURL" value="/model/atg/userprofiling/ProfileActor/emailCheck-success" />
+      <input name="emailCheckErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+    emailCheck-success:
+      Invoked on email check success.
+  -->
+  <actor-chain id="emailCheck-success">
+  </actor-chain>
+
+  <!--
+    login-success:
+      On a successful login return the security status so we can update the profile domain model. As
+      well as the firstName, lastName and middleName of the profile (which should all be null).
+  -->
+  <actor-chain id="login-success">
+    <actor id="profileActor" name="/atg/userprofiling/ProfileActor" chain-id="init" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+
+  <!--
+    updateCheckoutDefaults:
+      Updates a users default checkout options.
+
+    Input parameters:
+      defaultCarrier - The default shipping method.
+      defaultAddress - The default shipping address name.
+      defaultCard - The default card name.
+  -->
+  <actor-chain id="updateCheckoutDefaults">
+    <form id="profileFormHandler-update" name="/atg/userprofiling/ProfileFormHandler" handle="updateCheckoutDefaults" var="profileFormHandler">
+      <input name="checkoutDefaultsUserInputValues.defaultCarrier" value="${param.defaultCarrier}"/>
+      <input name="checkoutDefaultsUserInputValues.shippingAddress" value="${param.defaultAddress}"/>
+      <input name="checkoutDefaultsUserInputValues.defaultCreditCard" value="${param.defaultCard}"/>
+      <input name="updateCheckoutDefaultsSuccessURL" value="/model/atg/userprofiling/ProfileActor/updateCheckoutDefaults-success" />
+      <input name="updateCheckoutDefaultsErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+    updateCheckoutDefaults-success:
+      Invoked on successfully updating the checkout defaults.
+  -->
+  <actor-chain id="updateCheckoutDefaults-success">
+  </actor-chain>
+
+  <!--
+    address:
+      An override from the platform addresses endpoint. Removes the defaultShippingAddressId, uses
+      the addresslistsummary filter to return the address summary in a list form (instead of a map).
+  -->
+  <actor-chain id="addresses">
+    <component id="profile" name="/atg/userprofiling/Profile" component-var="profile"/>
+    <output id="defaultShippingAddressId" name="defaultShippingAddressId" value="${profile.shippingAddress.id}" xml-combine="remove"/>
+    <output id="addresses" name="addresses" value="${profile}" filter-id="addresslistsummary"/>
+  </actor-chain>
+
+  <!--
+    addressbook:
+      Uses the addresslistshort filter to return the address short information in a list form
+      (instead of a map).
+  -->
+  <actor-chain id="addressbook">
+    <component id="profile" name="/atg/userprofiling/Profile" component-var="profile"/>
+    <output id="addresses" name="addresses" value="${profile}" filter-id="addresslistshort"/>
+  </actor-chain>
+
+  <!--
+    newAddress:
+      Creates a new address on the current profile.
+
+    Input Parameters:
+      addressNickname - The nickname in the address book.
+      firstName - The first name of the customer associated with this address.
+      lastName - The last name of the customer associated with this address.
+      address1 - The first address field of the address.
+      address2 - The second address field of the address.
+      city - The city of the address.
+      state - The state or province of the address.
+      postalCode - The postal code of the address.
+      country - The country of the address.
+      phoneNumber - The phone number associated with this address.
+      useAsDefaultShippingAddress - Sets this address as the default shipping address if 'true'.
+  -->
+  <actor-chain id="addAddress">
+    <form id="storeProfileFormHandler" name="/atg/userprofiling/ProfileFormHandler"
+        handle="addAddress">
+      <input name="addressUserInputValues.addressNickname" value="${param.addressNickname}"/>
+      <input name="addressUserInputValues.firstName" value="${param.firstName}"/>
+      <input name="addressUserInputValues.lastName" value="${param.lastName}"/>
+      <input name="addressUserInputValues.address1" value="${param.address1}"/>
+      <input name="addressUserInputValues.address2" value="${param.address2}"/>
+      <input name="addressUserInputValues.city" value="${param.city}"/>
+      <input name="addressUserInputValues.state" value="${param.state}"/>
+      <input name="addressUserInputValues.postalCode" value="${param.postalCode}"/>
+      <input name="addressUserInputValues.country" value="${param.country}"/>
+      <input name="addressUserInputValues.phoneNumber" value="${param.phoneNumber}"/>
+      <input name="addressUserInputValues.useAsDefaultShippingAddress" value="${param.useAsDefaultShippingAddress}"/>
+      <input name="addAddressSuccessURL" value="/model/atg/userprofiling/ProfileActor/addAddress-success" />
+      <input name="addAddressErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+    addAddress-success:
+      Invoked on successful creation of an address.
+  -->
+  <actor-chain id="addAddress-success">
+  </actor-chain>
+
+  <!--
+    updateAddress:
+      Updates an existing address on the current profile.
+
+    Input Parameters:
+      addressNickname - The nickname in the address book.
+      newAddressNickname - The new nickname for this address.
+      firstName - The first name of the customer associated with this address.
+      lastName - The last name of the customer associated with this address.
+      address1 - The first address field of the address.
+      address2 - The second address field of the address.
+      city - The city of the address.
+      state - The state or province of the address.
+      postalCode - The postal code of the address.
+      country - The country of the address.
+      phoneNumber - The phone number associated with this address.
+      useAsDefaultShippingAddress - Sets this address as the default shipping address if 'true'.
+  -->
+  <actor-chain id="updateAddress">
+    <form id="storeProfileFormHandler" name="/atg/userprofiling/ProfileFormHandler"
+          handle="updateAddress">
+      <input name="addressUserInputValues.addressNickname" value="${param.addressNickname}"/>
+      <input name="addressUserInputValues.newAddressNickname" value="${param.newAddressNickname}"/>
+      <input name="addressUserInputValues.firstName" value="${param.firstName}"/>
+      <input name="addressUserInputValues.lastName" value="${param.lastName}"/>
+      <input name="addressUserInputValues.address1" value="${param.address1}"/>
+      <input name="addressUserInputValues.address2" value="${param.address2}"/>
+      <input name="addressUserInputValues.city" value="${param.city}"/>
+      <input name="addressUserInputValues.state" value="${param.state}"/>
+      <input name="addressUserInputValues.postalCode" value="${param.postalCode}"/>
+      <input name="addressUserInputValues.country" value="${param.country}"/>
+      <input name="addressUserInputValues.phoneNumber" value="${param.phoneNumber}"/>
+      <input name="addressUserInputValues.useAsDefaultShippingAddress" value="${param.useAsDefaultShippingAddress}"/>
+      <input name="updateAddressSuccessURL" value="/model/atg/userprofiling/ProfileActor/updateAddress-success" />
+      <input name="updateAddressErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+    updateAddress-success:
+      Invoked on successfully updating an address.
+  -->
+  <actor-chain id="updateAddress-success">
+  </actor-chain>
+
+  <!--
+    removeAddress:
+      Removes an address on the profile.
+
+    Input parameters:
+      removeAddressNickname - The nickname in the address book.
+  -->
+  <actor-chain id="removeAddress">
+    <form id="storeProfileFormHandler" name="/atg/userprofiling/ProfileFormHandler"
+          handle="removeAddress">
+      <input name="addressUserInputValues.removeAddressNickname" value="${param.removeAddressNickname}"/>
+      <input name="removeAddressSuccessURL" value="/model/atg/userprofiling/ProfileActor/removeAddress-success" />
+      <input name="removeAddressErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+    removeAddress-success:
+      Invoked on successfully removing an address.
+  -->
+  <actor-chain id="removeAddress-success">
+    <actor id="profileActor" name="/atg/userprofiling/ProfileActor" chain-id="addressbook" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+
+  <!--
+    creditCards:
+      An override from the platform creditCards endpoint. Uses the carlistsummary filter to return
+      the credit card summary information in a list form (instead of a map).
+  -->
+  <actor-chain id="creditCards" xml-combine="replace">
+    <component id="profile" name="/atg/userprofiling/Profile" component-var="profile">
+      <output id="creditCards" name="paymentInfo" value="${profile}" filter-id="cardlistsummary"/>
+    </component>
+  </actor-chain>
+
+  <!--
+    creditCards:
+      Uses the cardlistshort filter to return the credit card short information in a list form
+      (instead of a map).
+  -->
+  <actor-chain id="wallet">
+    <component id="profile" name="/atg/userprofiling/Profile" component-var="profile">
+      <output id="creditCards" name="paymentInfo" value="${profile}" filter-id="cardlistshort"/>
+    </component>
+  </actor-chain>
+
+  <!--
+    createCreditCard:
+      Creates a new credit card on the current profile.
+
+    Input Parameters:
+      cardNickname - The nickname associated with this card.
+      creditCardType - Type/make of the credit card.
+      creditCardNumber - Card number.
+      expirationMonth - Month card expires.
+      expirationYear - Year card expires.
+      setAsDefaultCard - Sets this card as the default card if 'true'.
+      firstName - The first name of the customer associated with this address.
+      lastName - The last name of the customer associated with this address.
+      address1 - The first address field of the address.
+      address2 - The second address field of the address.
+      city - The city of the address.
+      state - The state or province of the address.
+      postalCode - The postal code of the address.
+      country - The country of the address.
+      phoneNumber - The phone number associated with this address.
+  -->
+  <actor-chain id="createCreditCard">
+    <form id="storeProfileFormHandler" name="/atg/userprofiling/ProfileFormHandler"
+        handle="createCreditCard">
+      <input name="creditCardUserInputValues.cardNickname" value="${param.cardNickname}"/>
+      <input name="creditCardUserInputValues.creditCardType" value="${param.creditCardType}"/>
+      <input name="creditCardUserInputValues.creditCardNumber" value="${param.creditCardNumber}"/>
+      <input name="creditCardUserInputValues.expirationMonth" value="${param.expirationMonth}"/>
+      <input name="creditCardUserInputValues.expirationYear" value="${param.expirationYear}"/>
+      <input name="creditCardUserInputValues.saveCreditCard" value="${param.saveCreditCard}" />
+      <input name="creditCardUserInputValues.setAsDefaultCard" value="${param.setAsDefaultCard}" />
+      <input name="addressUserInputValues.firstName" value="${param.firstName}"/>
+      <input name="addressUserInputValues.lastName" value="${param.lastName}"/>
+      <input name="addressUserInputValues.address1" value="${param.address1}"/>
+      <input name="addressUserInputValues.address2" value="${param.address2}"/>
+      <input name="addressUserInputValues.city" value="${param.city}"/>
+      <input name="addressUserInputValues.state" value="${param.state}"/>
+      <input name="addressUserInputValues.postalCode" value="${param.postalCode}"/>
+      <input name="addressUserInputValues.country" value="${param.country}"/>
+      <input name="addressUserInputValues.phoneNumber" value="${param.phoneNumber}"/>
+      <input name="createCreditCardSuccessURL" value="/model/atg/userprofiling/ProfileActor/createCard-success" />
+      <input name="createCreditCardErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+  createCard-success:
+    Invoked on successful creation of a card.
+  -->
+  <actor-chain id="createCard-success">
+  </actor-chain>
+
+  <!--
+    removeCreditCard:
+      Removes a credit card from the current profile.
+
+    Input Parameters:
+      removeCardNickname - The nickname of the card that should be removed.
+  -->
+  <actor-chain id="removeCard">
+    <form id="storeProfileFormHandler" name="/atg/userprofiling/ProfileFormHandler"
+          handle="removeCard">
+      <input name="creditCardUserInputValues.removeCardNickname" value="${param.removeCardNickname}"/>
+      <input name="removeCardSuccessURL" value="/model/atg/userprofiling/ProfileActor/removeCard-success"/>
+      <input name="removeCardErrorURL" value="/model/atg/userprofiling/ProfileActor/error"/>
+    </form>
+  </actor-chain>
+
+  <!--
+    removeCard-success:
+    Invoked on successful removing a card.
+  -->
+  <actor-chain id="removeCard-success">
+    <actor id="profileActor" name="/atg/userprofiling/ProfileActor" chain-id="wallet" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+
+  <!--
+    updateCreditCard:
+      Updates a credit card on the profile.
+
+    Input Parameters:
+      cardNickname - The nickname associated with this card. Required.
+      newCardNickname - The new nickname associated with this card.
+      expirationMonth - Month card expires.
+      expirationYear - Year card expires.
+      setAsDefaultCard - Sets this card as the default card if 'true'.
+      firstName - The first name of the customer associated with this address.
+      lastName - The last name of the customer associated with this address.
+      address1 - The first address field of the address.
+      address2 - The second address field of the address.
+      city - The city of the address.
+      state - The state or province of the address.
+      postalCode - The postal code of the address.
+      country - The country of the address.
+      phoneNumber - The phone number associated with this address.
+      updateCardSuccessURL - Redirects here on a successful operation.
+  -->
+  <actor-chain id="updateCard">
+    <form id="storeProfileFormHandler" name="/atg/userprofiling/ProfileFormHandler"
+          handle="updateCard">
+      <input name="creditCardUserInputValues.cardNickname" value="${param.cardNickname}"/>
+      <input name="creditCardUserInputValues.newCardNickname" value="${param.newCardNickname}"/>
+      <input name="creditCardUserInputValues.expirationYear" value="${param.expirationYear}"/>
+      <input name="creditCardUserInputValues.expirationMonth" value="${param.expirationMonth}"/>
+      <input name="creditCardUserInputValues.setAsDefaultCard" value="${param.setAsDefaultCard}" />
+      <input name="addressUserInputValues.firstName" value="${param.firstName}" />
+      <input name="addressUserInputValues.lastName" value="${param.lastName}" />
+      <input name="addressUserInputValues.address1" value="${param.address1}" />
+      <input name="addressUserInputValues.address2" value="${param.address2}" />
+      <input name="addressUserInputValues.city" value="${param.city}" />
+      <input name="addressUserInputValues.state" value="${param.state}" />
+      <input name="addressUserInputValues.country" value="${param.country}" />
+      <input name="addressUserInputValues.postalCode" value="${param.postalCode}" />
+      <input name="addressUserInputValues.phoneNumber" value="${param.phoneNumber}" />
+      <input name="updateCardSuccessURL" value="/model/atg/userprofiling/ProfileActor/updateCard-success" />
+      <input name="updateCardErrorURL" value="/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+    updateCreditCard-success:
+    Invoked on successfully updating a card.
+  -->
+  <actor-chain id="updateCard-success">
+  </actor-chain>
+
+  <!--
+    changePassword:
+      Invokes the ProfileFormHandler to change the current password of the user to a new one.
+      
+    Input Parameters:
+      confirmPassword - The confirm password field for the new password.
+      oldPassword - The current password of the profile involved.
+      password - The new password to be set to the profile involved.
+  -->
+  <actor-chain id="changePassword">
+    <form id="storeProfileFormHandler"
+          name="/atg/userprofiling/ProfileFormHandler"
+          handle="changePassword" use-forwards="false">
+      <input name="value.confirmPassword" value="${param.confirmPassword}"/>
+      <input name="value.oldPassword" value="${param.oldPassword}"/>
+      <input name="value.password" value="${param.password}"/>
+      <input name="confirmPassword" value="true"/>
+      <input name="changePasswordSuccessURL" value="/rest/model/atg/userprofiling/ProfileActor/changePassword-success" />
+      <input name="changePasswordErrorURL" value="/rest/model/atg/userprofiling/ProfileActor/error" />
+    </form>
+  </actor-chain>
+
+  <!--
+  changePassword-success:
+    Invoked on successfully changing a password.
+-->
+  <actor-chain id="changePassword-success" transaction="TX_SUPPORTS">
+  </actor-chain>
+
+  <!--
+    recoverPassword:
+      Invokes the ForgotPasswordFormHandler to recover the password of the user.
+      
+    Input Parameters:
+      email - The email address of the user to recover password for.
+  -->
+  <actor-chain id="recoverPassword">
+    <form id="forgotPasswordHandler"
+          name="/atg/userprofiling/ForgotPasswordHandler"
+          handle="forgotPassword" use-forwards="false">
+      <input name="value.email" value="${param.email}"/>
+      <input name="forgotPasswordErrorURL" value="/rest/model/atg/userprofiling/ProfileActor/recoverPassword-error" />
+    </form>
+  </actor-chain>
+  
+  <!--
+    recoverPassword-error:
+    Invoked when password is not recovered successfully.
+  -->
+  <actor-chain id="recoverPassword-error" transaction="TX_SUPPORTS">
+    <actor id="recoverPasswordError" name="/atg/userprofiling/ProfileActor" chain-id="recoverPasswordError" return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+  
+  <!--
+    recoverPasswordError:
+    Invoked after recoverPassword-error.
+  -->
+  <actor-chain id="recoverPasswordError" transaction="TX_SUPPORTS">
+    <component id="forgotPasswordHandler"
+      name="/atg/userprofiling/ForgotPasswordHandler"
+      component-var="forgotPasswordHandler">
+      <output id="formError" name="formError"
+        value="${forgotPasswordHandler.formError}" />
+      <output id="formExceptions" name="formExceptions"
+        value="${forgotPasswordHandler.formExceptions}" />
+    </component>
+  </actor-chain>
+
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/main/config/atg/userprofiling/profileActor.xml#1 $$Change: 1385662 $-->

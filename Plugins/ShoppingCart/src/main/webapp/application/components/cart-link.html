@@ -1,0 +1,118 @@
+<a href="cart" class="btn csa-btn-default csa-btn-header">
+  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+  <span class="badge csa-commerce-item-count-badge">
+    {{ totalCommerceItemCount }}
+  </span>
+  <span class="sr-only">
+    {{ 'shoppingCart.link.itemInYourShoppingCart' | i18nPlural: totalCommerceItemCount }}
+  </span>
+  <span class="hidden-xs">
+    {{ 'shoppingCart.link.checkout' | i18n }}
+  </span>
+  <span class="sr-only hidden-sm hidden-md hidden-lg">
+    {{ 'shoppingCart.link.checkout' | i18n }}
+  </span>
+</a>
+<div class="modal text-left fade" tabindex="-1" role="dialog" aria-labelledby="richCartTitle" aria-hidden="true" data-bind="modal: $data">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">
+            &times;
+          </span>
+          <span class="sr-only">
+            {{ 'shoppingCart.button.close' | i18n }}
+          </span>
+        </button>
+        <h4 class="modal-title" id="richCartTitle">
+          {{ 'shoppingCart.subheading.cartSummary' | i18n }}
+          (<span class="csa-commerce-item-count">
+            {{ order.totalCommerceItemCount }}
+          </span>)
+          <span class="sr-only">
+            {{ 'shoppingCart.subheading.itemInYourShoppingCart' | i18nPlural: order.totalCommerceItemCount }}
+          </span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <!-- ko if: order.cartEmpty -->
+          <div class="alert alert-info csa-cart-empty">
+            {{ 'shoppingCart.alert.emptyCart' | i18n }}
+          </div>
+        <!-- /ko -->
+        <!-- ko ifnot: order.cartEmpty -->
+          <div class="clearfix">
+            <div class="pull-left">
+              {{ 'shoppingCart.label.subtotal' | i18n }}
+            </div>
+            <div class="pull-right text-right csa-subtotal">
+              {{ order.priceInfo.rawSubtotal | currency }}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="cart" class="btn btn-default btn-block" data-dismiss="modal">
+                {{ 'shoppingCart.link.viewCart' | i18n }}
+              </a>
+            </div>
+            <div class="col-xs-6">
+              <form method="GET" action="checkout">
+                <button type="submit" name="checkout" class="btn btn-block csa-btn" data-bind="click: canCheckout">
+                  {{ 'shoppingCart.button.checkout' | i18n }}
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- ko foreach: order.commerceItems -->
+            <hr>
+            <div class="row">
+              <div class="col-xs-4">
+                <img class="img-responsive" data-bind="attr: { src: auxiliaryData.productRef.largeImageUrl, alt: productDisplayName }">
+              </div>
+              <div class="col-xs-8">
+                <div>
+                  <strong class="csa-product-display-name">
+                    {{ productDisplayName }}
+                  </strong>
+                </div>
+                <div>
+                  <span class="sr-only">
+                    {{ 'shoppingCart.label.quantity' | i18n }}
+                  </span>
+                  <span class="csa-quantity">
+                    {{ quantity }}
+                  </span>
+                  &nbsp;&times;&nbsp;
+                  <!-- ko ifnot: priceInfo.salePrice -->
+                    <span class="sr-only">
+                      {{ 'shoppingCart.label.listPrice' | i18n }}
+                    </span>
+                    <span class="csa-list-price">
+                      {{ priceInfo.listPrice | currency }}
+                    </span>
+                  <!-- /ko -->
+                  <!-- ko if: priceInfo.salePrice -->
+                    <span class="sr-only">
+                      {{ 'shoppingCart.label.salePrice' | i18n }}
+                    </span>
+                    <span class="csa-sale-price">
+                      {{ priceInfo.salePrice | currency }}
+                      </span>
+                    <span class="sr-only">
+                      {{ 'shoppingCart.label.priceBeforeReduction' | i18n }}
+                    </span>
+                    <s class="csa-list-price">
+                      {{ priceInfo.listPrice | currency }}
+                    </s>
+                  <!-- /ko -->
+                </div>
+              </div>
+            </div>
+          <!-- /ko -->
+        <!-- /ko -->
+      </div>
+    </div>
+  </div>
+</div>

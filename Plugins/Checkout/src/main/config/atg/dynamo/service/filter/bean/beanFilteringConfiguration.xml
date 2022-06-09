@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+  
+  <!--
+    ProfileAdapterRepository
+  -->
+  <repository name="/atg/userprofiling/ProfileAdapterRepository">
+    <item-descriptor name="contactInfo">
+      <filter id="detailed">
+        <property name="item-id" xml-combine="remove"/>
+      </filter>
+    </item-descriptor>
+  </repository>
+
+</bean-filtering>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/main/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#1 $$Change: 1385662 $-->

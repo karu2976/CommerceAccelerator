@@ -1,0 +1,47 @@
+{
+  "shoppinCart": {
+    "alert": {
+      "emptyCart": "El carro de la compra está vacío."
+    },
+    "button": {
+      "checkout": "Finalizar",
+      "close": "Cerrar",
+      "remove": "Eliminar",
+      "update": "Actualizar"
+    },
+    "heading": {
+      "yourShoppingCart": "Carro de la compra"
+    },
+    "label": {
+      "discount": "Descuento",
+      "listPrice": "Precio de lista",
+      "orderSummaryTableSummary": "El resumen de la orden incluye el subtotal, los descuentos, el envío, los impuestos y el total",
+      "priceBeforeReduction": "Precio antes de reducción",
+      "quantity": "Cantidad",
+      "salePrice": "Precio de venta",
+      "shipping": "Envío",
+      "subtotal": "Subtotal",
+      "tax": "Impuestos",
+      "total": "Total",
+      "was": "Antes"
+    },
+    "link": {
+      "checkout": "Finalizar",
+      "continueShopping": "Continuar comprando",
+      "itemInYourShoppingCart": "Artículo del carro de la compra",
+      "itemInYourShoppingCart_plural": "Artículos del carro de la compra",
+      "viewCart": "Ver carro"
+    },
+    "subheading": {
+      "cartSummary": "Resumen de carro",
+      "itemInYourShoppingCart": "Artículo del carro de la compra",
+      "itemInYourShoppingCart_plural": "Artículos del carro de la compra",
+      "orderSummary": "Resumen de orden ({{0}} artículo)",
+      "orderSummary_plural": "Resumen de orden ({{0}} artículos)"
+    },
+    "text": {
+      "1000": "En stock",
+      "1001": "Stock agotado"
+    }
+  }
+}

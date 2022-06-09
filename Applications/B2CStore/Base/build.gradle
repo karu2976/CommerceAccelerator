@@ -1,0 +1,11 @@
+project(":Applications:B2CStore:Base") {
+  description = "Project that extends all of the core CSA/Base functionality."
+
+  dependencies {
+    compile project(":Base")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Base/build-ship.gradle#1 $$Change: 1385662 $

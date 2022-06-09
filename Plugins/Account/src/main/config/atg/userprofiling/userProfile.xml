@@ -1,0 +1,13 @@
+<gsa-template>
+
+  <item-descriptor name="user" cache-mode="simple" item-cache-timeout="550000" query-expire-timeout="550000" xml-combine="append">
+    <table name="dps_user">
+      <property name="gender" default="unknown" display-name-resource="gender" xml-combine="append">
+        <option resource="genderUnknown" value="unknown" code="0"/>
+        <option resource="genderUnspecified" value="unspecified" code="3"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/main/config/atg/userprofiling/userProfile.xml#1 $$Change: 1385662 $-->

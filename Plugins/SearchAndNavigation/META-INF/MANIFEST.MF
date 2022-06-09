@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+ATG-Class-Path: build/libs/SearchAndNavigation.jar
+ATG-EAR-Module: build/libs/Plugins-SearchAndNavigation.ear
+ATG-J2EE: build/libs/Plugins-SearchAndNavigation.ear
+ATG-Config-Path: build/libs/config/config.jar
+ATG-PreviewConfig-Path: build/libs/configlayers/preview.jar
+ATG-Required: CommerceAccelerator.Base

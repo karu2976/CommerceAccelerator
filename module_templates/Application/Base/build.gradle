@@ -1,0 +1,8 @@
+project(':Applications:<%= appName %>:Base') {
+  defaultTasks "all";
+  description = "Project that extends all of the core CSA/Base functionality."
+
+  dependencies {
+    compile project(":Base")
+  }
+}

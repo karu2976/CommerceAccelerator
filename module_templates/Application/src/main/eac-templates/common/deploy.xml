@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2001, 2014, Oracle and/or its affiliates. All rights reserved.
+  ~ Oracle and Java are registered trademarks of Oracle and/or its
+  ~ affiliates. Other names may be trademarks of their respective owners.
+  ~ UNIX is a registered trademark of The Open Group.
+  ~
+  ~ This software and related documentation are provided under a license
+  ~ agreement containing restrictions on use and disclosure and are
+  ~ protected by intellectual property laws. Except as expressly permitted
+  ~ in your license agreement or allowed by law, you may not use, copy,
+  ~ reproduce, translate, broadcast, modify, license, transmit, distribute,
+  ~ exhibit, perform, publish, or display any part, in any form, or by any
+  ~ means. Reverse engineering, disassembly, or decompilation of this
+  ~ software, unless required by law for interoperability, is prohibited.
+  ~ The information contained herein is subject to change without notice
+  ~ and is not warranted to be error-free. If you find any errors, please
+  ~ report them to us in writing.
+  ~ U.S. GOVERNMENT END USERS: Oracle programs, including any operating
+  ~ system, integrated software, any programs installed on the hardware,
+  ~ and/or documentation, delivered to U.S. Government end users are
+  ~ "commercial computer software" pursuant to the applicable Federal
+  ~ Acquisition Regulation and agency-specific supplemental regulations.
+  ~ As such, use, duplication, disclosure, modification, and adaptation
+  ~ of the programs, including any operating system, integrated software,
+  ~ any programs installed on the hardware, and/or documentation, shall be
+  ~ subject to license terms and license restrictions applicable to the
+  ~ programs. No other rights are granted to the U.S. Government.
+  ~ This software or hardware is developed for general use in a variety
+  ~ of information management applications. It is not developed or
+  ~ intended for use in any inherently dangerous applications, including
+  ~ applications that may create a risk of personal injury. If you use
+  ~ this software or hardware in dangerous applications, then you shall
+  ~ be responsible to take all appropriate fail-safe, backup, redundancy,
+  ~ and other measures to ensure its safe use. Oracle Corporation and its
+  ~ affiliates disclaim any liability for any damages caused by use of this
+  ~ software or hardware in dangerous applications.
+  ~ This software or hardware and documentation may provide access to or
+  ~ information on content, products, and services from third parties.
+  ~ Oracle Corporation and its affiliates are not responsible for and
+  ~ expressly disclaim all warranties of any kind with respect to
+  ~ third-party content, products, and services. Oracle Corporation and
+  ~ its affiliates will not be responsible for any loss, costs, or damages
+  ~ incurred due to your access to or use of third-party content, products,
+  ~ or services.
+  -->
+
+<!DOCTYPE app-descriptor [
+  <!ELEMENT app-descriptor ( dir-structure+, copy-pattern+ ) >
+  <!ATTLIST app-descriptor
+    update (true|false) #IMPLIED
+    id CDATA #IMPLIED
+    default-name CDATA #IMPLIED
+  >
+
+  <!ELEMENT dir-structure ( dir+ ) >
+
+  <!ELEMENT dir ( #PCDATA ) >
+  <!ATTLIST dir
+    primary (true|false) #IMPLIED
+    platform (win|unix) #IMPLIED
+  >
+
+  <!ELEMENT copy-pattern ( copy+ ) >
+  <!ATTLIST copy-pattern src-root CDATA #REQUIRED >
+
+  <!ELEMENT copy ( src-dir, src-file, dest-dir ) >
+  <!ATTLIST copy
+    clear-dest-dir (true|false) #IMPLIED
+    recursive (true|false) #IMPLIED
+    preserve-subdirs (true|false) #IMPLIED
+    filter-files (true|false) #IMPLIED
+    mode CDATA #IMPLIED
+    primary (true|false) #IMPLIED
+    platform (win|unix) #IMPLIED
+    endeca-version (460|470|480|500) #IMPLIED
+  >
+
+  <!ELEMENT dest-dir ( #PCDATA ) >
+  <!ELEMENT src-dir ( #PCDATA ) >
+  <!ELEMENT src-file ( #PCDATA ) >
+]>
+<!--
+  Deployment Template installer configuration file. This file defines
+  the directory structure to create and the copies to perform to distribute
+  files into the new directory structure. In addition, the file specifies
+  custom tokens that should be substituted in files enabled for filtering.
+  
+  The update attribute of the root install element indicates whether
+  this is a core installation or an add-on module. When set to false or
+  unspecified, the installation requires the removal of an existing target
+  install directory (if present). When update is set to true, the installer
+  preserves any existing directories, adding directories as required and
+  distributing files based on the specified copy pattern.
+-->
+<app-descriptor update="true" id="CSAApp">
+  <custom-tokens>
+    <!-- Template custom token:
+      <token name="MYTOKEN">
+        <prompt-question>What is the value to substitute for token MYTOKEN?</prompt-question>
+        <install-config-option>myToken</install-config-option>
+        <default-value>My Value</default-value>
+      </token>
+      
+      This will instruct the installer to look for the "myToken" option in a specified
+      install config file (if one is specified) or to prompt the user with the specified
+      question to submit a value. If a value is entered/retrieved, the installer will
+      substitute instances of @@MYTOKEN@@ with the value.
+    -->
+    <token name="WORKBENCH_PORT">
+      <prompt-question>Specify the port on which Oracle Commerce Workbench is running: [Default: 8006]</prompt-question>
+      <install-config-option>workbench-port</install-config-option>
+      <default-value>8006</default-value>
+    </token>
+    <token name="DGRAPH_1_PORT">
+      <prompt-question>Specify the port to use for the Live Dgraph: [Default: 15000]</prompt-question>
+      <install-config-option>dgraph1Port</install-config-option>
+      <default-value>15000</default-value>
+    </token>
+    <token name="AUTHORING_DGRAPH_PORT">
+      <prompt-question>Specify the port to use for the Authoring Dgraph: [Default: 15002]</prompt-question>
+      <install-config-option>authoringDgraphPort</install-config-option>
+      <default-value>15002</default-value>
+    </token>
+    <token name="LOGSERVER_PORT">
+      <prompt-question>Specify the port to use for the Log Server Component: [Default: 15010]</prompt-question>
+      <install-config-option>logserverPort</install-config-option>
+      <default-value>15010</default-value>
+    </token>
+    <token name="CAS_ROOT">
+      <prompt-question>Enter the CAS install directory using Unix-style forward slashes, including the version number (e.g. C:/Endeca/CAS/11.3.0)</prompt-question>
+      <install-config-option>casRoot</install-config-option>
+    </token>
+    <token name="CAS_PORT">
+      <prompt-question>Enter the port where CAS is running. [Default: 8500]</prompt-question>
+      <install-config-option>casPort</install-config-option>
+      <default-value>8500</default-value>
+    </token>
+	  <token name="PRODUCTION_APP_SERVER_HOST">
+      <prompt-question>Enter the host name for the server that hosts the Oracle Commerce application. [Default: localhost]</prompt-question>
+      <install-config-option>productionAppServerHost</install-config-option>
+      <default-value>localhost</default-value>
+    </token>
+    <token name="PRODUCTION_APP_SERVER_PORT">
+      <prompt-question>Enter the HTTP port for the server that hosts the Oracle Commerce application.</prompt-question>
+      <install-config-option>productionAppServerPort</install-config-option>
+    </token>
+	  <token name="PREVIEW_HOST">
+      <prompt-question>Enter the host name for the server that hosts the Experience Manager preview application. [Default: localhost]</prompt-question>
+      <install-config-option>previewHost</install-config-option>
+      <default-value>localhost</default-value>
+    </token>
+    <token name="PREVIEW_PORT">
+      <prompt-question>Enter the HTTP port for the server that hosts the Experience Manager preview application.</prompt-question>
+      <install-config-option>previewPort</install-config-option>
+    </token>
+    <token name="PREVIEW_CONTEXT_ROOT">
+      <prompt-question>Enter the context root of the preview application. [Default: csa]</prompt-question>
+      <install-config-option>previewContextRoot</install-config-option>
+      <default-value>csa</default-value>
+    </token>
+    <token name="USER_SEGMENTS_HOST">
+      <prompt-question>Enter the hostname of the user segment server. Oracle recommends using the 
+Publishing server for this purpose. If your environment does not have a 
+Publishing server, enter the Production server host name and refer to the 
+Guided Search Integration Guide for additional configuration requirements. 
+[Default: localhost]</prompt-question>
+      <install-config-option>userSegmentsHost</install-config-option>
+      <default-value>localhost</default-value>
+    </token>
+    <token name="USER_SEGMENTS_PORT">
+      <prompt-question>Enter the HTTP port of the user segment server. Oracle recommends using the 
+Publishing server for this purpose. If your environment does not have a 
+Publishing server, enter the Production server HTTP port and refer to the 
+Guided Search Integration Guide for additional configuration requirements. 
+[Default: 8080]</prompt-question>
+      <install-config-option>userSegmentsPort</install-config-option>
+      <default-value>8080</default-value>
+    </token>
+    <token name="JPSCONFIG_LOCATION">
+      <prompt-question>Specify the path for the Oracle Wallet jps-config.xml file. [Default: ABS_PATH(../../server/workspace/credential_store/jps-config.xml)]</prompt-question>
+      <install-config-option>jpsConfigFileLocation</install-config-option>
+      <default-value>ABS_PATH(../../server/workspace/credential_store/jps-config.xml)</default-value>
+    </token>
+    <token name="APPLICATION_EXPORT_DIRECTORY">
+      <prompt-question>Which directory will application configuration archives be exported to. [Default: ABS_PATH(../../server/workspace/state/repository)]</prompt-question>
+      <install-config-option>applicationConfigExportArchive</install-config-option>
+      <default-value>ABS_PATH(../../server/workspace/state/repository)</default-value>
+    </token>
+    <token name="AUTHORING_APPLICATION_EXPORT_DIRECTORY">
+      <prompt-question>Specify the path for the authoring application configuration to be exported to during publish (use only / for path separator): [Default: ABS_PATH_WITH_UNIX_PATH_SEPARATOR(../../server/workspace/state/generation_data)]</prompt-question>
+      <install-config-option>authoringApplicationExportDirectory</install-config-option>
+      <default-value>ABS_PATH_WITH_UNIX_PATH_SEPARATOR(../../server/workspace/state/generation_data)</default-value>
+    </token>
+    <token name="LANGUAGE_CODE">
+      <prompt-question>Specify the language code for the application. Note that Guided Search uses an extended form of ISO-639 codes for language identification. For a complete list of supported languages and their respective codes, please consult the Guided Search Internationalization Guide. [Default: en]</prompt-question>
+      <install-config-option>language-code</install-config-option>
+      <default-value>en</default-value>
+    </token>
+  </custom-tokens>
+
+  <dir-structure>
+    <!-- Template directory:
+      <dir platform="unix" primary="true"></dir>
+      
+      primary           builds directory only on primary server installs
+      
+      platform          builds directory only on specified platform. Valid 
+                          values: "win" and "unix"
+    -->
+  	<dir>config/mdex</dir>
+  	<dir>config/cas</dir>
+  	<dir>config/script</dir>
+  	<dir>config/report_templates</dir>
+  	<dir>config/lib/java</dir>
+  	<dir>config/ifcr</dir>
+  	<dir>control</dir>
+  	<dir>logs</dir>
+  	<dir>test_data</dir>
+  	<dir>data/workbench/application_export_archive</dir>
+  </dir-structure>
+
+  <copy-pattern src-root=".">
+    <!-- Template copy pattern:
+      <copy clear-dest-dir="true" recursive="true" 
+            preserve-subdirs="true" filter-files="true" 
+            primary="true" platform="win" endeca-version="480">
+        <src-dir></src-dir>
+        <src-file></src-file>
+        <dest-dir></dest-dir>
+      </copy>
+
+      src-dir           source directory, relative to root of deployment
+                          template package.
+      
+      src-file          source filename or pattern (using '*' wildcard
+                          character) to copy from source dir
+      
+      dest-dir          destination directory, relative to root of target
+                          deployment directory.
+            
+      clear-dest-dir    removes all files in target dir before copying
+      
+      recursive         copies files matching pattern in subdirectories
+                          of the specified source dir
+      
+      preserve-subdirs  copies files, preserving dir structure. Only
+                          applicable to recursive copies
+      
+      filter-files      filters file contents and file names by replacing tokens
+                          (format @@TOKEN@@) with specified strings.
+      
+      mode              applies the specified permissions to the files after
+                          the copy. Mode string should be 3 octal digits
+                          with an optional leading zero to indicate octal,
+                          e.g. 755, 0644. Not relevant for Windows deployments.
+      
+      primary           applies copy only to primary server installs
+      
+      platform          applies copy to specified platform. Valid 
+                          values: "win" "unix"
+      
+      endeca-version    applies copy to specified endeca version Valid 
+                          values: "460" "470" "480" "500" "510"
+    -->
+    
+    <!-- Pipeline config -->
+    <copy filter-files="true" clear-dest-dir="true" recursive="true" mode="640">
+      <src-dir>./mdex</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/mdex</dest-dir>
+    </copy>
+    
+    <copy clear-dest-dir="true" preserve-subdirs="true" recursive="true" filter-files="true" mode="640">
+      <src-dir>./ifcr</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/ifcr</dest-dir>
+    </copy>
+
+    <copy clear-dest-dir="true" preserve-subdirs="true" recursive="true" filter-files="true" mode="640">
+      <src-dir>./index_config</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/index_config</dest-dir>
+    </copy>
+
+    <copy preserve-subdirs="true" recursive="true" mode="640">
+      <src-dir>./binary_files/</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/ifcr/media</dest-dir>
+    </copy>
+
+    <copy filter-files="true" clear-dest-dir="true" preserve-subdirs="true" recursive="true">
+      <src-dir>./import</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/import</dest-dir>
+    </copy>
+
+    <copy clear-dest-dir="false" recursive="true" preserve-subdirs="true" filter-files="false" mode="640">
+      <src-dir>./import</src-dir>
+      <src-file>*.{png,gif,jpg,jpeg}</src-file>
+      <dest-dir>./config/import</dest-dir>
+    </copy>
+
+    <!-- Crawl and record store config -->
+    <copy filter-files="true" clear-dest-dir="false" recursive="true" mode="640">
+      <src-dir>./cas</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/cas</dest-dir>
+    </copy>
+
+    <!-- Config Scripts -->
+    <copy filter-files="true" clear-dest-dir="false" recursive="true" mode="640">
+      <src-dir>./script</src-dir>
+      <src-file>*.xml</src-file>
+      <dest-dir>./config/script</dest-dir>
+    </copy>
+
+    <copy filter-files="true" clear-dest-dir="false" recursive="true" mode="640">
+      <src-dir>./script</src-dir>
+      <src-file>*.properties</src-file>
+      <dest-dir>./config/script</dest-dir>
+    </copy>
+
+    <copy filter-files="true" clear-dest-dir="false">
+      <src-dir>./script</src-dir>
+      <src-file>beanshell.imports</src-file>
+      <dest-dir>./config/script</dest-dir>
+    </copy>
+
+    <copy filter-files="true" platform="win">
+      <src-dir>./script/</src-dir>
+      <src-file>set_environment.bat</src-file>
+      <dest-dir>./config/script</dest-dir>
+    </copy>
+
+    <copy filter-files="true" platform="unix" mode="640">
+      <src-dir>./script/</src-dir>
+      <src-file>set_environment.sh</src-file>
+      <dest-dir>./config/script</dest-dir>
+    </copy>
+
+    <!-- Libs -->
+    <copy clear-dest-dir="false" recursive="true" preserve-subdirs="true" filter-files="false">
+      <src-dir>./lib</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/lib/java</dest-dir>
+    </copy>
+    
+    <!-- Control Scripts -->
+    <copy clear-dest-dir="false" recursive="true" preserve-subdirs="false" platform="win" filter-files="true">
+      <src-dir>./control</src-dir>
+      <src-file>*.bat</src-file>
+      <dest-dir>./control</dest-dir>
+    </copy>
+
+    <copy clear-dest-dir="false" recursive="true" preserve-subdirs="false" platform="unix" mode="550" filter-files="true">
+      <src-dir>./control</src-dir>
+      <src-file>*.sh</src-file>
+      <dest-dir>./control</dest-dir>
+    </copy>
+    
+    <!-- Data -->
+    <copy clear-dest-dir="true" recursive="true" preserve-subdirs="true" mode="640">
+    	<src-dir>./test_data</src-dir>
+    	  <src-file>*</src-file>
+    	<dest-dir>./test_data</dest-dir>
+    </copy>
+
+    <!-- Report Templates -->
+    <copy clear-dest-dir="true" recursive="true" preserve-subdirs="true" filter-files="true" mode="640">
+      <src-dir>./report_templates/</src-dir>
+      <src-file>*</src-file>
+      <dest-dir>./config/report_templates</dest-dir>
+    </copy>
+
+  </copy-pattern>
+
+</app-descriptor>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/module_templates/Application/src/main/eac-templates/common/deploy.xml#1 $$Change: 1385662 $-->

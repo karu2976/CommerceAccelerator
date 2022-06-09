@@ -1,0 +1,14 @@
+{
+    "@description": "${template.description}",
+    "@group": "MainContent",
+    "ecr:createDate": "2016-12-06T06:06:16.752-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": []
+    },
+    "typeInfo": {},
+    "defaultContentItem": {"@name": "Order Confirmation"},
+    "locales": {}
+}

@@ -1,0 +1,48 @@
+<form role="form" id="product-detail-form" class="ws-validate" data-bind="submit: addItemToOrder">
+  <!-- ko foreach: skuPickers -->
+    <div class="form-group">    
+      <label class="control-label hidden-xs" data-bind="uniqueFor: type">
+        {{ $component.skuPickerLabel(type) }} *
+      </label>
+      <select class="form-control" data-bind="options: options, value: value, optionsCaption: $component.optionsCaption(type, options), attr: { name: type, id: type }, event: { change: $component.pickerChange }, valueAllowUnset: true, uniqueId: $data.type" required>
+      </select>
+      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      <!-- ko if: $data.helperInformation -->
+        <span class="help-block">
+          <a href="#" data-bypass data-toggle="modal" data-target=".modal.{{type}}">
+            {{ $component.helperInformationText(helperInformation.type) }}
+          </a>
+        </span>
+        <div class="modal fade {{type}}" tabindex="-1" role="dialog" aria-labelledby="additionalInfoModalLabel" aria-hidden="true" data-bind="css: type">
+          <div data-bind="component: {name: type}"></div>
+        </div>
+      <!-- /ko -->
+    </div>
+  <!-- /ko -->
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="control-label hidden-xs" data-bind="uniqueFor: 'quantity'">
+          {{ 'searchAndNavigation.label.quantity' | i18n }} *
+        </label>
+        <input type="number" min="1" max="10000" required name="quantity" class="form-control" data-bind="value: quantity,uniqueId: 'quantity'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <!-- ko if: catalog.selectedSku -->
+        <div class="label csa-sku-status-label" data-bind="css: { 'label-success': selectedSkuStatusStyle() === 1, 'label-danger': selectedSkuStatusStyle() === -1 }">
+          <span class="sr-only">
+            {{ 'searchAndNavigation.label.skuStatus' | i18n }}:&nbsp;
+          </span>
+          {{ selectedSkuStatusMessage }}
+        </div>
+      <!-- /ko -->
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-block csa-btn" id="addToCart" type="submit">
+      {{ 'searchAndNavigation.button.addToCart' | i18n }}
+    </button>
+  </div>
+</form>

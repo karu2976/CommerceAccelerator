@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database-initializer SYSTEM "http://www.atg.com/dtds/dbinit_2_0.dtd">
+<database-initializer>
+
+  <!-- ************************************************************************ -->
+  <!--                     DATABASE EXTENSIONS                                  -->
+  <!-- ************************************************************************ -->
+
+  <!-- CORE SCHEMA -->
+  <schema id="coreSchema">
+
+    <!-- Order -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_order_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_order_ddl.sql
+        </drop>
+      </path>
+    </sql>
+
+    <!-- Profile -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_profile_ddl.sql
+        </create>
+        <drop></drop>
+      </path>
+    </sql>
+  </schema>
+  
+  <!-- VERSIONED SCHEMA -->
+  <schema id="versionedSchema">
+  <!-- Order -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_order_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_order_ddl.sql
+        </drop>
+      </path>
+    </sql>
+
+    <!-- Profile -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_profile_ddl.sql
+        </create>
+        <drop></drop>
+      </path>
+    </sql>
+
+    <repository-loader post-cleanup="true">
+      <files>
+        <src-module>CommerceAccelerator.Applications.B2CStore.NoPublishing</src-module>
+        <config-path>atg/registry/Slots</config-path>
+        <file-pattern>*.properties</file-pattern>
+      </files>
+      <file-mapping>/atg/epub/file/typemappers/SlotTypeMapping</file-mapping>
+      <folder-mapping>/atg/epub/file/typemappers/FileFolderTypeMapping</folder-mapping>
+    </repository-loader>
+
+    <repository-loader post-cleanup="true">
+      <files>
+        <src-module>CommerceAccelerator.Applications.B2CStore.NoPublishing</src-module>
+        <config-path>atg/registry/RepositoryTargeters/ProductCatalog</config-path>
+        <file-pattern>*.properties</file-pattern>
+      </files>
+      <file-mapping>/atg/epub/file/typemappers/TargeterTypeMapping</file-mapping>
+      <folder-mapping>/atg/epub/file/typemappers/FileFolderTypeMapping</folder-mapping>
+    </repository-loader>
+
+    <repository-loader post-cleanup="true">
+      <files>
+        <src-module>CommerceAccelerator.Applications.B2CStore.NoPublishing</src-module>
+        <config-path>atg/registry/RepositoryTargeters/MediaContent</config-path>
+        <file-pattern>*.properties</file-pattern>
+      </files>
+      <file-mapping>/atg/epub/file/typemappers/TargeterTypeMapping</file-mapping>
+      <folder-mapping>/atg/epub/file/typemappers/FileFolderTypeMapping</folder-mapping>
+    </repository-loader>
+    
+    <repository-loader post-cleanup="true">
+      <files>
+        <src-module>CommerceAccelerator.Applications.B2CStore.NoPublishing</src-module>
+        <config-path>atg/registry/data/scenarios/store/homepage</config-path>
+        <file-pattern>*.sdl</file-pattern>
+      </files>
+      <file-mapping>/atg/epub/file/typemappers/ScenarioTypeMapping</file-mapping>
+      <folder-mapping>/atg/epub/file/typemappers/FileFolderTypeMapping</folder-mapping>
+    </repository-loader>  
+  </schema>
+
+  <!-- CATALOG SCHEMA -->
+  <schema id="catalogSchema">
+
+    <!-- Catalog -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_catalog_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_catalog_ddl.sql
+        </drop>
+      </path>
+    </sql>
+
+    <!-- Promotions -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_promotion_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_promotion_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+  
+  <!-- SEO SCHEMA -->
+  <schema id="seoSchema">
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_seo_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_seo_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+
+  <!-- MULTISITE SCHEMA -->
+  <schema id="multiSiteSchema">
+    <!-- 
+      This empty schema is present to avoid errors citing a missing multiSiteSchema appearing 
+      in the CIM log during schema creation.  The actual contents of the versioned schema 
+      should be defined in the application and will then be merged in during CIM processing.
+    -->
+  </schema>
+
+  <schema id="contentManagementSchema">
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/csa_content_mgmt_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_csa_content_mgmt_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+
+  <!-- ************************************************************************ -->
+  <!--                           SAMPLE DATA                                    -->
+  <!-- ************************************************************************ -->
+
+  <!--
+    NONSWITCHING SCHEMA - Both full data import and basic.
+  -->
+  <schema id="nonswitchCoreSchema">
+
+    <!-- catalog -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/catalog.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-catalog.xml</import-file-path>
+    </data-import>
+
+    <!-- inventory -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" mergeable="false">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/inventory/InventoryRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/inventory.xml</import-file-path>
+    </data-import>
+
+    <!-- pricelists -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/pricing/priceLists/PriceLists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/pricelists.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <repository-path>/atg/commerce/pricing/priceLists/PriceLists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-pricelists.xml</import-file-path>
+    </data-import>
+
+    <!-- wishlists -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/gifts/Giftlists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/wishlists.xml</import-file-path>
+    </data-import>
+
+    <!-- users -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/userprofiling/ProfileAdapterRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/users.xml</import-file-path>
+    </data-import>
+
+    <!-- sites -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/sites.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-sites.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="endeca"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/sites-endeca-assembler.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <requires-addon-id id="endeca"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-sites-endeca-assembler.xml</import-file-path>
+    </data-import>
+
+    <!-- promotions -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/promotions.xml</import-file-path>
+    </data-import>
+
+    <!-- orders -->
+    <data-import start-up-module="DCS.AbandonedOrderServices,CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/order/OrderRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/orders.xml</import-file-path>
+    </data-import>
+
+    <!-- claimable -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/claimable/ClaimableRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/claimable.xml</import-file-path>
+    </data-import>
+
+    <!-- SEO Tags -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/seo/SEORepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/seotags.xml</import-file-path>
+    </data-import>
+
+    <!-- Media Content -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/content/ContentManagementRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/content-mgmt.xml</import-file-path>
+    </data-import>
+  </schema>
+
+  <!--
+    SWITCHING SCHEMA - Both full data import and basic.
+  -->
+  <schema id="switchingCoreSchema">
+    <!--
+      Currently there are no imports in here. If we need to modify the core
+      schema in a switching setup then the imports will go in here.
+    -->
+  </schema>
+
+  <schema id="switchingSchema">
+
+    <!-- pricelists -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/pricing/priceLists/PriceLists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/pricelists.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/pricing/priceLists/PriceLists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-pricelists.xml</import-file-path>
+    </data-import>
+
+    <!-- catalog -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/catalog.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-catalog.xml</import-file-path>
+    </data-import>
+
+    <!-- sites -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/sites.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-sites.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <requires-addon-id id="endeca"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/sites-endeca-assembler.xml</import-file-path>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <requires-addon-id id="endeca"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-sites-endeca-assembler.xml</import-file-path>
+    </data-import>
+
+    <!-- promotions -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/promotions.xml</import-file-path>
+    </data-import>
+
+    <!-- inventory -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore" mergeable="false">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/inventory/InventoryRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/inventory.xml</import-file-path>
+    </data-import>
+
+    <!-- wishlists -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/gifts/Giftlists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/wishlists.xml</import-file-path>
+    </data-import>
+
+    <!-- users -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/userprofiling/ProfileAdapterRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/users.xml</import-file-path>
+    </data-import>
+
+    <!-- orders -->
+    <data-import start-up-module="DCS.AbandonedOrderServices,CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/order/OrderRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/orders.xml</import-file-path>
+    </data-import>
+
+    <!-- claimable -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/commerce/claimable/ClaimableRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/claimable.xml</import-file-path>
+    </data-import>
+
+    <!-- SEO Tags -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="switchingdatasource"/>
+      <repository-path>/atg/seo/SEORepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/seotags.xml</import-file-path>
+    </data-import>
+
+    <!-- Media Content -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore" required-datasources="switchingCore">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/content/ContentManagementRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/content-mgmt.xml</import-file-path>
+    </data-import>
+  </schema>
+
+  <!-- ****************************************************************** -->
+  <!--                SERVER INSTANCE CONFIGURATION                       -->
+  <!--                                                                    -->
+  <!--   The datasources below are "named datasources" defined in         -->
+  <!--   commerce and platform.                                           -->
+  <!-- ****************************************************************** -->
+
+  <!-- Production -->
+  <server-instance-type id="production">
+
+    <!-- Non switching -->
+    <datasource id="nonswitchingCore">
+      <schema id="coreSchema" />
+      <schema id="catalogSchema" />
+      <schema id="multiSiteSchema" />
+      <schema id="seoSchema" />
+      <schema id="nonswitchCoreSchema"/>
+      <schema id="contentManagementSchema"/>
+    </datasource>
+
+    <!-- Switching -->
+    <datasource id="switchingCore">
+      <schema id="coreSchema" />
+      <schema id="switchingCoreSchema" />
+    </datasource>
+
+    <datasource id="switchingA">
+      <schema id="catalogSchema" />
+      <schema id="multiSiteSchema" />
+      <schema id="seoSchema" />
+      <schema id="switchingSchema" />
+      <schema id="contentManagementSchema"/>
+    </datasource>
+
+    <datasource id="switchingB">
+      <schema id="catalogSchema" />
+      <schema id="multiSiteSchema" />
+      <schema id="seoSchema" />
+      <schema id="switchingSchema" />
+      <schema id="contentManagementSchema"/>
+    </datasource>
+
+  </server-instance-type>
+
+  <!-- Staging -->
+  <server-instance-type id="staging">
+
+    <!-- Non switching -->
+    <datasource id="stagingnonswitchingCore">
+      <schema id="coreSchema" />
+      <schema id="catalogSchema" />
+      <schema id="multiSiteSchema" />
+      <schema id="seoSchema" />
+      <schema id="nonswitchCoreSchema"/>
+      <schema id="contentManagementSchema"/>
+    </datasource>
+
+    <!-- Switching -->
+    <datasource id="stagingswitchingCore">
+      <schema id="coreSchema" />
+      <schema id="switchingCoreSchema" />
+    </datasource>
+
+    <datasource id="stagingswitchingA">
+      <schema id="catalogSchema" />
+      <schema id="multiSiteSchema" />
+      <schema id="seoSchema" />
+      <schema id="switchingSchema" />
+      <schema id="contentManagementSchema"/>
+    </datasource>
+
+    <datasource id="stagingswitchingB">
+      <schema id="catalogSchema" />
+      <schema id="multiSiteSchema" />
+      <schema id="seoSchema" />
+      <schema id="switchingSchema" />
+      <schema id="contentManagementSchema"/>
+    </datasource>
+
+  </server-instance-type>
+  
+  <!-- Versioned -->
+  <server-instance-type id="management">
+
+    <datasource id="management">
+      <schema id="versionedSchema" />
+    </datasource>
+
+  </server-instance-type>
+
+</database-initializer>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/cim/dbinit.xml#1 $$Change: 1385662 $-->

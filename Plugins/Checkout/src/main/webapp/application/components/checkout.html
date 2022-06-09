@@ -1,0 +1,52 @@
+<h2>{{ 'checkout.heading.checkout' | i18n }}</h2>
+<div class="row">
+  <!-- ko if: order.commerceItems().length > 0 -->
+    <div class="col-sm-6">
+      <div class="panel-group" id="{{ checkoutDetails.accordionId }}">
+        <!-- ko with: shippingAddressSelector -->
+          <div data-bind="component: $data" class="panel panel-default"></div>
+        <!-- /ko -->
+        <!-- ko with: shippingMethodSelector -->
+          <div data-bind="component: $data" class="panel panel-default"></div>
+        <!-- /ko -->
+        <!-- ko with: paymentMethodSelector -->
+          <div data-bind="component: $data" class="panel panel-default"></div>
+        <!-- /ko -->
+        <!-- ko with: billingAddressSelector -->
+          <div data-bind="component: $data" class="panel panel-default"></div>
+        <!-- /ko -->
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div data-bind="uniqueId: 'orderSummary'">
+        <!-- ko with: orderSummary -->
+          <div data-bind="component: $data"></div>
+        <!-- /ko -->
+        <!-- ko with: couponEditor -->
+          <div data-bind="component: $data"></div>
+        <!-- /ko -->
+      </div>
+      <div class="csa-v-offset-10">
+        <button type="submit" class="btn btn-block csa-btn" 
+          data-bind="click: placeOrder, enable: checkoutDetails.allCheckoutStepsValid" >{{ 'checkout.button.placeOrder' | i18n }}</button>
+      </div>
+
+      <div class="text-center csa-v-offset-10 clearfix">
+          <a class="col-sm-6" href="#" data-bind="click: cancelOrder, clickBubble: false">{{ 'checkout.link.cancel' | i18n }}</a>
+          <a class="col-sm-6" href="cart">{{ 'checkout.link.editCart' | i18n }}</a>
+      </div>
+
+      <!-- ko with: checkoutCartSummary -->
+        <div data-bind="component: $data" class="csa-v-offset-10 clearfix"></div>
+      <!-- /ko -->
+    </div>
+  <!-- /ko -->
+  
+  <!-- ko ifnot: restCallInProgress -->
+    <!-- ko ifnot: order.commerceItems().length -->
+      <div class="alert alert-info">
+        {{ 'checkout.alert.emptyCart' | i18n }}
+      </div>
+    <!-- /ko -->
+  <!-- /ko -->
+</div>

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+ATG-Config-Path: build/libs/config/config.jar
+ATG-Required: DCS-CSR CommerceAccelerator.Applications.B2CStore.Base Com
+ merceAccelerator.Applications.B2CStore.Plugins

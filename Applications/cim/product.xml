@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE product SYSTEM "http://www.atg.com/dtds/product_1_0.dtd">
+
+<product id="commerce_accelerator" extends="commerce">
+  
+  <!--
+   TITLE:
+  
+   This is what will appear in the main CIM menu.
+  --> 
+  <title resource-key="product.csa.title" resource-bundle="atg.cim.ProductResources">
+    Oracle Commerce Store Accelerator
+  </title>
+  <detail resource-key="product.csa.detail" resource-bundle="atg.cim.ProductResources">
+    Provides re-useable components, a sample store and code to accelerate development of an Oracle Commerce Store.
+  </detail>
+  
+  <!-- 
+    REQUIRED PRODUCTS & ADDONS:
+    
+    Identifies a product or add-on as required; it will automatically be selected.
+  -->
+  <requires-addon-id id="merch"/>
+  <product-id-required id ="siteadmin"/>
+  <product-id-required id="endeca"/>
+
+  <!-- 
+    INCOMPATIBLE PRODUCTS & ADDONS:
+     
+    Identifies a product or addon as incompatible with this product. If the user selects both, CIM displays an error.
+  -->
+  <incompatible-product-id id="store"/>
+  <incompatible-addon-id id="motorpriseJSP"/>
+
+  <!--
+     PRODUCT ADDONS:
+
+     Defines a csa_stores group used to. 1 addon must be selected.
+   -->
+  <product-addon-group id="csa_stores" max-occurs="1">
+    <title resource-key="csa.stores.addon.group" resource-bundle="atg.cim.ProductResources">
+      Select a Storefront.
+    </title>
+
+    <product-addon id="csa_b2c_store">
+      <title resource-key="csa.b2c.store.title" resource-bundle="atg.cim.ProductResources">
+        B2C Store
+      </title>
+      <modify-server-instance-type id="production">
+        <append-module name="CommerceAccelerator.Applications.B2CStore"/>
+      </modify-server-instance-type>
+      <modify-server-instance-type id="staging">
+        <append-module name="CommerceAccelerator.Applications.B2CStore"/>
+      </modify-server-instance-type>
+      <modify-server-instance-type id="management">
+        <append-module name="CommerceAccelerator.Applications.B2CStore"/>
+        <append-module name="CommerceAccelerator.Applications.B2CStore.Versioned"/>
+      </modify-server-instance-type>
+      <modify-server-instance-type id="externalpreview">
+        <append-module name="CommerceAccelerator.Applications.B2CStore"/>
+        <append-module name="CommerceAccelerator.Applications.B2CStore.Versioned"/>
+      </modify-server-instance-type>
+    </product-addon>
+  </product-addon-group>
+  
+  <product-addon-group id="endeca_preview_staging">
+    <title>Experience Manager Preview Options Selection For Staging</title>
+    <requires-product-addon id="staging"/>
+    <requires-product-addon id="endeca"/>
+    <!-- Endeca preview configlayer addition -->
+    <product-addon id="endecapreview_staging">
+      <title resource-key="">Configure Experience Manager Preview to run on the Staging Server</title>
+      <modify-server-instance id="basic_staging">
+        <add-appassembler-option name="layer" value="EndecaPreview"/>
+      </modify-server-instance>
+      <modify-server-instance id="staging_db">
+        <add-appassembler-option name="layer" value="EndecaPreview"/>
+      </modify-server-instance>
+    </product-addon>
+  </product-addon-group>
+
+  <product-addon-group id="endeca_preview_production">
+    <title>Experience Manager Preview Options Selection For Production</title>
+    <requires-product-addon id="endeca"/>
+    <!-- Endeca preview configlayer addition -->
+    <product-addon id="endecapreview_production">
+      <title resource-key="">Configure Experience Manager Preview to run on the Production Server. Use this option in development or evaluation environments only. Do not use it for an actual production system.</title>
+      <modify-server-instance id="basic_production">
+        <add-appassembler-option name="layer" value="EndecaPreview"/>
+      </modify-server-instance>
+      <modify-server-instance id="production_lock">
+        <add-appassembler-option name="layer" value="EndecaPreview"/>
+      </modify-server-instance>
+    </product-addon>
+  </product-addon-group>
+
+  <!--
+    B2C DATA ADDONS:
+
+    Defines the (sample) data addon options.
+   -->
+  <product-addon-group id="csa_b2c_data" min-occurs="1" max-occurs="1">
+    <title>Choose Sample Data Configuration:</title>
+    <requires-product-addon id="csa_b2c_store"/>
+
+    <product-addon id="b2cstore_data_full">
+      <title resource-key="">Full</title>
+      <detail resource-key="">Populated product catalog, users, orders, promotions, etc.</detail>
+    </product-addon>
+
+    <product-addon id="b2cstore_data_basic">
+      <title resource-key="">Minimal</title>
+      <detail resource-key="">Empty product catalog and minimum data required for startup</detail>
+    </product-addon>
+  </product-addon-group>
+  
+  <!-- Automatically add CSC setup if CSC and Commerce CSC options selected -->
+  <product-addon-group id="dcs-csr" min-occurs="1" max-occurs="1">
+    <title>DCS-CSR</title>
+    <product-id-required id="commerceservicecenter" />
+    <product-addon id="dcs-csr">
+      <title resource-key="dcs-csr">DCS-CSR</title>
+
+      <modify-server-instance-type id="svcagent">
+        <prepend-module name="CommerceAccelerator.Applications.B2CStore"/>
+        <append-module name="DCS.PublishingAgent"/>
+        <append-module name="CommerceAccelerator.Applications.B2CStore.DCS-CSR"/>
+      </modify-server-instance-type>
+    </product-addon>
+  </product-addon-group>
+
+  <!-- 
+    Server instance configuration.
+    
+    Here we configure which additional modules we want to run on our servers as
+    well as additional configuration.  
+  -->
+  
+  <!--  
+    Production Server configuration
+  -->
+  <server-instance-type id="production" >
+
+    <append-module name="DCS.AbandonedOrderServices"/>
+    <append-module name="CommerceAccelerator.Base"/>
+
+    <config-directory>
+      <property-file file="moduleList.properties">
+        <property-group id="base">
+          <property name="modules">
+            <value>${ServerInstanceType[production].calculatedModuleString}</value>
+          </property>
+        </property-group>
+      </property-file>
+      
+      <property-file file="/atg/commerce/catalog/ProductCatalog.properties">
+        <property-group id="nonswitching">
+          <requires-addon-id id="nonswitchingdatasource"/>
+          <property name="dataSource">
+            <value>/atg/dynamo/service/jdbc/JTDataSource</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/commerce/pricing/priceLists/PriceLists.properties">
+        <property-group id="nonswitching">
+          <requires-addon-id id="nonswitchingdatasource"/>
+          <property name="dataSource">
+            <value>/atg/dynamo/service/jdbc/JTDataSource</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="atg/dynamo/service/jdbc/DirectJTDataSource.properties">
+        <property-group id="base">
+          <property name="className">
+            <value>atg.nucleus.JNDIReference</value>
+          </property>
+        </property-group>
+        <property-group id="nonswitching">
+          <requires-addon-id id="nonswitchingdatasource"/>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[nonswitchingCore].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+        <property-group id="switching">
+          <requires-addon-id id="switchingdatasource"/>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[switchingCore].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <!-- Endeca related configuration -->
+      <property-file file="/atg/endeca/assembler/AssemblerApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="assemblerContentBaseDirectory" persist-key="AssemblerContentBaseDirectory">
+            <input type="text">
+              <label resource-key="label.enter.assemblerContentBaseDirectory" resource-bundle="atg.cim.ProductResources">
+                Enter the path for zip files created by the EAC applications during Application Export (e.g C:/Endeca/ToolsAndFrameworks/11.3.0/server/workspace/application_export_archive)
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application export archive directory cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/ApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="applicationKeyToMdexHostAndPort" persist-key="AppKeyToMdexHostAndPort">
+            <value>en=localhost:15000,es=localhost:16000,de=localhost:17000</value>
+            <input type="text">
+              <label resource-key="label.enter.keyToMdexHostAndPort" resource-bundle="atg.cim.ProductResources">
+                Enter the mapping between application key and MDEX host:port
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application key to mdex host and port mapping cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/assembler/cartridge/manager/DefaultFileStoreFactory.properties">
+        <property-group id="endeca">
+          <property name="configurationPath" persist-key="defaultEACConfigurationPath">
+            <input type="text">
+              <label resource-key="label.enter.defaultEACConfigurationPath" resource-bundle="atg.cim.ProductResources">
+                Enter the application configuration archive path for the default EAC app (e.g. C:/Endeca/ToolsAndFrameworks/11.3.0/server/workspace/application_export_archive/CSAen).
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application configuration archive path cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+	  
+    </config-directory>
+
+    <!--  
+      Optional configuration for the creation of EAC apps via CIM
+    -->
+    <optional-config-directory id="endeca-deploy">
+      <title>Deploy CSA EAC Application</title>
+
+      <step id="CSAEndecaDeployConfigStep">
+        <title>EAC Application Deployment Type</title>
+        <navoption id="endecaPreview">
+          <label>EAC Application Configuration with Experience Manager Preview</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="noEndecaPreview">
+          <label>EAC Application Configuration without Experience Manager Preview</label>
+          <command type="GOTO_STEP" value="CSAEndecaDeployNoPreviewStep"/>
+        </navoption>
+      </step>
+
+      <!-- Steps for Endeca Application configuration with Experience Manager Preview  -->
+      <step id="CSAEndecaDeployStep">
+        <title>Deploy CSA EAC Application</title>
+        <task id="EndecaCSADeployConfigWriterTask"/>
+        <task id="CSAEndecaDeployTask"/>
+        <navoption id="deploy">
+          <label>Deploy</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="NEXT_STEP"/>
+        </navoption>
+      </step>
+      
+      <step id="InitializeCSAEndecaAppStep">
+        <title>Initialize CSA EAC Application</title>
+        <task id="EndecaInitializeTask"/>
+        <navoption id="deploy">
+          <label>Initialize</label>
+          <command type="EXECUTE_STEP_TASKS"/>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+      </step>
+
+      <!-- Steps for Endeca App configuration without Experience Manager Preview  -->
+      <step id="CSAEndecaDeployNoPreviewStep">
+        <title>Deploy CSA EAC Application</title>
+        <task id="EndecaCSADeployNoPreviewConfigWriterTask"/>
+        <task id="CSAEndecaNoPreviewDeployTask"/>
+        <navoption id="deploy">
+          <label>Deploy</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="NEXT_STEP"/>
+        </navoption>
+      </step>
+      
+      <step id="InitializeCSAEndecaAppNoPreviewStep">
+        <title>Initialize CSA EAC Application</title>
+        <task id="EndecaInitializeNoPreviewTask"/>
+        <navoption id="deploy">
+          <label>Initialize</label>
+          <command type="EXECUTE_STEP_TASKS"/>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+      </step>
+
+      <step id="FinishedDeploy">
+        <validator id="AlwaysTrueValidator" phase="PRESTEP">
+          <if-true>
+            <command type="NEXT_STEP" />
+          </if-true>
+        </validator>
+      </step>
+    </optional-config-directory>  
+  </server-instance-type>
+
+  <!--
+    Staging Server configuration
+  -->
+  <server-instance-type id="staging" >
+
+    <append-module name="DCS.AbandonedOrderServices"/>
+    <append-module name="CommerceAccelerator.Base"/>
+
+    <config-directory>
+
+      <property-file file="/atg/commerce/catalog/ProductCatalog.properties">
+        <property-group id="base">
+          <property name="dataSource">
+            <value>/atg/dynamo/service/jdbc/JTDataSource</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/commerce/pricing/priceLists/PriceLists.properties">
+        <property-group id="base">
+          <property name="dataSource">
+            <value>/atg/dynamo/service/jdbc/JTDataSource</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/multisite/DefaultSiteRuleFilter.properties">
+        <property-group id="basic-setup">
+          <requires-addon-id id="b2cstore_data_basic"/>
+          <property name="defaultSiteId">
+            <value>basicSite</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <!-- Endeca related configuration -->
+      <property-file file="/atg/endeca/assembler/AssemblerApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="assemblerContentBaseDirectory" persist-key="AssemblerContentBaseDirectory">
+            <input type="text">
+              <label resource-key="label.enter.assemblerContentBaseDirectory" resource-bundle="atg.cim.ProductResources">
+                Enter the path for zip files created by the EAC application(s) during Application Export
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application export archive directory cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/ApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="applicationKeyToMdexHostAndPort" persist-key="AppKeyToMdexHostAndPort">
+            <value>en=localhost:15000,es=localhost:16000,de=localhost:17000</value>
+              <input type="text">
+                <label resource-key="label.enter.keyToMdexHostAndPort" resource-bundle="atg.cim.ProductResources">
+                  Enter the mapping between application key and MDEX host:port
+                </label>
+                <validator id="CannotBeBlankValidator">
+                  <error-message>The application key to mdex host and port mapping cannot be blank</error-message>
+                </validator>
+              </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/assembler/cartridge/manager/DefaultFileStoreFactory.properties">
+        <property-group id="endeca">
+          <property name="configurationPath" persist-key="defaultEACConfigurationPath">
+            <input type="text">
+              <label resource-key="label.enter.defaultEACConfigurationPath" resource-bundle="atg.cim.ProductResources">
+                Enter the application configuration archive path for the default EAC app (e.g. C:/Endeca/ToolsAndFrameworks/11.3.0/server/workspace/application_export_archive/CSAen).
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application configuration archive path cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/commerce/endeca/index/ProductCatalogSimpleIndexingAdmin.properties">
+        <property-group id="endeca">
+          <requires-addon-id id="endeca" />
+          <property name="phaseToPrioritiesAndTasks">
+            <value>\
+              PreIndexing=5:CategoryTreeService,\
+              RepositoryExport=10:\
+              SchemaExporter;\
+              CategoryToDimensionOutputConfig_staging;\
+              RepositoryTypeDimensionExporter;\
+              /atg/commerce/search/ProductCatalogOutputConfig_staging;\
+              PriceDimensionValueExporter,\
+              EndecaIndexing=15:EndecaScriptService
+            </value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/commerce/endeca/index/PriceDimensionValueExporter.properties">
+        <property-group id="endeca">
+          <requires-addon-id id="endeca" />
+            <property name="indexingOutputConfig">
+              <value>
+                /atg/commerce/search/ProductCatalogOutputConfig_staging
+              </value>
+            </property>
+        </property-group>
+      </property-file>
+
+    </config-directory>
+
+    <!--  
+      Optional configuration for the creation of EAC apps via CIM
+    -->
+    <optional-config-directory id="endeca-deploy">
+      <title>Deploy CSA EAC Application</title>
+
+      <step id="CSAEndecaDeployConfigStep">
+        <title>EAC App Deployment Type</title>
+        <navoption id="endecaPreview">
+          <label>EAC App Configuration with Experience Manager Preview</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="noEndecaPreview">
+          <label>EAC App Configuration without Experience Manager Preview</label>
+          <command type="GOTO_STEP" value="CSAEndecaDeployNoPreviewStep"/>
+        </navoption>
+      </step>
+
+      <!-- Steps for Endeca App configuration with Experience Manager Preview  -->
+      <step id="CSAEndecaDeployStep">
+        <title>Deploy CSA EAC App</title>
+        <task id="EndecaCSADeployConfigWriterTask"/>
+        <task id="CSAEndecaDeployTask"/>
+        <navoption id="deploy">
+          <label>Deploy</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="NEXT_STEP"/>
+        </navoption>
+      </step>
+      
+      <step id="InitializeCSAEndecaAppStep">
+        <title>Initialize CSA EAC App</title>
+        <task id="EndecaInitializeTask"/>
+        <navoption id="deploy">
+          <label>Initialize</label>
+          <command type="EXECUTE_STEP_TASKS"/>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+      </step>
+
+      <!-- Steps for Endeca App configuration without Experience Manager Preview  -->
+      <step id="CSAEndecaDeployNoPreviewStep">
+        <title>Deploy CSA EAC App</title>
+        <task id="EndecaCSADeployNoPreviewConfigWriterTask"/>
+        <task id="CSAEndecaNoPreviewDeployTask"/>
+        <navoption id="deploy">
+          <label>Deploy</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="NEXT_STEP"/>
+        </navoption>
+      </step>
+      
+      <step id="InitializeCSAEndecaAppNoPreviewStep">
+        <title>Initialize CSA EAC App</title>
+        <task id="EndecaInitializeNoPreviewTask"/>
+        <navoption id="deploy">
+          <label>Initialize</label>
+          <command type="EXECUTE_STEP_TASKS"/>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+      </step>
+
+      <step id="FinishedDeploy">
+        <validator id="AlwaysTrueValidator" phase="PRESTEP">
+          <if-true>
+            <command type="NEXT_STEP" />
+          </if-true>
+        </validator>
+      </step>
+    </optional-config-directory>
+  </server-instance-type>
+  
+  <!-- 
+    Management (Publishing) Server configuration
+  -->
+  <server-instance-type id="management">
+
+    <append-module name="DCS-UI"/>
+    <append-module name="CommerceAccelerator.Base.Versioned"/>
+
+    <config-directory>
+      <property-file file="/atg/dynamo/service/jdbc/DirectJTDataSource.properties">
+        <property-group id="base">
+          <property name="className">
+            <value>atg.nucleus.JNDIReference</value>
+          </property>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[management].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+      </property-file>
+      <property-file file="/atg/dynamo/service/jdbc/DirectJTDataSource_production.properties">
+        <property-group id="base">
+          <property name="className">
+            <value>atg.nucleus.JNDIReference</value>
+          </property>
+        </property-group>
+        <property-group id="nonswitching">
+          <requires-addon-id id="nonswitchingdatasource"/>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[nonswitchingCore].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+        <property-group id="switching">
+          <requires-addon-id id="switchingdatasource"/>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[switchingCore].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+      </property-file>
+      <property-file file="/atg/dynamo/service/jdbc/DirectJTDataSource_staging.properties">
+        <property-group id="staging">
+          <requires-addon-id id="staging"/>
+          <property name="className">
+            <value>atg.nucleus.JNDIReference</value>
+          </property>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[stagingnonswitchingCore].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/commerce/pricing/priceLists/PriceLists_production.properties">
+        <property-group id="nonswitching">
+          <requires-addon-id id="nonswitchingdatasource"/>
+          <property name="dataSource">
+            <value>/atg/dynamo/service/jdbc/JTDataSource_production</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/commerce/catalog/ProductCatalog_production.properties">
+        <property-group id="basic">
+          <requires-addon-id id="nonswitchingdatasource"/>
+          <property name="dataSource">
+            <value>/atg/dynamo/service/jdbc/JTDataSource_production</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="moduleList.properties">
+        <property-group id="base">
+          <property name="modules">
+            <value>${ServerInstanceType[management].calculatedModuleString}</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/dynamo/service/preview/Localhost.properties">
+        <property-group id="base">
+          <requires-addon-id id="preview"/>
+          <property name="hostName">
+            <value>localhost</value>
+            <input type="text">
+              <label>Enter Local Preview Hostname</label>
+              <validator id="NoWhiteSpaceInputValidator">
+                <error-message>Hostname cannot contain whitespace</error-message>
+              </validator>
+            </input>
+          </property>
+          <property name="port">
+            <value>${AppServerPortsProvider.siteHttpPort}</value>
+            <input type="text">
+              <label>Enter Local Preview Host Port</label>
+              <validator id="PortNumberInputValidator">
+                <error-message>Invalid port number</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <!-- Endeca related configuration -->
+      <property-file file="/atg/endeca/assembler/AssemblerApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="assemblerContentBaseDirectory" persist-key="AssemblerContentBaseDirectory">
+            <input type="text">
+              <label resource-key="label.enter.assemblerContentBaseDirectory" resource-bundle="atg.cim.ProductResources">
+                Enter the path for zip files created by the EAC applications during Application Export
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application export archive directory cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/ApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="applicationKeyToMdexHostAndPort" persist-key="AppKeyToMdexHostAndPort">
+            <value>en=localhost:15000,es=localhost:16000,de=localhost:17000</value>
+            <input type="text">
+              <label resource-key="label.enter.keyToMdexHostAndPort" resource-bundle="atg.cim.ProductResources">
+                Enter the mapping between application key and MDEX host:port
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application key to mdex host and port mapping cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/assembler/cartridge/manager/DefaultFileStoreFactory.properties">
+        <property-group id="endeca">
+          <property name="configurationPath" persist-key="defaultEACConfigurationPath">
+            <input type="text">
+              <label resource-key="label.enter.defaultEACConfigurationPath" resource-bundle="atg.cim.ProductResources">
+                Enter the application configuration archive path for the default EAC app (e.g. C:/Endeca/ToolsAndFrameworks/11.3.0/server/workspace/application_export_archive/CSAen).
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application configuration archive path cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+    </config-directory>
+
+    <!--  
+      Optional configuration for the creation of EAC apps via CIM
+    -->
+    <optional-config-directory id="endeca-deploy">
+      <title>Deploy CSA EAC Application</title>
+
+      <step id="CSAEndecaDeployConfigStep">
+        <title>EAC App Deployment Type</title>
+        <navoption id="endecaPreview">
+          <label>EAC App Configuration with Experience Manager Preview</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="noEndecaPreview">
+          <label>EAC App Configuration without Experience Manager Preview</label>
+          <command type="GOTO_STEP" value="CSAEndecaDeployNoPreviewStep"/>
+        </navoption>
+      </step>
+
+      <!-- Steps for Endeca App configuration with Experience Manager Preview  -->
+      <step id="CSAEndecaDeployStep">
+        <title>Deploy CSA EAC App</title>
+        <task id="EndecaCSADeployConfigWriterTask"/>
+        <task id="CSAEndecaDeployTask"/>
+        <navoption id="deploy">
+          <label>Deploy</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="NEXT_STEP"/>
+        </navoption>
+      </step>
+      
+      <step id="InitializeCSAEndecaAppStep">
+        <title>Initialize CSA EAC App</title>
+        <task id="EndecaInitializeTask"/>
+        <navoption id="deploy">
+          <label>Initialize</label>
+          <command type="EXECUTE_STEP_TASKS"/>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+      </step>
+
+      <!-- Steps for Endeca App configuration without Experience Manager Preview  -->
+      <step id="CSAEndecaDeployNoPreviewStep">
+        <title>Deploy CSA EAC App</title>
+        <task id="EndecaCSADeployNoPreviewConfigWriterTask"/>
+        <task id="CSAEndecaNoPreviewDeployTask"/>
+        <navoption id="deploy">
+          <label>Deploy</label>
+          <command type="EXECUTE_NEXT"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="NEXT_STEP"/>
+        </navoption>
+      </step>
+      
+      <step id="InitializeCSAEndecaAppNoPreviewStep">
+        <title>Initialize CSA EAC App</title>
+        <task id="EndecaInitializeNoPreviewTask"/>
+        <navoption id="deploy">
+          <label>Initialize</label>
+          <command type="EXECUTE_STEP_TASKS"/>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+        <navoption id="skip">
+          <label>Skip</label>
+          <command type="GOTO_STEP" value="FinishedDeploy"/>
+        </navoption>
+      </step>
+
+      <step id="FinishedDeploy">
+        <validator id="AlwaysTrueValidator" phase="PRESTEP">
+          <if-true>
+            <command type="NEXT_STEP" />
+          </if-true>
+        </validator>
+      </step>
+    </optional-config-directory>
+  </server-instance-type>
+  
+  <!-- 
+    External Preview Server configuration
+  -->    
+  <server-instance-type id="externalpreview">
+    <append-module name="CommerceAccelerator.Applications.B2CStore.Versioned"/>
+    <config-directory>
+      <property-file file="/atg/dynamo/service/jdbc/DirectJTDataSource.properties">
+        <property-group id="base">
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[management].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+      </property-file>
+      <property-file file="/atg/dynamo/service/jdbc/DirectJTDataSource_production.properties">
+        <property-group id="base">
+          <property name="className">
+            <value>atg.nucleus.JNDIReference</value>
+          </property>
+        </property-group>
+      </property-file>
+      <property-file file="/atg/dynamo/service/jdbc/DirectJTDataSource_staging.properties">
+        <property-group id="staging">
+          <requires-addon-id id="staging"/>
+          <property name="className">
+            <value>atg.nucleus.JNDIReference</value>
+          </property>
+          <property name="JNDIName">
+            <value>${AppServerPortsProvider.jndiPrefix}${NamedDatasource[stagingnonswitchingCore].datasourceValue.jndiName}</value>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="moduleList.properties">
+        <property-group id="base">
+          <property name="modules">
+            <value>${ServerInstanceType[management].calculatedModuleString}</value>
+          </property>
+        </property-group>
+      </property-file>
+
+    </config-directory>
+  </server-instance-type>
+  
+  <server-instance-type id="svcagent">
+    <title resource-key="AgentServer.title">Commerce Agent Server</title>
+    <config-directory>
+
+      <!-- Endeca related configuration -->
+      <property-file file="/atg/endeca/assembler/AssemblerApplicationConfiguration.properties">
+        <property-group id="endeca">
+          <property name="assemblerContentBaseDirectory" persist-key="AssemblerContentBaseDirectory">
+            <input type="text">
+              <label resource-key="label.enter.assemblerContentBaseDirectory" resource-bundle="atg.cim.ProductResources">
+                Enter the path for zip files created by the EAC applications during Application Export
+              </label>
+              <validator id="NoWhiteSpaceInputValidator">
+                <error-message>The application export archive directory cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+
+      <property-file file="/atg/endeca/ApplicationConfiguration.properties">
+        <property-group id="csa_b2c_store_endeca">
+          <requires-addon-id id="endeca"/>
+          <requires-addon-id id="csa_b2c_store"/>
+          <property name="applicationKeyToMdexHostAndPort" persist-key="AppKeyToMdexHostAndPort">
+            <value>en=localhost:15000,es=localhost:16000,de=localhost:17000</value>
+            <input type="text">
+              <label resource-key="label.enter.keyToMdexHostAndPort" resource-bundle="atg.cim.ProductResources">
+                Enter the mapping between application key and MDEX host:port
+              </label>
+              <validator id="CannotBeBlankValidator">
+                <error-message>The application key to mdex host and port mapping cannot be blank</error-message>
+              </validator>
+            </input>
+          </property>
+        </property-group>
+      </property-file>
+    </config-directory>
+  </server-instance-type>  
+
+</product>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/cim/product.xml#1 $$Change: 1385662 $-->

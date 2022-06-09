@@ -1,0 +1,86 @@
+<!-- ko if: productRows().length > 0 -->
+  <div id="scrollable-product-carousel" class="carousel slide" data-interval="">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="carousel-inner"
+             role="region"
+             aria-live="polite"
+             data-bind="foreach: productRows">
+          <article class="item" data-bind="css: { 'active': $index() == 0 }">
+            <div class="row text-center">
+              <!-- ko foreach: $data -->
+                <div class="col-xs-6 col-sm-3 csa-spotlight-item" data-bind="preview: {product: repositoryId}">
+                  <a data-bind="attr: { href: 'product/_/A-' + $data.spec, title: displayName  }">
+                    <img class="img-responsive center-block csa-border-bottom" 
+                         data-bind="img: { src: $data.largeImageUrl,
+                                    fallback: $component.missingImagePath }, 
+                                    attr: { alt: displayName }"/>
+                    <span class="csa-inline-block">
+                      {{ displayName }}<br />
+                    
+                      <span class="csa-text-in-link">
+                        <!-- ko if: showSalePrice === 'true' -->
+                         <span class="text-danger">
+                           {{ salePrices | currency }} {{ 'spotlights.text.sale' | i18n }}
+                         </span>
+                        <!-- /ko -->
+
+                        <!-- ko if: showSalePrice === 'false' && salePrices -->
+                        {{ salePrices | currency }}
+                        <!-- /ko -->
+
+                        <!-- ko if: showSalePrice === 'false' && !salePrices -->
+                        {{ listPrices | currency }}
+                        <!-- /ko -->
+                      </span>
+                    </span>
+                  </a>
+                </div>
+
+                <!-- 
+                  Sometimes, columns don't clear quite right as one column may be taller than 
+                  the other. The following fix ensures that columns aren't pushed out of line
+                  when this scenario occurs. You can find more details about responsive column
+                  resets at http://getbootstrap.com/css/#grid.
+                -->
+
+                <!-- ko if: $index() == 1 -->
+                  <div class="clearfix visible-xs-block"></div>
+                <!-- /ko -->
+
+              <!-- /ko -->
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel prev/next controls -->
+    <a class="left carousel-control"
+       href="#"
+       data-bypass
+       role="button"
+       data-slide="prev"
+       data-bind="click: updateActiveRow.bind($data, 'prev'),
+                  bootstrapCarousel: activeRow">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">{{ 'spotlights.link.previous' | i18n }}</span>
+    </a>
+    <a class="right carousel-control"
+       href="#"
+       data-bypass
+       role="button"
+       data-slide="next"
+       data-bind="click: updateActiveRow.bind($data, 'next'),
+                  bootstrapCarousel: activeRow">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">{{ 'spotlights.link.next' | i18n }}</span>
+    </a>
+
+    <!-- Display the active row number i.e. 1/3, 2/3, 3/3 -->
+    <div class="text-center">
+      <span class="badge">{{ activeRow() + 1 }}/{{ productRows().length }}</span>
+    </div>
+
+  </div>
+<!-- /ko -->

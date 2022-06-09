@@ -1,0 +1,27 @@
+{
+  "base": {
+    "alert": {
+      "itemUnavailable": "{{0}} is currently out of stock. Please remove it from your shopping cart in order to checkout."
+    },
+    "button": {
+      "apply": "Apply",
+      "cancel": "Cancel",
+      "close": "Close",
+      "save": "Save",
+      "toggleNavigation": "Toggle navigation"
+    },
+    "label": {
+      "country": "Country",
+      "language": "Language",
+      "selectLanguage": "Select a language"
+    },
+    "link": {
+      "skipToMainContent": "Skip to main content",
+      "switchLanguage": "<span class=\"sr-only\">switch language, current language is</span> {{0}}",
+      "switchSite": "<span class=\"sr-only\">switch site, current site is</span> {{0}}"
+    },
+    "subheading": {
+      "chooseCountryAndLanguage": "Choose a country and language"
+    }
+  }
+}

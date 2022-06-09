@@ -1,0 +1,50 @@
+{
+  "searchAndNavigation": {
+    "alert": {
+      "validPrice": "Introduzca un precio válido"
+    },
+    "button": {
+      "close": "Cerrar"
+    },
+    "label": {
+      "size": "Tamaño",
+      "color": "Color",
+      "woodFinish": "Acabado en madera"
+    },
+    "link": {
+      "sizeChart": "Cuadro de tallas"
+    },
+    "placeholder": {
+      "size": "Seleccionar talla",
+      "color": "Seleccionar color",
+      "woodFinish": "Seleccionar acabado en madera"
+    },
+    "subheading": {
+      "bust": "Busto",
+      "chest": "Pecho",
+      "europe": "Europa",
+      "euroSize": "Tallas<br>para Europa",
+      "hip": "Cadera",
+      "inseam": "Pernera",
+      "japan": "Japón",
+      "mensShirts": "Camisa de hombre",
+      "mensShoes": "Zapatos de hombre",
+      "mexico": "México",
+      "neck": "Cuello",
+      "sizeInfo": "Información de tallas",
+      "sleeve": "Manga",
+      "uk": "Reino Unido",
+      "us": "EE. UU.",
+      "usSize": "Tallas<br>para EE. UU.",
+      "waist": "Cintura",
+      "womensShirt": "Camisa de mujer",
+      "womensShoes": "Zapatos de mujer"
+    },
+    "text": {
+      "mensShirtSizes": "Tallas de camisa de hombre",
+      "mensShoeSizes": "Tallas de zapato de hombre",
+      "womensShirtSizes": "Tallas de camisa de mujer",
+      "womensShoeSizes": "Tallas de zapato de mujer"
+    }
+  }
+}

@@ -1,0 +1,408 @@
+@import (inline) "../../bower_components/toastr/toastr.css";
+
+//**
+//** CUSTOM STYLES
+//** keep to a minimum and consider reuse rather
+//** than merely creating a very specific style
+//** for a given scenario; ideally find OOTB
+//** Bootstrap styles to achieve desired design
+//**
+
+//**
+//** HTML TAGS
+//**
+
+main {
+  padding-top: 5px;
+  min-height: 150px;
+  outline: 0; // focus can be explicitly set on main for a11y, suppress focus outline
+
+  @media only screen and (min-width : @screen-sm-min) {
+    min-height: 760px;
+  }
+}
+
+aside {
+  padding-top: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0 10px 0;
+  margin-top: 20px;
+  background-color: @csa-gray-lighter;
+}
+
+
+//**
+//** Butttons
+//**
+.csa-btn {
+  background-color: @csa-orange;
+  color: @gray-base;
+  border-color: darken(@csa-orange, 5%);
+}
+
+.csa-btn:hover,
+.csa-btn:focus, 
+.csa-btn:active,
+.csa-btn.active,
+.open>.dropdown-toggle.csa-btn {
+  background-color: darken(@csa-orange, 5%);
+  border-color: darken(@csa-orange, 8%);
+  color: @gray-base;
+}
+
+.csa-btn-default {
+  color: @csa-blue;
+  background-color: #fff;
+  border-color: @csa-gray;
+}
+
+.csa-btn-default:hover,
+.csa-btn-default:focus,
+.csa-btn-default:active,
+.open>.dropdown-toggle.csa-btn-default {
+  color: @csa-blue;
+  background-color: @gray-lighter;
+  border-color: @csa-gray;
+}
+
+.csa-btn-default .badge {
+  background-color: @gray-lighter;
+  color: @csa-blue;
+}
+
+.csa-btn-default:hover .badge,
+.csa-btn-default:active .badge,
+.csa-btn-default:focus .badge {
+  background-color: @csa-gray-lighter;
+  color: @csa-blue;
+}
+
+.csa-btn-header {
+  padding: 6px 9px;
+  margin-bottom: 2px;
+  margin-left:4px;
+}
+
+//**
+//** Vertical offsets
+//** ...because Bootstrap doesn't have any inbuilt vertical offset styles
+//**
+.csa-v-offset-10 {
+  margin-top:10px;
+}
+
+.csa-v-offset-20 {
+  margin-top:20px;
+}
+
+.csa-v-offset-30 {
+  padding-top:30px;
+}
+
+//**
+//** Resets
+//**
+.csa-zero-margin,
+.csa-zero-margin-padding{
+  margin:0;
+}
+
+.csa-zero-padding,
+.csa-zero-margin-padding{
+  padding:0;
+}
+
+//**
+//** Glyphicon stack rule
+//** ...because Bootstrap doesn't have inbuilt icon stacking styles
+//**
+.csa-glyphicon-stack {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  top: 1px;
+}
+
+.csa-glyphicon-stack-1x,
+.csa-glyphicon-stack-2x,
+.csa-glyphicon-stack-small {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.csa-glyphicon-stack-small {
+  left: auto;
+  right: 2px;
+  top: auto;
+  bottom: -3px;
+  font-size: 0.8em;
+  width: 50%;
+}
+
+//**
+//** Checkbox & radio styles
+//** ...because Bootstrap uses implicit labels and for a11y
+//** reasons CSA uses explicit labels
+//**
+.csa-checkbox input[type=checkbox],
+.csa-radio input[type=radio] {
+  margin-left: 0!important;
+}
+
+//**
+//** Utility Styles
+//**
+.csa-relative {
+  position: relative;
+}
+
+.csa-inline-block {
+  display: inline-block;
+}
+
+.csa-border-bottom {
+  border-bottom: solid 2px @csa-blue;
+}
+
+.csa-authenticated {
+  color: @csa-orange;
+}
+
+a .csa-text-in-link,
+a:hover .csa-text-in-link {
+  text-decoration: none;
+  color: @gray-dark;
+  display: inline-block;
+}
+
+//**
+//** Site preferences
+//**
+.csa-site-preferences {
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.csa-site-preferences,
+.csa-site-preferences a,
+.csa-site-preferences a:active,
+.csa-site-preferences a:link,
+.csa-site-preferences a:visited {
+  color: @gray;
+}
+
+//**
+//** Spotlight Styles
+//**
+.csa-spotlight-item {
+  min-height: 230px;
+}
+
+//**
+//** Pagination
+//**
+.csa-pagination-more>span {
+  border-top: 0!important;
+  border-bottom: 0!important;
+  padding:5px 6px!important;
+}
+
+.csa-pagination-more>span:hover {
+  background-color: transparent!important;
+}
+
+//**
+//** Product Detail
+//**
+.csa-current-price {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.csa-previous-price {
+  font-size: 20px;
+}
+
+.csa-sku-status-label {
+  display: inline-block;
+  padding: 11px;
+
+  @media only screen and (min-width : @screen-sm-min) {
+    margin-top: 26px;
+  }
+}
+
+//**
+//** Breadcrumbs
+//**
+.csa-breadcrumb-remove-all {
+  position: absolute!important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%
+}
+
+.csa-breadcrumb {
+  margin-bottom: 0;
+  background: transparent;
+  position: relative;
+  margin-right: 40px
+}
+
+//**
+//** Header search bar & account/checkout buttons
+//**
+ .csa-header-secondary-wrapper {
+  display: table;
+  width: 100%;
+}
+
+.csa-header-secondary-row {
+  display: table-row;
+}
+
+.csa-header-secondary-cell {
+  display: table-cell;
+  vertical-align: top;
+  position: relative;
+}
+
+.csa-header-secondary-cell-btns {
+    width: 123px;
+    text-align: right;
+
+    @media only screen and (min-width : @screen-sm-min) {
+      width: 198px;
+    }
+
+    @media only screen and (min-width : @screen-md-min) {
+        width: 254px;
+    }
+
+    .dropdown-menu {
+      right: 0;
+      left: auto;
+
+      @media only screen and (min-width : @screen-sm-min) {
+        right: auto;
+        left: 0;
+      }
+  }
+}
+
+
+//**
+//**  Shopping Cart
+//**
+.csa-cart-row {
+  border: solid 1px @csa-gray;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.csa-commerce-item-count-badge {
+  width: 3.5rem;
+}
+
+//**
+//** Credit card type indicator sprite
+//**
+.csa-cc {
+  height: 36px;
+  margin-bottom: 10px;
+
+  div {
+    background:url(/csadocroot/content/images/storefront/cc.png);
+    float:left;
+  }
+
+  .mc, .vc, .dc, .ac {
+    height: 32px;
+    width: 56px;
+    margin: 2px;
+  }
+
+  .mc {
+    background-position: 0px 32px;
+  }
+
+  .vc {
+    background-position: -56px 32px;
+  }
+
+  .dc {
+    background-position: -112px 32px;
+  }
+
+  .ac {
+    background-position: -168px 32px;
+  }
+
+  &.mc .mc {
+    background-position: 0px 0px;
+  }
+
+  &.vc .vc {
+    background-position:-56px 0px;
+  }
+  
+  &.dc .dc {
+    background-position: -112px 0px;
+  }
+
+  &.ac .ac {
+    background-position: -168px 0px;
+  }
+}
+
+//**
+//** Guided nav
+//**
+.csa-guided-nav-panel {
+  margin-top: 10px;
+
+  @media only screen and (min-width : @screen-sm-min) {
+    margin-top: 0;
+    display: block;
+    visibility: visible;
+  }
+}
+
+//**
+//** Static page nav
+//**
+.csa-static-page-nav-panel {
+  margin-top: 15px;
+}
+
+//**
+//** Footer links
+//**
+.csa-footer-link {
+  padding: 3px 8px;
+  font-weight: bold; 
+  display: inline-block;
+}
+
+//**
+//** Prevent auto-zoom on small touch screen devices
+//** ... auto-zoom is triggered when an input with
+//** a font size less than 16px is given focus
+//**
+@media only screen and (max-width : @screen-xs-max) and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  select:focus,
+  textarea,
+  input {
+    font-size: 16px!important;
+    background: #fff;
+  }
+}

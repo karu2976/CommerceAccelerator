@@ -1,0 +1,17 @@
+<!--   
+  @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/config/atg/commerce/endeca/index/category-dim-output-config.xml#1 $
+  @updated $DateTime: 2017/03/09 10:29:42 $ 
+-->
+
+<!--
+  Item: category
+
+  Properties:
+    - displayName: The category display name.
+-->
+<item item-descriptor-name="category" is-document="true">
+  <text-properties>
+    <property name="displayName" property-accessor="/atg/commerce/endeca/index/GenerativeLanguagePropertyAccessor"/>
+  </text-properties>
+</item>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/config/atg/commerce/endeca/index/category-dim-output-config.xml#1 $$Change: 1385662 $-->

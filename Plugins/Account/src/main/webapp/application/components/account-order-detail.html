@@ -1,0 +1,216 @@
+<div data-bind="uniqueId: 'orderDetailsPage'">
+  <!-- ko ifnot: canViewOrder -->
+    <div class="row">
+      <div class="alert alert-info">{{ 'account.alert.notPermittedToViewOrder' | i18n }}</div>
+    </div>
+  <!-- /ko -->
+
+  <!-- ko if: canViewOrder -->
+    <div>
+      <h2><span class="sr-only">{{ 'account.heading.orderNumber' | i18n}}</span>{{ myOrder().id }}</h2>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="well">
+
+          <p>
+            <strong>
+              {{ 'account.label.orderStatus' | i18n }}:
+              {{ orderState }}
+            </strong>
+          </p>
+
+          <p>
+            <strong>
+              {{ 'account.label.orderPlaced' | i18n }}:
+              <span>{{ myOrder().submittedTime | date}}</span>
+            </strong>
+          </p>
+
+          <p>
+            <strong>
+              {{ 'account.label.site' | i18n }}:
+              {{ site().name }}
+            </strong>
+          </p>
+
+          <!-- ko foreach: myOrder().shippingGroups -->
+            <p>
+              <strong>
+                {{ 'account.label.shipTo' | i18n }}:
+                {{ shippingAddress.firstName }} {{ shippingAddress.lastName }}
+              </strong>
+              <br>
+              <small>
+                {{ shippingAddress.address1 }} <br>
+                <!-- ko if: $data.shippingAddress.address2 --> {{ shippingAddress.address2 }} <br> <!-- /ko -->
+                {{ shippingAddress.city }}, {{ shippingAddress.state }} {{ shippingAddress.postalCode }} <br>
+                {{ $parent.shippingAddressCountryDisplayName }} <br>
+                {{ shippingAddress.phoneNumber }}
+              </small>
+
+              <p>
+                <strong>
+                  {{ 'account.label.delivery' | i18n }}:
+                  {{ shippingMethod }}
+                </strong>
+              </p>
+            </p>
+          <!-- /ko -->
+
+          <!-- ko foreach: myOrder().paymentGroups -->
+          <p>
+            <strong>
+              {{ 'account.label.billTo' | i18n }}:
+              {{ billingAddress.firstName }} {{ billingAddress.lastName }}
+            </strong>
+            <br>
+            <small>
+              {{ billingAddress.address1 }} <br>
+              <!-- ko if: $data.billingAddress.address2 --> {{ billingAddress.address2 }} <br> <!-- /ko -->
+              {{ billingAddress.city }} {{ billingAddress.state }} {{ billingAddress.postalCode }} <br>
+              {{ $parent.billingAddressCountryDisplayName }}<br>
+              {{ billingAddress.phoneNumber }}
+            </small>
+            <p>
+              <strong>
+                {{ 'account.label.payment' | i18n }}:
+                <span class="text-uppercase">{{ creditCardType }}</span> {{ creditCardNumber }}
+              </strong>
+              <br>
+              <small>
+                {{ 'account.label.expires' | i18n }}:
+                {{expirationMonth}}/{{expirationYear}}
+              </small>
+            </p>
+          </p>
+          <!-- /ko -->
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <table class="table table-striped table-condensed"
+                 summary="{{ 'account.label.orderSummaryTableSummary' | i18n }}">
+            <thead>
+              <tr>
+                <th colspan="2" scope="col">
+                  {{ 'account.subheading.orderSummary' | i18n }}
+                  {{ 'account.subheading.item' | i18nPlural:myOrder().totalCommerceItemCount }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{ 'account.label.subtotal' | i18n }}</th>
+                <td class="text-right">{{ myOrder().priceInfo.rawSubtotal | currency }}</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  {{ 'account.label.discount' | i18n }}
+                </th>
+                <td class="text-right">-{{ myOrder().priceInfo.discountAmount | currency }}</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  {{ 'account.label.shipping' | i18n }}
+                </th>
+                <td class="text-right">{{ myOrder().priceInfo.shipping | currency }}</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ 'account.label.tax' | i18n }}</th>
+                <td class="text-right">{{ myOrder().priceInfo.tax | currency }}</td>
+              </tr>
+              <tr>
+                <th scope="row">{{ 'account.label.total' | i18n }}</th>
+                <td class="text-right"><strong>{{ myOrder().priceInfo.total | currency }}</strong></td>
+              </tr>
+              <!-- ko if: hasDiscountNotes() || hasShippingNotes() -->
+                <tr>
+                  <th scope="row">
+                    {{ 'account.label.coupon' | i18n }}
+                  </th>
+                  <td class="text-right">
+                    <!-- ko foreach: myOrder().priceInfo.adjustments -->
+                      <!-- ko if: coupon -->
+                        {{ coupon.displayName }}<br>
+                      <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko foreach: myOrder().shippingGroups -->
+                      <!-- ko foreach: priceInfo.adjustments -->
+                        {{ coupon.displayName }}<br>
+                      <!-- /ko -->
+                    <!-- /ko -->
+                  </td>
+                </tr>
+              <!-- /ko -->
+            </tbody>
+          </table>
+
+          <!-- ko if: hasDiscountNotes() || hasShippingNotes() -->
+            <p>
+              <!-- ko if: hasDiscountNotes -->
+                <!-- ko foreach: myOrder().priceInfo.adjustments -->
+                  {{ promotionDescription }}<br>
+                <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: hasShippingNotes  -->
+                <!-- ko foreach: myOrder().shippingGroups -->
+                  <!-- ko foreach: priceInfo.adjustments -->
+                    {{ promotionDescription}}<br>
+                  <!-- /ko -->
+                <!-- /ko -->
+              <!-- /ko -->
+            </p>
+          <!-- /ko -->
+
+          <table class="table table-striped table-condensed"
+                 summary="{{ 'account.label.orderItemsTableSummary' | i18n }}">
+            <thead>
+              <tr>
+                <th colspan="2" scope="col">{{ 'account.subheading.itemInOrder' | i18nPlural: myOrder().totalCommerceItemCount }}:</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- ko foreach: myOrder().commerceItems -->
+                <tr>
+                  <th scope="row" class="csa-cart-image">
+                    <a data-bind="attr: { href: 'product/_/A-' + $parent.productURLs()[productId] }">
+                      <img data-bind="attr: { src: auxiliaryData.productRef.thumbnailImageUrl, alt: productDisplayName }">
+                    </a>
+                  </th>
+                  <td>
+                    <p>
+                      <a data-bind="attr: { href: 'product/_/A-' + $parent.productURLs()[productId] }">
+                        <strong class="csa-product-display-name">{{ productDisplayName }}</strong><br>
+                      </a>
+                      <small>
+                        {{ catalogRefId }}
+                      </small>
+                    </p>
+
+                    <!-- ko if: priceInfo.onSale -->
+                      {{ priceInfo.salePrice | currency }} &times; {{ quantity }} <br>
+                      <del>{{ priceInfo.listPrice | currency }}</del> <br>
+                      <strong>{{ priceInfo.amount | currency }}</strong>
+                    <!-- /ko -->
+                    <!-- ko ifnot: priceInfo.onSale -->
+                      {{ priceInfo.listPrice | currency }} &times; {{ quantity }} <br>
+                      <strong>{{ priceInfo.amount | currency }}</strong> <br>
+                    <!-- /ko -->
+                  </td>
+                </tr>
+              <!-- /ko -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <button class="btn" data-bind="visible: false, click: window.name === 'printOrderWindow'? setTimeout(function() {
+            document.body.innerHTML = $('[data-name=orderDetailsPage]').html();
+            window.print();
+            window.close();
+          }, 2000):false"/>
+    </div>
+  <!-- /ko -->
+</div>

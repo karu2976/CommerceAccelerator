@@ -1,0 +1,5 @@
+project(":Applications:B2CStore:Versioned") {
+  description = "Versioned Project for B2CStore Project."
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Versioned/build-ship.gradle#1 $$Change: 1385662 $

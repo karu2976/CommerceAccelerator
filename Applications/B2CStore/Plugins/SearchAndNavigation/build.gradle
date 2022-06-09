@@ -1,0 +1,10 @@
+project(":Applications:B2CStore:Plugins:SearchAndNavigation") {
+  dependencies {
+    compile project(":Plugins:SearchAndNavigation"),
+            project(":Applications:B2CStore:Base")
+  }
+
+  compileWebapp.dependsOn ":Plugins:SearchAndNavigation:compileWebapp", ":Applications:B2CStore:Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/SearchAndNavigation/build-ship.gradle#1 $$Change: 1385662 $

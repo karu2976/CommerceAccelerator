@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  This siteRepository.xml file defines all of the repository properties that are used by CSA.  This
+  file will be appended to any other siteRepository.xml file that has been defined else where.
+-->
+<gsa-template xml-combine="append">
+
+  <header xml-combine="replace">
+    <name>CSA Store Site Repository extension</name>
+    <author>Oracle Commerce</author>
+    <version>$Id: //hosting-blueprint/CSA/version/11.3/Base/src/main/config/atg/multisite/siteRepository.xml#1 $$Change: 1385662 $</version>
+  </header>
+
+  <item-descriptor name="siteConfiguration" xml-combine="append">
+    
+    <attribute name="categoryEmailPriority" value="540"/>
+    <attribute name="categoryPresentationPriority" value="510"/>
+    <attribute name="categoryAppearancePriority" value="520"/>
+    <attribute name="categoryLocalizationPriority" value="530"/>
+
+    <!--
+      Auxiliary table created to facilitate additional site attributes
+    -->
+    <table name="csa_site_configuration" type="auxiliary" id-column-name="id">
+      <property name="resourceBundle" data-type="string" column-name="resource_bundle" display-name-resource="resourceBundle" category-resource="categoryPresentation">
+        <attribute name="propertySortPriority" value="20"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+      <property name="largeSiteIcon" data-type="string" column-name="large_site_icon" display-name-resource="largeSiteIcon" category-resource="categoryAppearance">
+        <attribute name="propertySortPriority" value="40"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+      <property name="defaultCountry" data-type="string" column-name="default_country_code" display-name-resource="defaultCountry" category-resource="categoryLocalization">
+        <attribute name="propertySortPriority" value="20"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+      <property name="newPasswordFromAddress" data-type="string" column-name="newpass_addr" display-name-resource="newPasswordFromAddress" category-resource="categoryEmail">
+        <attribute name="propertySortPriority" value="60"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+      <property name="changePasswordFromAddress" data-type="string" column-name="changepass_addr" display-name-resource="changePasswordFromAddress" category-resource="categoryEmail">
+        <attribute name="propertySortPriority" value="80"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+      <property name="orderConfirmationFromAddress" data-type="string" column-name="orderconfirm_addr" display-name-resource="orderConfirmationFromAddress" category-resource="categoryEmail">
+        <attribute name="propertySortPriority" value="100"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>     
+      <property name="registeredUserFromAddress" data-type="string" column-name="registereduser_addr" display-name-resource="registeredUserFromAddress" category-resource="categoryEmail">
+        <attribute name="propertySortPriority" value="140"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+    </table> 
+
+    <!--
+      Translations table that holds all translations for translated site attribute properties
+    -->
+    <table name="csa_i18n_site_config" type="auxiliary" id-column-name="id">
+      <property name="defaultLanguage" data-type="string" column-name="default_lang" display-name-resource="defaultLanguage" category-resource="categoryLocalization">
+        <attribute name="propertySortPriority" value="40"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+    </table>   
+
+    <!--
+      Table for mapping multiple languages to each site. 
+    -->
+    <table name="csa_site_languages" type="multi" id-column-name="id" multi-column-name="sequence_num">
+      <property name="languages" column-name="languages" data-type="list" component-data-type="string" display-name-resource="languages" category-resource="categoryLocalization">
+        <attribute name="propertySortPriority" value="60"/>
+        <attribute name="resourceBundle" value="atg.projects.store.multisite.CommerceSiteRepositoryTemplateResources"/>
+      </property>
+    </table>
+    
+  </item-descriptor>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Base/src/main/config/atg/multisite/siteRepository.xml#1 $$Change: 1385662 $-->

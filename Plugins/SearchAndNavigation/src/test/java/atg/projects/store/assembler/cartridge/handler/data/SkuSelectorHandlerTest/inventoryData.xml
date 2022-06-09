@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+    <import-items>
+
+        <add-item item-descriptor="inventory" id="invTestSkuShirt1">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSkuShirt1 - Size: S - Color: Red]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSkuShirt1]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+        <add-item item-descriptor="inventory" id="invTestSkuShirt2">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSkuShirt2 - Size: M - Color: Green]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSkuShirt2]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+        <add-item item-descriptor="inventory" id="invTestSkuShirt3">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSkuShirt3 - Size: XL - Color: Red]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSkuShirt3]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+        <add-item item-descriptor="inventory" id="invTestSkuShirt4">
+            <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+            <set-property name="displayName"><![CDATA[TestSkuShirt4 - Size: M - Color: Pink]]></set-property>
+            <set-property name="catalogRefId"><![CDATA[testSkuShirt4]]></set-property>
+            <set-property name="creationDate"><![CDATA[6/18/2014 15:11:16]]></set-property>
+            <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+        </add-item>
+
+    </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/src/test/java/atg/projects/store/assembler/cartridge/handler/data/SkuSelectorHandlerTest/inventoryData.xml#1 $$Change: 1385662 $-->

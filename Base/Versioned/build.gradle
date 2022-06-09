@@ -1,0 +1,5 @@
+project(":Base:Versioned") {
+  description = "Versioned Project for Commerce Accelerator Base Plugin."
+}
+
+//@version $Id: //hosting-blueprint/CSA/main/Applications/B2CStore/Versioned/build-ship.gradle#5 $$Change: 950937 $

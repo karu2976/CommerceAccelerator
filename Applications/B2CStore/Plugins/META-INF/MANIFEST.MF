@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+ATG-Required: CommerceAccelerator.Applications.B2CStore.Plugins.Accoun
+ t CommerceAccelerator.Applications.B2CStore.Plugins.Checkout Commerce
+ Accelerator.Applications.B2CStore.Plugins.SearchAndNavigation Commerc
+ eAccelerator.Applications.B2CStore.Plugins.Spotlights CommerceAcceler
+ ator.Applications.B2CStore.Plugins.ShoppingCart CommerceAccelerator.A
+ pplications.B2CStore.Plugins.SEO CommerceAccelerator.Plugins.Preview 
+ CommerceAccelerator.Plugins.Checkout CommerceAccelerator.Plugins.Prom
+ otions
+

@@ -1,0 +1,18 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2014-11-25T09:41:58.928Z",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:06:16.450-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "AccountMenuNavigation",
+        "@type": "AccountMenuNavigation"
+    },
+    "triggers": [{"exactLocation": false}]
+}

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database-initializer SYSTEM "http://www.atg.com/dtds/dbinit_2_0.dtd">
+<database-initializer> 
+
+  <!-- CATALOG SCHEMA -->
+  <schema id="versionedCatalogSchema">
+  
+    <!-- Catalog -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/versioned_csa_catalog_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_versioned_csa_catalog_ddl.sql
+        </drop>
+      </path>
+    </sql>
+
+    <!-- Promotions -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/versioned_csa_promotion_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_versioned_csa_promotion_ddl.sql
+        </drop>
+      </path>
+    </sql>
+    
+    <!-- SEO -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/versioned_csa_seo_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_versioned_csa_seo_ddl.sql
+        </drop>
+      </path>
+    </sql>
+
+    <!-- Content Management -->
+    <sql>
+      <path>
+        <create>
+          src/main/sql/db_components/${database}/versioned_csa_content_mgmt_ddl.sql
+        </create>
+        <drop>
+          src/main/sql/uninstall/${database}/drop_versioned_csa_content_mgmt_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+  
+  <schema id="versionedCatalogSchemaData">
+  
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/catalog.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_catalog</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-catalog.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_catalog</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned" mergeable="false">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/inventory/InventoryRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/inventory.xml</import-file-path>
+      <user>publishing</user>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/pricing/priceLists/PriceLists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/pricelists.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_pricelist</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>    
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <repository-path>/atg/commerce/pricing/priceLists/PriceLists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-pricelists.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_pricelist</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/sites.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_sites</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-sites.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_sites</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/order/OrderRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/orders.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_orders</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/gifts/Giftlists</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/wishlists.xml</import-file-path>
+      <user>publishing</user>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/userprofiling/ProfileAdapterRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/users.xml</import-file-path>
+      <user>publishing</user>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/catalog/ProductCatalog</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/promotions.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>promos_data</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <data-import start-up-module="DCS.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/commerce/claimable/ClaimableRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/claimable.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>claimable_data</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+    
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/seo/SEORepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/seotags.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>seo_data</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+
+    <!-- Media Content -->
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <repository-path>/atg/content/ContentManagementRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/content-mgmt.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>content_management</workspace>
+      <comment>initial_data_import</comment>
+    </data-import>
+  </schema>   
+
+  <schema id="versionedSitesEndecaAssemblerSchema">
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_full"/>
+      <requires-addon-id id="endeca"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/sites-endeca-assembler.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_sites_endeca_assembler</workspace>
+      <comment>initial_sites_import</comment>
+    </data-import>
+    <data-import start-up-module="CommerceAccelerator.Applications.B2CStore.Versioned">
+      <requires-addon-id id="b2cstore_data_basic"/>
+      <requires-addon-id id="endeca"/>
+      <repository-path>/atg/multisite/SiteRepository</repository-path>
+      <import-file-path>/CommerceAccelerator/Applications/B2CStore/src/main/sample-data/basic-sites-endeca-assembler.xml</import-file-path>
+      <user>publishing</user>
+      <workspace>store_sites_endeca_assembler</workspace>
+      <comment>initial_sites_import</comment>
+    </data-import>
+  </schema>
+
+  <server-instance-type id="management">
+
+    <datasource id="management">
+      <schema id="versionedCatalogSchema"/>
+      <schema id="versionedCatalogSchemaData"/>
+      <schema id="versionedSitesEndecaAssemblerSchema"/>
+    </datasource>
+
+  </server-instance-type>
+  
+</database-initializer>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Versioned/cim/dbinit.xml#1 $$Change: 1385662 $-->

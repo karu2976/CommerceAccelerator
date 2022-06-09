@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+  
+    <!-- CATALOG -->  
+    <add-item id="masterCatalog" item-descriptor="catalog">
+      <set-property name="rootCategories"><![CDATA[rootCategory]]></set-property>
+      <set-property name="displayName"><![CDATA[Master Catalog]]></set-property>
+      <set-property name="directAncestorCatalogsAndSelf"><![CDATA[masterCatalog]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[5]]></set-property>  -->
+      <set-property name="allRootCategories"><![CDATA[rootCategory]]></set-property>
+      <set-property name="creationDate"><![CDATA[10/20/2014 16:23:12]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[11/15/2014 13:11:24]]></set-property>
+      <set-property name="rootNavigationCategory" add="false" remove="false"><![CDATA[rootCategory]]></set-property>
+    </add-item>
+    
+    <!-- CATEGORY --> 
+    <add-item item-descriptor="category" id="rootCategory">
+      <set-property name="longDescriptionDefault"><![CDATA[CSA Store commerce root]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="creationDate"><![CDATA[10/21/2008 12:14:50]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS]]></set-property>
+      <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="displayNameDefault"><![CDATA[Commerce Root]]></set-property>
+    </add-item>
+    
+    <!-- FOLDER -->
+    <add-item item-descriptor="folder" id="folder1">
+      <set-property name="creationDate"><![CDATA[11/15/2014 12:11:24]]></set-property>
+      <set-property name="path"><![CDATA[Images/Product]]></set-property>
+      <set-property name="name"><![CDATA[Product]]></set-property>
+    </add-item>
+    
+    <!--  EXTERNAL MEDIA -->
+    <add-item item-descriptor="media-external" id="testProduct1_img">
+      <set-property name="parentFolder"><![CDATA[folder1]]></set-property>
+      <set-property name="creationDate"><![CDATA[11/15/2014 12:11:24]]></set-property>
+      <set-property name="url"><![CDATA[/test/img/url/largeImage1.jpg]]></set-property>
+      <set-property name="path"><![CDATA[Test/Image/Url/largeImage1.jpg]]></set-property>
+      <set-property name="type"><![CDATA[external]]></set-property>
+      <set-property name="name"><![CDATA[/test/img/url/largeImage1.jpg]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="media-external" id="testProduct2_img">
+      <set-property name="parentFolder"><![CDATA[folder1]]></set-property>
+      <set-property name="creationDate"><![CDATA[11/15/2014 12:11:24]]></set-property>
+      <set-property name="url"><![CDATA[Test/Image/Url/largeImage2.jpg]]></set-property>
+      <set-property name="path"><![CDATA[Test/Image/Url/largeImage2.jpg]]></set-property>
+      <set-property name="type"><![CDATA[external]]></set-property>
+      <set-property name="name"><![CDATA[/test/img/url/largeImage2.jpg]]></set-property>
+    </add-item>
+    
+    <!-- SKU -->
+    <add-item item-descriptor="clothing-sku" id="testSku1">
+      <set-property name="displayNameDefault"><![CDATA[Test SKU 1]]></set-property>
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="colorDefault"><![CDATA[red]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="clothing-sku" id="testSku2">
+      <set-property name="displayNameDefault"><![CDATA[Test SKU 2]]></set-property>
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="colorDefault"><![CDATA[green]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="clothing-sku" id="testSku3">
+      <set-property name="displayNameDefault"><![CDATA[Test SKU 3]]></set-property>
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="colorDefault"><![CDATA[black]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="clothing-sku" id="testSku4">
+      <set-property name="displayNameDefault"><![CDATA[Test SKU 4]]></set-property>
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="colorDefault"><![CDATA[purple]]></set-property>
+    </add-item>
+    
+    <!-- PRODUCT -->
+    <add-item item-descriptor="product" id="testProduct1">
+      <set-property name="displayNameDefault"><![CDATA[Test Product 1]]></set-property>
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="childSKUs"><![CDATA[testSku1,testSku3]]></set-property>
+      <set-property name="longDescriptionDefault"><![CDATA[This is a long description 1]]></set-property>
+      <set-property name="largeImage"><![CDATA[testProduct1_img]]></set-property>
+      <set-property name="startDate"><![CDATA[11/15/2013 12:11:24]]></set-property>
+      <set-property name="endDate"><![CDATA[09/01/2014 12:11:24]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="product" id="testProduct2">
+      <set-property name="displayNameDefault"><![CDATA[Test Product 2]]></set-property>
+      <set-property name="computedCatalogs"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="childSKUs"><![CDATA[testSku2]]></set-property>
+      <set-property name="longDescriptionDefault"><![CDATA[This is a long description 2]]></set-property>
+      <set-property name="largeImage"><![CDATA[testProduct2_img]]></set-property>
+      <set-property name="startDate"><![CDATA[11/15/2013 12:11:24]]></set-property>
+      <set-property name="endDate"><![CDATA[12/31/2099 12:11:24]]></set-property>
+    </add-item>
+                                      
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/src/test/java/atg/projects/store/product/data/ProductDetailsToolsTest/catalog.xml#1 $$Change: 1385662 $-->

@@ -1,0 +1,16 @@
+{
+  "spotlights": {
+    "button": {
+      "pauseAnimation": "Animación en pausa",
+      "startAnimation": "Iniciar animación"
+    },
+    "label": {
+      "featuredContentCarousel": "Carrusel de contenido destacado"
+    },
+    "link": {
+      "goToSlide": "<span class=\"sr-only\">Ir a diapositiva</span> {{0}}",
+      "nextSlide": "Siguiente diapositiva",
+      "previousSlide": "Diapositiva anterior"
+    }
+  }
+}

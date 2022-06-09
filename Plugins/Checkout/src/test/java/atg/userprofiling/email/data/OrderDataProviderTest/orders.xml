@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+
+<gsa-template>
+
+
+<import-items>
+
+<add-item item-descriptor="order" id="o200002">
+  <set-property name="description"><![CDATA[o200002]]></set-property>
+  <set-property name="relationships"><![CDATA[r340002,r340007,r340009,r340010]]></set-property>
+  <set-property name="commerceItems"><![CDATA[ci34000002,ci34000007,ci34000009,ci34000013]]></set-property>
+  <set-property name="shippingGroups"><![CDATA[sg200002]]></set-property>
+  <set-property name="profileId"><![CDATA[110000]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[1119]]></set-property>  -->
+  <set-property name="orderClassType"><![CDATA[default]]></set-property>
+  <set-property name="taxPriceInfo"><![CDATA[ai180013]]></set-property>
+  <set-property name="creationDate"><![CDATA[6/18/2013 11:47:34]]></set-property>
+  <set-property name="priceInfo"><![CDATA[ai180012]]></set-property>
+  <set-property name="paymentGroups"><![CDATA[pg200002]]></set-property>
+  <set-property name="lastModifiedDate"><![CDATA[7/11/2013 11:28:44]]></set-property>
+</add-item>
+
+<!--Simple Product-->
+<add-item item-descriptor="commerceItem" id="ci34000002">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <set-property name="commerceItemClassType"><![CDATA[default]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[29]]></set-property>  -->
+  <set-property name="catalogRefId"><![CDATA[sku40156]]></set-property>
+  <set-property name="priceInfo"><![CDATA[ai330005]]></set-property>
+  <set-property name="catalogKey"><![CDATA[en_US]]></set-property>
+  <set-property name="productId"><![CDATA[prod20017]]></set-property>
+</add-item>
+
+<!--Simple product with Attributes-->
+<add-item item-descriptor="commerceItem" id="ci34000007">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <set-property name="commerceItemClassType"><![CDATA[default]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[14]]></set-property>  -->
+  <set-property name="catalogRefId"><![CDATA[xsku2126]]></set-property>
+  <set-property name="priceInfo"><![CDATA[ai330010]]></set-property>
+  <set-property name="catalogKey"><![CDATA[en_US]]></set-property>
+  <set-property name="productId"><![CDATA[prod20017]]></set-property>
+</add-item>
+
+<!--Configurable Product-->
+<add-item item-descriptor="commerceItem" id="ci34000009">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <set-property name="commerceItemClassType"><![CDATA[default]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[10]]></set-property>  -->
+  <set-property name="catalogRefId"><![CDATA[xsku1182]]></set-property>
+  <set-property name="priceInfo"><![CDATA[ai330013]]></set-property>
+  <set-property name="catalogKey"><![CDATA[en_US]]></set-property>
+  <set-property name="productId"><![CDATA[prod20017]]></set-property>
+
+<!--Promotion Product-->  
+</add-item><add-item item-descriptor="commerceItem" id="ci34000013">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <set-property name="commerceItemClassType"><![CDATA[default]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[11]]></set-property>  -->
+  <set-property name="catalogRefId"><![CDATA[xsku1041]]></set-property>
+  <set-property name="priceInfo"><![CDATA[ai330017]]></set-property>
+  <set-property name="catalogKey"><![CDATA[en_US]]></set-property>
+  <set-property name="productId"><![CDATA[prod20017]]></set-property>
+</add-item>
+
+<!--relationships Shipping-commerceitem-->
+<add-item item-descriptor="shipItemRel" id="r340002">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="highBound"><![CDATA[0]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+  <set-property name="lowBound"><![CDATA[0]]></set-property>
+  <set-property name="shippingGroup"><![CDATA[sg200002]]></set-property>
+  <set-property name="relationshipClassType"><![CDATA[shippingGroupCommerceItem]]></set-property>
+  <set-property name="type"><![CDATA[shipItemRel]]></set-property>
+  <set-property name="relationshipType"><![CDATA[SHIPPINGQUANTITY]]></set-property>
+  <set-property name="commerceItem"><![CDATA[ci34000002]]></set-property>
+</add-item>
+
+<add-item item-descriptor="shipItemRel" id="r340007">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="highBound"><![CDATA[0]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+  <set-property name="lowBound"><![CDATA[0]]></set-property>
+  <set-property name="shippingGroup"><![CDATA[sg200002]]></set-property>
+  <set-property name="relationshipClassType"><![CDATA[shippingGroupCommerceItem]]></set-property>
+  <set-property name="type"><![CDATA[shipItemRel]]></set-property>
+  <set-property name="relationshipType"><![CDATA[SHIPPINGQUANTITY]]></set-property>
+  <set-property name="commerceItem"><![CDATA[ci34000007]]></set-property>
+</add-item>
+
+<add-item item-descriptor="shipItemRel" id="r340009">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="highBound"><![CDATA[0]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+  <set-property name="lowBound"><![CDATA[0]]></set-property>
+  <set-property name="shippingGroup"><![CDATA[sg200002]]></set-property>
+  <set-property name="relationshipClassType"><![CDATA[shippingGroupCommerceItem]]></set-property>
+  <set-property name="type"><![CDATA[shipItemRel]]></set-property>
+  <set-property name="relationshipType"><![CDATA[SHIPPINGQUANTITY]]></set-property>
+  <set-property name="commerceItem"><![CDATA[ci34000009]]></set-property>
+</add-item>
+
+<add-item item-descriptor="shipItemRel" id="r340010">
+  <set-property name="quantity"><![CDATA[1]]></set-property>
+  <set-property name="highBound"><![CDATA[0]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[1]]></set-property>  -->
+  <set-property name="lowBound"><![CDATA[0]]></set-property>
+  <set-property name="shippingGroup"><![CDATA[sg200002]]></set-property>
+  <set-property name="relationshipClassType"><![CDATA[shippingGroupCommerceItem]]></set-property>
+  <set-property name="type"><![CDATA[shipItemRel]]></set-property>
+  <set-property name="relationshipType"><![CDATA[SHIPPINGQUANTITY]]></set-property>
+  <set-property name="commerceItem"><![CDATA[ci34000013]]></set-property>
+</add-item>
+
+<add-item item-descriptor="hardgoodShippingGroup" id="sg200002">
+  <set-property name="postalCode"><![CDATA[03833]]></set-property>
+  <set-property name="description"><![CDATA[sg200002]]></set-property>
+  <set-property name="city"><![CDATA[Exeter]]></set-property>
+  <set-property name="country"><![CDATA[US]]></set-property>
+  <set-property name="phoneNumber"><![CDATA[212-555-6341]]></set-property>
+  <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <set-property name="address2"><![CDATA[]]></set-property>
+  <set-property name="address1"><![CDATA[457 Main St]]></set-property>
+  <set-property name="shippingMethod"><![CDATA[hardgoodShippingGroup]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[476]]></set-property>  -->
+  <set-property name="firstName"><![CDATA[Stuart]]></set-property>
+  <set-property name="shippingGroupClassType"><![CDATA[hardgoodShippingGroup]]></set-property>
+  <set-property name="stateAddress"><![CDATA[NH]]></set-property>
+  <set-property name="priceInfo"><![CDATA[ai180014]]></set-property>
+  <set-property name="type"><![CDATA[hardgoodShippingGroup]]></set-property>
+</add-item>
+
+<add-item item-descriptor="shippingPriceInfo" id="ai180014">
+  <set-property name="adjustments"><![CDATA[pa170016,pa320005]]></set-property>
+  <set-property name="amount"><![CDATA[0.0]]></set-property>
+  <set-property name="rawShipping"><![CDATA[9.5]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[462]]></set-property>  -->
+  <set-property name="discounted"><![CDATA[true]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[false]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[shippingPriceInfo]]></set-property>
+</add-item>
+
+<add-item item-descriptor="taxPriceInfo" id="ai180013">
+  <set-property name="amount"><![CDATA[0.0]]></set-property>
+  <set-property name="countyTax"><![CDATA[0.0]]></set-property>
+  <set-property name="cityTax"><![CDATA[0.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[469]]></set-property>  -->
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="countryTax"><![CDATA[0.0]]></set-property>
+  <set-property name="stateTax"><![CDATA[0.0]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[false]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[taxPriceInfo]]></set-property>
+</add-item>
+
+<add-item item-descriptor="orderPriceInfo" id="ai180012">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="nonTaxableShippingItemsSubtotalPriceInfos"><![CDATA[sg200002=ai330003]]></set-property>
+  <set-property name="amount"><![CDATA[130.0]]></set-property>
+  <set-property name="tax"><![CDATA[0.0]]></set-property>
+  <set-property name="taxableShippingItemsSubtotalPriceInfos"><![CDATA[sg200002=ai330002]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[460]]></set-property>  -->
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="shippingItemsSubtotalPriceInfos"><![CDATA[sg200002=ai330001]]></set-property>
+  <set-property name="rawSubtotal"><![CDATA[149.99]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[false]]></set-property>
+  <set-property name="shipping"><![CDATA[0.0]]></set-property>
+  <set-property name="manualAdjustmentTotal"><![CDATA[0.0]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[orderPriceInfo]]></set-property>
+</add-item>
+
+<add-item item-descriptor="creditCard" id="pg200002">
+  <set-property name="postalCode"><![CDATA[03801]]></set-property>
+  <set-property name="city"><![CDATA[Portsmouth]]></set-property>
+  <set-property name="email"><![CDATA[stuart@example.com]]></set-property>
+  <set-property name="country"><![CDATA[US]]></set-property>
+  <set-property name="paymentGroupClassType"><![CDATA[creditCard]]></set-property>
+  <set-property name="amountAuthorized"><![CDATA[301.5]]></set-property>
+  <set-property name="phoneNumber"><![CDATA[212-555-1563]]></set-property>
+  <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+  <set-property name="amount"><![CDATA[301.5]]></set-property>
+  <set-property name="expirationMonth"><![CDATA[1]]></set-property>
+  <set-property name="address2"><![CDATA[]]></set-property>
+  <set-property name="address1"><![CDATA[105 Lake St]]></set-property>
+  <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+  <set-property name="order"><![CDATA[o200002]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+  <set-property name="firstName"><![CDATA[Stuart]]></set-property>
+  <set-property name="stateAddress"><![CDATA[NH]]></set-property>
+  <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+  <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[creditCard]]></set-property>
+  <set-property name="paymentMethod"><![CDATA[creditCard]]></set-property>
+</add-item>
+
+<!--OrderPrice infos-->
+<add-item item-descriptor="orderPriceInfo" id="ai330003">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="amount"><![CDATA[0.0]]></set-property>
+  <set-property name="tax"><![CDATA[0.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[29]]></set-property>  -->
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="rawSubtotal"><![CDATA[0.0]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[false]]></set-property>
+  <set-property name="shipping"><![CDATA[0.0]]></set-property>
+  <set-property name="manualAdjustmentTotal"><![CDATA[0.0]]></set-property>
+  <set-property name="type"><![CDATA[orderPriceInfo]]></set-property>
+</add-item>
+
+<add-item item-descriptor="orderPriceInfo" id="ai330002">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="amount"><![CDATA[149.99]]></set-property>
+  <set-property name="tax"><![CDATA[0.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[29]]></set-property>  -->
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="rawSubtotal"><![CDATA[149.99]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[false]]></set-property>
+  <set-property name="shipping"><![CDATA[0.0]]></set-property>
+  <set-property name="manualAdjustmentTotal"><![CDATA[0.0]]></set-property>
+  <set-property name="type"><![CDATA[orderPriceInfo]]></set-property>
+</add-item>
+
+<add-item item-descriptor="orderPriceInfo" id="ai330001">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="amount"><![CDATA[149.99]]></set-property>
+  <set-property name="tax"><![CDATA[0.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[29]]></set-property>  -->
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="rawSubtotal"><![CDATA[149.99]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[false]]></set-property>
+  <set-property name="shipping"><![CDATA[0.0]]></set-property>
+  <set-property name="manualAdjustmentTotal"><![CDATA[0.0]]></set-property>
+  <set-property name="type"><![CDATA[orderPriceInfo]]></set-property>
+</add-item>
+
+<!--Item price infos-->
+<add-item item-descriptor="itemPriceInfo" id="ai330005">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="rawTotalPrice"><![CDATA[10.0]]></set-property>
+  <set-property name="amount"><![CDATA[10.0]]></set-property>
+  <set-property name="quantityDiscounted"><![CDATA[0]]></set-property>
+  <set-property name="salePrice"><![CDATA[0.0]]></set-property>
+  <set-property name="listPrice"><![CDATA[10.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[28]]></set-property>  -->
+  <set-property name="onSale"><![CDATA[false]]></set-property>
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[true]]></set-property>
+  <set-property name="quantityAsQualifier"><![CDATA[0]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[itemPriceInfo]]></set-property>
+  <set-property name="orderDiscountShare"><![CDATA[0.0]]></set-property>
+</add-item>
+
+<add-item item-descriptor="itemPriceInfo" id="ai330010">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="rawTotalPrice"><![CDATA[15.0]]></set-property>
+  <set-property name="amount"><![CDATA[15.0]]></set-property>
+  <set-property name="quantityDiscounted"><![CDATA[0]]></set-property>
+  <set-property name="salePrice"><![CDATA[0.0]]></set-property>
+  <set-property name="listPrice"><![CDATA[15.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[13]]></set-property>  -->
+  <set-property name="onSale"><![CDATA[false]]></set-property>
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[true]]></set-property>
+  <set-property name="quantityAsQualifier"><![CDATA[0]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[itemPriceInfo]]></set-property>
+  <set-property name="orderDiscountShare"><![CDATA[0.0]]></set-property>
+</add-item>
+
+<add-item item-descriptor="itemPriceInfo" id="ai330013">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="rawTotalPrice"><![CDATA[30.0]]></set-property>
+  <set-property name="amount"><![CDATA[30.0]]></set-property>
+  <set-property name="quantityDiscounted"><![CDATA[0]]></set-property>
+  <set-property name="salePrice"><![CDATA[0.0]]></set-property>
+  <set-property name="listPrice"><![CDATA[30.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[9]]></set-property>  -->
+  <set-property name="onSale"><![CDATA[false]]></set-property>
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[true]]></set-property>
+  <set-property name="quantityAsQualifier"><![CDATA[0]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[itemPriceInfo]]></set-property>
+  <set-property name="orderDiscountShare"><![CDATA[0.0]]></set-property>
+</add-item>
+
+<add-item item-descriptor="itemPriceInfo" id="ai330017">
+  <set-property name="adjustments"><![CDATA[]]></set-property>
+  <set-property name="rawTotalPrice"><![CDATA[95.0]]></set-property>
+  <set-property name="amount"><![CDATA[95.0]]></set-property>
+  <set-property name="quantityDiscounted"><![CDATA[0]]></set-property>
+  <set-property name="salePrice"><![CDATA[0.0]]></set-property>
+  <set-property name="listPrice"><![CDATA[95.0]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[6]]></set-property>  -->
+  <set-property name="onSale"><![CDATA[false]]></set-property>
+  <set-property name="discounted"><![CDATA[false]]></set-property>
+  <set-property name="amountIsFinal"><![CDATA[true]]></set-property>
+  <set-property name="quantityAsQualifier"><![CDATA[0]]></set-property>
+  <set-property name="currencyCode"><![CDATA[USD]]></set-property>
+  <set-property name="type"><![CDATA[itemPriceInfo]]></set-property>
+  <set-property name="orderDiscountShare"><![CDATA[0.0]]></set-property>
+</add-item>
+
+<!--Pricing Adjustment -->
+<add-item item-descriptor="pricingAdjustment" id="pa320005">
+  <set-property name="quantityAdjusted"><![CDATA[-1]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[26]]></set-property>  -->
+  <set-property name="totalAdjustment"><![CDATA[0.0]]></set-property>
+  <set-property name="adjustmentDescription"><![CDATA[Price is final and unchangeable: Thu Jul 11 11:28:44 IST 2013]]></set-property>
+</add-item>
+
+<add-item item-descriptor="pricingAdjustment" id="pa170016">
+  <set-property name="quantityAdjusted"><![CDATA[1]]></set-property>
+  <!-- export is false   <set-property name="version"><![CDATA[456]]></set-property>  -->
+  <set-property name="totalAdjustment"><![CDATA[9.5]]></set-property>
+  <set-property name="adjustmentDescription"><![CDATA[Shipping]]></set-property>
+</add-item>
+
+</import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/test/java/atg/userprofiling/email/data/OrderDataProviderTest/orders.xml#1 $$Change: 1385662 $-->

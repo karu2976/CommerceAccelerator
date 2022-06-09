@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+  <file original="OrderConfirmationEmail.xlf" source-language="en" datatype="atg-commerce">
+    <body>
+      <trans-unit id='MY_ACCOUNT'>
+        <source>My Account</source>
+      </trans-unit>
+    
+      <trans-unit id='ORDER_CONFIRM_TEXT'>
+        <source>{0} Order Confirmation</source>
+      </trans-unit>
+
+      <trans-unit id='TRACK_ORDER_TEXT'>
+        <source>To track the progress of your order, go to</source>
+      </trans-unit>  
+      
+      <trans-unit id='ORDER_DETAILS'>
+        <source>Order Details</source>
+      </trans-unit> 
+      
+      <trans-unit id='ORDER_NUMBER'>
+        <source>Order #:</source>
+      </trans-unit> 
+
+      <trans-unit id='ORDER_PLACED_ON'>
+        <source>Place On:</source>
+      </trans-unit>       
+
+      <trans-unit id='ORDER_STATUS'>
+        <source>Status:</source>
+      </trans-unit> 
+
+      <trans-unit id='BILL_TO'>
+        <source>Bill To:</source>
+      </trans-unit>
+
+      <trans-unit id='ENDING_IN'>
+        <source>ending in</source>
+      </trans-unit>      
+
+      <trans-unit id='CARD_EXPIRY'>
+        <source>Exp:</source>
+      </trans-unit>
+
+      <trans-unit id='SHIP_TO'>
+        <source>Ship To:</source>
+      </trans-unit>      
+
+      <trans-unit id='SHIP_VIA'>
+        <source>Via:</source>
+      </trans-unit>
+
+      <trans-unit id='ITEMS_TABLE_SUMMARY'>
+        <source>List of items in this order</source>
+      </trans-unit>
+      
+      <trans-unit id='SITE'>
+        <source>Site</source>
+      </trans-unit>
+      
+      <trans-unit id='ITEM'>
+        <source>Item</source>
+      </trans-unit>
+
+      <trans-unit id='QUANTITY'>
+        <source>Quantity</source>
+      </trans-unit>
+
+      <trans-unit id='PRICE'>
+        <source>Price</source>
+      </trans-unit>
+
+      <trans-unit id='ITEM_TOTAL'>
+        <source>Total</source>
+      </trans-unit>
+
+      <trans-unit id='SIZE'>
+        <source>Size:</source>
+      </trans-unit>      
+
+      <trans-unit id='COLOR'>
+        <source>Color:</source>
+      </trans-unit>
+      
+      <trans-unit id='WOOD_FINISH'>
+        <source>Wood Finish:</source>
+      </trans-unit>    
+
+      <trans-unit id='SUB_TOTAL'>
+        <source>Subtotal</source>
+      </trans-unit> 
+
+      <trans-unit id='SHIPPING'>
+        <source>Shipping</source>
+      </trans-unit> 
+
+      <trans-unit id='TAX'>
+        <source>Tax</source>
+      </trans-unit>       
+
+      <trans-unit id='ORDER_TOTAL'>
+        <source>Total:</source>
+      </trans-unit>
+      
+      <trans-unit id='ADD_EMAIL_TEXT1'>
+        <source>Please add</source>
+      </trans-unit>
+      
+      <trans-unit id='ADD_EMAIL_TEXT2'>
+        <source>to your address book to ensure delivery of future email notifications and promotions.</source>
+      </trans-unit>     
+
+      <trans-unit id='TERMS'>
+        <source>Terms</source>
+      </trans-unit>        
+
+      <trans-unit id='PRIVACY_POLICY'>
+        <source>Privacy Policy</source>
+      </trans-unit>
+
+      <trans-unit id='SHIPPING'>
+        <source>Shipping</source>
+      </trans-unit>
+
+      <trans-unit id='CONTACT_US'>
+        <source>Contact Us</source>
+      </trans-unit>
+
+      <trans-unit id='COPY_RIGHT1'>
+        <source>Copyright  1994, 2014, Oracle and/or its affiliates. All rights reserved.</source>
+      </trans-unit>      
+
+      <trans-unit id='COPY_RIGHT2'>
+        <source>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names
+          may be trademarks of their respective owners.</source>
+      </trans-unit>       
+    </body>
+  </file>
+</xliff>

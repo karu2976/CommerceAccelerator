@@ -1,0 +1,27 @@
+{
+  "base": {
+    "alert": {
+      "itemUnavailable": "Actualmente, el stock de {{0}} está agotado. Elimine el artículo del carro para finalizar la compra."
+    },
+    "button": {
+      "apply": "Aplicar",
+      "cancel": "Cancelar",
+      "close": "Cerrar",
+      "save": "Guardar",
+      "toggleNavigation": "Alternar navegación"
+    },
+    "label": {
+      "country": "País",
+      "language": "Idioma",
+      "selectLanguage": "Seleccione un idioma"
+    },
+    "link": {
+      "skipToMainContent": "Omitir en contenido principal",
+      "switchLanguage": "<span class=\"sr-only\">cambiar idioma, el idioma actual es</span> {{0}}",
+      "switchSite": "<span class=\"sr-only\">cambiar sitio, el sitio actual es</span> {{0}}"
+    },
+    "subheading": {
+      "chooseCountryAndLanguage": "Seleccione un país y un idioma"
+    }
+  }
+}

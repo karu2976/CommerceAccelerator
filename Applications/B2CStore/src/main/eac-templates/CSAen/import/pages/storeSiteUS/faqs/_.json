@@ -1,0 +1,44 @@
+{
+    "workflowNote": "",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-12-06T06:06:16.563-08:00",
+    "contentType": "Page",
+    "ecr:createDate": "2016-12-06T06:06:16.563-08:00",
+    "ecr:type": "page",
+    "contentItem": {
+        "@name": "Two-Column Page",
+        "metaKeywords": "",
+        "@type": "TwoColumnPage",
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce Accelerator FAQs page content.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "mainContent": [{
+            "@name": "Rich Text",
+            "@type": "RichTextMain",
+            "content": "<h2>Frequently Asked Questions<\/h2>\n\n<p><strong>Q: Why wasn&#39;t the store promotion on the website available at the CSA store at my local mall?<\/strong><\/p>\n\n<p><strong>A:<\/strong> The promotions posted on our website are offered in most of our stores nationwide. However, as noted when the promotion is posted on our website, each CSA store is unique and promotions are not offered at all stores. If you want to make sure your CSA store is running a particular promotion, call the store. If they aren&#39;t running the promotion, they should be able to tell you which CSA store in your area is.<\/p>\n\n<p><strong>Q: How do I update my email address?<\/strong><\/p>\n\n<p><strong>A:<\/strong> You can update your email address by logging in and selecting &quot;My Profile.&quot; Make any changes you need to your profile, then scroll to the bottom of the page, and click &quot;Submit&quot; to save those changes.<\/p>\n\n<p><strong>Q: How can I unsubscribe from your email list?<\/strong><\/p>\n\n<p><strong>A:<\/strong> You can unsubscribe from CSA email by clicking the link at the bottom of marketing emails you receive from CSA. Please note, even if you elect not to receive email, or subsequently ask to be removed from the CSA email marketing list, you may still receive email confirmations for Gift Card purchases made on our website, confirmations of our receipt of questions submitted, and other operational emails. You can also login and edit your profile, then deselect the box for &quot;Send me emails.&quot;<\/p>"
+        }],
+        "secondaryContent": [{
+            "ruleLimit": "1",
+            "@name": "Static Page Navigation",
+            "templateTypes": ["SecondaryContent"],
+            "templateIds": [],
+            "@type": "ContentSlotSecondary",
+            "contentPaths": ["/content/Web/Static Page Navigation"]
+        }],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }]
+    }
+}

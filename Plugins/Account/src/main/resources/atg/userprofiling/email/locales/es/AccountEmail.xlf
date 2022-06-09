@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'utf-8'?>
+<xliff version="1.0">
+   <file original="AccountEmail.xlf" source-language="en" datatype="atg-commerce" target-language="es-ES">
+      <body>
+         <trans-unit id="DEAR">
+            <source>Dear</source>
+            <target>Estimado/a</target>
+         </trans-unit>
+         <trans-unit id="PASSWORD_CHANGED">
+            <source>Your password has been successfully changed.</source>
+            <target>La contraseña se ha cambiado correctamente.</target>
+         </trans-unit>
+         <trans-unit id="EMAIL_AUTOGEN_TEXT">
+            <source>This is an automatically generated E-Mail, please do not reply.</source>
+            <target>Este es un correo electrónico generado automáticamente, no responda.</target>
+         </trans-unit>
+         <trans-unit id="NEW_PASSWORD_TEXT">
+            <source>We have created a new password for you based on your request. Your new password is: {0} </source>
+            <target>Hemos creado una nueva contraseña para usted según su solicitud. Su nueva contraseña es: {0}</target>
+         </trans-unit>
+         <trans-unit id="PASSWORD_RESET_TEXT">
+            <source>The next time you log in to your account, you will be asked to create a password of your own choosing. </source>
+            <target>La próxima vez que se conecte a su cuenta, se le pedirá que cree una contraseña de su propia elección.</target>
+         </trans-unit>
+      </body>
+   </file>
+</xliff>

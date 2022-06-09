@@ -1,0 +1,208 @@
+<div data-bind="uniqueId: 'billToAddress-heading'" class="panel-heading">
+  <div class="pull-left">
+    <strong>
+      {{ 'checkout.subheading.billTo' | i18n }}: 
+      {{ checkoutDetails.billingFirstName }} {{ checkoutDetails.billingLastName }}
+    </strong>
+  </div>
+  <div class="pull-right">
+    <button class="btn btn-sm btn-link"
+            data-bind="click: clearBillingAddress,
+                       uniqueId : 'billToAddress-btn-clear',
+                       visible: checkoutDetails.isBillingAddressAccordionPanelVisible() &&
+                          !checkoutDetails.isCreditCardSelectedFromProfile()">
+      {{ 'checkout.button.clear' | i18n }}
+    </button>
+    <button class="btn btn-sm btn-link"
+            data-bind="click: showBillingAddressAccordionPanel,
+                       uniqueId : 'billToAddress-btn-edit',
+                       disable: checkoutDetails.isBillingAddressAccordionPanelVisible()">
+      {{ 'checkout.button.edit' | i18n }}
+    </button>
+    <span class="glyphicon {{ validationIconClass }}"></span>
+  </div>
+  <div class="clearfix"></div>
+  <div>
+    <div>
+      {{ checkoutDetails.billingAddress1 }}
+      {{ checkoutDetails.billingAddress2 }}
+    </div>
+    <div>
+      {{ checkoutDetails.billingCity }}
+      {{ checkoutDetails.billingState }}
+      {{ checkoutDetails.billingPostalCode }}
+    </div>
+  </div>
+</div>
+
+<div class="panel-collapse collapse"
+     data-bind="uniqueId: 'billToAddress',
+                accordion: {
+                  toggle: checkoutDetails.isBillingAddressAccordionPanelVisible,
+                  parent: '#' + checkoutDetails.accordionId()
+                }" >
+  <form role="form" class="ws-validate"
+        data-bind="uniqueId: 'billToAddress-form',
+                   submit: validateBillingAddress">
+    <div class="panel-body">
+      <div class="form-group">
+        <label data-bind="visible: !checkoutDetails.isCreditCardSelectedFromProfile()">
+          <input type="checkbox" data-bind="checked: checkoutDetails.isBillingAddressSameAsShippingAddress">
+          {{{ 'checkout.label.sameAsShipToAddress' | i18n }}}
+        </label>
+      </div>
+      <div data-bind="visible: !checkoutDetails.isBillingAddressSameAsShippingAddress()">
+        <p data-bind="visible: checkoutDetails.profile.authenticated() && !checkoutDetails.isCreditCardSelectedFromProfile()">
+          <a href="#" data-bypass data-bind="click: showSelectSavedAddress">{{{ 'checkout.link.chooseSavedAddress' | i18n }}}</a>
+        </p>
+        <p data-bind="visible: checkoutDetails.isCreditCardSelectedFromProfile">
+          {{{ 'checkout.text.addressLinkedToPayment' | i18n }}}
+        </p>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingfirstName'">{{ 'checkout.label.firstName' | i18n }} *</label>
+          <input class="form-control" type="text" name="billingfirstName"
+                 data-bind="value: checkoutDetails.billingFirstName,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                            uniqueId: 'billingfirstName'" maxlength="40" />
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billinglastName'">{{ 'checkout.label.lastName' | i18n }} *</label>
+          <input class="form-control" type="text" name="billinglastName" 
+                 data-bind="value: checkoutDetails.billingLastName,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                            uniqueId: 'billinglastName'" maxlength="40" />
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingaddress1'">{{ 'checkout.label.addressLine1' | i18n }} *</label>
+          <input class="form-control" type="text" name="billingaddress1"
+                 data-bind="value: checkoutDetails.billingAddress1,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                            uniqueId: 'billingaddress1'" maxlength="200" />
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingaddress2'">{{ 'checkout.label.addressLine2' | i18n }}</label>
+          <input class="form-control" type="text" name="billingaddress2" 
+                 data-bind="value: checkoutDetails.billingAddress2,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            uniqueId: 'billingaddress2'" maxlength="50" />
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingcity'">{{ 'checkout.label.city' | i18n }} *</label>
+          <input class="form-control" type="text" name="billingcity" 
+                 data-bind="value: checkoutDetails.billingCity,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                            uniqueId: 'billingcity'" maxlength="30" />
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingstate'">{{ 'checkout.label.stateOrProvince' | i18n }} *</label>
+          <select class="form-control" type="text" name="billingstate"
+                  data-bind="options: checkoutDetails.billingStates,
+                             optionsText: 'displayName',
+                             optionsValue: 'code',
+                             optionsCaption: $data.optionsCaption('selectStateOrProvince'),
+                             value: checkoutDetails.billingState,
+                             valueAllowUnset: true,
+                             disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                             attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                             uniqueId: 'billingstate'">
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'zip'">{{ 'checkout.label.zipOrPostalCode' | i18n }} *</label>
+          <input type="text" class="form-control" name="zip"
+                 data-bind="value: checkoutDetails.billingPostalCode,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                            uniqueId: 'zip'"  maxlength="10" >
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingcountry'">{{ 'checkout.label.country' | i18n }} *</label>
+          <select class="form-control" type="text" name="billingcountry"
+                  data-bind="options: $parents[1].availableCountries,
+                             optionsText: 'displayName',
+                             optionsValue: 'code',
+                             optionsCaption: $data.optionsCaption('selectCountry'),
+                             valueAllowUnset: true,
+                             value: checkoutDetails.billingCountry,
+                             disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                             attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                             uniqueId: 'billingcountry'">
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'billingphonenumber'">{{ 'checkout.label.phone' | i18n }} *</label>
+          <input class="form-control" type="tel" name="billingphonenumber"
+                 data-bind="value: checkoutDetails.billingPhoneNumber,
+                            disable: checkoutDetails.isBillingAddressSelectedFromProfile,
+                            attr.required: !checkoutDetails.isBillingAddressSameAsShippingAddress(),
+                            uniqueId: 'billingphonenumber'" maxlength="15" />
+        </div>
+      </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-block csa-btn">{{ 'checkout.button.saveAndContinue' | i18n }}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     data-bind="modal: isSavedAddressModalVisible,
+                attr: {
+                  'id' : cid() + '-'  + 'selectBillingAddressModal',
+                  'data-name' : cid() + '-'  + 'selectBillingAddressModal',
+                  'aria-labelledby' : cid() + 'selectBillingAddressModalTitle'
+                }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'checkout.button.close' | i18n }}</span></button>
+        <h4 class="modal-title"
+            data-bind="attr: {
+                        'id' : $data.cid() + 'selectBillingAddressModalTitle',
+                        'data-name' : 'selectBillingAddressModalTitle'
+                      }">
+          {{ 'checkout.subheading.chooseSavedAddress' | i18n }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <!-- ko foreach: checkoutDetails.availableShippingAddress -->
+            <li>
+              <div class="form-group">
+                <div class="radio csa-radio">
+                  <input type="radio"
+                         name="billingAddress"
+                         data-bind="value: addressNickname,
+                                    checked: $parent.checkoutDetails.currentBillingAddressSelection,
+                                    uniqueId:'billingAddress'"/>
+                  <label data-bind="uniqueFor: 'billingAddress'">{{addressNickname}}</label>
+                </div>
+              </div>
+            </li>
+          <!-- /ko -->
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block csa-btn" data-bind="click: setSelectedBillingAddress" data-dismiss="modal" data-bypass >
+              {{ 'checkout.button.apply' | i18n }}
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block btn-default" data-dismiss="modal">
+              {{ 'checkout.button.cancel' | i18n }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

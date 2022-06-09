@@ -1,0 +1,47 @@
+{
+  "shoppingCart": {
+    "alert": {
+      "emptyCart": "Ihr Warenkorb ist leer."
+    },
+    "button": {
+      "checkout": "Checkout",
+      "close": "Schließen",
+      "remove": "Entfernen",
+      "update": "Aktualisieren"
+    },
+    "heading": {
+      "yourShoppingCart": "Ihr Warenkorb"
+    },
+    "label": {
+      "discount": "Rabatt",
+      "listPrice": "Listenpreis",
+      "orderSummaryTableSummary": "Bestellübersicht enthält Angaben zu Zwischensumme, Rabatten, Versand, Steuer und Gesamtsumme",
+      "priceBeforeReduction": "Preis vor Reduzierung",
+      "quantity": "Menge",
+      "salePrice": "Verkaufspreis",
+      "shipping": "Versand",
+      "subtotal": "Zwischensumme",
+      "tax": "Steuer",
+      "total": "Gesamtsumme",
+      "was": "Vorher"
+    },
+    "link": {
+      "checkout": "Checkout",
+      "continueShopping": "Einkauf fortsetzen",
+      "itemInYourShoppingCart": "Artikel in Ihrem Warenkorb",
+      "itemInYourShoppingCart_plural": "Artikel in Ihrem Warenkorb",
+      "viewCart": "Warenkorb anzeigen"
+    },
+    "subheading": {
+      "cartSummary": "Warenkorbübersicht",
+      "itemInYourShoppingCart": "Artikel in Ihrem Warenkorb",
+      "itemInYourShoppingCart_plural": "Artikel in Ihrem Warenkorb",
+      "orderSummary": "Bestellübersicht ({{0}} Artikel)",
+      "orderSummary_plural": "Bestellübersicht ({{0}} Artikel)"
+    },
+    "text": {
+      "1000": "Auf Lager",
+      "1001": "Nicht auf Lager"
+    }
+  }
+}

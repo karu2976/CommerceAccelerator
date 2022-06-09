@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+  <display-name>
+    CommerceAccelerator.Plugins.ShoppingCart
+  </display-name>
+
+  <description>
+    The Oracle Commerce Accelerator ShoppingCart Plugin Module
+  </description>
+
+  <welcome-file-list>
+    <welcome-file>main.js</welcome-file>
+  </welcome-file-list>
+
+  <!-- Add Cache Headers Filter                                       -->
+  <!--                                                                -->
+  <!-- This filter is responsible for adding full caching headers to  -->
+  <!-- static content (images, js files)                              -->
+  <filter>
+    <filter-name>AddCacheHeadersFilter</filter-name>
+    <filter-class>atg.filter.AddCacheHeadersFilter</filter-class>
+    <init-param>
+      <param-name>loggingDebug</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>loggingWarning</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>loggingError</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>loggingInfo</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>patterns</param-name>
+      <param-value>.*\.js,.*\.css,.*\.html,.*\.png,.*\.gif,.*\.jpg,.*\.ico</param-value>
+    </init-param>
+    <init-param>
+      <param-name>gzipPatterns</param-name>
+      <param-value>.*\.js,.*\.css</param-value>
+    </init-param>
+    <init-param>
+      <param-name>defaultContentType</param-name>
+      <param-value>application/octet-stream</param-value>
+    </init-param>
+    <init-param>
+      <param-name>flush</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>timeSpan</param-name>
+      <param-value>2592000</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>AddCacheHeadersFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
+
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/ShoppingCart/src/main/webapp/WEB-INF/web.xml#1 $$Change: 1385662 $-->

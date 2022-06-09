@@ -1,0 +1,10 @@
+project(":Applications:B2CStore:Plugins:ShoppingCart") {
+  dependencies {
+    compile project(":Plugins:ShoppingCart"),
+            project(":Applications:B2CStore:Base")
+  }
+
+  compileWebapp.dependsOn ":Plugins:ShoppingCart:compileWebapp", ":Applications:B2CStore:Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/ShoppingCart/build-ship.gradle#1 $$Change: 1385662 $

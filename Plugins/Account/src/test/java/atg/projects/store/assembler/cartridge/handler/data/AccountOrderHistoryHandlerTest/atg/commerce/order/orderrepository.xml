@@ -1,0 +1,107 @@
+<gsa-template>
+  <!--
+    This orderrepository.xml file defines all of the repository properties that are used by CSA.  This
+    file will be appended to any other orderrepository.xml file that has been defined else where.
+  -->
+  <header>
+    <name>Store Related Order Additions</name>
+    <author>Oracle Commerce</author>
+  </header>
+
+  <!--///////////////////////////////-->
+  <!--           order               -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="order" cache-mode="simple" item-cache-timeout="300000" query-expire-timeout="300000" xml-combine="append">
+    <!--
+      Adding the isolationLevel attribute
+    -->
+    <attribute name="isolationLevel" value="serializable"/>
+    <attribute name="trackingInfoPriority" value="55"/>
+    <attribute name="couponPriority" value="58"/>
+
+    <table name="dcspp_order" type="primary" id-column-name="order_id">
+      <property name="state" column-name="state" data-type="string" default="INCOMPLETE" category-resource="categoryBasics" 
+                display-name-resource="state" cache-mode="disabled" xml-combine="replace">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+    </table>
+  </item-descriptor>  
+
+  <!--///////////////////////////////-->
+  <!--        paymentGroup           -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="paymentGroup" cache-mode="simple" item-cache-timeout="300000" query-expire-timeout="300000" xml-combine="append">
+    <!--
+      Adding the isolationLevel attribute
+    -->
+    <attribute name="isolationLevel" value="serializable"/>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--       itemPriceInfo           -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="itemPriceInfo" cache-mode="simple" item-cache-timeout="300000" query-expire-timeout="300000" xml-combine="append">
+    <!--
+      Adding the isolationLevel attribute
+    -->
+    <attribute name="isolationLevel" value="serializable"/>
+
+    <!--
+      Auxiliary table added to facilitate the inclusion of a taxPriceInfo property for itemPrices
+    -->
+    <table name="csa_item_price" type="auxiliary" id-column-name="item_price_info_id">
+       <property name="taxPriceInfo" display-name-resource="taxPriceInfo" queryable="true" readable="true" column-name="tax_price_info_id" item-type="taxPriceInfo" hidden="false" category-resource="categoryPrice" expert="false" cascade="insert,update,delete" required="false" cache-mode="inherit" writable="true">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--        taxPriceInfo           -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="taxPriceInfo" cache-mode="simple" item-cache-timeout="300000" query-expire-timeout="300000" xml-combine="append">
+    <!--
+      Adding the isolationLevel attribute
+    -->
+    <attribute name="isolationLevel" value="serializable"/>
+
+    <!--
+      Auxiliary table added to facilitate the inclusion of a districtTax property for taxPriceInfo
+    -->
+    <table name="csa_tax_price" type="auxiliary" id-column-name="amount_info_id">
+      <property name="districtTax" display-name-resource="districtTax" data-type="double" queryable="true" readable="true" column-name="district_tax" hidden="false" category-resource="categoryTax" expert="false" required="false" cache-mode="inherit" writable="true">
+        <attribute name="resourceBundle" value="atg.projects.store.order.OrderRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="25"/>
+      </property>
+    </table>
+  </item-descriptor>
+  
+  <!--///////////////////////////////-->
+  <!--       shippingPriceInfo       -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="shippingPriceInfo" cache-mode="simple" item-cache-timeout="300000" query-expire-timeout="300000" xml-combine="append">
+    <!--
+      Adding the isolationLevel attribute
+    -->
+    <attribute name="isolationLevel" value="serializable"/>
+
+    <!--
+      Auxiliary table added to facilitate the inclusion of a taxPriceInfo property for shippingPriceInfo
+    -->
+    <table name="csa_ship_price" type="auxiliary" id-column-name="ship_price_info_id">
+       <property name="taxPriceInfo" display-name-resource="taxPriceInfo" queryable="true" readable="true" column-name="tax_price_info_id" item-type="taxPriceInfo" hidden="false" category-resource="categoryPrice" expert="false" cascade="insert,update,delete" required="false" cache-mode="inherit" writable="true">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+    </table>
+  </item-descriptor>
+  
+  <!--///////////////////////////////-->
+  <!--        creditCard             -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="creditCard">
+    <table name="dcspp_credit_card">
+      <property name="creditCardNumber"/>
+    </table>
+  </item-descriptor> 
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/test/java/atg/projects/store/assembler/cartridge/handler/data/AccountOrderHistoryHandlerTest/atg/commerce/order/orderrepository.xml#1 $$Change: 1385662 $-->

@@ -1,0 +1,13 @@
+<ul class="nav nav-pills nav-stacked hidden-xs csa-static-page-nav-panel" data-bind="foreach: links">
+  <li>
+    <a data-bind="attr: { href: $parent.hrefFromLink(link), title: name }">
+      <!-- Highlight the link of the current page. -->
+      <!-- ko if: (link.contentPath.indexOf($parent.currentStaticPage()) !== -1) -->
+        <strong>{{ name }}</strong>
+      <!-- /ko -->
+      <!-- ko ifnot: (link.contentPath.indexOf($parent.currentStaticPage()) !== -1) -->
+        {{ name }}
+      <!-- /ko -->
+    </a>
+  </li>
+</ul>

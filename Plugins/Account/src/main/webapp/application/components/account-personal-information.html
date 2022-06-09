@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2>{{ 'account.heading.personalInformation' | i18n }}</h2>
+    <form action="" role="form" class="ws-validate" data-bind="submit: updateProfile, reset: viewProfile">
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'email'">{{ 'account.label.emailAddress' | i18n }} *</label>
+          <input type="email" class="form-control" autocomplete="off" required
+            data-bind="value: $data.profile.login,
+                       uniqueId: 'email'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'firstName'">{{ 'account.label.firstName' | i18n }} *</label>
+          <input type="text" class="form-control" autocomplete="off" required
+            data-bind="value: $data.profile.firstName,
+                       uniqueId: 'firstName'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'lastName'">{{ 'account.label.lastName' | i18n }} *</label>
+          <input type="text" class="form-control" autocomplete="off" required
+            data-bind="value: $data.profile.lastName,
+                       uniqueId: 'lastName'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'zip'">{{ 'account.label.zipOrPostalCode' | i18n }}</label>
+          <input type="text" class="form-control" maxlength="10" autocomplete="off"
+            data-bind="value: $data.profile.postalCode,
+                       uniqueId: 'zip'">
+        </div>
+        <div class="form-group">
+          <label data-bind="uniqueFor: 'gender'">{{ 'account.label.gender' | i18n }}</label>
+          <select name="gender" class="form-control"
+            data-bind="value: $data.profile.gender,
+                       uniqueId: 'gender'">
+            <option value="unknown">{{ 'account.text.selectGender' | i18n }}</option>
+            <option value="male">{{ 'account.text.male' | i18n }}</option>
+            <option value="female">{{ 'account.text.female' | i18n }}</option>
+            <option value="unspecified">{{ 'account.text.unspecified' | i18n }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'dateOfBirth'">{{ 'account.label.birthday' | i18n }} ({{ $data.placeholderText }})</label>
+          <input type="text" name="dateOfBirth" 
+            autocomplete="off" class="form-control csa-account-dob"
+            data-bind="value: $data.profile.dateOfBirth,
+                       uniqueId: 'dateOfBirth'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </fieldset>
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-block csa-btn">
+            {{ 'account.button.save' | i18n }}
+          </button>
+        </div>
+        <div class="col-xs-6">
+          <button type="reset" class="btn btn-block btn-default">
+            {{ 'account.button.cancel' | i18n }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

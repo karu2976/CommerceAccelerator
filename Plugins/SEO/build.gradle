@@ -1,0 +1,15 @@
+project(":Plugins:SEO") {
+  description = "This is a plugin for SEO for Commerce store accelarator."
+
+  dependencies {
+    compile project(":Base")
+    compile(files(project.file("lib/endeca-sitemapgen.jar")))
+    compile(files(project.file("lib/phantomjsdriver-1.2.0.jar")))
+    compile(files(project.file("lib/selenium-java-2.44.0.jar")))
+    compile(files(project.file("lib/selenium-api-2.35.0.jar")))
+    compile(files(project.file("lib/guava-15.0-cdi1.0.jar")))
+  }
+
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SEO/build-ship.gradle#1 $$Change: 1385662 $

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2001, 2014, Oracle and/or its affiliates. All rights reserved.
+  ~ Oracle and Java are registered trademarks of Oracle and/or its
+  ~ affiliates. Other names may be trademarks of their respective owners.
+  ~ UNIX is a registered trademark of The Open Group.
+  ~
+  ~ This software and related documentation are provided under a license
+  ~ agreement containing restrictions on use and disclosure and are
+  ~ protected by intellectual property laws. Except as expressly permitted
+  ~ in your license agreement or allowed by law, you may not use, copy,
+  ~ reproduce, translate, broadcast, modify, license, transmit, distribute,
+  ~ exhibit, perform, publish, or display any part, in any form, or by any
+  ~ means. Reverse engineering, disassembly, or decompilation of this
+  ~ software, unless required by law for interoperability, is prohibited.
+  ~ The information contained herein is subject to change without notice
+  ~ and is not warranted to be error-free. If you find any errors, please
+  ~ report them to us in writing.
+  ~ U.S. GOVERNMENT END USERS: Oracle programs, including any operating
+  ~ system, integrated software, any programs installed on the hardware,
+  ~ and/or documentation, delivered to U.S. Government end users are
+  ~ "commercial computer software" pursuant to the applicable Federal
+  ~ Acquisition Regulation and agency-specific supplemental regulations.
+  ~ As such, use, duplication, disclosure, modification, and adaptation
+  ~ of the programs, including any operating system, integrated software,
+  ~ any programs installed on the hardware, and/or documentation, shall be
+  ~ subject to license terms and license restrictions applicable to the
+  ~ programs. No other rights are granted to the U.S. Government.
+  ~ This software or hardware is developed for general use in a variety
+  ~ of information management applications. It is not developed or
+  ~ intended for use in any inherently dangerous applications, including
+  ~ applications that may create a risk of personal injury. If you use
+  ~ this software or hardware in dangerous applications, then you shall
+  ~ be responsible to take all appropriate fail-safe, backup, redundancy,
+  ~ and other measures to ensure its safe use. Oracle Corporation and its
+  ~ affiliates disclaim any liability for any damages caused by use of this
+  ~ software or hardware in dangerous applications.
+  ~ This software or hardware and documentation may provide access to or
+  ~ information on content, products, and services from third parties.
+  ~ Oracle Corporation and its affiliates are not responsible for and
+  ~ expressly disclaim all warranties of any kind with respect to
+  ~ third-party content, products, and services. Oracle Corporation and
+  ~ its affiliates will not be responsible for any loss, costs, or damages
+  ~ incurred due to your access to or use of third-party content, products,
+  ~ or services.
+  -->
+
+<XML>
+
+<!--
+Sitemap Config File - Allows user to specify most common settings
+when generating sitemap index pages.
+-->
+
+<!--
+Specifies the template file to use when building index pages and links.  
+File path can be absolute, or relative to this file.  See sample 
+template files for format details.
+
+You may also want to use the html template:
+<TEMPLATE_FILE>html_template.xml</TEMPLATE_FILE>
+
+-->
+<TEMPLATE_FILE>xml_template.xml</TEMPLATE_FILE>
+
+<!-- 
+Specifies the index file that will be created as output.  Other files 
+that may be linked from this file will be automatically created in the
+same directory and with the same extension.  File path can be absolute, 
+or relative to this file.
+
+If using the html template, you may want to use the following:
+<INDEX_FILE>../sitemap/index.html</INDEX_FILE>
+
+-->
+<INDEX_FILE>../../../sitemap_store/CSAen_StoreSiteUS/index_CSAen.xml</INDEX_FILE>
+
+<!-- 
+Specifies location of index from which to build links, and query parameters 
+to use.  Note that in most cases N=0 is appropriate for retrieving all 
+records.  Use multiple ENGINEs if running in an Agraph deployment.
+
+To run an aggregate query, append the following tag: ROLLUP_KEY
+
+For example,
+<MDEX_ENGINES>
+  <ENGINE>
+      <HOST>localhost</HOST>
+      <PORT>15000</PORT>
+      <ROOT_QUERY><![CDATA[N=0]]></ROOT_QUERY>
+      <ROLLUP_KEY>product.code</ROLLUP_KEY>
+  </ENGINE>
+</MDEX_ENGINES>
+-->
+<MDEX_ENGINES>
+  <ENGINE>
+    <HOST>localhost</HOST>
+    <PORT>15000</PORT>
+    <ROOT_QUERY><![CDATA[N=0&Nr=AND(product.priceListPair:salePrices_listPrices,product.siteId:storeSiteUS)]]></ROOT_QUERY>
+	  <ROLLUP_KEY>product.repositoryId</ROLLUP_KEY>
+  </ENGINE>
+</MDEX_ENGINES>
+
+<!-- 
+Specifies fields (dimension and/or property names) that should be included
+with every record in the query results. If nothing is specified in this section,
+only those properties and dimensions that are enabled for display with record list
+will be returned with each record. Entering a value within this list overrides
+the application settings, so it can be used to expand or restrict the returned data.
+For example, specifying a property P_Name in the list will return only the value
+of this one property with every record, even if this property is not enabled
+for display with record list in the application configuration files. In this example,
+no other property or dimension values will be returned.
+
+Example:
+<QUERY_FIELD_LIST>
+   <QUERY_FIELD>P_Name</QUERY_FIELD>
+</QUERY_FIELD_LIST>
+
+Note: Only one QUERY_FIELD_LIST tag will be read by the Sitemap Generator. If more
+than one lists are included in the config file, only the first one will be used.
+-->
+
+<QUERY_FIELD_LIST>
+  <QUERY_FIELD>product.category</QUERY_FIELD>
+  <QUERY_FIELD>product.brand</QUERY_FIELD>
+  <QUERY_FIELD>product.displayName</QUERY_FIELD>
+</QUERY_FIELD_LIST>
+
+<!--
+Specifies the search terms file to use if/when building search term links.  
+File path can be absolute, or relative to this file.
+-->
+<SEARCH_TERMS_FILE>searchterms.xml</SEARCH_TERMS_FILE>
+
+<!--
+Specifies the static pages file to use if/when building static page links.  
+File path can be absolute, or relative to this file.
+-->
+<STATIC_PAGES_FILE>staticpages.txt</STATIC_PAGES_FILE>
+
+
+<!--
+Specifies the file used for formatting Urls.   Optional.
+-->
+<URL_FORMAT_FILE>endeca-seo-url-config.xml</URL_FORMAT_FILE>
+
+<!-- 
+Defines the component that is loaded from the urlconfig.xml file, and 
+that will be used to process all FORMATTEDURL tags.
+Required for running of the SiteMapGenerator.
+-->
+<URLFORMATTER_COMPONENT>seoUrlFormatter</URLFORMATTER_COMPONENT>
+
+
+<!--
+Specifies the encoding used for formatting URLs.   Optional (if unspecified, UTF-8 is used).
+-->
+<URL_ENCODING>UTF-8</URL_ENCODING>
+
+<!--
+Include aggregate record query parameters in generated URLs.  Can be true or false.
+Optional (if unspecified, it will be set to false).
+-->
+<URL_INCLUDE_AGGR_REC_PARAMS>false</URL_INCLUDE_AGGR_REC_PARAMS>
+
+<!-- 
+Limits the number of links written to a file before a new file is created.  
+Use this parameter to indirectly control the size of  individual index files.
+-->
+<LINKS_PER_FILE>10000</LINKS_PER_FILE>
+
+<!-- 
+Limits the number of total records processed.  ALL_RECS indicates that all
+records should be processed.
+-->
+<MAX_RECS>70000</MAX_RECS>
+
+<!-- 
+Specifies one or more navigation page specs (see below.) If none are specified, 
+no navigation page links will be generated.
+-->
+<NAVIGATION_PAGE_SPEC_LIST>
+
+  <!-- 
+    Specifies unique combination of dimensions that will be used to generate 
+    navigation page links.  For example, if Dimension A and Dimension B are 
+    specified, all unique and valid combinations A + B will be listed.
+
+    Note that any dimensions specified in a navigation page spec must also be
+    enabled for display in the results list of an Endeca query.
+    
+    The FULL_HIERARCHY attribute should be set to "True" if you wish to
+    traverse the Dimension's ancestor.  For example, if you have a Dimension
+    hierarchy of Sample 1 -> Sample 2 -> Sample 3 for Another Sample Dimension, 
+    the FULL_HIERARCHY should be set to "True" if you wish to write
+    navigation pages for Sample 2 values.
+
+    WARNING - This functionality behaves in a very combinatoric way.  It is 
+    strongly suggested that only two or fewer dimensions be specified for 
+    a given spec. Otherwise, millions of links could easily be generated.
+  -->
+  <NAVIGATION_PAGE_SPEC>
+    <DIMENSION_NAME FULL_HIERARCHY="True">product.category</DIMENSION_NAME>
+  </NAVIGATION_PAGE_SPEC>
+  <NAVIGATION_PAGE_SPEC>
+    <DIMENSION_NAME FULL_HIERARCHY="False">product.brand</DIMENSION_NAME>
+  </NAVIGATION_PAGE_SPEC>    
+  <NAVIGATION_PAGE_SPEC>
+    <DIMENSION_NAME FULL_HIERARCHY="True">product.category</DIMENSION_NAME>
+    <DIMENSION_NAME FULL_HIERARCHY="False">product.brand</DIMENSION_NAME>
+  </NAVIGATION_PAGE_SPEC>
+    
+</NAVIGATION_PAGE_SPEC_LIST>
+</XML>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/SEO/src/main/sitemap/config_store/CSAen/conf_StoreSiteUS/conf.xml#1 $$Change: 1385662 $-->

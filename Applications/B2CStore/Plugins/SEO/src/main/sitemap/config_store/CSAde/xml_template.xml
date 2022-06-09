@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2001, 2014, Oracle and/or its affiliates. All rights reserved.
+  ~ Oracle and Java are registered trademarks of Oracle and/or its
+  ~ affiliates. Other names may be trademarks of their respective owners.
+  ~ UNIX is a registered trademark of The Open Group.
+  ~
+  ~ This software and related documentation are provided under a license
+  ~ agreement containing restrictions on use and disclosure and are
+  ~ protected by intellectual property laws. Except as expressly permitted
+  ~ in your license agreement or allowed by law, you may not use, copy,
+  ~ reproduce, translate, broadcast, modify, license, transmit, distribute,
+  ~ exhibit, perform, publish, or display any part, in any form, or by any
+  ~ means. Reverse engineering, disassembly, or decompilation of this
+  ~ software, unless required by law for interoperability, is prohibited.
+  ~ The information contained herein is subject to change without notice
+  ~ and is not warranted to be error-free. If you find any errors, please
+  ~ report them to us in writing.
+  ~ U.S. GOVERNMENT END USERS: Oracle programs, including any operating
+  ~ system, integrated software, any programs installed on the hardware,
+  ~ and/or documentation, delivered to U.S. Government end users are
+  ~ "commercial computer software" pursuant to the applicable Federal
+  ~ Acquisition Regulation and agency-specific supplemental regulations.
+  ~ As such, use, duplication, disclosure, modification, and adaptation
+  ~ of the programs, including any operating system, integrated software,
+  ~ any programs installed on the hardware, and/or documentation, shall be
+  ~ subject to license terms and license restrictions applicable to the
+  ~ programs. No other rights are granted to the U.S. Government.
+  ~ This software or hardware is developed for general use in a variety
+  ~ of information management applications. It is not developed or
+  ~ intended for use in any inherently dangerous applications, including
+  ~ applications that may create a risk of personal injury. If you use
+  ~ this software or hardware in dangerous applications, then you shall
+  ~ be responsible to take all appropriate fail-safe, backup, redundancy,
+  ~ and other measures to ensure its safe use. Oracle Corporation and its
+  ~ affiliates disclaim any liability for any damages caused by use of this
+  ~ software or hardware in dangerous applications.
+  ~ This software or hardware and documentation may provide access to or
+  ~ information on content, products, and services from third parties.
+  ~ Oracle Corporation and its affiliates are not responsible for and
+  ~ expressly disclaim all warranties of any kind with respect to
+  ~ third-party content, products, and services. Oracle Corporation and
+  ~ its affiliates will not be responsible for any loss, costs, or damages
+  ~ incurred due to your access to or use of third-party content, products,
+  ~ or services.
+  -->
+
+<XML>
+
+<!--
+XML Template - Generates Sitemaps XML 
+files, according to standard sitemap XML format.  See https://www.sitemaps.org
+for more details.
+
+How It Works - Each XML element of template is loaded into application.
+Note the use of CDATA to avoid encoding all embedded XML.  Where appropriate, 
+application will replace **KEY** with dynamic values.  Application
+then builds output files and links writing out modified values in
+appropriate order.  (HEADER, LINK, LINK, LINK... ,FOOTER.)
+-->
+
+
+<!--
+Index page contains links to one or more sitemap pages.  Make sure index
+page contains noindex,follow meta tags
+-->
+<INDEX_HEADER><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+]]></INDEX_HEADER>
+
+
+<!--
+Link format for index page.  Points to sitemap page.  XML Format requires absolute links.
+-->
+<INDEX_LINK><![CDATA[
+<sitemap>
+  <loc>http://localhost:8080/csa/storede/de/**FILE_NAME|XmlEscape**</loc>
+</sitemap>
+]]></INDEX_LINK>
+
+
+<!--
+Index page footer
+-->
+<INDEX_FOOTER><![CDATA[
+</sitemapindex>
+]]></INDEX_FOOTER>
+
+
+<!--
+Sitemap page that lists actual links.
+-->
+<PAGE_HEADER><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+]]></PAGE_HEADER>
+
+
+<!--
+Detail link format.  Typically points to product detail page.  Since sitemap
+files rely on XML, all URLs need to be properly encoded (& encoded as &amp;, etc.)
+-->
+
+<DETAIL_LINK><![CDATA[
+<url>
+   <loc>http://localhost:8080/csa/storede/de/product**FORMATTED_URL|HtmlEscape**</loc>
+   <lastmod>**TIMESTAMP**</lastmod>
+</url>
+]]></DETAIL_LINK>
+
+
+<!--
+Navigation link format.  Typically points to navigation page.  Since sitemap
+files rely on XML, all URLs need to be properly encoded (& encoded as &amp;, etc.)
+-->
+
+<NAVIGATION_LINK><![CDATA[
+<url>
+   <loc>http://localhost:8080/csa/storede/de/browse**FORMATTED_URL|HtmlEscape**</loc>
+   <lastmod>**TIMESTAMP**</lastmod>
+</url>
+]]></NAVIGATION_LINK>
+
+
+<!--
+Search term link format.  Typically points to search results page.  Since sitemap
+files rely on XML, all URLs need to be properly encoded (& encoded as &amp;, etc.)
+-->
+<SEARCH_TERM_LINK><![CDATA[
+<url>
+   <loc>http://localhost:8080/csa/storede/de/browse**FORMATTED_URL|HtmlEscape**</loc>
+   <lastmod>**TIMESTAMP**</lastmod>
+</url>
+]]></SEARCH_TERM_LINK>
+
+
+<!--
+Static page link format.  Typically points to static page.  Since sitemap
+files rely on XML, all URLs need to be properly written with encoding(& written as &amp;, etc.).
+We do not encode URL's in the example, in order to avoid unintentional encoding of forward slashes.
+-->
+<STATIC_PAGE_LINK><![CDATA[
+<url>
+   <loc>http://localhost:8080/csa/storede/de**STATIC_PAGE|HtmlEscape**</loc>
+   <lastmod>**TIMESTAMP**</lastmod>
+</url>
+]]></STATIC_PAGE_LINK>
+
+<!--
+Page footer
+-->
+<PAGE_FOOTER><![CDATA[
+</urlset> 
+]]></PAGE_FOOTER>
+
+
+</XML>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/SEO/src/main/sitemap/config_store/CSAde/xml_template.xml#1 $$Change: 1385662 $-->

@@ -1,0 +1,46 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2014-06-09T14:10:03.237+01:00",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:06:16.484-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "Page Header",
+        "@type": "PageHeader",
+        "headerContent": [
+            {
+                "@name": "Site Preferences",
+                "@type": "SitePreferences"
+            },
+            {
+                "searchText": "",
+                "@name": "Search",
+                "templateIds": [],
+                "@type": "Search",
+                "autoSuggestEnabled": false
+            },
+            {
+                "@name": "Category Navigation Menu",
+                "@type": "MainMenu",
+                "title": "Categories"
+            }
+        ],
+        "headerActions": [
+            {
+                "@name": "Account Menu",
+                "@type": "AccountMenu"
+            },
+            {
+                "@name": "Cart Link",
+                "@type": "CartLink"
+            }
+        ]
+    },
+    "triggers": [{"exactLocation": false}]
+}

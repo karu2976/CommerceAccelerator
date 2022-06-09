@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-md-8">
+
+    <h2>{{ 'account.heading.createAccount' | i18n }}</h2>
+    <p>{{ 'account.text.accountDescription' | i18n }}</p>
+
+    <form action="" role="form" class="ws-validate" data-bind="submit: createAccount" method="POST">
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'emailAddress'">{{ 'account.label.emailAddress' | i18n }} *</label>
+        <input type="email" name="emailAddress" class="form-control" required
+          data-bind="value: $data.emailAddress,
+                     uniqueId: 'emailAddress'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'password'">{{ 'account.label.registerPassword' | i18n }} *</label>
+        <input type="password" name="password" class="form-control" required pattern=".{5,}"
+          autocomplete="off" data-errormessage="{{ 'account.alert.passwordTooShort' | i18n }}"
+          data-bind="value: $data.password,
+                     uniqueId: 'password'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'confirmPassword'">{{ 'account.label.confirmPassword' | i18n }} *</label>
+        <input type="password" name="confirmPassword" class="form-control"
+          data-dependent-validation="password" autocomplete="off"
+          data-errormessage="{{ 'account.alert.passwordsDoNotMatch' | i18n }}"
+          data-bind="value: $data.confirmPassword,
+                     uniqueId: 'confirmPassword'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'firstName'">{{ 'account.label.firstName' | i18n }} *</label>
+        <input type="text" name="firstName" class="form-control" required
+          data-bind="value: $data.firstName,
+                     uniqueId: 'firstName'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'lastName'">{{ 'account.label.lastName' | i18n }} *</label>
+        <input type="text" name="lastName" class="form-control" required
+          data-bind="value: $data.lastName,
+                     uniqueId: 'lastName'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'postalCode'">{{ 'account.label.zipOrPostalCode' | i18n }}</label>
+        <input type="text" name="postalCode" class="form-control" maxlength="10"
+          data-bind="value: $data.postalCode,
+                     uniqueId: 'postalCode'">
+      </div>
+
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'gender'">{{ 'account.label.gender' | i18n }}</label>
+        <select name="gender" class="form-control"
+          data-bind="value: $data.gender,
+                     uniqueId: 'gender'">
+          <option value="unknown">{{ 'account.text.selectGender' | i18n }}</option>
+          <option value="male">{{ 'account.text.male' | i18n }}</option>
+          <option value="female">{{ 'account.text.female' | i18n }}</option>
+          <option value="unspecified">{{ 'account.text.unspecified' | i18n }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" data-bind="uniqueFor: 'dateOfBirth'">{{ 'account.label.birthday' | i18n }} ({{ $data.placeholderText }}) </label>
+        <input type="text" name="dateOfBirth" class="form-control"
+          data-bind="value: $data.dateOfBirth,
+                     uniqueId: 'dateOfBirth'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-block csa-btn" data-bypass href="#">
+            {{ 'account.button.create' | i18n }}
+          </button>
+        </div>
+        <div class="col-xs-6">
+          <button type="button" class="btn btn-block btn-default" data-bypass data-bind="click: cancel">
+            {{ 'account.button.cancel' | i18n }}
+          </button>
+        </div>
+      </div>
+      <div class="row text-center csa-v-offset-10">
+        <div class="col-xs-6">
+          <a href="#" data-bypass data-bind="click: showAccountBenefits">{{ 'account.link.seeBenefits' | i18n }}</a>
+        </div>
+        <div class="col-xs-6">
+          <a data-bind="attr: { href: 'privacy' }">{{ 'account.link.privacyPolicy' | i18n }}</a>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<div class="modal fade" id="benefitsModal" tabindex="-1" role="dialog" aria-labelledby="benefitsModalTitle" aria-hidden="true" data-bind="modal: isAccountBenefitsModalVisible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'account.button.close' | i18n }}</span></button>
+        <h4 class="modal-title" id="benefitsModalTitle">{{ 'account.subheading.accountBenefits' | i18n }}</h4>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>{{ 'account.accountBenefitsList.getSpecialPromotions' | i18n }}</li>
+          <li>{{ 'account.accountBenefitsList.reuseSavedCreditCards' | i18n }}</li>
+          <li>{{ 'account.accountBenefitsList.reuseSavedAddresses' | i18n }}</li>
+          <li>{{ 'account.accountBenefitsList.fasterCheckout' | i18n }}</li>
+          <li>{{ 'account.accountBenefitsList.trackOrders' | i18n }}</li>
+          <li>{{ 'account.accountBenefitsList.viewOrderHistory' | i18n }}</li>
+          <li>{{ 'account.accountBenefitsList.saveYourShoppingCart' | i18n }}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block csa-btn" data-dismiss="modal">{{ 'account.button.close' | i18n }}</button>
+      </div>
+    </div>
+  </div>
+</div>

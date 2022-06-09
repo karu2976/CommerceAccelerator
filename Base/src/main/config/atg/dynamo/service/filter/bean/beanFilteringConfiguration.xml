@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+  <bean name="atg.commerce.inventory.InventoryInfo" default-filter="summary">
+    <filter id="summary">
+      <property name="stockLevel"/>
+      <property name="stockThreshold"/>
+      <property name="availabilityStatus"/>
+      <property name="availabilityStatusMsg"/>
+    </filter>
+    <filter id="detailed" include-filter="summary">
+    </filter>
+  </bean>
+  <bean name="atg.commerce.order.CommerceItem">
+    <filter id="summary">
+      <property name="inventoryInfo" property-customizer="/atg/commerce/inventory/filter/bean/InventoryInfoForCommerceItemPropertyCustomizer"/>
+    </filter>
+    <filter id="detailed">
+      <property name="inventoryInfo" property-customizer="/atg/commerce/inventory/filter/bean/InventoryInfoForCommerceItemPropertyCustomizer"/>
+    </filter>
+  </bean>
+  <bean name="atg.repository.Repository" default-filter="none">
+    <filter id="none">
+    </filter>
+  </bean>
+  <repository name="/atg/commerce/catalog/ProductCatalog">
+    <item-descriptor name="sku">
+      <filter id="summary">
+        <property name="repositoryId" />
+        <property name="displayName" />
+        <property name="type" />
+      </filter>
+    </item-descriptor>
+    <item-descriptor name="product" default-filter="summary">
+      <filter id="summary">
+        <property name="mediumImageUrl" target="mediumImage.url" hidden="true" />
+      </filter>
+    </item-descriptor>
+  </repository>
+</bean-filtering>
+
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/dev/10.2/EStore/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#3 
+  $$Change: 1385662 $ -->

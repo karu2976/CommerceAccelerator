@@ -1,0 +1,35 @@
+{
+  "indexConfig" : {
+    "system" : {
+      "attributes" : {
+        "jcr:primaryType" : "endeca:unstructured",
+        "record.id" : {
+          "propertyDataType" : "ALPHA",
+          "jcr:primaryType" : "endeca:property",
+          "isRecordFilterable" : true
+        },
+        "product.repositoryId" : {
+          "propertyDataType" : "ALPHA",
+          "mergeAction" : "UPDATE",
+          "isRollupKey" : true,
+          "jcr:primaryType" : "endeca:property",
+          "isRecordFilterable" : true
+        },
+        "product.price_range" : {
+          "displayOrder" : 1,
+          "mergeAction" : "UPDATE",
+          "jcr:primaryType" : "endeca:dimension",
+          "rangeComparisonType" : "FLOAT"
+        }
+      },
+      "precedenceRules" : {
+      },
+      "searchIndexConfig" : {
+        "isWildcardEnabledInDimensionSearch" : true,
+        "spellingDictMaxWordLength" : 16,
+        "spellingDictMinNumWordOccurrences" : 4,
+        "spellingDictMinWordLength" : 3
+      }
+    }
+  }
+}

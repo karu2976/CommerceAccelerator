@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<gsa-template>
+  <item-descriptor name="mediaContent"
+                   display-name-resource="itemDescriptorMedia"
+                   display-property="name" xml-combine="append">
+
+    <attribute name="categoryStoreTranslationsPriority" value="25"/>
+
+    <table name="wcm_media_content" type="primary" id-column-name="id">
+      <property name="title" xml-combine="remove"/>
+      <property name="description" xml-combine="remove"/>
+      <property name="name" xml-combine="remove"/>
+
+      <property name="nameDefault" data-type="string" column-name="name"
+                category-resource="categoryBasics" display-name-resource="nameDefault">
+        <attribute name="propertySortPriority" value="10"/>
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+      </property>
+
+      <property name="titleDefault" data-type="string" column-name="title"
+                category-resource="categoryBasics" display-name-resource="titleDefault">
+        <attribute name="propertySortPriority" value="20"/>
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+      </property>
+
+      <property name="descriptionDefault" data-type="string" column-name="description"
+                category-resource="categoryBasics" display-name-resource="descriptionDefault">
+        <attribute name="propertySortPriority" value="30"/>
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+      </property>
+    </table>
+
+    <property name="name" data-type="string" category-resource="categoryBasics"
+              display-name-resource="name" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>nameDefault</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="nameDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="title" data-type="string" category-resource="categoryBasics"
+              display-name-resource="title" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>titleDefault</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="titleDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="description" data-type="string" category-resource="categoryBasics"
+              display-name-resource="description" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>descriptionDefault</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="descriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <table name="csa_media_content" type="auxiliary" id-column-name="id">
+      <property name="linkUrlDefault" data-type="string" column-name="link_url"
+                category-resource="categoryBasics" display-name-resource="linkUrlDefault">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="40"/>
+      </property>
+
+      <property name="altTextDefault" data-type="string" column-name="alt_text"
+                category-resource="categoryBasics" display-name-resource="altTextDefault">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="50"/>
+      </property>
+
+      <property name="imageSrcset" data-type="string" column-name="image_srcset"
+                category-resource="categoryBasics" display-name-resource="imageSrcset">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="60"/>
+      </property>
+
+      <property name="imageText1Default" data-type="string" column-name="image_text_1"
+                category-resource="categoryBasics" display-name-resource="imageText1Default">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="60"/>
+      </property>
+
+      <property name="imageText2Default" data-type="string" column-name="image_text_2"
+                category-resource="categoryBasics" display-name-resource="imageText2Default">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="70"/>
+      </property>
+
+      <property name="imageText3Default" data-type="string" column-name="image_text_3"
+                category-resource="categoryBasics" display-name-resource="imageText3Default">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="80"/>
+      </property>
+
+      <property name="imageText4Default" data-type="string" column-name="image_text_4"
+                category-resource="categoryBasics" display-name-resource="imageText4Default">
+        <attribute name="resourceBundle"
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+        <attribute name="propertySortPriority" value="90"/>
+      </property>
+    </table>
+
+    <property name="linkUrl" data-type="string" category-resource="categoryBasics"
+              display-name-resource="linkUrl" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>linkUrlDefault</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="linkUrlDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="altText" data-type="string" category-resource="categoryBasics"
+              display-name-resource="altText" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>altTextDefault</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="altTextDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="imageText1" data-type="string" category-resource="categoryBasics"
+              display-name-resource="imageText1" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>imageText1Default</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="imageText1Default"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="imageText2" data-type="string" category-resource="categoryBasics"
+              display-name-resource="imageText2" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>imageText2Default</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="imageText2Default"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="imageText3" data-type="string" category-resource="categoryBasics"
+              display-name-resource="imageText3" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>imageText3Default</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="imageText3Default"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <property name="imageText4" data-type="string" category-resource="categoryBasics"
+              display-name-resource="imageText4" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>imageText4Default</expression>
+      </derivation>
+
+      <attribute name="defaultProperty" value="imageText4Default"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+
+    <table name="csa_media_media_xlate" type="multi" multi-column-name="locale" id-column-names="id">
+      <property name="translations" data-type="map" column-name="translation_id"
+                component-item-type="mediaContentTranslation" category-resource="categoryContentTranslations"
+                display-name-resource="translations">
+        <attribute name="resourceBundle" 
+                   value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <item-descriptor name="mediaContentTranslation" id-space-name="mediaContentTranslation"
+                   display-name-resource="mediaContentTranslation" display-property="title">
+
+    <attribute name="resourceBundle" value="atg.projects.store.content.ContentManagementRepositoryTemplateResources"/>
+
+    <table name="csa_media_content_xlate" type="primary" id-column-name="translation_id">
+      <property name="name" data-type="string" column-name="name"
+                category-resource="categoryBasics" display-name-resource="name">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+
+      <property name="title" data-type="string" column-name="title"
+                category-resource="categoryBasics" display-name-resource="title">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+
+      <property name="description" data-type="string" column-name="description"
+                category-resource="categoryBasics" display-name-resource="description">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+
+      <property name="linkUrl" data-type="string" column-name="link_url"
+                category-resource="categoryBasics" display-name-resource="linkUrl">
+        <attribute name="propertySortPriority" value="30"/>
+      </property>
+
+      <property name="altText" data-type="string" column-name="alt_text"
+                category-resource="categoryBasics" display-name-resource="altText">
+        <attribute name="propertySortPriority" value="40"/>
+      </property>
+
+      <property name="imageText1" data-type="string" column-name="image_text_1"
+                category-resource="categoryBasics" display-name-resource="imageText1">
+        <attribute name="propertySortPriority" value="50"/>
+      </property>
+
+      <property name="imageText2" data-type="string" column-name="image_text_2"
+                category-resource="categoryBasics" display-name-resource="imageText2">
+        <attribute name="propertySortPriority" value="60"/>
+      </property>
+
+      <property name="imageText3" data-type="string" column-name="image_text_3"
+                category-resource="categoryBasics" display-name-resource="imageText3">
+        <attribute name="propertySortPriority" value="70"/>
+      </property>
+
+      <property name="imageText4" data-type="string" column-name="image_text_4"
+                category-resource="categoryBasics" display-name-resource="imageText4">
+        <attribute name="propertySortPriority" value="80"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/config/atg/content/contentManagementRepository.xml#1 $$Change: 1385662 $-->

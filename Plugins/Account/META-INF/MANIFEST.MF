@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+ATG-Class-Path: build/libs/Account.jar
+ATG-EAR-Module: build/libs/Plugins-Account.ear
+ATG-J2EE: build/libs/Plugins-Account.ear
+ATG-Config-Path: build/libs/config/config.jar
+ATG-Required: CommerceAccelerator.Base

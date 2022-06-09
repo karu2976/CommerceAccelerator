@@ -1,0 +1,77 @@
+{
+  "searchAndNavigation": {
+    "alert": {
+      "categoryNotAvailable": "La categoría no está disponible.",
+      "emptyFromOrToField": "Deben rellenarse los campos de precio de origen y destino.",
+      "fromMoreThanTo": "El precio de origen debe ser menor que el de destino.",
+      "invalidToFromField": "Los precios de origen y destino deben ser números válidos.",
+      "makeValidSelection": "Seleccione una SKU antes de agregar al carro.",
+      "noProductFound": "No se ha encontrado ningún producto.",
+      "noResults": "No se ha encontrado ningún resultado.",
+      "productNotAvailable": "Este producto no está disponible actualmente.",
+      "skuOutOfStock": "Actualmente, no hay stock para la SKU seleccionada.",
+      "skuUnavailable": "Actualmente, la SKU seleccionada no está disponible."
+    },
+    "button":{
+      "addToCart": "Agregar a carro",
+      "apply": "Aplicar",
+      "filter": "Filtrar",
+      "go": "Ir",
+      "search": "Buscar"
+    },
+    "label": {
+      "maxPrice": "Precio máximo",
+      "minPrice": "Precio mínimo",
+      "pagingControl": "Control de paginación",
+      "quantity": "Cantidad",
+      "searchByProductNameOrKeyword": "Buscar por nombre de producto o palabra clave",
+      "skuStatus": "Estado de SKU",
+      "sortBy": "Ordenar por"
+    },
+    "link": {
+      "allCategory": "Todas {{0}}",
+      "clearAll": "Borrar todas las <span class=\"sr-only\">selecciones</span>",
+      "item": "{{0}}<span class=\"sr-only\">artículo</span>",
+      "item_plural":"{{0}}<span class=\"sr-only\">artículos</span>",
+      "nextPage": "Página siguiente",
+      "page": "Página",
+      "previousPage": "Página anterior",
+      "removeAllCategories": "Eliminar todas las categorías",
+      "removeCategoriesBelow": "Eliminar las categorías siguientes",
+      "removeRefinement": "Eliminar acotación",
+      "removeSearchTerm": "Eliminar término de búsqueda",
+      "showLess": "Mostrar menos",
+      "showMore": "Mostrar más",
+      "to": "a"
+    },
+    "placeholder": {
+      "select": "Seleccionar"
+    },
+    "subheading": {
+      "yourSelections": "Sus selecciones",
+      "clothing-sku": {
+          "color": "Color",
+          "size": "Tamaño"
+        },
+        "furniture-sku": {
+          "woodFinish": "Acabado en madera"
+        },
+        "product": {
+          "brand": "Marca",
+          "category": "Categoría",
+          "price_range": "Rango de precios"
+        }
+    },
+    "text": {
+      "inStock": "En stock",
+      "listPrice": "precio de lista",   
+      "result": "{{0}} resultado",
+      "result_plural": "{{0}} resultados",
+      "outOfStock": "Stock agotado",
+      "priceBeforeReduction": "precio antes de reducción",
+      "salePrice": "precio de venta",   
+      "unavailable": "No disponible",
+      "sale": "Venta"
+    }
+  }
+}

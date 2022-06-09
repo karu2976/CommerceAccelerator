@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2>{{ 'account.heading.checkoutDefaults' | i18n }}</h2>
+    <form role="form" class="ws-validate" data-bind="submit: updateCheckoutDefaults">
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'shippingMethod'">{{ 'account.label.shippingMethod' | i18n }}</label>
+        <select class="form-control" type="text" name="shippingMethod"
+          data-bind="options: allCarriers,
+                     value: $data.defaultCarrier,
+                     optionsText: 'displayName',
+                     optionsValue: 'value',
+                     optionsCaption: optionsCaptionText(),
+                     uniqueId: 'shippingMethod'">
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'shippingAddress'">
+          {{ 'account.label.shippingAddress' | i18n }} -
+        </label>
+        <span><a data-bind="attr: { href: 'account/addressbook/add' }">{{ 'account.link.addAddress' | i18n }}</a></span>
+        <select name="shippingAddress" class="form-control"
+          data-bind="options: $data.allAddresses,
+                     value: $data.shippingAddress,
+                     optionsCaption: optionsCaptionText($data.allAddresses()),
+                     uniqueId: 'shippingAddress'">
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'paymentMethod'">
+          {{ 'account.label.paymentMethod' | i18n }} -
+        </label>
+        <span><a data-bind="attr: { href: 'account/billing/add' }">{{ 'account.link.addCreditCard' | i18n }}</a></span>
+        <select name="paymentMethod" class="form-control"
+          data-bind="options: $data.allCards,
+                     value: $data.defaultCreditCard,
+                     optionsCaption: optionsCaptionText($data.allCards()),
+                     uniqueId: 'paymentMethod'">
+        </select>
+      </div>
+
+      <div class="row csa-v-offset-20">
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-block csa-btn">{{ 'account.button.save' | i18n }}</button>
+        </div>
+        <div class="col-xs-6">
+          <button data-bind="click: cancel" type="submit" class="btn btn-block btn-default">{{ 'account.button.cancel' | i18n }}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

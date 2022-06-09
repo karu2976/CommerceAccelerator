@@ -1,0 +1,205 @@
+<div data-bind="uniqueId: 'shipToAddress-heading'" class="panel-heading">
+  <div class="pull-left">
+    <strong>
+      {{ 'checkout.subheading.shipTo' | i18n }}:
+      {{ checkoutDetails.shippingFirstName }}
+      {{ checkoutDetails.shippingLastName }}
+    </strong>
+  </div>
+  <div class="pull-right">
+    <button class="btn btn-sm btn-link"
+            data-bind="click: clearShippingAddress,
+                       uniqueId: 'shipToAddress-btn-clear',
+                       visible: checkoutDetails.isShippingAddressAccordionPanelVisible()">
+      {{ 'checkout.button.clear' | i18n }}
+    </button>
+    <button class="btn btn-sm btn-link"
+            data-bind="click: showShippingAddressAccordionPanel,
+                       uniqueId: 'shipToAddress-btn-edit',
+                       disable: checkoutDetails.isShippingAddressAccordionPanelVisible()">
+      {{ 'checkout.button.edit' | i18n }}
+    </button>
+    <span class="glyphicon {{ validationIconClass }}"></span>
+  </div>
+  <div class="clearfix"></div>
+  <div>
+    {{ checkoutDetails.shippingAddress1 }}
+    {{ checkoutDetails.shippingAddress2 }}
+  </div>
+  <div>
+    {{ checkoutDetails.shippingCity }}
+    {{ checkoutDetails.shippingState }}
+    {{ checkoutDetails.shippingPostalCode }}
+  </div>
+</div>
+
+<div class="panel-collapse collapse"
+     data-bind="uniqueId: 'shipToAddress',
+                accordion: {
+                  toggle: checkoutDetails.isShippingAddressAccordionPanelVisible,
+                  parent: '#' + checkoutDetails.accordionId()
+                }">
+  <form role="form" class="ws-validate"
+        data-bind="submit: validateShippingAddress,
+                   uniqueId: 'shipToAddress-form'">
+    <div class="panel-body">
+      <p data-bind="visible: checkoutDetails.profile.authenticated">
+        <a href="#" data-bypass data-bind="click: showSelectSavedAddress">
+          {{{ 'checkout.link.chooseSavedAddress' | i18n }}}
+        </a>
+      </p>
+      <div class="form-group">      
+        <label data-bind="uniqueFor: 'firstName'">{{ 'checkout.label.firstName' | i18n }} *</label>
+        <input class="form-control" type="text" name="firstName"
+               data-bind="value: checkoutDetails.shippingFirstName,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'firstName'" maxlength="40" required/>
+      </div>
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'lastName'">{{ 'checkout.label.lastName' | i18n }} *</label>
+        <input class="form-control" type="text" name="lastName" 
+               data-bind="value: checkoutDetails.shippingLastName,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'lastName'" maxlength="40" required/>
+      </div>
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'address1'">{{ 'checkout.label.addressLine1' | i18n }} *</label>
+        <input class="form-control" type="text" name="address1"
+               data-bind="value: checkoutDetails.shippingAddress1,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'address1'" maxlength="200" required/>
+      </div>
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'address2'">{{ 'checkout.label.addressLine2' | i18n }}</label>
+        <input class="form-control" type="text" name="address2"
+               data-bind="value: checkoutDetails.shippingAddress2,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'address2'" maxlength="50"/>
+      </div>
+  
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'city'">{{ 'checkout.label.city' | i18n }} *</label>
+        <input class="form-control" type="text" name="city"
+               data-bind="value: checkoutDetails.shippingCity,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'city'" maxlength="30" required/>
+      </div>      
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'state'">{{ 'checkout.label.stateOrProvince' | i18n }} *</label>
+        <select class="form-control" type="text" name="state"
+                data-bind="options: checkoutDetails.shippingStates,
+                           optionsText: 'displayName',
+                           optionsValue: 'code',
+                           optionsCaption: $data.optionsCaption('selectStateOrProvince'),
+                           value: checkoutDetails.shippingState,
+                           valueAllowUnset: true,
+                           disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                           uniqueId:'state'" required>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'zip'">{{ 'checkout.label.zipOrPostalCode' | i18n }} *</label>
+        <input class="form-control" type="text" name="zip"
+               data-bind="value: checkoutDetails.shippingPostalCode,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'zip'" maxlength="10" required/>
+      </div>
+  
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'country'">{{ 'checkout.label.country' | i18n }} *</label>
+        <select class="form-control" type="text" name="country"
+                data-bind="options: $parents[1].availableCountries,
+                           optionsText: 'displayName',
+                           optionsValue: 'code',
+                           optionsCaption: $data.optionsCaption('selectCountry'),
+                           valueAllowUnset: true,
+                           value: checkoutDetails.shippingCountry,
+                           disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                           uniqueId: 'country'" required>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label data-bind="uniqueFor: 'phone'">{{ 'checkout.label.phone' | i18n }} *</label>
+        <input class="form-control" type="tel" name="phone"
+               data-bind="value: checkoutDetails.shippingPhoneNumber,
+                          disable: checkoutDetails.isShippingAddressSelectedfromProfile,
+                          uniqueId: 'phone'" maxlength="15" required/>
+      </div>
+      <div class="form-group" data-bind="visible: checkoutDetails.profile.authenticated() && !checkoutDetails.isShippingAddressSelectedfromProfile()">
+        <input type="checkbox" 
+               data-bind="checked: checkoutDetails.saveShippingAddressToProfile"/> {{ 'checkout.label.saveToAddressBook' | i18n }}
+      </div>
+      <div class="form-group" data-bind="visible: checkoutDetails.saveShippingAddressToProfile">      
+        <label data-bind="uniqueFor: 'nickName'">{{ 'checkout.label.nickname' | i18n }}</label>
+        <input class="form-control" type="text" 
+               data-bind="value: checkoutDetails.nickName, 
+                          attr.required: checkoutDetails.saveShippingAddressToProfile
+                          uniqueId: 'nickName'" name="nickName" maxlength="42"/>
+        <p class="help-text">{{ 'checkout.text.addressNicknameRequiredReason' | i18n }}</p>
+      </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-block csa-btn">{{ 'checkout.button.saveAndContinue' | i18n }}</button>
+      </div>    
+    </div>
+  </form>
+</div>
+
+<div class= "modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     data-bind="modal: isSavedAddressModalVisible,
+                attr: {
+                  'id' : cid() + '-'  + 'selectAddressModal',
+                  'data-name' : cid() + '-'  + 'selectAddressModal',
+                  'aria-labelledby' : cid() + 'selectAddressModalTitle'
+                }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'checkout.button.close' | i18n }}</span></button>
+        <h4 class="modal-title"
+            data-bind="attr: {
+                        'id' : $data.cid() + 'selectAddressModalTitle',
+                        'data-name' : 'selectAddressModalTitle'
+                      }">
+          {{ 'checkout.subheading.chooseSavedAddress' | i18n }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <!-- ko foreach: checkoutDetails.availableShippingAddress -->
+          <li>
+            <div class="form-group">
+              <div class="radio csa-radio">
+                <input type="radio"
+                       name="shippingAddress"
+                       data-bind="value: addressNickname,
+                                  checked: $parent.checkoutDetails.currentShippingAddressSelection,
+                                  uniqueId:'shippingAddress'"/>
+                <label data-bind="uniqueFor: 'shippingAddress'">{{addressNickname}}</label>
+              </div>
+            </div>
+          </li>
+          <!-- /ko -->
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block csa-btn" data-bind="click: setSelectedShippingAddress" data-dismiss="modal" data-bypass >
+              {{ 'checkout.button.apply' | i18n }}
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block btn-default" data-dismiss="modal">
+              {{ 'checkout.button.cancel' | i18n }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

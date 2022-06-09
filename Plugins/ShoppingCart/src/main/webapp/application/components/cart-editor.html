@@ -1,0 +1,140 @@
+<h2>
+  {{ 'shoppingCart.heading.yourShoppingCart' | i18n }}
+</h2>
+<div class="row">
+  <!-- ko ifnot: order.cartEmpty -->
+    <div class="col-sm-8 col-md-9">
+      <!-- ko foreach: order.commerceItems -->
+        <div class="csa-cart-row">
+          <div class="row">
+            <div class="col-xs-4 col-md-3">
+              <button type="button" name="remove" class="btn btn-default btn-xs pull-left" data-bind="click: $component.removeItemFromOrder">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <span class="sr-only">
+                  {{ 'shoppingCart.button.remove' | i18n }}
+                </span>
+              </button>
+              <a data-bind="attr: { href: 'product/_/A-' + $component.productURLs()[productId()] }">
+                <img data-bind="attr: { src: auxiliaryData.productRef.thumbnailImageUrl, alt: productDisplayName }">
+              </a>
+            </div>
+            <div class="col-xs-8 col-md-9">
+              <div class="row">
+                <div class="col-md-5">
+                  <div>
+                    <a data-bind="attr: { href: 'product/_/A-' + $component.productURLs()[productId()] }">
+                      <strong class="csa-product-display-name">
+                        {{ productDisplayName }}
+                      </strong>
+                    </a>
+                  </div>
+                  <div>
+                    <small>
+                      <span class="csa-sku-id">{{ catalogRefId }}</span>:
+                      <span class="csa-availability-status">
+                        {{ 'shoppingCart.text.' + inventoryInfo.availabilityStatus() | i18n }}
+                      </span>
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-5 csa-v-offset-10">
+                  <div class="row">
+                    <div class="col-xs-6 csa-v-offset-10">
+                      <div class="pull-left">
+                        <!-- ko ifnot: priceInfo.salePrice -->
+                          <span class="sr-only">
+                            {{ 'shoppingCart.label.listPrice' | i18n }}
+                          </span>
+                          <span class="csa-list-price">
+                            {{ priceInfo.listPrice | currency }}
+                          </span>
+                        <!-- /ko -->
+                        <!-- ko if: priceInfo.salePrice -->
+                          <span class="sr-only">
+                            {{ 'shoppingCart.label.salePrice' | i18n }}
+                          </span>
+                          <span class="csa-sale-price">
+                            {{ priceInfo.salePrice  | currency }}
+                          </span>
+                          <div class="small">
+                            <span class="sr-only">
+                              {{ 'shoppingCart.label.priceBeforeReduction' | i18n }}
+                            </span>
+                            {{ 'shoppingCart.label.was' | i18n }}
+                            <s class="csa-list-price">
+                              {{ priceInfo.listPrice  | currency }}
+                            </s>
+                          </div>
+                        <!-- /ko -->
+                      </div>
+                      <div class="pull-right">&times;</div>
+                    </div>
+                    <div class="col-xs-6">
+                      <form role="form" class="ws-validate" data-bind="submit: $component.setOrder">
+                        <div class="form-group csa-zero-margin">
+                          <label class="sr-only" data-bind="uniqueFor: 'quantity'">
+                            {{ 'shoppingCart.label.quantity' | i18n }}
+                          </label>
+                          <input type="number" name="quantity" class="form-control" min="1" max="10000" maxlength="5" required autocomplete="off" data-bind="value: quantity, uniqueId: 'quantity'">
+                        </div>
+                        <div class="text-center">
+                          <button type="submit" name="update" class="btn btn-link btn-xs">
+                            {{ 'shoppingCart.button.update' | i18n }}
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>                
+                </div>
+                <div class="col-md-2 csa-v-offset-20">
+                  <span class="sr-only">
+                    {{ 'shoppingCart.label.subtotal' | i18n }}
+                  </span>
+                  <strong class="csa-amount">
+                    {{ priceInfo.amount | currency }}
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- /ko -->
+    </div>
+  <!-- /ko -->
+  <div class="col-sm-4 col-md-3">
+    <!-- ko ifnot: order.cartEmpty -->
+      <!-- ko with: orderSummary -->
+        <div data-bind="component: $data"></div>
+      <!-- /ko -->
+      <!-- ko with: couponEditor -->
+        <div data-bind="component: $data"></div>
+      <!-- /ko -->
+      <div class="text-center">
+        <form method="GET" action="checkout">
+          <button type="submit" name="checkout" class="btn btn-block csa-btn" data-bind="click: canCheckout">
+            {{ 'shoppingCart.button.checkout' | i18n }}
+          </button>
+        </form>
+      </div>
+      <div class="text-center csa-v-offset-10">
+        <p>
+          <a data-bind="attr: { href: (continueShoppingURL() === '.') ? continueShoppingURL() + '/home' : continueShoppingURL().substr(1, continueShoppingURL().length) }">
+            {{ 'shoppingCart.link.continueShopping' | i18n }}
+          </a>
+        </p>
+      </div>
+    <!-- /ko -->
+  </div>
+</div>
+<!-- ko if: order.cartEmpty -->
+  <div class="alert alert-info csa-cart-empty">
+    {{ 'shoppingCart.alert.emptyCart' | i18n }}
+  </div>
+  <div class="text-center csa-v-offset-10">
+    <p>
+      <a data-bind="attr: { href: (continueShoppingURL() === '.') ? continueShoppingURL() + '/home' : continueShoppingURL().substr(1, continueShoppingURL().length) }">
+        {{ 'shoppingCart.link.continueShopping' | i18n }}
+      </a>
+    </p>
+  </div>
+<!-- /ko -->

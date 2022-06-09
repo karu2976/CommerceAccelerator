@@ -1,0 +1,73 @@
+{
+    "@description": "${template.description}",
+    "@group": "Page",
+    "ecr:createDate": "2016-12-06T06:06:16.878-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": [
+            {
+                "editor": "GroupLabel",
+                "label": "${group.metadata.label}"
+            },
+            {
+                "editor": "editors/StringEditor",
+                "propertyName": "title",
+                "label": "${property.title.label}",
+                "enabled": true
+            },
+            {
+                "editor": "editors/StringEditor",
+                "propertyName": "metaKeywords",
+                "label": "${property.metaKeywords.label}",
+                "enabled": true,
+                "height": 72
+            },
+            {
+                "editor": "editors/StringEditor",
+                "propertyName": "metaDescription",
+                "label": "${property.metaDescription.label}",
+                "enabled": true,
+                "height": 72
+            }
+        ]
+    },
+    "typeInfo": {
+        "metaKeywords": {"@propertyType": "String"},
+        "leftContent": {
+            "@propertyType": "ContentItemList",
+            "@group": "SecondaryContent"
+        },
+        "footer": {
+            "@propertyType": "ContentItemList",
+            "@group": "Footer"
+        },
+        "mainContent": {
+            "@propertyType": "ContentItemList",
+            "@group": "MainContent"
+        },
+        "rightContent": {
+            "@propertyType": "ContentItemList",
+            "@group": "SecondaryContent"
+        },
+        "header": {
+            "@propertyType": "ContentItemList",
+            "@group": "Header"
+        },
+        "title": {"@propertyType": "String"},
+        "metaDescription": {"@propertyType": "String"}
+    },
+    "defaultContentItem": {
+        "@name": "Three-Column Page",
+        "metaKeywords": "",
+        "leftContent": [],
+        "footer": [],
+        "mainContent": [],
+        "rightContent": [],
+        "header": [],
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce reference application."
+    },
+    "locales": {}
+}

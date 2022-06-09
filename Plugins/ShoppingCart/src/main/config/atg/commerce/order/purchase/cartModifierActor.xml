@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actor-template default-chain-id="addItemToOrder"
+                xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--
+    Override addItemToOrder chain to invoke the ShoppingCartActor/summary, this
+    means that on a successful add to cart we are returned the cart contents.
+  -->
+  <actor-chain id="addItemToOrder">
+    <form id="cartModifierFormHandler" name="/atg/commerce/order/purchase/CartModifierFormHandler" handle="addItemToOrder">
+      <input name="addItemToOrderSuccessURL" value="/model/atg/commerce/ShoppingCartActor/summary"/>
+    </form>
+  </actor-chain>
+
+  <!--
+    Override removeItemFromOrder chain to invoke the ShoppingCartActor/summary,
+    this means that on a successful removal we are returned the cart contents.
+  -->
+  <actor-chain id="removeItemFromOrder">
+    <form id="cartModifierFormHandler" name="/atg/commerce/order/purchase/CartModifierFormHandler" handle="removeItemFromOrder">
+      <input name="removeItemFromOrderSuccessURL" value="/model/atg/commerce/ShoppingCartActor/summary"/>
+    </form>
+  </actor-chain>
+
+  <!--
+    Override setOrder chain to invoke the ShoppingCartActor/summary, this
+    means that on a successful cart update we are returned the cart contents.
+  -->
+  <actor-chain id="setOrder">
+    <form id="cartModifierFormHandler" name="/atg/commerce/order/purchase/CartModifierFormHandler" handle="setOrder">
+      <input name="setOrderSuccessURL" value="/model/atg/commerce/ShoppingCartActor/summary"/>
+    </form>
+  </actor-chain>
+
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/ShoppingCart/src/main/config/atg/commerce/order/purchase/cartModifierActor.xml#1 $$Change: 1385662 $-->

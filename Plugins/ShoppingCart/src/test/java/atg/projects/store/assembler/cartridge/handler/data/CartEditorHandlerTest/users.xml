@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <!-- 74 items of type contactInfo -->
+
+    <add-item item-descriptor="contactInfo" id="se-980030">
+      <set-property name="postalCode"><![CDATA[03833]]></set-property>
+      <set-property name="city"><![CDATA[Exeter]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-6341]]></set-property>
+      <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+      <set-property name="state"><![CDATA[NH]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[457 Main St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570030]]></set-property>
+      <set-property name="firstName"><![CDATA[Stuart]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980060">
+      <set-property name="postalCode"><![CDATA[80302]]></set-property>
+      <set-property name="city"><![CDATA[Boulder]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8860]]></set-property>
+      <set-property name="lastName"><![CDATA[Jackson]]></set-property>
+      <set-property name="state"><![CDATA[CO]]></set-property>
+      <set-property name="address1"><![CDATA[6 Willowbrook Circle]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570060]]></set-property>
+      <set-property name="firstName"><![CDATA[Alex]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-970080">
+      <set-property name="postalCode"><![CDATA[97086]]></set-property>
+      <set-property name="city"><![CDATA[Portland]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1580]]></set-property>
+      <set-property name="lastName"><![CDATA[Nelson]]></set-property>
+      <set-property name="state"><![CDATA[OR]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[357 Willowdale Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570080]]></set-property>
+      <set-property name="firstName"><![CDATA[Peter]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960070">
+      <set-property name="postalCode"><![CDATA[98101]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570070]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-140010">
+      <set-property name="postalCode"><![CDATA[13214]]></set-property>
+      <set-property name="city"><![CDATA[Dewitt]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-4321]]></set-property>
+      <set-property name="lastName"><![CDATA[Anderson]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address1"><![CDATA[41 Wexford Rd ]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570031]]></set-property>
+      <set-property name="firstName"><![CDATA[Dolores]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980035">
+      <set-property name="postalCode"><![CDATA[05401]]></set-property>
+      <set-property name="city"><![CDATA[Burlington]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8847]]></set-property>
+      <set-property name="lastName"><![CDATA[Clark]]></set-property>
+      <set-property name="state"><![CDATA[VT]]></set-property>
+      <set-property name="address1"><![CDATA[9010 Jackson Street]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570035]]></set-property>
+      <set-property name="firstName"><![CDATA[Erica]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-140011">
+      <set-property name="postalCode"><![CDATA[03431]]></set-property>
+      <set-property name="city"><![CDATA[Keene]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1234]]></set-property>
+      <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+      <set-property name="state"><![CDATA[NH]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[12 Woodside Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570030]]></set-property>
+      <set-property name="firstName"><![CDATA[Andreas]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990110">
+      <set-property name="postalCode"><![CDATA[97701]]></set-property>
+      <set-property name="city"><![CDATA[Bend]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8110]]></set-property>
+      <set-property name="lastName"><![CDATA[Robinson]]></set-property>
+      <set-property name="state"><![CDATA[OR]]></set-property>
+      <set-property name="address1"><![CDATA[105 Main St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570110]]></set-property>
+      <set-property name="firstName"><![CDATA[Elisabeth]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980065">
+      <set-property name="postalCode"><![CDATA[14450]]></set-property>
+      <set-property name="city"><![CDATA[Fairport]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8865]]></set-property>
+      <set-property name="lastName"><![CDATA[Lopez]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address1"><![CDATA[15 Paris Road]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570065]]></set-property>
+      <set-property name="firstName"><![CDATA[Maria]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980031">
+      <set-property name="postalCode"><![CDATA[13202]]></set-property>
+      <set-property name="city"><![CDATA[Syracuse]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1977]]></set-property>
+      <set-property name="lastName"><![CDATA[Anderson]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[21 Cedar Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570031]]></set-property>
+      <set-property name="firstName"><![CDATA[Kim]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960075">
+      <set-property name="postalCode"><![CDATA[98101]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570075]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990080">
+      <set-property name="postalCode"><![CDATA[97086]]></set-property>
+      <set-property name="city"><![CDATA[Portland]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1580]]></set-property>
+      <set-property name="lastName"><![CDATA[Nelson]]></set-property>
+      <set-property name="state"><![CDATA[OR]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[357 Willowdale Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570080]]></set-property>
+      <set-property name="firstName"><![CDATA[Peter]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-970115">
+      <set-property name="postalCode"><![CDATA[94702]]></set-property>
+      <set-property name="city"><![CDATA[Berkeley]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1115]]></set-property>
+      <set-property name="lastName"><![CDATA[Scott]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[934 Cottonwood Ave.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570115]]></set-property>
+      <set-property name="firstName"><![CDATA[Amy]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960031">
+      <set-property name="postalCode"><![CDATA[14201]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570031]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990105">
+      <set-property name="postalCode"><![CDATA[89501]]></set-property>
+      <set-property name="city"><![CDATA[Reno]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8105]]></set-property>
+      <set-property name="lastName"><![CDATA[Taylor]]></set-property>
+      <set-property name="state"><![CDATA[NV]]></set-property>
+      <set-property name="address1"><![CDATA[99 Mill St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570105]]></set-property>
+      <set-property name="firstName"><![CDATA[Chuck]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990045">
+      <set-property name="postalCode"><![CDATA[84601]]></set-property>
+      <set-property name="city"><![CDATA[Provo]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8845]]></set-property>
+      <set-property name="lastName"><![CDATA[Mitchell]]></set-property>
+      <set-property name="state"><![CDATA[UT]]></set-property>
+      <set-property name="address1"><![CDATA[531 Ridge Road]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570045]]></set-property>
+      <set-property name="firstName"><![CDATA[Anna]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960030">
+      <set-property name="postalCode"><![CDATA[03801]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570030]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960035">
+      <set-property name="postalCode"><![CDATA[05401]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570035]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990085">
+      <set-property name="postalCode"><![CDATA[14603]]></set-property>
+      <set-property name="city"><![CDATA[Rochester]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8885]]></set-property>
+      <set-property name="lastName"><![CDATA[Robinson]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address1"><![CDATA[604 Red Mountain Road]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570085]]></set-property>
+      <set-property name="firstName"><![CDATA[Adrian]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990040">
+      <set-property name="postalCode"><![CDATA[86336]]></set-property>
+      <set-property name="city"><![CDATA[Sedona]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1540]]></set-property>
+      <set-property name="lastName"><![CDATA[Wright]]></set-property>
+      <set-property name="state"><![CDATA[AZ]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[2231 Iris Avenue]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570040]]></set-property>
+      <set-property name="firstName"><![CDATA[Andrew]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980050">
+      <set-property name="postalCode"><![CDATA[35203]]></set-property>
+      <set-property name="city"><![CDATA[Birmingham]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8847]]></set-property>
+      <set-property name="lastName"><![CDATA[Johnson]]></set-property>
+      <set-property name="state"><![CDATA[AL]]></set-property>
+      <set-property name="address2"><![CDATA[Suite 100]]></set-property>
+      <set-property name="address1"><![CDATA[1263 Spruce Street]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570050]]></set-property>
+      <set-property name="firstName"><![CDATA[Brandon]]></set-property>
+      <set-property name="companyName"><![CDATA[Birmingham OfficeTemps]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980040">
+      <set-property name="postalCode"><![CDATA[86336]]></set-property>
+      <set-property name="city"><![CDATA[Sedona]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1540]]></set-property>
+      <set-property name="lastName"><![CDATA[Wright]]></set-property>
+      <set-property name="state"><![CDATA[AZ]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[2231 Iris Avenue]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570040]]></set-property>
+      <set-property name="firstName"><![CDATA[Andrew]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-970030">
+      <set-property name="postalCode"><![CDATA[03801]]></set-property>
+      <set-property name="city"><![CDATA[Portsmouth]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1563]]></set-property>
+      <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+      <set-property name="state"><![CDATA[NH]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[105 Lake St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570030]]></set-property>
+      <set-property name="firstName"><![CDATA[Stuart]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-970031">
+      <set-property name="postalCode"><![CDATA[14201]]></set-property>
+      <set-property name="city"><![CDATA[Buffalo]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-2150]]></set-property>
+      <set-property name="lastName"><![CDATA[Anderson]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[451 Brooks Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570031]]></set-property>
+      <set-property name="firstName"><![CDATA[Kim]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990125">
+      <set-property name="postalCode"><![CDATA[01950]]></set-property>
+      <set-property name="city"><![CDATA[Newburyport]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8125]]></set-property>
+      <set-property name="lastName"><![CDATA[Parker]]></set-property>
+      <set-property name="state"><![CDATA[MA]]></set-property>
+      <set-property name="address1"><![CDATA[49 Spring St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570125]]></set-property>
+      <set-property name="firstName"><![CDATA[Anna]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-970035">
+      <set-property name="postalCode"><![CDATA[05401]]></set-property>
+      <set-property name="city"><![CDATA[Burlington]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1563]]></set-property>
+      <set-property name="lastName"><![CDATA[Clark]]></set-property>
+      <set-property name="state"><![CDATA[VT]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[PO Box 105]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570035]]></set-property>
+      <set-property name="firstName"><![CDATA[Erica]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980095">
+      <set-property name="postalCode"><![CDATA[94102]]></set-property>
+      <set-property name="city"><![CDATA[San Francisco]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8895]]></set-property>
+      <set-property name="lastName"><![CDATA[Moore]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address1"><![CDATA[10 Bridge Rd]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570095]]></set-property>
+      <set-property name="firstName"><![CDATA[Lindsay]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960080">
+      <set-property name="postalCode"><![CDATA[97220]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570080]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980090">
+      <set-property name="postalCode"><![CDATA[85281]]></set-property>
+      <set-property name="city"><![CDATA[Tempe]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8890]]></set-property>
+      <set-property name="lastName"><![CDATA[Smith]]></set-property>
+      <set-property name="state"><![CDATA[AZ]]></set-property>
+      <set-property name="address1"><![CDATA[1278 Winchester Avenue]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570090]]></set-property>
+      <set-property name="firstName"><![CDATA[Jacob]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990120">
+      <set-property name="postalCode"><![CDATA[02840]]></set-property>
+      <set-property name="city"><![CDATA[Newport]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8120]]></set-property>
+      <set-property name="lastName"><![CDATA[Adams]]></set-property>
+      <set-property name="state"><![CDATA[RI]]></set-property>
+      <set-property name="address1"><![CDATA[861 Pine St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570120]]></set-property>
+      <set-property name="firstName"><![CDATA[Eric]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980055">
+      <set-property name="postalCode"><![CDATA[02631]]></set-property>
+      <set-property name="city"><![CDATA[Brewster]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8855]]></set-property>
+      <set-property name="lastName"><![CDATA[Thomas]]></set-property>
+      <set-property name="state"><![CDATA[MA]]></set-property>
+      <set-property name="address1"><![CDATA[1521 Marine Ave.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570055]]></set-property>
+      <set-property name="firstName"><![CDATA[Rachel]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980045">
+      <set-property name="postalCode"><![CDATA[84601]]></set-property>
+      <set-property name="city"><![CDATA[Provo]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8845]]></set-property>
+      <set-property name="lastName"><![CDATA[Mitchell]]></set-property>
+      <set-property name="state"><![CDATA[UT]]></set-property>
+      <set-property name="address1"><![CDATA[531 Ridge Road]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570045]]></set-property>
+      <set-property name="firstName"><![CDATA[Anna]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960085">
+      <set-property name="postalCode"><![CDATA[14603]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570085]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980056">
+      <set-property name="postalCode"><![CDATA[59101]]></set-property>
+      <set-property name="city"><![CDATA[Billings]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8855]]></set-property>
+      <set-property name="lastName"><![CDATA[Rodriguez]]></set-property>
+      <set-property name="state"><![CDATA[MT]]></set-property>
+      <set-property name="address1"><![CDATA[111 Ridge Rd.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570056]]></set-property>
+      <set-property name="firstName"><![CDATA[Juan]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990030">
+      <set-property name="postalCode"><![CDATA[03801]]></set-property>
+      <set-property name="city"><![CDATA[Portsmouth]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1563]]></set-property>
+      <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+      <set-property name="state"><![CDATA[NH]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[105 Lake St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570030]]></set-property>
+      <set-property name="firstName"><![CDATA[Stuart]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990031">
+      <set-property name="postalCode"><![CDATA[14201]]></set-property>
+      <set-property name="city"><![CDATA[Buffalo]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-2150]]></set-property>
+      <set-property name="lastName"><![CDATA[Anderson]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[451 Brooks Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570031]]></set-property>
+      <set-property name="firstName"><![CDATA[Kim]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960040">
+      <set-property name="postalCode"><![CDATA[86336]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570040]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990070">
+      <set-property name="postalCode"><![CDATA[98101]]></set-property>
+      <set-property name="city"><![CDATA[Seattle]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8870]]></set-property>
+      <set-property name="lastName"><![CDATA[Lewis]]></set-property>
+      <set-property name="state"><![CDATA[WA]]></set-property>
+      <set-property name="address1"><![CDATA[87 Baseline Rd]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570070]]></set-property>
+      <set-property name="firstName"><![CDATA[Victoria]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990035">
+      <set-property name="postalCode"><![CDATA[05401]]></set-property>
+      <set-property name="city"><![CDATA[Burlington]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1563]]></set-property>
+      <set-property name="lastName"><![CDATA[Clark]]></set-property>
+      <set-property name="state"><![CDATA[VT]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[PO Box 105]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570035]]></set-property>
+      <set-property name="firstName"><![CDATA[Erica]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990115">
+      <set-property name="postalCode"><![CDATA[94702]]></set-property>
+      <set-property name="city"><![CDATA[Berkeley]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1115]]></set-property>
+      <set-property name="lastName"><![CDATA[Scott]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[934 Cottonwood Ave.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570115]]></set-property>
+      <set-property name="firstName"><![CDATA[Amy]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990075">
+      <set-property name="postalCode"><![CDATA[98101]]></set-property>
+      <set-property name="city"><![CDATA[Cheyenne]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8875]]></set-property>
+      <set-property name="lastName"><![CDATA[Lee]]></set-property>
+      <set-property name="state"><![CDATA[WY]]></set-property>
+      <set-property name="address1"><![CDATA[53 East Hopkins Ave.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570075]]></set-property>
+      <set-property name="firstName"><![CDATA[Vincent]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960045">
+      <set-property name="postalCode"><![CDATA[84601]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570045]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980100">
+      <set-property name="postalCode"><![CDATA[94102]]></set-property>
+      <set-property name="city"><![CDATA[San Francisco]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8100]]></set-property>
+      <set-property name="lastName"><![CDATA[Moore]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address1"><![CDATA[10 Bridge Rd]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570100]]></set-property>
+      <set-property name="firstName"><![CDATA[Lisa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960105">
+      <set-property name="postalCode"><![CDATA[89501]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570105]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960100">
+      <set-property name="postalCode"><![CDATA[94102]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570100]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980080">
+      <set-property name="postalCode"><![CDATA[97220]]></set-property>
+      <set-property name="city"><![CDATA[Portland]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8882]]></set-property>
+      <set-property name="lastName"><![CDATA[Nelson]]></set-property>
+      <set-property name="state"><![CDATA[OR]]></set-property>
+      <set-property name="address1"><![CDATA[6629 NE 82nd Ave]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570080]]></set-property>
+      <set-property name="firstName"><![CDATA[Peter]]></set-property>
+      <set-property name="companyName"><![CDATA[Acme Company]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960095">
+      <set-property name="postalCode"><![CDATA[94102]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570095]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960056">
+      <set-property name="postalCode"><![CDATA[59101]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570056]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980085">
+      <set-property name="postalCode"><![CDATA[14603]]></set-property>
+      <set-property name="city"><![CDATA[Rochester]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8885]]></set-property>
+      <set-property name="lastName"><![CDATA[Robinson]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address1"><![CDATA[604 Red Mountain Road]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570085]]></set-property>
+      <set-property name="firstName"><![CDATA[Adrian]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960055">
+      <set-property name="postalCode"><![CDATA[02631]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570055]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980105">
+      <set-property name="postalCode"><![CDATA[89501]]></set-property>
+      <set-property name="city"><![CDATA[Reno]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8105]]></set-property>
+      <set-property name="lastName"><![CDATA[Taylor]]></set-property>
+      <set-property name="state"><![CDATA[NV]]></set-property>
+      <set-property name="address1"><![CDATA[99 Mill St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570105]]></set-property>
+      <set-property name="firstName"><![CDATA[Chuck]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960050">
+      <set-property name="postalCode"><![CDATA[35203]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570050]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990060">
+      <set-property name="postalCode"><![CDATA[80302]]></set-property>
+      <set-property name="city"><![CDATA[Boulder]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8860]]></set-property>
+      <set-property name="lastName"><![CDATA[Jackson]]></set-property>
+      <set-property name="state"><![CDATA[CO]]></set-property>
+      <set-property name="address1"><![CDATA[6 Willowbrook Circle]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570060]]></set-property>
+      <set-property name="firstName"><![CDATA[Alex]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980115">
+      <set-property name="postalCode"><![CDATA[94720-4208]]></set-property>
+      <set-property name="city"><![CDATA[Berkeley]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8117]]></set-property>
+      <set-property name="lastName"><![CDATA[Scott]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address2"><![CDATA[Suite 200]]></set-property>
+      <set-property name="address1"><![CDATA[2130 Centre Street]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570115]]></set-property>
+      <set-property name="firstName"><![CDATA[Amy]]></set-property>
+      <set-property name="companyName"><![CDATA[Berkeley University]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960090">
+      <set-property name="postalCode"><![CDATA[85281]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570090]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960110">
+      <set-property name="postalCode"><![CDATA[97701]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570110]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980110">
+      <set-property name="postalCode"><![CDATA[97701]]></set-property>
+      <set-property name="city"><![CDATA[Bend]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8110]]></set-property>
+      <set-property name="lastName"><![CDATA[Robinson]]></set-property>
+      <set-property name="state"><![CDATA[OR]]></set-property>
+      <set-property name="address1"><![CDATA[105 Main St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570110]]></set-property>
+      <set-property name="firstName"><![CDATA[Elisabeth]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990065">
+      <set-property name="postalCode"><![CDATA[14450]]></set-property>
+      <set-property name="city"><![CDATA[Fairport]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8865]]></set-property>
+      <set-property name="lastName"><![CDATA[Lopez]]></set-property>
+      <set-property name="state"><![CDATA[NY]]></set-property>
+      <set-property name="address1"><![CDATA[15 Paris Road]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570065]]></set-property>
+      <set-property name="firstName"><![CDATA[Maria]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960115">
+      <set-property name="postalCode"><![CDATA[94702]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570115]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980070">
+      <set-property name="postalCode"><![CDATA[98101]]></set-property>
+      <set-property name="city"><![CDATA[Seattle]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8870]]></set-property>
+      <set-property name="lastName"><![CDATA[Lewis]]></set-property>
+      <set-property name="state"><![CDATA[WA]]></set-property>
+      <set-property name="address1"><![CDATA[87 Baseline Rd]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570070]]></set-property>
+      <set-property name="firstName"><![CDATA[Victoria]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980075">
+      <set-property name="postalCode"><![CDATA[98101]]></set-property>
+      <set-property name="city"><![CDATA[Cheyenne]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8875]]></set-property>
+      <set-property name="lastName"><![CDATA[Lee]]></set-property>
+      <set-property name="state"><![CDATA[WY]]></set-property>
+      <set-property name="address1"><![CDATA[53 East Hopkins Ave.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570075]]></set-property>
+      <set-property name="firstName"><![CDATA[Vincent]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960065">
+      <set-property name="postalCode"><![CDATA[14450]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570065]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990095">
+      <set-property name="postalCode"><![CDATA[94102]]></set-property>
+      <set-property name="city"><![CDATA[San Francisco]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8895]]></set-property>
+      <set-property name="lastName"><![CDATA[Moore]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address1"><![CDATA[10 Bridge Rd]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570095]]></set-property>
+      <set-property name="firstName"><![CDATA[Lindsay]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-970050">
+      <set-property name="postalCode"><![CDATA[35203]]></set-property>
+      <set-property name="city"><![CDATA[Birmingham]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1550]]></set-property>
+      <set-property name="lastName"><![CDATA[Johnson]]></set-property>
+      <set-property name="state"><![CDATA[AL]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[PO Box 2255]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570050]]></set-property>
+      <set-property name="firstName"><![CDATA[Brandon]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960060">
+      <set-property name="postalCode"><![CDATA[80302]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570060]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990090">
+      <set-property name="postalCode"><![CDATA[85281]]></set-property>
+      <set-property name="city"><![CDATA[Tempe]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8890]]></set-property>
+      <set-property name="lastName"><![CDATA[Smith]]></set-property>
+      <set-property name="state"><![CDATA[AZ]]></set-property>
+      <set-property name="address1"><![CDATA[1278 Winchester Avenue]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570090]]></set-property>
+      <set-property name="firstName"><![CDATA[Jacob]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990100">
+      <set-property name="postalCode"><![CDATA[94102]]></set-property>
+      <set-property name="city"><![CDATA[San Francisco]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8100]]></set-property>
+      <set-property name="lastName"><![CDATA[Moore]]></set-property>
+      <set-property name="state"><![CDATA[CA]]></set-property>
+      <set-property name="address1"><![CDATA[10 Bridge Rd]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570100]]></set-property>
+      <set-property name="firstName"><![CDATA[Lisa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990050">
+      <set-property name="postalCode"><![CDATA[35203]]></set-property>
+      <set-property name="city"><![CDATA[Birmingham]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1550]]></set-property>
+      <set-property name="lastName"><![CDATA[Johnson]]></set-property>
+      <set-property name="state"><![CDATA[AL]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[PO Box 2255]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570050]]></set-property>
+      <set-property name="firstName"><![CDATA[Brandon]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960120">
+      <set-property name="postalCode"><![CDATA[02840]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570120]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990056">
+      <set-property name="postalCode"><![CDATA[59101]]></set-property>
+      <set-property name="city"><![CDATA[Billings]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8855]]></set-property>
+      <set-property name="lastName"><![CDATA[Rodriguez]]></set-property>
+      <set-property name="state"><![CDATA[MT]]></set-property>
+      <set-property name="address1"><![CDATA[111 Ridge Rd.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570056]]></set-property>
+      <set-property name="firstName"><![CDATA[Juan]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980125">
+      <set-property name="postalCode"><![CDATA[01950]]></set-property>
+      <set-property name="city"><![CDATA[Newburyport]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8125]]></set-property>
+      <set-property name="lastName"><![CDATA[Parker]]></set-property>
+      <set-property name="state"><![CDATA[MA]]></set-property>
+      <set-property name="address1"><![CDATA[49 Spring St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570125]]></set-property>
+      <set-property name="firstName"><![CDATA[Anna]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980120">
+      <set-property name="postalCode"><![CDATA[02840]]></set-property>
+      <set-property name="city"><![CDATA[Newport]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8120]]></set-property>
+      <set-property name="lastName"><![CDATA[Adams]]></set-property>
+      <set-property name="state"><![CDATA[RI]]></set-property>
+      <set-property name="address1"><![CDATA[861 Pine St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570120]]></set-property>
+      <set-property name="firstName"><![CDATA[Eric]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960125">
+      <set-property name="postalCode"><![CDATA[01950]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570125]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-990055">
+      <set-property name="postalCode"><![CDATA[02631]]></set-property>
+      <set-property name="city"><![CDATA[Brewster]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-8855]]></set-property>
+      <set-property name="lastName"><![CDATA[Thomas]]></set-property>
+      <set-property name="state"><![CDATA[MA]]></set-property>
+      <set-property name="address1"><![CDATA[1521 Marine Ave.]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570055]]></set-property>
+      <set-property name="firstName"><![CDATA[Rachel]]></set-property>
+    </add-item>
+
+
+
+    <add-item item-descriptor="user" id="se-570115">
+      <set-property name="defaultCarrier"><![CDATA[Ground]]></set-property>
+      <!-- derived   <set-property name="derivedDefaultCreditCard"><![CDATA[se-usercc110115]]></set-property>  -->
+      <!-- derived   <set-property name="derivedBillingAddress"><![CDATA[se-990115]]></set-property>  -->
+      <set-property name="email"><![CDATA[amy@example.com]]></set-property>
+      <set-property name="password"><![CDATA[904b32bfff2be29d27424db399ce26822064d24036d8a3d2cba5c2c4d706e510]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990115]]></set-property>
+      <set-property name="shippingAddress"><![CDATA[se-980115]]></set-property>
+      <set-property name="locale"><![CDATA[en_US]]></set-property>
+      <set-property name="defaultCreditCard"><![CDATA[se-usercc110115]]></set-property>
+      <set-property name="autoLogin"><![CDATA[true]]></set-property>
+      <set-property name="lastName"><![CDATA[Scott]]></set-property>
+      <set-property name="secondaryAddresses"><![CDATA[Home=se-980115,Work=se-970115]]></set-property>
+      <set-property name="dateOfBirth"><![CDATA[8/10/1985 00:00:00]]></set-property>
+      <set-property name="registrationDate"><![CDATA[6/18/2014 15:12:28]]></set-property>
+      <!-- derived   <set-property name="derivedShippingAddress"><![CDATA[se-980115]]></set-property>  -->
+      <set-property name="creditCards"><![CDATA[Visa=se-usercc110115]]></set-property>
+      <set-property name="login"><![CDATA[amy@example.com]]></set-property>
+      <set-property name="homeAddress"><![CDATA[se-960115]]></set-property>
+      <set-property name="passwordSalt"><![CDATA[amy@example.com]]></set-property>
+      <set-property name="firstName"><![CDATA[Amy]]></set-property>
+      <set-property name="lastPasswordUpdate"><![CDATA[6/18/2014 15:12:28]]></set-property>
+    </add-item>
+
+
+
+    <!-- 22 items of type credit-card -->
+
+    <add-item item-descriptor="credit-card" id="se-usercc110031">
+      <set-property name="expirationMonth"><![CDATA[01]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990031]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110045">
+      <set-property name="expirationMonth"><![CDATA[02]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990045]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110040">
+      <set-property name="expirationMonth"><![CDATA[03]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990040]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110030">
+      <set-property name="expirationMonth"><![CDATA[03]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990030]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110050">
+      <set-property name="expirationMonth"><![CDATA[04]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990050]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110075">
+      <set-property name="expirationMonth"><![CDATA[05]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990075]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110060">
+      <set-property name="expirationMonth"><![CDATA[06]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990060]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110085">
+      <set-property name="expirationMonth"><![CDATA[07]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990085]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110035">
+      <set-property name="expirationMonth"><![CDATA[01]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990035]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110065">
+      <set-property name="expirationMonth"><![CDATA[11]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990065]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110056">
+      <set-property name="expirationMonth"><![CDATA[08]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990056]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110055">
+      <set-property name="expirationMonth"><![CDATA[09]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990055]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110120">
+      <set-property name="expirationMonth"><![CDATA[10]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990120]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110110">
+      <set-property name="expirationMonth"><![CDATA[11]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990110]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110080">
+      <set-property name="expirationMonth"><![CDATA[12]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990080]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110090">
+      <set-property name="expirationMonth"><![CDATA[01]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990090]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110070">
+      <set-property name="expirationMonth"><![CDATA[01]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990070]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110100">
+      <set-property name="expirationMonth"><![CDATA[03]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990100]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110115">
+      <set-property name="expirationMonth"><![CDATA[02]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990115]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110095">
+      <set-property name="expirationMonth"><![CDATA[05]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990095]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110105">
+      <set-property name="expirationMonth"><![CDATA[06]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990105]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="credit-card" id="se-usercc110125">
+      <set-property name="expirationMonth"><![CDATA[12]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990125]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+  </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/ShoppingCart/src/test/java/atg/projects/store/assembler/cartridge/handler/data/CartEditorHandlerTest/users.xml#1 $$Change: 1385662 $-->

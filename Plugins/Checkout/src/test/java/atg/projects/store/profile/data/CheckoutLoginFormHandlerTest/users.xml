@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+  
+    <add-item item-descriptor="contactInfo" id="se-990040">
+      <set-property name="postalCode"><![CDATA[86336]]></set-property>
+      <set-property name="city"><![CDATA[Sedona]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1540]]></set-property>
+      <set-property name="lastName"><![CDATA[Wright]]></set-property>
+      <set-property name="state"><![CDATA[AZ]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[2231 Iris Avenue]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570040]]></set-property>
+      <set-property name="firstName"><![CDATA[Andrew]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-980040">
+      <set-property name="postalCode"><![CDATA[86336]]></set-property>
+      <set-property name="city"><![CDATA[Sedona]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-1540]]></set-property>
+      <set-property name="lastName"><![CDATA[Wright]]></set-property>
+      <set-property name="state"><![CDATA[AZ]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[2231 Iris Avenue]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570040]]></set-property>
+      <set-property name="firstName"><![CDATA[Andrew]]></set-property>
+    </add-item>
+
+
+    <add-item item-descriptor="credit-card" id="se-usercc110040">
+      <set-property name="expirationMonth"><![CDATA[03]]></set-property>
+      <set-property name="creditCardNumber"><![CDATA[4539082039396288]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990040]]></set-property>
+      <set-property name="expirationYear"><![CDATA[2025]]></set-property>
+      <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+    </add-item>
+
+
+    <add-item item-descriptor="user" id="se-570040">
+      <set-property name="defaultCarrier"><![CDATA[Ground]]></set-property>
+      <set-property name="gender"><![CDATA[male]]></set-property>
+      <!-- derived   <set-property name="derivedDefaultCreditCard"><![CDATA[se-usercc110040]]></set-property>  -->
+      <!-- derived   <set-property name="derivedBillingAddress"><![CDATA[se-990040]]></set-property>  -->
+      <set-property name="email"><![CDATA[andrew@example.com]]></set-property>
+      <set-property name="password"><![CDATA[e1f17da979a614605672b8881c1e80f7f5785ad2c43cc1e5a54dcbc4a62c7bc2]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-990040]]></set-property>
+      <set-property name="shippingAddress"><![CDATA[se-980040]]></set-property>
+      <set-property name="locale"><![CDATA[en_US]]></set-property>
+      <set-property name="defaultCreditCard"><![CDATA[se-usercc110040]]></set-property>
+      <set-property name="autoLogin"><![CDATA[true]]></set-property>
+      <set-property name="lastName"><![CDATA[Wright]]></set-property>
+      <set-property name="secondaryAddresses"><![CDATA[Home=se-980040]]></set-property>
+      <set-property name="dateOfBirth"><![CDATA[6/1/1952 00:00:00]]></set-property>
+      <set-property name="registrationDate"><![CDATA[6/18/2014 15:12:28]]></set-property>
+      <!-- derived   <set-property name="derivedShippingAddress"><![CDATA[se-980040]]></set-property>  -->
+      <set-property name="creditCards"><![CDATA[Visa=se-usercc110040]]></set-property>
+      <set-property name="login"><![CDATA[andrew@example.com]]></set-property>
+      <set-property name="homeAddress"><![CDATA[se-960040]]></set-property>
+      <set-property name="passwordSalt"><![CDATA[andrew@example.com]]></set-property>
+      <set-property name="firstName"><![CDATA[Andrew]]></set-property>
+      <set-property name="lastPasswordUpdate"><![CDATA[6/18/2014 15:12:28]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="contactInfo" id="se-960040">
+      <set-property name="postalCode"><![CDATA[86336]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570040]]></set-property>
+    </add-item>
+
+  </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/test/java/atg/projects/store/profile/data/CheckoutLoginFormHandlerTest/users.xml#1 $$Change: 1385662 $-->

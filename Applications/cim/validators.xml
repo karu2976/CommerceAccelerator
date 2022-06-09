@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators SYSTEM "http://www.atg.com/dtds/validator_1_0.dtd">
+<validators>
+  <!-- 
+    Perform the KeyStoreValidation if the configured addOnIds have been selected. If they have not
+    then the valifator will always return true.
+  -->  
+  <validator id="PreDatabaseConfigValidator" class="atg.cim.worker.databaseconfig.KeyStoreValidator">
+    <property name="addOnIds">
+      <value>csa_b2c_store</value>
+    </property>
+  </validator>
+</validators>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/cim/validators.xml#1 $$Change: 1385662 $-->

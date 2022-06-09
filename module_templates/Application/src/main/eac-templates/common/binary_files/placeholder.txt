@@ -1,0 +1,1 @@
+Images to be made available in XMGR go in here.

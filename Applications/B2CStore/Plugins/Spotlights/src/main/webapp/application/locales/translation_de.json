@@ -1,0 +1,16 @@
+{
+  "spotlights": {
+    "button": {
+      "pauseAnimation": "Animation unterbrechen",
+      "startAnimation": "Animation starten"
+    },
+    "label": {
+      "featuredContentCarousel": "Karussell für ausgewählten Inhalt"
+    },
+    "link": {
+      "goToSlide": "<span class=\"sr-only\">Gehe zu Folie</span> {{0}}",
+      "nextSlide": "Nächste Folie",
+      "previousSlide": "Vorherige Folie"
+    }
+  }
+}

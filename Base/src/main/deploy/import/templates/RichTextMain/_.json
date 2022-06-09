@@ -1,0 +1,30 @@
+{
+    "@description": "${template.description}",
+    "@group": "MainContent",
+    "ecr:createDate": "2016-12-06T06:06:16.814-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": [
+            {
+                "editor": "GroupLabel",
+                "label": "${group.contents.label}"
+            },
+            {
+                "toolbar": "[             { name: 'document',    items : [ 'Source'] },                 { name: 'clipboard',   items : [ 'PasteText','PasteFromWord','-','Undo','Redo' ] },                 { name: 'insert',      items : [ 'Table','HorizontalRule','SpecialChar'] },                 { name: 'paragraph',   items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },                 { name: 'links',       items : [ 'Link','Unlink','Anchor' ] },                 '/',                 { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript' ] },                 { name: 'styles',      items : [ 'Styles','Format','Font','FontSize' ] },                 { name: 'colors',      items : [ 'TextColor'] }         ]",
+                "editor": "editors/RichTextEditor",
+                "propertyName": "content",
+                "label": "${property.content.label}",
+                "enabled": true,
+                "height": 200
+            }
+        ]
+    },
+    "typeInfo": {"content": {"@propertyType": "String"}},
+    "defaultContentItem": {
+        "@name": "Rich Text",
+        "content": ""
+    },
+    "locales": {}
+}

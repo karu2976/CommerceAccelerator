@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <!-- 74 items of type contactInfo -->
+
+    <add-item item-descriptor="contactInfo" id="se-980030">
+      <set-property name="postalCode"><![CDATA[03833]]></set-property>
+      <set-property name="city"><![CDATA[Exeter]]></set-property>
+      <set-property name="country"><![CDATA[US]]></set-property>
+      <set-property name="phoneNumber"><![CDATA[212-555-6341]]></set-property>
+      <set-property name="lastName"><![CDATA[Schmidt]]></set-property>
+      <set-property name="state"><![CDATA[NH]]></set-property>
+      <set-property name="address2"><![CDATA[]]></set-property>
+      <set-property name="address1"><![CDATA[457 Main St]]></set-property>
+      <set-property name="ownerId"><![CDATA[se-570090]]></set-property>
+      <set-property name="firstName"><![CDATA[Stuart]]></set-property>
+    </add-item>
+
+    <!-- add-item item-descriptor="user" id="se-570090">
+      <set-property name="defaultCarrier"><![CDATA[Ground]]></set-property>
+      <set-property name="gender"><![CDATA[male]]></set-property>
+      <set-property name="email"><![CDATA[jacob@example.com]]></set-property>
+      <set-property name="password"><![CDATA[1ef078a348aeab6e7cdf307b3efb5d7923ba1274c8a4ba44f22372d49c2966d6]]></set-property>
+      <set-property name="billingAddress"><![CDATA[se-980030]]></set-property>
+      <set-property name="shippingAddress"><![CDATA[se-980030]]></set-property>
+      <set-property name="locale"><![CDATA[en_US]]></set-property>
+      <set-property name="autoLogin"><![CDATA[true]]></set-property>
+      <set-property name="lastName"><![CDATA[Smith]]></set-property>
+      <set-property name="secondaryAddresses"><![CDATA[Home=se-980030]]></set-property>
+      <set-property name="description"><![CDATA[]]></set-property>
+      <set-property name="dateOfBirth"><![CDATA[6/5/1974 00:00:00]]></set-property>
+      <set-property name="registrationDate"><![CDATA[6/18/2014 15:12:28]]></set-property>
+      <set-property name="login"><![CDATA[jacob@example.com]]></set-property>
+      <set-property name="homeAddress"><![CDATA[se-980030]]></set-property>
+      <set-property name="passwordSalt"><![CDATA[jacob@example.com]]></set-property>
+      <set-property name="firstName"><![CDATA[Jacob]]></set-property>
+      <set-property name="lastPasswordUpdate"><![CDATA[6/18/2014 15:12:28]]></set-property>
+    </add-item -->
+  </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Base/src/test/java/atg/projects/store/servlet/pipeline/data/StoreProfilePropertySetterTest/users.xml#1 $$Change: 1385662 $-->

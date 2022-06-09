@@ -1,0 +1,17 @@
+{
+    "@description": "${template.description}",
+    "@group": "SecondaryContent",
+    "ecr:createDate": "2016-12-06T06:06:16.634-08:00",
+    "@thumbnailUrl": "thumbnail.jpg",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": []
+    },
+    "typeInfo": {"displayNamePropertyAlias": {"@propertyType": "String"}},
+    "defaultContentItem": {
+        "@name": "Breadcrumbs",
+        "displayNamePropertyAlias": "displayName"
+    },
+    "locales": {}
+}

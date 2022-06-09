@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  This pricingModels.xml file defines all of the repository properties that are used by CSA.  This
+  file will be appended to any other pricingModels.xml file that has been defined else where.
+-->
+<gsa-template xml-combine="append">
+
+  <!--///////////////////////////////-->
+  <!--          promotion            -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="promotion" expert="true" xml-combine="append">
+    <table name="dcs_promotion" type="primary" id-column-name="promotion_id">
+      <!--
+        Remove the displayName and description properties defined in DCS 
+      -->
+      <property name="displayName" xml-combine="remove"/>
+      <property name="description" xml-combine="remove"/>
+      
+      <!--
+        Default values for displayName and description to fallback on if 
+        transations are not returned
+      -->
+      <property name="displayNameDefault" data-type="string" column-name="display_name" required="true"
+                category-resource="categoryBasics" display-name-resource="nameDefault">
+        <attribute name="propertySortPriority" value="10"/>
+        <attribute name="resourceBundle" value="atg.projects.store.pricing.PricingModelsTemplateResources"/>
+      </property>
+      <property name="descriptionDefault" data-type="string" column-name="description"
+                category-resource="categoryBasics" display-name-resource="descriptionDefault">
+        <attribute name="propertySortPriority" value="54"/>
+        <attribute name="resourceBundle" value="atg.projects.store.pricing.PricingModelsTemplateResources"/>
+      </property>
+    </table>
+
+    <!--
+      derived properties for displayName and description.  These properties will return the translated 
+      string based on the locale of the request.
+    -->
+    <property name="displayName" data-type="string" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>displayNameDefault</expression>   
+      </derivation>         
+      <attribute name="defaultProperty" value="displayNameDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>
+    </property>
+    
+    <property name="description" data-type="string" writable="false" hidden="true" queryable="true">
+      <derivation user-method="atg.repository.dp.LanguageTranslation">
+        <expression>descriptionDefault</expression>   
+      </derivation>         
+      <attribute name="defaultProperty" value="descriptionDefault"/>
+      <attribute name="defaultLocale" value="en_US"/>       
+    </property>
+
+    <!--
+      Translations table for mapping promotion translations
+    -->
+    <table name="csa_prm_prm_xlate" type="multi" multi-column-name="locale" id-column-names="promotion_id">
+      <property name="translations" display-name="Translations" column-name="translation_id" data-type="map"
+                component-item-type="promotionTranslation" category-resource="categoryBasics"
+                display-name-resource="translations">
+         <attribute name="propertySortPriority" value="55"/>
+      </property>
+    </table>
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--     promotionTranslation      -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="promotionTranslation" id-space-name="promotionTranslation" display-name-resource="itemDescriptorPromotionTranslation" 
+                   display-property="displayName" item-cache-size="1000" query-cache-size="1000" cache-mode="simple">
+
+    <attribute name="resourceBundle" value="atg.projects.store.pricing.PricingModelsTemplateResources"/>
+    <!--
+      Translations table that holds all translations for translated promotions properties
+    -->
+    <table name="csa_prm_xlate" type="primary" id-column-name="translation_id">
+      <property name="displayName" column-names="display_name" data-types="string"
+                category-resource="categoryPresentation" display-name-resource="name"/>
+      <property name="description" column-names="description" data-types="string"
+                category-resource="categoryPresentation" display-name-resource="description"/>
+    </table>    
+  </item-descriptor>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Promotions/src/test/java/atg/projects/store/beanfiltering/data/ClaimedCouponPropertyCustomizerTest/atg/commerce/pricing/pricingModels.xml#1 $$Change: 1385662 $ -->

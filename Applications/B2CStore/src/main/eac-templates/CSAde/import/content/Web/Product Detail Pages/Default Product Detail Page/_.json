@@ -1,0 +1,51 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2014-06-11T14:50:01.648+01:00",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:05:26.023-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "One Column Product Page",
+        "metaKeywords": "",
+        "@type": "OneColumnProductPage",
+        "title": "CSA",
+        "metaDescription": "Oracle Commerce reference application.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }],
+        "mainProductContent": [{
+            "@name": "Product Detail",
+            "@type": "ProductDetail",
+            "ProductInformation": [
+                {
+                    "@name": "SKU Selector",
+                    "@type": "SkuSelector"
+                },
+                {
+                    "@name": "Product Description",
+                    "@type": "ProductDescription"
+                }
+            ]
+        }]
+    },
+    "triggers": [{"exactLocation": false}]
+}

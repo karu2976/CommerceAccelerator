@@ -1,0 +1,17 @@
+{
+  "promotions": {
+    "button":{
+      "apply": "Aplicar",
+      "remove": "Eliminar"
+    },
+    "label": {
+      "actions": "Acciones",
+      "claimACoupon": "Reclamación de cupón",
+      "couponCode": "Código de cupón",
+      "couponTableSummary": "Lista de cupones que se han aplicado a esta orden"
+    },
+    "subheading":{
+      "claimedCoupon": "Cupón reclamado"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<!-- ko ifnot: profile.authenticated -->
+  <a href="login" class="btn csa-btn-default csa-btn-header">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    <span class="hidden-xs hidden-sm">
+      {{ 'account.button.account' | i18n }}
+    </span>
+  </a>
+<!-- /ko -->
+
+<!-- ko if: profile.authenticated -->
+  <button type="button" class="btn csa-btn-default dropdown-toggle csa-btn-header" data-toggle="dropdown">
+    <span class="sr-only">
+      {{ 'account.button.accountMenu' | i18n }}
+    </span>
+    <span class="csa-glyphicon-stack" aria-hidden="true">
+      <span class="glyphicon glyphicon-user csa-glyphicon-stack-1x"></span>
+      <span class="glyphicon glyphicon-ok csa-glyphicon-stack-small csa-authenticated"></span>
+    </span>
+    <span class="hidden-xs hidden-sm">
+      {{ 'account.button.account' | i18n }}
+    </span>
+    <span class="caret hidden-xs"></span>
+  </button>
+
+  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+    <!-- ko foreach: authenticatedMenuOptions -->
+      <li>
+        <a data-bind="attr: { href: url }">
+          {{ displayName }}
+        </a>
+      </li>
+    <!-- /ko -->
+    <li class="divider">
+    </li>
+    <li>
+      <a data-bind="click: logout" data-bypass href="#">
+        {{ 'account.link.notYou' | i18n:profile.firstName }}
+      </a>
+    </li>
+  </ul>
+<!-- /ko -->

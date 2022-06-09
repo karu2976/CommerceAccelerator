@@ -1,0 +1,214 @@
+/*<ORACLECOPYRIGHT>
+ * Copyright (C) 1994, 2017, Oracle and/or its affiliates. All rights reserved.
+ * Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+ * Other names may be trademarks of their respective owners.
+ * UNIX is a registered trademark of The Open Group.
+ *
+ * This software and related documentation are provided under a license agreement
+ * containing restrictions on use and disclosure and are protected by intellectual property laws.
+ * Except as expressly permitted in your license agreement or allowed by law, you may not use, copy,
+ * reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+ * or display any part, in any form, or by any means. Reverse engineering, disassembly,
+ * or decompilation of this software, unless required by law for interoperability, is prohibited.
+ *
+ * The information contained herein is subject to change without notice and is not warranted to be error-free.
+ * If you find any errors, please report them to us in writing.
+ *
+ * U.S. GOVERNMENT RIGHTS Programs, software, databases, and related documentation and technical data delivered to U.S.
+ * Government customers are "commercial computer software" or "commercial technical data" pursuant to the applicable
+ * Federal Acquisition Regulation and agency-specific supplemental regulations.
+ * As such, the use, duplication, disclosure, modification, and adaptation shall be subject to the restrictions and
+ * license terms set forth in the applicable Government contract, and, to the extent applicable by the terms of the
+ * Government contract, the additional rights set forth in FAR 52.227-19, Commercial Computer Software License
+ * (December 2007). Oracle America, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+ *
+ * This software or hardware is developed for general use in a variety of information management applications.
+ * It is not developed or intended for use in any inherently dangerous applications, including applications that
+ * may create a risk of personal injury. If you use this software or hardware in dangerous applications,
+ * then you shall be responsible to take all appropriate fail-safe, backup, redundancy,
+ * and other measures to ensure its safe use. Oracle Corporation and its affiliates disclaim any liability for any
+ * damages caused by use of this software or hardware in dangerous applications.
+ *
+ * This software or hardware and documentation may provide access to or information on content,
+ * products, and services from third parties. Oracle Corporation and its affiliates are not responsible for and
+ * expressly disclaim all warranties of any kind with respect to third-party content, products, and services.
+ * Oracle Corporation and its affiliates will not be responsible for any loss, costs,
+ * or damages incurred due to your access to or use of third-party content, products, or services.
+ </ORACLECOPYRIGHT>*/
+package atg.projects.store.assembler.cartridge.handler;
+
+import atg.core.util.StringUtils;
+import atg.endeca.assembler.AssemblerTools;
+import atg.projects.store.userprofiling.StoreProfilePropertyManager;
+import atg.projects.store.userprofiling.StoreProfileTools;
+import atg.service.filter.bean.BeanFilterException;
+import atg.servlet.DynamoHttpServletRequest;
+import atg.servlet.ServletUtil;
+import atg.userprofiling.Profile;
+import com.endeca.infront.assembler.CartridgeHandlerException;
+import com.endeca.infront.assembler.ContentItem;
+import com.endeca.infront.cartridge.NavigationCartridgeHandler;
+
+import java.util.Map;
+
+/**
+ * Cartridge handler for editing addresses. Retrieves the address to edit from the current request
+ * then returns its properties in the ContentItem. The list of countries is always added to the
+ * content item, along with the list of states (code and display name), address nickname and
+ * whether or not this is the default address.
+ *
+ * The output may look similar to:
+ *
+ * "lastName": "Moore",
+ * "useAsDefaultShippingAddress": false,
+ * "state": "PE",
+ * "address1": "123 Test",
+ * "states": [],
+ * "address2": "",
+ * "countries": [],
+ * "repositoryId": "860005",
+ * "country": "CA",
+ * "city": "Test",
+ * "addressNickname": "Home",
+ * "postalCode": "12345",
+ * "phoneNumber": "123456789",
+ * "firstName": "Lisa"
+ *
+ * The states entry is a list of states. The counties entry is a list of countries.
+ *
+ * @author Oracle
+ * @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/main/java/atg/projects/store/assembler/cartridge/handler/EditAddressHandler.java#1 $$Change: 1385662 $
+ * @updated $DateTime: 2017/03/09 10:29:42 $
+ */
+public class EditAddressHandler extends NavigationCartridgeHandler{
+
+  /** Class version string */
+  public static String CLASS_VERSION = "$Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/main/java/atg/projects/store/assembler/cartridge/handler/EditAddressHandler.java#1 $$Change: 1385662 $";
+
+  //---------------------------------------------------------------------------
+  // PROPERTIES
+  //---------------------------------------------------------------------------
+
+  //-----------------------------------
+  // property: profileTools
+  //-----------------------------------
+  private StoreProfileTools mProfileTools;
+
+  /**
+   * @param pProfileTools Set the profile tools component.
+   */
+  public void setProfileTools(StoreProfileTools pProfileTools) {
+    mProfileTools = pProfileTools;
+  }
+  /**
+   * @return Get the profile tools component.
+   */
+  public StoreProfileTools getProfileTools() {
+    return mProfileTools;
+  }
+
+  //-----------------------------------
+  // property: profilePropertyManager
+  //-----------------------------------
+  private StoreProfilePropertyManager mProfilePropertyManager;
+
+  /**
+   * @param pProfilePropertyManager Set a component used to manage properties related to the profile.
+   */
+  public void setProfilePropertyManager(StoreProfilePropertyManager pProfilePropertyManager) {
+    mProfilePropertyManager = pProfilePropertyManager;
+  }
+
+  /**
+   * @return A component used to manage properties related to the profile.
+   */
+  public StoreProfilePropertyManager getProfilePropertyManager(){
+    return mProfilePropertyManager;
+  }
+
+  //-----------------------------------
+  // property: filterId
+  //-----------------------------------
+  private String mFilterId = "summary";
+
+  /**
+   * @return The filter id to use when filtering addresses.
+   */
+  public String getFilterId() {
+    return mFilterId;
+  }
+
+  /**
+   * @param pFilterId Set the filter to use when filtering addresses
+   */
+  public void setFilterId(String pFilterId) {
+    mFilterId = pFilterId;
+  }
+
+  //---------------------------------------------------------------------------
+  // METHODS
+  //---------------------------------------------------------------------------
+
+  /**
+   * Return the passed in content item.
+   * @param pContentItem A content item.
+   * @return pContentItem
+   */
+  @Override
+  protected ContentItem wrapConfig(ContentItem pContentItem) {
+    return pContentItem;
+  }
+
+  /**
+   * Gets the address to edit from the getProfilePropertyManager().getAddressNicknamePropertyName()
+   * property on the request. Returns its properties as specified by filterId, along with countries,
+   * states and nickname.
+   *
+   * @param pContentItem A content item.
+   * @return A modified content item.
+   *
+   * @throws com.endeca.infront.assembler.CartridgeHandlerException
+   */
+  @Override
+  public ContentItem process(ContentItem pContentItem) throws CartridgeHandlerException {
+    super.process(pContentItem);
+
+    // Address nickname passed in on the request
+    DynamoHttpServletRequest currRequest = ServletUtil.getCurrentRequest();
+    if(currRequest != null) {
+      String nickname =
+        currRequest.getParameter(getProfilePropertyManager().getAddressNicknamePropertyName());
+      if(!StringUtils.isEmpty(nickname)){
+
+        Profile currProfile = (Profile) ServletUtil.getCurrentUserProfile();
+
+        try {
+          Map<String, Object> filtered = getProfileTools().getFilteredAddressMap(currProfile, nickname,
+            getFilterId(), true, true, true);
+
+          // Add the values directly to the content item
+          for(Map.Entry<String, Object> entry : filtered.entrySet()){
+            pContentItem.put(entry.getKey(), entry.getValue());
+          }
+        }
+        catch (BeanFilterException e) {
+          if(AssemblerTools.getApplicationLogging().isLoggingError()){
+            AssemblerTools.getApplicationLogging().logError(e);
+          }
+        }
+
+      }
+      else{
+        AssemblerTools.getApplicationLogging().vlogDebug("The address nickname was not passed in on the request");
+      }
+
+      // Add a list of the shipable countries to the content item
+      pContentItem.put("countries", getProfileTools().getShipableCountries());
+    }
+    else{
+      AssemblerTools.getApplicationLogging().vlogDebug("The current request is null, unable to get the address nickname parameter");
+    }
+
+    return pContentItem;
+  }
+}

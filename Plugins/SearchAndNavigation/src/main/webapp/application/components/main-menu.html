@@ -1,0 +1,33 @@
+<!--
+  Render a Category navigation menu. This menu will consist of all the top-level categories in the 
+  main view. On clicking a top-level category, the menu will expand to reveal an 'allXXX' link which 
+  will link to an all category page. Similarly, each sub-category within that top-level category will
+  link to a sub-category page.
+-->
+<ul class="nav navbar-nav">
+  <!-- Top-level categories -->
+  <!-- ko foreach: categories -->
+    <li class="dropdown">
+      <a data-bind="attr: { title: topLevelCategory.displayName }, preview: {category: topLevelCategory.categoryId}" href="" data-bypass class="dropdown-toggle" data-toggle="dropdown">
+        {{ topLevelCategory.displayName }}
+        <span class="caret"></span>
+      </a>
+      <!-- Sub-categories -->
+      <ul class="dropdown-menu" role="menu">
+        <!-- All Category -->
+        <li>
+          <a data-bind="attr: { href: topLevelCategory.navigationState, title: topLevelCategory.displayName }, preview: {category: topLevelCategory.categoryId}">
+            {{ 'searchAndNavigation.link.allCategory' | i18n:topLevelCategory.displayName }}
+          </a>
+        </li>
+        <li class="divider" role="presentation"></li>
+        <!-- ko foreach: subCategories -->
+          <li>
+            <a data-bind="text: displayName, preview: {category: categoryId}, attr: { href: navigationState, title: displayName }">
+            </a>
+          </li>
+        <!-- /ko -->
+      </ul>
+    </li>
+  <!-- /ko -->
+</ul>

@@ -1,0 +1,48 @@
+<form data-bind="submit: claimCoupon" class="ws-validate">
+  <div class="form-group">
+    <label class="control-label" data-bind="uniqueFor: 'couponCode'">
+      {{ 'promotions.label.claimACoupon' | i18n }}
+    </label>
+    <div class="input-group">
+      <div class="csa-relative">
+        <input type="text" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" name="couponCode"data-bind="value: couponCode, uniqueId: 'couponCode'">
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      </div>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit" name="claimCoupon">
+          {{ 'promotions.button.apply' | i18n }}
+        </button>
+      </span>
+    </div>
+  </div>
+  <!-- ko if: order.couponCode -->
+    <table class="table table-striped table-condensed" summary="{{ 'promotions.label.couponTableSummary' | i18n }}">
+      <thead>
+        <tr>
+          <th scope="col">
+            {{ 'promotions.subheading.claimedCoupon' | i18n }}
+          </th>
+          <th scope="col">
+            <span class="sr-only">
+              {{ 'promotions.label.actions' | i18n }}
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <span class="csa-claimed-coupon-code">
+              {{ order.couponCode }}
+            </span>
+          </th>
+          <td class="text-right">
+            <button type="button" name="removeCoupon" class="btn btn-link" data-bind="click: removeCoupon">
+              {{ 'promotions.button.remove' | i18n }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <!-- /ko -->
+</form>

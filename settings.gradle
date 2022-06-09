@@ -1,0 +1,25 @@
+include "Base:Versioned",
+  "Plugins:Account",
+  "Plugins:Checkout",
+  "Plugins:Preview",
+  "Plugins:Promotions",
+  "Plugins:SearchAndNavigation",
+  "Plugins:SEO",
+  "Plugins:ShoppingCart",
+  "Plugins:Spotlights",
+  "Applications:B2CStore:Base",
+  "Applications:B2CStore:CIMExtension",
+  "Applications:B2CStore:NoPublishing",
+  "Applications:B2CStore:Plugins:Account",
+  "Applications:B2CStore:Plugins:Checkout",
+  "Applications:B2CStore:Plugins:SearchAndNavigation",
+  "Applications:B2CStore:Plugins:SEO",
+  "Applications:B2CStore:Plugins:ShoppingCart",
+  "Applications:B2CStore:Plugins:Spotlights",
+  "Applications:B2CStore:Versioned",
+  "Applications:B2CStore:CIMExtension",
+  "Applications:B2CStore:DCS-CSR"
+
+rootProject.name = "CommerceAccelerator"
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/settings-ship.gradle#1 $$Change: 1385662 $

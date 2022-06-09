@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+  <repository name="/atg/content/ContentManagementRepository">
+    <item-descriptor name="mediaContent" default-filter="summary">
+      <filter id="summary">
+        <property name="repositoryId"/>
+        <property name="name"/>
+        <property name="title"/>
+        <property name="url"/>
+        <property name="altText"/>
+        <property name="imageSrcset"/>
+        <property name="linkUrl"/>
+        <property name="imageText1"/>
+        <property name="imageText2"/>
+        <property name="imageText3"/>
+        <property name="imageText4"/>
+      </filter>
+    </item-descriptor>
+  </repository>
+</bean-filtering>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/Plugins/Spotlights/src/main/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#1 $$Change: 1385662 $ -->

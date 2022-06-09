@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <add-item id="m001" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[Relaxed style]]></set-property>
+      <set-property name="titleDefault"><![CDATA[Relaxed style]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Men's relaxed styles]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_relaxed_style.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse/Men/_/N-ywzz9z]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[Shop relaxed style for men]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_relaxed_style.jpg 2280w,/csadocroot/content/images/atgstore/LG_relaxed_style.jpg 1140w,/csadocroot/content/images/atgstore/SM_relaxed_style.jpg 720w,/csadocroot/content/images/atgstore/XS_relaxed_style.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[Relaxed style]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[Look and feel good]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Start shopping]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate001,de=de_xlate001,es=es_xlate001]]></set-property>
+    </add-item>
+    <add-item id="m002" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[Lovable looks]]></set-property>
+      <set-property name="titleDefault"><![CDATA[Lovable looks]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Women's style trends]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_lovable_looks.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse/Women/_/N-1m86jug]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[Shop style trends for women]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_lovable_looks.jpg 2280w,/csadocroot/content/images/atgstore/LG_lovable_looks.jpg 1140w,/csadocroot/content/images/atgstore/SM_lovable_looks.jpg 720w,/csadocroot/content/images/atgstore/XS_lovable_looks.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[Lovable looks]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[Discover new items]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Shop the catalog]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate002,de=de_xlate002,es=es_xlate002]]></set-property>
+    </add-item>
+    <add-item id="m003" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[Home accents]]></set-property>
+      <set-property name="titleDefault"><![CDATA[Home accents]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Home accents]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_home_accessories.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse/Home-Accents/_/N-1t67v21]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[Shop home accents]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_home_accessories.jpg 2280w,/csadocroot/content/images/atgstore/LG_home_accessories.jpg 1140w,/csadocroot/content/images/atgstore/SM_home_accessories.jpg 720w,/csadocroot/content/images/atgstore/XS_home_accessories.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[Home accents]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[From our house to yours]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Start decorating]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate003,de=de_xlate003,es=es_xlate003]]></set-property>
+    </add-item>
+    <add-item id="m004" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[This just in]]></set-property>
+      <set-property name="titleDefault"><![CDATA[This just in]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Latest styles]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_just_in.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[View the newest products]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_just_in.jpg 2280w,/csadocroot/content/images/atgstore/LG_just_in.jpg 1140w,/csadocroot/content/images/atgstore/SM_just_in.jpg 720w,/csadocroot/content/images/atgstore/XS_just_in.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[This just in]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[Grab the latest looks]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Take a peek]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate004,de=de_xlate004,es=es_xlate004]]></set-property>
+    </add-item>
+    <add-item id="m005" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[DefaultRuleSetImage1]]></set-property>
+      <set-property name="titleDefault"><![CDATA[Relaxed style]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Men's relaxed styles]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_relaxed_style.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse/Men/_/N-ywzz9z]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[Shop relaxed style for men]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_relaxed_style.jpg 2280w,/csadocroot/content/images/atgstore/LG_relaxed_style.jpg 1140w,/csadocroot/content/images/atgstore/SM_relaxed_style.jpg 720w,/csadocroot/content/images/atgstore/XS_relaxed_style.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[Relaxed style]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[Look and feel good]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Start shopping]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate005,de=de_xlate005,es=es_xlate005]]></set-property>
+    </add-item>
+    <add-item id="m006" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[DefaultRuleSetImage2]]></set-property>
+      <set-property name="titleDefault"><![CDATA[Lovable looks]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Women's style trends]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_lovable_looks.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse/Women/_/N-1m86jug]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[Shop style trends for women]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_lovable_looks.jpg 2280w,/csadocroot/content/images/atgstore/LG_lovable_looks.jpg 1140w,/csadocroot/content/images/atgstore/SM_lovable_looks.jpg 720w,/csadocroot/content/images/atgstore/XS_lovable_looks.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[Lovable looks]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[Discover new items]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Shop the catalog]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate006,de=de_xlate006,es=es_xlate006]]></set-property>
+    </add-item>
+    <add-item id="m007" item-descriptor="mediaContent" repository="/atg/content/ContentManagementRepository">
+      <set-property name="mediaType"><![CDATA[Image]]></set-property>
+      <set-property name="creationUser"><![CDATA[Author]]></set-property>
+      <set-property name="creationDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="startDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="endDate"><![CDATA[01/01/3000 00:00:00]]></set-property>
+      <set-property name="lastModifiedUser"><![CDATA[Author]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[01/01/1970 00:00:00]]></set-property>
+      <set-property name="siteIds"><![CDATA[storeSiteUS,storeSiteDE]]></set-property>
+      <set-property name="nameDefault"><![CDATA[DefaultRuleSetImage3]]></set-property>
+      <set-property name="titleDefault"><![CDATA[Home accents]]></set-property>
+      <set-property name="descriptionDefault"><![CDATA[Home accents]]></set-property>
+      <set-property name="url"><![CDATA[/csadocroot/content/images/atgstore/LG_home_accessories.jpg]]></set-property>
+      <set-property name="linkUrlDefault"><![CDATA[browse/Home-Accents/_/N-1t67v21]]></set-property>
+      <set-property name="altTextDefault"><![CDATA[Shop home accents]]></set-property>
+      <set-property name="imageSrcset"><![CDATA[/csadocroot/content/images/atgstore/LGx2_home_accessories.jpg 2280w,/csadocroot/content/images/atgstore/LG_home_accessories.jpg 1140w,/csadocroot/content/images/atgstore/SM_home_accessories.jpg 720w,/csadocroot/content/images/atgstore/XS_home_accessories.jpg 360w]]></set-property>
+      <set-property name="imageText1Default"><![CDATA[Home accents]]></set-property>
+      <set-property name="imageText2Default"><![CDATA[From our house to yours]]></set-property>
+      <set-property name="imageText3Default"><![CDATA[Start decorating]]></set-property>
+      <set-property name="imageText4Default"><![CDATA[Earn free shipping on orders over $100. Code: FREESHIP.]]></set-property>
+      <set-property name="translations"><![CDATA[en_DE=en_DE_xlate007,de=de_xlate007,es=es_xlate007]]></set-property>
+    </add-item>
+    <!-- ================================================================================ -->
+    <!--                                TRANSLATIONS                                      -->
+    <!-- ================================================================================ -->
+    <!-- ====== -->
+    <!-- GERMAN -->
+    <!-- ====== -->
+    <!-- en_DE -->
+    <add-item id="en_DE_xlate001" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="en_DE_xlate002" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="en_DE_xlate003" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="en_DE_xlate004" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="en_DE_xlate005" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="en_DE_xlate006" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="en_DE_xlate007" item-descriptor="mediaContentTranslation">
+      <set-property name="imageText4"><![CDATA[Earn free shipping on orders over €100. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <!-- de_DE -->
+    <add-item id="de_xlate001" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Lässige Styles]]></set-property>
+      <set-property name="description"><![CDATA[Lässige Styles für Männer]]></set-property>
+      <set-property name="title"><![CDATA[Lässige Styles]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Herren/_/N-lypgg]]></set-property>
+      <set-property name="altText"><![CDATA[Lässige Styles für Männer einkaufen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Lässige Styles]]></set-property>
+      <set-property name="imageText2"><![CDATA[Toll aussehen und sich wohlfühlen]]></set-property>
+      <set-property name="imageText3"><![CDATA[Mit dem Einkaufen beginnen]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="de_xlate002" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Looks zum Verlieben]]></set-property>
+      <set-property name="description"><![CDATA[Styletrends für Frauen]]></set-property>
+      <set-property name="title"><![CDATA[Looks zum Verlieben]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Damen/_/N-1cp07n]]></set-property>
+      <set-property name="altText"><![CDATA[Styletrends für Frauen einkaufen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Looks zum Verlieben]]></set-property>
+      <set-property name="imageText2"><![CDATA[Neue Artikel entdecken]]></set-property>
+      <set-property name="imageText3"><![CDATA[Über den Katalog einkaufen]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="de_xlate003" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="description"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="title"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Wohnakzente/_/N-fo82g2]]></set-property>
+      <set-property name="altText"><![CDATA[Wohnaccessoires einkaufen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="imageText2"><![CDATA[Von uns direkt zu Ihnen nach Hause]]></set-property>
+      <set-property name="imageText3"><![CDATA[Mit dem Dekorieren beginnen]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="de_xlate004" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Neu eingetroffen]]></set-property>
+      <set-property name="description"><![CDATA[Neuestes Styles]]></set-property>
+      <set-property name="title"><![CDATA[Neu eingetroffen]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse]]></set-property>
+      <set-property name="altText"><![CDATA[Neu eingetroffene Produkte anzeigen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Neu eingetroffen]]></set-property>
+      <set-property name="imageText2"><![CDATA[Schnappen Sie sich die neuesten Looks]]></set-property>
+      <set-property name="imageText3"><![CDATA[Riskieren Sie einen Blick]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="de_xlate005" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[DefaultRuleSetImage1]]></set-property>
+      <set-property name="description"><![CDATA[Lässige Styles für Männer]]></set-property>
+      <set-property name="title"><![CDATA[Lässige Styles]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Herren/_/N-lypgg]]></set-property>
+      <set-property name="altText"><![CDATA[Lässige Styles für Männer einkaufen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Lässige Styles]]></set-property>
+      <set-property name="imageText2"><![CDATA[Toll aussehen und sich wohlfühlen]]></set-property>
+      <set-property name="imageText3"><![CDATA[Mit dem Einkaufen beginnen]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="de_xlate006" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[DefaultRuleSetImage2]]></set-property>
+      <set-property name="description"><![CDATA[Styletrends für Frauen]]></set-property>
+      <set-property name="title"><![CDATA[Looks zum Verlieben]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Damen/_/N-1cp07n]]></set-property>
+      <set-property name="altText"><![CDATA[Styletrends für Frauen einkaufen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Looks zum Verlieben]]></set-property>
+      <set-property name="imageText2"><![CDATA[Neue Artikel entdecken]]></set-property>
+      <set-property name="imageText3"><![CDATA[Über den Katalog einkaufen]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="de_xlate007" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[DefaultRuleSetImage3]]></set-property>
+      <set-property name="description"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="title"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Wohnakzente/_/N-fo82g2]]></set-property>
+      <set-property name="altText"><![CDATA[Wohnaccessoires einkaufen]]></set-property>
+      <set-property name="imageText1"><![CDATA[Wohnaccessoires]]></set-property>
+      <set-property name="imageText2"><![CDATA[Von uns direkt zu Ihnen nach Hause]]></set-property>
+      <set-property name="imageText3"><![CDATA[Mit dem Dekorieren beginnen]]></set-property>
+      <set-property name="imageText4"><![CDATA[Kostenloser Versand für Bestellungen ab 100 €. Code: FREESHIP.]]></set-property>
+    </add-item>
+    <!-- ======= -->
+    <!-- Spanish -->
+    <!-- ======= -->
+    <add-item id="es_xlate001" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Estilo relajado]]></set-property>
+      <set-property name="description"><![CDATA[Estilo relajado para hombre]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Hombre/_/N-m76cra]]></set-property>
+      <set-property name="title"><![CDATA[Estilo relajado]]></set-property>
+      <set-property name="altText"><![CDATA[Comprar estilo relajado para hombre]]></set-property>
+      <set-property name="imageText1"><![CDATA[Estilo relajado]]></set-property>
+      <set-property name="imageText2"><![CDATA[Diseño y funcionalidad]]></set-property>
+      <set-property name="imageText3"><![CDATA[Empezar a comprar]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="es_xlate002" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Estilos adorables]]></set-property>
+      <set-property name="description"><![CDATA[Tendencias de estilo para la mujer]]></set-property>
+      <set-property name="title"><![CDATA[Estilos adorables]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Mujer/_/N-4goa0z]]></set-property>
+      <set-property name="altText"><![CDATA[Comprar tendencias de estilo para la mujer]]></set-property>
+      <set-property name="imageText1"><![CDATA[Estilos adorables]]></set-property>
+      <set-property name="imageText2"><![CDATA[Descubrir nuevos artículos]]></set-property>
+      <set-property name="imageText3"><![CDATA[Compra por catálogo]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="es_xlate003" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="description"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="title"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Adornos-para-el-hogar/_/N-byl7v8]]></set-property>
+      <set-property name="altText"><![CDATA[Comprar adornos para el hogar]]></set-property>
+      <set-property name="imageText1"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="imageText2"><![CDATA[De nuestra casa a la suya]]></set-property>
+      <set-property name="imageText3"><![CDATA[Empezar a decorar]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="es_xlate004" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[Esto solo en]]></set-property>
+      <set-property name="description"><![CDATA[Lo último]]></set-property>
+      <set-property name="title"><![CDATA[Esto solo en]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse]]></set-property>
+      <set-property name="altText"><![CDATA[Ver los últimos productos]]></set-property>
+      <set-property name="imageText1"><![CDATA[Esto solo en]]></set-property>
+      <set-property name="imageText2"><![CDATA[Hacerse con lo último en estilismo]]></set-property>
+      <set-property name="imageText3"><![CDATA[Echar un vistazo]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="es_xlate005" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[DefaultRuleSetImage1]]></set-property>
+      <set-property name="description"><![CDATA[Estilo relajado para hombre]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Hombre/_/N-m76cra]]></set-property>
+      <set-property name="title"><![CDATA[Estilo relajado]]></set-property>
+      <set-property name="altText"><![CDATA[Comprar estilo relajado para hombre]]></set-property>
+      <set-property name="imageText1"><![CDATA[Estilo relajado]]></set-property>
+      <set-property name="imageText2"><![CDATA[Diseño y funcionalidad]]></set-property>
+      <set-property name="imageText3"><![CDATA[Empezar a comprar]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="es_xlate006" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[DefaultRuleSetImage2]]></set-property>
+      <set-property name="description"><![CDATA[Tendencias de estilo para la mujer]]></set-property>
+      <set-property name="title"><![CDATA[Estilos adorables]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Mujer/_/N-4goa0z]]></set-property>
+      <set-property name="altText"><![CDATA[Comprar tendencias de estilo para la mujer]]></set-property>
+      <set-property name="imageText1"><![CDATA[Estilos adorables]]></set-property>
+      <set-property name="imageText2"><![CDATA[Descubrir nuevos artículos]]></set-property>
+      <set-property name="imageText3"><![CDATA[Compra por catálogo]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+    <add-item id="es_xlate007" item-descriptor="mediaContentTranslation">
+      <set-property name="name"><![CDATA[DefaultRuleSetImage3]]></set-property>
+      <set-property name="description"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="title"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="linkUrl"><![CDATA[browse/Adornos-para-el-hogar/_/N-byl7v8]]></set-property>
+      <set-property name="altText"><![CDATA[Comprar adornos para el hogar]]></set-property>
+      <set-property name="imageText1"><![CDATA[Adornos para el hogar]]></set-property>
+      <set-property name="imageText2"><![CDATA[De nuestra casa a la suya]]></set-property>
+      <set-property name="imageText3"><![CDATA[Empezar a decorar]]></set-property>
+      <set-property name="imageText4"><![CDATA[Envíos gratis por compras superiores a $100. Código: FREESHIP.]]></set-property>
+    </add-item>
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/sample-data/content-mgmt.xml#1 $$Change: 1385662 $-->

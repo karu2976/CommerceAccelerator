@@ -1,0 +1,15 @@
+<form action="browse" method="GET" role="search">
+  <input type="hidden" name="Dy" value="1">
+  <label data-bind="uniqueFor: 'search'" class="sr-only">
+    {{ 'searchAndNavigation.label.searchByProductNameOrKeyword' | i18n }}
+  </label>
+  <div class="input-group">
+    <input type="search" name="Ntt" class="form-control" autocomplete="off" data-bind="value: searchText, valueUpdate: 'input', uniqueId: 'search'">
+    <span class="input-group-btn">
+      <button data-bind="enable: searchText" class="btn csa-btn-default" type="submit">
+        <span class="sr-only">{{ 'searchAndNavigation.button.search' | i18n }}</span>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </button>
+    </span>
+  </div>
+</form>

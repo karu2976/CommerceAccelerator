@@ -1,0 +1,72 @@
+<!-- ko if: items().length > 0 -->
+  <div class="carousel slide" data-pause="false" data-bind="attr: { id: cid() + 'mediaContentCarousel', 'data-name' : cid() + 'mediaContentCarousel' }">
+    <div class="carousel-inner" role="region" aria-live="polite" data-bind="attr: {'aria-labelledby': cid() + 'mediaContentCarouselLabel'}">
+      <span class="sr-only" data-bind="attr: {id: $component.cid() + 'mediaContentCarouselLabel'}">
+        {{ 'spotlights.label.featuredContentCarousel' | i18n }}
+      </span>
+      <!-- ko foreach: items -->
+        <article class="item" data-bind="css: { 'active': $index() == 0 }, preview: {mediaContent: $data.repositoryId }">
+          <!-- ko if: $data.imageSrcset -->
+            <img class="img-responsive center-block" sizes="100vw" data-bind="img: { src: url, fallback: $component.missingImagePath }, attr: { srcset: imageSrcset, alt: altText }">
+          <!-- /ko -->
+          <!-- ko ifnot: $data.imageSrcset -->
+            <img class="img-responsive center-block" data-bind="img: { src: url, fallback: $component.missingImagePath }, attr: { alt: altText }">
+          <!-- /ko -->
+          <div class="container">
+            <div class="carousel-caption">
+              <div class="csa-carousel-text-wrapper csa-hero-title">
+                {{ imageText1 }}
+              </div>
+              <div class="csa-carousel-text-wrapper csa-hero-tagline">
+                {{ imageText2 }}
+              </div>
+              <div class="csa-carousel-text-wrapper csa-hero-link">
+                <!-- ko if: $data.linkUrl -->
+                <a data-bind="attr: { href: linkUrl, title: title }">
+                  {{ imageText3 }}
+                </a>
+                <!-- /ko -->
+                <!-- ko ifnot: $data.linkUrl -->
+                  {{ imageText3 }}
+                <!-- /ko -->
+              </div>
+            </div>
+            <div class="csa-carousel-promo">
+              <div class="csa-carousel-promo-text-wrapper">
+                {{ imageText4 }}
+              </div>
+            </div>
+          </div>
+        </article>
+      <!-- /ko -->
+    </div>
+    <a data-bypass class="left carousel-control" data-slide="prev" data-bind="attr: { href: '#' + cid()  + 'mediaContentCarousel' }">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">
+        {{ 'spotlights.link.previousSlide' | i18n }}
+      </span>
+    </a>
+    <a data-bypass class="right carousel-control" data-slide="next" data-bind="attr: { href: '#' + cid()  + 'mediaContentCarousel' }">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">{{ 'spotlights.link.nextSlide' | i18n }}</span>
+    </a>
+    <ol class="carousel-indicators">
+      <!-- ko foreach: items -->
+        <li data-bind="'css': { 'active': $index() == 0 }">
+            <a href="#" class="btn btn-small btn-default" data-bypass data-bind="attr: { 'data-slide-to': $index(), 'data-target' : '#' + $component.cid()  + 'mediaContentCarousel' }">
+              {{{ 'spotlights.link.goToSlide' | i18n:$index() + 1 }}}
+            </a>
+        </li>
+      <!-- /ko -->
+      <li>
+        <button class="btn btn-small btn-default csa-btn-play" data-action="play" data-bind="click: controlCarousel">
+          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          <span class="sr-only">
+            {{ 'spotlights.button.startAnimation' | i18n }}
+          </span>
+        </button>
+      </li>
+    </ol>
+  </div>
+  <br/>
+<!-- /ko -->

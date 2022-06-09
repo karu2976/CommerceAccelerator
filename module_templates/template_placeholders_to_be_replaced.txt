@@ -1,0 +1,43 @@
+** Creating a New Application Module **
+
+When creating a new appliction module.  Copy the contents of the /Application folder into your
+new application module folder.
+
+Then replace "<%= appName %>" with your module name in the following files in your new application module.
+
+/<<new application module name>>/Base/build.gradle
+/<<new application module name>>/Base/src/main/web-app/bower.json
+/<<new application module name>>/build.gradle
+/<<new application module name>>/gradle.properties
+/<<new application module name>>/META-INF/MANIFEST.MF
+/<<new application module name>>/Plugins/build.gradle
+/<<new application module name>>/src/main/web-app/bower.json
+/<<new application module name>>/src/main/web-app/main.js
+/<<new application module name>>/src/test/web-app/main.spec.js
+
+Next, replace "<%= contextRoot %>" with your application contextRoot in the follow files in the application 
+template.
+
+/<<new application module name>>/src/main/j2ee-apps/META-INF/application.xml
+/<<new application module name>>/src/main/web-app/META-INF/MANIFEST.MF
+/<<new application module name>>/src/main/web-app/WEB-INF/web.xml
+
+Finally, Add the following lines to the end of the CommerceAccelerator settings.gradle file ensuring to replace
+<<new application module name>> with the new application module name.
+
+  "Applications:<<new application module name>>",
+  "Applications:<<new application module name>>:Base",
+  "Applications:<<new application module name>>:Plugins"
+
+
+** Creating a New Plugin Module **
+
+When creating a new plugin module.  Copy the contents of the /Plugin folder into your new plugin module 
+folder.
+
+Finally, replace "<%= pluginName %>" with your new plugin name in the follow files in the plugin template.
+
+/<<new plugin module name>>/build.gradle
+/<<new plugin module name>>/META-INF/MANIFEST.MF
+/<<new plugin module name>>/src/main/web-app/bower.json
+

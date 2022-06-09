@@ -1,0 +1,21 @@
+project(":Applications:B2CStore:CIMExtension") {
+  description = "CIMExtension Project for B2CStore Project."
+  
+  ext {
+    installCIMClassesDir = "${installationProjectPath}/../../../Applications/cim/classes"
+  }
+  
+  task copyClasses(dependsOn: "compileJava") << {
+    if (project.file("${project.sourceSets.main.output.classesDir}").exists()) {
+      def File installClassesDir = new File("$installCIMClassesDir");
+
+      ant.copy(todir: installClassesDir, overwrite: "true") {
+        fileset(dir: project.file("${project.sourceSets.main.output.classesDir}"))
+      }
+    }
+  }
+
+  build.dependsOn copyClasses
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/CIMExtension/build-ship.gradle#1 $$Change: 1385662 $

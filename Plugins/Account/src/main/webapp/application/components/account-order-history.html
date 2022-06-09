@@ -1,0 +1,37 @@
+<!-- ko ifnot: profile.authenticated -->
+  <div class="alert alert-info">{{ 'account.alert.notPermittedToViewOrder' | i18n }}</div>
+<!-- /ko -->
+
+<!-- ko if: profile.authenticated -->
+  <h2>{{ 'account.heading.orderHistory' | i18n }}</h2>
+  <!-- ko ifnot: ($data.myOrders() && $data.myOrders().length) -->
+    <div class="alert alert-info">{{ 'account.alert.noOrders' | i18n }}</div>
+  <!-- /ko -->
+
+  <!-- ko if: ($data.myOrders() && $data.myOrders().length) -->
+    <table class="table table-striped" summary="{{ 'account.label.orderHistoryTableSummary' | i18n }}">
+      <thead>
+        <tr>
+          <th scope="col">{{ 'account.subheading.order' | i18n }}</th>
+          <th scope="col" class="hidden-xs">{{ 'account.subheading.site' | i18n }}</th>
+          <th scope="col">{{ 'account.subheading.date' | i18n }}</th>
+          <th scope="col" class="hidden-xs">{{ 'account.subheading.numberOfItems' | i18n }}</th>
+          <th scope="col">{{ 'account.subheading.status' | i18n }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ko foreach: $data.myOrders -->
+          <tr>
+            <th scope="row">
+              <a href="account/orders/view?orderId={{ id }}">#{{ id }}</a>
+            </th>
+            <td class="hidden-xs">{{ $data.site.name }}</td>
+            <td>{{ submittedDate.time | date }}</td>
+            <td class="hidden-xs">{{ totalCommerceItemCount }}</td>
+            <td><span class="label label-success">{{ orderState }}</span></td>
+          </tr>
+        <!-- /ko -->
+      </tbody>
+    </table>
+  <!-- /ko -->
+<!-- /ko -->

@@ -1,0 +1,4285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This script was automatically generated using InstallAnywhere 2013 Premier, builtInInstaller
+     STATUS: Fully Functional LICENSED Edition
+     DATE:   Fri May 13 12:28:00 IST 2022 -->
+<InstallAnywhere_Deployment_Project increments="3311">
+	<!-- ** DO NOT EDIT ** Essential authorization and configuration data ** DO NOT EDIT ** -->
+	<essentialScriptInfo>
+		<versionID major="15" minor="0" revision="0"/>
+		<editionID>49,53,46,48,32,80,114,101,109,105,101,114,32,98,117,105,108,116,73,110,73,110,115,116,97,108,108,101,114</editionID>
+		<scriptID>12,42,11,117,110,105,110,115,116,97,108,108,101,114</scriptID>
+		<buildID>3,13,71,87,105,110,100,111,119,115,32,56,44,32,54,46,50,44,32,120,56,54,59,32,74,97,118,97,32,49,46,55,46,48,95,50,53,44,32,79,114,97,99,108,101,32,67,111,114,112,111,114,97,116,105,111,110,44,32,104,116,116,112,58,47,47,106,97,118,97,46,111,114,97,99,108,101,46,99,111,109,47,59,32,101,110,44,32,85,110,107,110,111,119,110,59,32,67,112,49,50,53,50</buildID>
+		<!-- The authorizationID may change between project saves and builds.  This does not effect the integrity of the project, nor do changes in this value represent changes in the actual InstallAnywhere project. -->
+		<authorizationID>2,0,0,-128,-79,50,-80,-128,80,115,118,101,93,105,116,96,121,48,48,49,56,52,67,98,113,112,112,37,82,101,96,63,55,5,2,2,15,37,60,0,1,0,0</authorizationID>
+	</essentialScriptInfo>
+	<installationObjects uniqueObjects="161">
+		<object class="com.zerog.ia.installer.Installer" objectID="cfb6ff09a5e0">
+			<property name="belongsToUninstallPhase">
+				<boolean>false</boolean>
+			</property>
+			<property name="rollbackEnabledCancel">
+				<boolean>true</boolean>
+			</property>
+			<property name="rollbackEnabledError">
+				<boolean>true</boolean>
+			</property>
+			<property name="ruleExpression">
+				<string><![CDATA[]]></string>
+			</property>
+			<property name="tagsInInstallPiece">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="classpath">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="rulesFailedMessage">
+				<string><![CDATA[The installer cannot run on your configuration. It will now quit.]]></string>
+			</property>
+			<property name="userSplashPath">
+				<string><![CDATA[]]></string>
+			</property>
+			<property name="userSplashName">
+				<string><![CDATA[]]></string>
+			</property>
+			<property name="splashScreenGUIInstructions">
+				<string><![CDATA[]]></string>
+			</property>
+			<property name="localesToBuild">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<string><![CDATA[en]]></string>
+					</method>
+				</object>
+			</property>
+			<property name="installLabelsOrder">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="installLabels">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="installProgressLabelIndex">
+				<int>-1</int>
+			</property>
+			<property name="installProgressLabelOption">
+				<int>2</int>
+			</property>
+			<property name="supportsAWTUI">
+				<boolean>false</boolean>
+			</property>
+			<property name="supportsSwingUI">
+				<boolean>true</boolean>
+			</property>
+			<property name="supportsConsoleUI">
+				<boolean>true</boolean>
+			</property>
+			<property name="supportsSilentUI">
+				<boolean>true</boolean>
+			</property>
+			<property name="panelImagePath">
+				<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+			</property>
+			<property name="panelImageName">
+				<string><![CDATA[introImage.png]]></string>
+			</property>
+			<property name="installProgressImagePath">
+				<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+			</property>
+			<property name="installProgressImageName">
+				<string><![CDATA[introImage.png]]></string>
+			</property>
+			<property name="installProgressImageOption">
+				<int>1</int>
+			</property>
+			<property name="installLogEnabled">
+				<boolean>true</boolean>
+			</property>
+			<property name="logEnabled">
+				<boolean>true</boolean>
+			</property>
+			<property name="installLogUninstall">
+				<boolean>false</boolean>
+			</property>
+			<property name="addLogEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="repairLogEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="removeLogEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="uninstallLogEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="uninstallAllLogsEnabled">
+				<boolean>true</boolean>
+			</property>
+			<property name="stdErrEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="installLogPath">
+				<string><![CDATA[C:\ATG\ATG11.3.2\CommerceAccelerator\uninstall\.CommerceAccelerator_uninstall\Logs\]]></string>
+			</property>
+			<property name="addLogPath">
+				<string><![CDATA[C:\ATG\ATG11.3.2\_Oracle Commerce Accelerator 11.3_installation\Logs\]]></string>
+			</property>
+			<property name="removeLogPath">
+				<string><![CDATA[C:\ATG\ATG11.3.2\_Oracle Commerce Accelerator 11.3_installation\Logs\]]></string>
+			</property>
+			<property name="repairLogPath">
+				<string><![CDATA[C:\ATG\ATG11.3.2\_Oracle Commerce Accelerator 11.3_installation\Logs\]]></string>
+			</property>
+			<property name="uninstallLogPath">
+				<string><![CDATA[C:\ATG\ATG11.3.2\_Oracle Commerce Accelerator 11.3_installation\Logs\]]></string>
+			</property>
+			<property name="installLogFormat">
+				<int>1</int>
+			</property>
+			<property name="splashHeight">
+				<int>-1</int>
+			</property>
+			<property name="splashWidth">
+				<int>-1</int>
+			</property>
+			<property name="defaultInstallSetIndex">
+				<int>0</int>
+			</property>
+			<property name="disableUnixPermissions">
+				<boolean>false</boolean>
+			</property>
+			<property name="unixPermissions">
+				<string><![CDATA[775]]></string>
+			</property>
+			<property name="macOSXPermissions">
+				<string><![CDATA[775]]></string>
+			</property>
+			<property name="preInstallActions">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.Comment" objectID="105cf62092aa">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="commentStr">
+								<string><![CDATA[========= Pre-Install checks/var init .=========]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.EditMultipleVariables" objectID="105cf62392aa">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="comment">
+								<string><![CDATA[initialize variables]]></string>
+							</property>
+							<property name="propertyList">
+								<object class="java.util.Vector">
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62a92aa">
+											<property name="propertyValue">
+												<string><![CDATA[11.3]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_VERSION$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62a92ab">
+											<property name="propertyValue">
+												<string><![CDATA[CommerceStoreAccelerator]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_<<SUB_MODULE_1>>_SUB_MODULE_NAME$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62a92ac">
+											<property name="propertyValue">
+												<string><![CDATA[CommerceStoreAccelerator]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_<<SUB_MODULE_1>>_SUB_MODULE_SHORT$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62a92ad">
+											<property name="propertyValue">
+												<string><![CDATA[Oracle Commerce Accelerator $ATG_VERSION$]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_NAME$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62a92ae">
+											<property name="propertyValue">
+												<string><![CDATA[CommerceAccelerator]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_NAME_SHORT$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62c92ae">
+											<property name="propertyValue">
+												<string><![CDATA[$ATG_PRODUCT_NAME_SHORT$]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_ROOT$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62c92af">
+											<property name="propertyValue">
+												<string><![CDATA[ATG]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_HOME$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62c92b0">
+											<property name="propertyValue">
+												<string><![CDATA[ATG$ATG_VERSION$]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PLATFORM_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62c92b1">
+											<property name="propertyValue">
+												<string><![CDATA[.$ATG_PRODUCT_ROOT$_config]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_CONFIG_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf62c92b2">
+											<property name="propertyValue">
+												<string><![CDATA[.$ATG_PRODUCT_ROOT$_uninstall]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_UNINSTALL_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+								</object>
+							</property>
+							<property name="substituteUnknownVariable">
+								<boolean>false</boolean>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.Comment" objectID="105cf62c92b3">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="commentStr">
+								<string><![CDATA[========= install U I=========]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.EditVariableTable" objectID="105cf62f92b3">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[CIAV174]]></string>
+							</property>
+							<property name="name">
+								<string><![CDATA[MODE]]></string>
+							</property>
+							<property name="value">
+								<string><![CDATA[console]]></string>
+							</property>
+							<property name="passByValue">
+								<boolean>false</boolean>
+							</property>
+							<property name="substituteUnknownVariable">
+								<boolean>false</boolean>
+							</property>
+							<rules logicalOperation="AND">
+								<object class="com.zerog.ia.installer.rules.CompareVariable" objectID="105cf62e92b4">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="operation">
+										<string><![CDATA[equals]]></string>
+									</property>
+									<property name="operandOne">
+										<string><![CDATA[$INSTALLER_UI$]]></string>
+									</property>
+									<property name="operandTwo">
+										<string><![CDATA[CONSOLE]]></string>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[CIAV174]]></string>
+									</property>
+								</object>
+							</rules>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.IntroAction" objectID="105cf62d92b6">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Introduction]]></string>
+							</property>
+							<property name="message">
+								<string><![CDATA[InstallAnywhere will guide you through the installation of $PRODUCT_NAME$.
+
+It is strongly recommended that you quit all programs before continuing with this installation.
+
+Click the 'Next' button to proceed to the next screen. If you want to change something on a previous screen, click the 'Previous' button.
+
+You may cancel this installation at any time by clicking the 'Cancel' button.]]></string>
+							</property>
+							<property name="justification">
+								<int>0</int>
+							</property>
+							<property name="alignment">
+								<int>3</int>
+							</property>
+							<property name="labelOption">
+								<int>2</int>
+							</property>
+							<property name="labelIndex">
+								<int>0</int>
+							</property>
+							<property name="help">
+								<object class="com.zerog.ia.installer.util.Help" objectID="105cf62f92b6">
+									<property name="showHelp">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.IntroActionConsole" objectID="105cf62f92b7">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="title">
+								<string><![CDATA[Introduction]]></string>
+							</property>
+							<property name="message">
+								<string><![CDATA[InstallAnywhere will guide you through the installation of $PRODUCT_NAME$.
+
+It is strongly recommended that you quit all programs before continuing with this installation.
+
+Respond to each prompt to proceed to the next step in the installation.  If you want to change something on a previous step, type 'back'.
+
+You may cancel this installation at any time by typing 'quit'.]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.LicenseAgrAction" objectID="105cf63192b8">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="labelOption">
+								<int>2</int>
+							</property>
+							<property name="labelIndex">
+								<int>1</int>
+							</property>
+							<property name="title">
+								<string><![CDATA[License Agreement]]></string>
+							</property>
+							<property name="stepPrompt">
+								<string><![CDATA[Installation and Use of $PRODUCT_NAME$ Requires Acceptance of the Following License Agreement:]]></string>
+							</property>
+							<property name="resourcePath">
+								<string><![CDATA[$CSA_PROJECT_DIR$/text/]]></string>
+							</property>
+							<property name="resourceName">
+								<string><![CDATA[license.txt]]></string>
+							</property>
+							<property name="sourceFileType">
+								<int>0</int>
+							</property>
+							<property name="requiresUserChoice">
+								<boolean>true</boolean>
+							</property>
+							<property name="agreeWithLicenseByDefault">
+								<boolean>false</boolean>
+							</property>
+							<property name="forceScroll">
+								<boolean>false</boolean>
+							</property>
+							<property name="openExternalLinks">
+								<boolean>true</boolean>
+							</property>
+							<property name="help">
+								<object class="com.zerog.ia.installer.util.Help" objectID="105cf63092b9">
+									<property name="showHelp">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.LicenseAgrActionConsole" objectID="105cf63092ba">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="title">
+								<string><![CDATA[License Agreement]]></string>
+							</property>
+							<property name="stepPrompt">
+								<string><![CDATA[Installation and Use of $PRODUCT_NAME$ Requires Acceptance of the Following License Agreement:]]></string>
+							</property>
+							<property name="resourcePath">
+								<string><![CDATA[$CSA_PROJECT_DIR$/text/]]></string>
+							</property>
+							<property name="resourceName">
+								<string><![CDATA[license.txt]]></string>
+							</property>
+							<property name="agreementFileType">
+								<int>0</int>
+							</property>
+							<property name="existingFilePath">
+								<string><![CDATA[]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.EditMultipleVariables" objectID="105cf63492ba">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="comment">
+								<string><![CDATA[Variables for minimum version check]]></string>
+							</property>
+							<property name="propertyList">
+								<object class="java.util.Vector">
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63492bb">
+											<property name="propertyValue">
+												<string><![CDATA[Core Platform (DAS/DAF/DPS/DSS/ContentMgmt)]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[ATG_PARAM_MINVER_PRODUCT]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63492bc">
+											<property name="propertyValue">
+												<string><![CDATA[$USER_INSTALL_DIR$$/$home$/$installconfig$/$config.xml]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_CONFIG_XML_FILE$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63492bd">
+											<property name="propertyValue">
+												<string><![CDATA[$ATG_CONFIG_XML_FILE$]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[ATG_PARAM_MINVER_CONFIG_XML_FILE]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63492be">
+											<property name="propertyValue">
+												<string><![CDATA[11.3]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[ATG_PARAM_MINVER_PRODUCT_VERSION]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+								</object>
+							</property>
+							<property name="substituteUnknownVariable">
+								<boolean>false</boolean>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.InstallDirAction" objectID="105cf63592bf">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Choose Install Folder]]></string>
+							</property>
+							<property name="prompt">
+								<string><![CDATA[&Where Would You Like to Install?]]></string>
+							</property>
+							<property name="canSpecifyInstallFolderName">
+								<boolean>false</boolean>
+							</property>
+							<property name="additionalText">
+								<string><![CDATA[Please choose a destination folder for this installation.]]></string>
+							</property>
+							<property name="canManuallyEnterPath">
+								<boolean>true</boolean>
+							</property>
+							<property name="labelOption">
+								<int>2</int>
+							</property>
+							<property name="labelIndex">
+								<int>2</int>
+							</property>
+							<property name="help">
+								<object class="com.zerog.ia.installer.util.Help" objectID="105cf63592c0">
+									<property name="showHelp">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.ShowDialogAction" objectID="105cf63592c1">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[ECR143]]></string>
+							</property>
+							<property name="title">
+								<string><![CDATA[Specify a valid ATG $ATG_VERSION$ directory]]></string>
+							</property>
+							<property name="label">
+								<string><![CDATA[Please specify a valid ATG $ATG_VERSION$ directory.]]></string>
+							</property>
+							<property name="narrative">
+								<string><![CDATA[Specify a valid ATG $ATG_VERSION$ directory.]]></string>
+							</property>
+							<property name="dismissalAction">
+								<int>0</int>
+							</property>
+							<property name="cancelDismissalAction">
+								<int>1</int>
+							</property>
+							<property name="detailsDismissalAction">
+								<int>1</int>
+							</property>
+							<property name="buttonLabel">
+								<string><![CDATA[OK]]></string>
+							</property>
+							<property name="cancelButtonLabel">
+								<string><![CDATA[Cancel]]></string>
+							</property>
+							<property name="detailsButtonLabel">
+								<string><![CDATA[Details...]]></string>
+							</property>
+							<property name="variableName">
+								<string><![CDATA[$CHOSEN_DIALOG_BUTTON$]]></string>
+							</property>
+							<property name="buttonCombination">
+								<int>0</int>
+							</property>
+							<property name="alertLevel">
+								<int>0</int>
+							</property>
+							<rules logicalOperation="AND">
+								<object class="com.zerog.ia.installer.rules.CustomRule" objectID="105cf63792c1">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="clientClassFullName">
+										<string><![CDATA[atg.road.install.iacustom.rule.ATGPlatformMinimumVersionCheck]]></string>
+									</property>
+									<property name="resourcePath">
+										<string><![CDATA[$CSA_PROJECT_DIR$/lib/]]></string>
+									</property>
+									<property name="resourceName">
+										<string><![CDATA[OCIAPlatformlib.jar]]></string>
+									</property>
+									<property name="dependencies">
+										<object class="java.util.Vector">
+											<method name="addElement">
+												<object class="com.zerog.ia.installer.util.DependenciesPropertyData" objectID="105cf63792c2">
+													<property name="propertyName">
+														<string><![CDATA[classes.jar]]></string>
+													</property>
+													<property name="propertyValue">
+														<string><![CDATA[$CSA_PROJECT_DIR$/lib/]]></string>
+													</property>
+												</object>
+											</method>
+										</object>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[ECR143]]></string>
+									</property>
+									<property name="archivesSigned">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</rules>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.InstallDirActionConsole" objectID="105cf63792c3">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Choose Install Folder]]></string>
+							</property>
+							<property name="prompt">
+								<string><![CDATA[Where would you like to install?]]></string>
+							</property>
+							<property name="additionalText">
+								<string><![CDATA[]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.PromptUserConsole" objectID="105cf63d92c3">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[ECR641]]></string>
+							</property>
+							<property name="title">
+								<string><![CDATA[Specify a valid ATG $ATG_VERSION$ directory]]></string>
+							</property>
+							<property name="message">
+								<string><![CDATA[Please specify a valid ATG $ATG_VERSION$ directory.]]></string>
+							</property>
+							<property name="option0DismissalAction">
+								<int>1</int>
+							</property>
+							<property name="option1DismissalAction">
+								<int>1</int>
+							</property>
+							<property name="option2DismissalAction">
+								<int>1</int>
+							</property>
+							<property name="option0Label">
+								<string><![CDATA[OK]]></string>
+							</property>
+							<property name="option1Label">
+								<string><![CDATA[Cancel]]></string>
+							</property>
+							<property name="option2Label">
+								<string><![CDATA[Details...]]></string>
+							</property>
+							<property name="variableName">
+								<string><![CDATA[$PROMPT_USER_CHOSEN_OPTION$]]></string>
+							</property>
+							<property name="buttonCombination">
+								<int>0</int>
+							</property>
+							<rules logicalOperation="AND">
+								<object class="com.zerog.ia.installer.rules.CustomRule" objectID="105cf63d92c4">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="clientClassFullName">
+										<string><![CDATA[atg.road.install.iacustom.rule.ATGPlatformMinimumVersionCheck]]></string>
+									</property>
+									<property name="resourcePath">
+										<string><![CDATA[$CSA_PROJECT_DIR$/lib/]]></string>
+									</property>
+									<property name="resourceName">
+										<string><![CDATA[OCIAPlatformlib.jar]]></string>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[ECR641]]></string>
+									</property>
+									<property name="archivesSigned">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</rules>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.EditMultipleVariables" objectID="105cf63d92c5">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="comment">
+								<string><![CDATA[set installconfig path (and related) variables]]></string>
+							</property>
+							<property name="propertyList">
+								<object class="java.util.Vector">
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92c5">
+											<property name="propertyValue">
+												<string><![CDATA[$USER_INSTALL_DIR$$/$home$/$installconfig]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_DYN_INSTALLCONFIG_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92c6">
+											<property name="propertyValue">
+												<string><![CDATA[$ATG_DYN_INSTALLCONFIG_DIR$$/$config.xml]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_DYN_CONFIG_XML_FILE$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92c7">
+											<property name="propertyValue">
+												<string><![CDATA[$USER_INSTALL_DIR$$/$$ATG_PRODUCT_ROOT$$/$installconfig]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_INSTALLCONFIG_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92c8">
+											<property name="propertyValue">
+												<string><![CDATA[$ATG_PRODUCT_INSTALLCONFIG_DIR$$/$configXMLproperties.txt]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_CONFIG_XML_PROPERTIES_FILE$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92c9">
+											<property name="propertyValue">
+												<string><![CDATA[$ATG_PRODUCT_INSTALLCONFIG_DIR$$/$config.xml]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_CONFIG_XML_FILE$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92ca">
+											<property name="propertyValue">
+												<string><![CDATA[$USER_INSTALL_DIR$$/ATG_PRODUCT_CONFIG_DIR$$/$config]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_PITH_CONFIG_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf63f92cb">
+											<property name="propertyValue">
+												<string><![CDATA[$USER_INSTALL_DIR$$/$$ATG_PRODUCT_ROOT$]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_ROOT_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf64292cb">
+											<property name="propertyValue">
+												<string><![CDATA[$USER_INSTALL_DIR$$/$$ATG_PRODUCT_CONFIG_DIR_NAME$$/$lib]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PRODUCT_PITH_LIB_DIR$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+									<method name="addElement">
+										<object class="com.zerog.ia.installer.util.EditMultipleVariablePropertyData" objectID="105cf64192cc">
+											<property name="propertyValue">
+												<string><![CDATA[$ATG_PRODUCT_PITH_LIB_DIR$$/$OCIAPlatformlib.jar$:$$ATG_PRODUCT_PITH_LIB_DIR$$/$vendorlibs.jar]]></string>
+											</property>
+											<property name="propertyName">
+												<string><![CDATA[$ATG_PITH_CLASSPATH$]]></string>
+											</property>
+											<property name="passByValue">
+												<boolean>false</boolean>
+											</property>
+											<property name="substituteUnknownVariable">
+												<boolean>false</boolean>
+											</property>
+										</object>
+									</method>
+								</object>
+							</property>
+							<property name="substituteUnknownVariable">
+								<boolean>false</boolean>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.InstallSummary" objectID="105cf64092ce">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="title">
+								<string><![CDATA[Pre-Installation Summary]]></string>
+							</property>
+							<property name="stepPrompt">
+								<string><![CDATA[Please Review the Following Before Continuing:]]></string>
+							</property>
+							<property name="requiresUserChoice">
+								<boolean>false</boolean>
+							</property>
+							<property name="showProductName">
+								<boolean>true</boolean>
+							</property>
+							<property name="showInstallDir">
+								<boolean>true</boolean>
+							</property>
+							<property name="showShortcutDir">
+								<boolean>true</boolean>
+							</property>
+							<property name="showInstallSets">
+								<boolean>false</boolean>
+							</property>
+							<property name="showInstallBundles">
+								<boolean>false</boolean>
+							</property>
+							<property name="showJREDir">
+								<boolean>false</boolean>
+							</property>
+							<property name="showDiskSpace">
+								<boolean>true</boolean>
+							</property>
+							<property name="diskSpaceUnit">
+								<int>0</int>
+							</property>
+							<property name="labelOption">
+								<int>2</int>
+							</property>
+							<property name="labelIndex">
+								<int>3</int>
+							</property>
+							<property name="fieldList">
+								<object class="java.util.Vector"/>
+							</property>
+							<property name="help">
+								<object class="com.zerog.ia.installer.util.Help" objectID="105cf64292ce">
+									<property name="showHelp">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</property>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="postInstallActions">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.SpeedASCIIFileManipulator" objectID="105cf64192d0">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="additionalText">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="useInstalledFile">
+								<boolean>true</boolean>
+							</property>
+							<property name="targetAction">
+								<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="105cf64292d1">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="unixPermissions">
+										<string><![CDATA[775]]></string>
+									</property>
+									<property name="overrideUnixPermissions">
+										<boolean>false</boolean>
+									</property>
+									<property name="shouldUninstall">
+										<boolean>true</boolean>
+									</property>
+									<property name="destinationName">
+										<string><![CDATA[$ATG_PRODUCT_ROOT$]]></string>
+									</property>
+									<property name="removeRecursively">
+										<boolean>false</boolean>
+									</property>
+									<property name="totalSize">
+										<long>1</long>
+									</property>
+									<property name="macBinary">
+										<boolean>false</boolean>
+									</property>
+									<visualChildren>
+										<object class="com.zerog.ia.installer.actions.DumpDebugInfo" objectID="105cf64292d2">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="printingToConsole">
+												<boolean>true</boolean>
+											</property>
+											<property name="printingToFile">
+												<boolean>false</boolean>
+											</property>
+											<property name="outputPath">
+												<string><![CDATA[$INSTALL_DRIVE_ROOT$$/$installer_debug.txt]]></string>
+											</property>
+											<property name="selectedModulesVector">
+												<object class="java.util.Vector">
+													<method name="addElement">
+														<string><![CDATA[installAnywhereVariables]]></string>
+													</method>
+												</object>
+											</property>
+										</object>
+										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="105cf64392d3">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="unixPermissions">
+												<string><![CDATA[775]]></string>
+											</property>
+											<property name="overrideUnixPermissions">
+												<boolean>false</boolean>
+											</property>
+											<property name="shouldUninstall">
+												<boolean>true</boolean>
+											</property>
+											<property name="destinationName">
+												<string><![CDATA[uninstall]]></string>
+											</property>
+											<property name="removeRecursively">
+												<boolean>false</boolean>
+											</property>
+											<property name="totalSize">
+												<long>1</long>
+											</property>
+											<property name="macBinary">
+												<boolean>false</boolean>
+											</property>
+											<visualChildren>
+												<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="105cf64492d4">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="unixPermissions">
+														<string><![CDATA[775]]></string>
+													</property>
+													<property name="overrideUnixPermissions">
+														<boolean>false</boolean>
+													</property>
+													<property name="shouldUninstall">
+														<boolean>true</boolean>
+													</property>
+													<property name="destinationName">
+														<string><![CDATA[$ATG_PRODUCT_UNINSTALL_DIR$]]></string>
+													</property>
+													<property name="removeRecursively">
+														<boolean>true</boolean>
+													</property>
+													<property name="totalSize">
+														<long>1</long>
+													</property>
+													<property name="macBinary">
+														<boolean>false</boolean>
+													</property>
+													<visualChildren>
+														<object class="com.zerog.ia.installer.actions.Comment" objectID="105cf64492d5">
+															<property name="belongsToUninstallPhase">
+																<boolean>false</boolean>
+															</property>
+															<property name="rollbackEnabledCancel">
+																<boolean>true</boolean>
+															</property>
+															<property name="rollbackEnabledError">
+																<boolean>true</boolean>
+															</property>
+															<property name="ruleExpression">
+																<string><![CDATA[]]></string>
+															</property>
+															<property name="commentStr">
+																<string><![CDATA[IMPORTANT: Avoid adding non-uninstaller specific resources directly to the InstallAnywhere Uninstall Component (Uninstall) when modifying or adding new actions to your project.  
+
+The Uninstall component is only intended to hold this project's Uninstaller and any resources specific to the uninstallation of the product installed by this project.
+
+It is recommended that this comment not be removed.]]></string>
+															</property>
+														</object>
+														<object class="com.zerog.ia.installer.actions.InstallUninstaller" objectID="105cf64592d6">
+															<property name="belongsToUninstallPhase">
+																<boolean>false</boolean>
+															</property>
+															<property name="rollbackEnabledCancel">
+																<boolean>true</boolean>
+															</property>
+															<property name="rollbackEnabledError">
+																<boolean>true</boolean>
+															</property>
+															<property name="ruleExpression">
+																<string><![CDATA[]]></string>
+															</property>
+															<property name="unixPermissions">
+																<string><![CDATA[664]]></string>
+															</property>
+															<property name="overrideUnixPermissions">
+																<boolean>false</boolean>
+															</property>
+															<property name="guiLauncher">
+																<boolean>true</boolean>
+															</property>
+															<property name="propertyList">
+																<object class="java.util.Vector">
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64a92e1">
+																			<property name="propertyValue">
+																				<string><![CDATA[]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.stdout.redirect]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[leave blank for no output, "console" to send to a console window,
+and any path to a file to save to the file]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64692db">
+																			<property name="propertyValue">
+																				<string><![CDATA[.]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.user.dir]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[left blank, this property will cause the native launcher to not
+alter the platform default behavior for setting the user dir.
+To override this you may set this property to a relative or absolute path.
+Relative paths are relative to the launcher.]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe86ad71">
+																			<property name="propertyValue">
+																				<string><![CDATA[Uninstall Oracle Commerce Accelerator 11.3.exe]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.application.name]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[the default name of this executable -- do not edit]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea609b54">
+																			<property name="propertyValue">
+																				<string><![CDATA[$CMD_LINE_ARGUMENTS$ -u]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.command.line.args]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe8a8f06">
+																			<property name="propertyValue">
+																				<string><![CDATA[main]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.java.launcher.main.method]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[main method of LaunchAnywhere's java launcher -- do not adjust]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64892dc">
+																			<property name="propertyValue">
+																				<string><![CDATA[$USER_INSTALL_DIR$]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.root.install.dir]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[path to the installdir magic folder]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea59a485">
+																			<property name="propertyValue">
+																				<string><![CDATA[com.zerog.ia.installer.Main]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.main.class]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[the class that contains the main method for the application]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64a92df">
+																			<property name="propertyValue">
+																				<string><![CDATA[1.4+]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.valid.vm.list]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[Defines which VMs are valid for your project.
+If the native launcher cannot find the current vm,
+it will search for ones in this list]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe89bd03">
+																			<property name="propertyValue">
+																				<string><![CDATA[C:\ATG\ATG11.3.2\CommerceAccelerator\uninstall\.CommerceAccelerator_uninstall\]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.dir]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[path to directory holding LaunchAnywhere's native launcher]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea6194b5">
+																			<property name="propertyValue">
+																				<string><![CDATA[off]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.java.compiler]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea60973a">
+																			<property name="propertyValue">
+																				<string><![CDATA[0]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.win32.java.launcher.platform]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[Set this variable to following values for launching on a 64 bit machine.
+0, to Prefer 64bit JVM, if not available use 32 bit JVM
+1, to Prefer 32bit JVM, if not available use 64 bit JVM
+2, to Prefer 64bit JVM, if not available exit with error
+3, to Prefer 32bit JVM, if not available exit with error]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64692d8">
+																			<property name="propertyValue">
+																				<string><![CDATA[]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.stderr.redirect]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[leave blank for no output, "console" to send to a console window,
+and any path to a file to save to the file]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64692da">
+																			<property name="propertyValue">
+																				<string><![CDATA[]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.stdin.redirect]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[leave blank for no input, "console" to read from the console window,
+and any path to a file to read from that file]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea618ad5">
+																			<property name="propertyValue">
+																				<string><![CDATA[16777216]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.java.option.java.heap.size.initial]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea60befb">
+																			<property name="propertyValue">
+																				<string><![CDATA[off]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.java.option.check.source]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe8a8736">
+																			<property name="propertyValue">
+																				<string><![CDATA[0Gh[]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.macos.creator]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[MacOS creator code for this LaunchAnywhere.
+Changing this will have no effect on your launcher after it hea beean created for the first time.]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="105cf64892db">
+																			<property name="propertyValue">
+																				<string><![CDATA[main]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.main.method]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[the method in the main class that will be invoked]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe8992a9">
+																			<property name="propertyValue">
+																				<string><![CDATA[com.zerog.lax.LAX]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.java.launcher.main.class]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[main class of LaunchAnywhere's java launcher -- do not adjust]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe89b816">
+																			<property name="propertyValue">
+																				<string><![CDATA[15.0]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.version]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[version of LaunchAnywhere that created this properties file]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6fe8a904b">
+																			<property name="propertyValue">
+																				<string><![CDATA[..\..\..\jre\bin\java.exe]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.current.vm]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[the VM to use for the next launch]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea619025">
+																			<property name="propertyValue">
+																				<string><![CDATA[120331648]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.java.option.java.heap.size.max]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea9087a2">
+																			<property name="propertyValue">
+																				<string><![CDATA[;InstData\Execute.zip;uninstaller.jar;resource;uninstallerResources.zip]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.class.path]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[the Java classpath necessary to run this application
+Can be separated by colons (Mac OS/Unix) or semicolons (Windows)]]></string>
+																			</property>
+																		</object>
+																	</method>
+																	<method name="addElement">
+																		<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="cfb6ea5abfdd">
+																			<property name="propertyValue">
+																				<string><![CDATA[3167]]></string>
+																			</property>
+																			<property name="propertyName">
+																				<string><![CDATA[lax.nl.win32.microsoftvm.min.version]]></string>
+																			</property>
+																			<property name="propertyComment">
+																				<string><![CDATA[]]></string>
+																			</property>
+																		</object>
+																	</method>
+																</object>
+															</property>
+															<property name="shouldUninstall">
+																<boolean>true</boolean>
+															</property>
+															<property name="rollbackEnabledCancel">
+																<boolean>true</boolean>
+															</property>
+															<property name="rollbackEnabledError">
+																<boolean>true</boolean>
+															</property>
+															<property name="destinationName">
+																<string><![CDATA[Uninstall Oracle Commerce Accelerator 11.3.exe]]></string>
+															</property>
+															<property name="neverRestarts">
+																<boolean>false</boolean>
+															</property>
+															<property name="execLevel">
+																<int>1</int>
+															</property>
+															<property name="asksUserAboutRestart">
+																<boolean>true</boolean>
+															</property>
+															<property name="launcherVMBehavior">
+																<int>3</int>
+															</property>
+															<property name="ruleExpression">
+																<string><![CDATA[]]></string>
+															</property>
+														</object>
+													</visualChildren>
+												</object>
+											</visualChildren>
+										</object>
+									</visualChildren>
+								</object>
+							</property>
+							<property name="systemFilePath">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="patternMatcher">
+								<object class="com.zerog.ia.installer.SimplePatternMatcher" objectID="105cf64a92e2">
+									<property name="includePatterns">
+										<object class="java.util.Vector">
+											<method name="addElement">
+												<object class="com.zerog.ia.installer.PatternAtom" objectID="105cf64a92e3">
+													<property name="searchDescription">
+														<string><![CDATA[Ends With]]></string>
+													</property>
+													<property name="includeExcludeState">
+														<string><![CDATA[Includes]]></string>
+													</property>
+													<property name="matchString">
+														<string><![CDATA[.bat]]></string>
+													</property>
+													<property name="ignoresCase">
+														<string><![CDATA[Yes]]></string>
+													</property>
+													<property name="typeOption">
+														<string><![CDATA[Files and Folders]]></string>
+													</property>
+												</object>
+											</method>
+										</object>
+									</property>
+									<property name="excludePatterns">
+										<object class="java.util.Vector"/>
+									</property>
+								</object>
+							</property>
+							<property name="lineEndings">
+								<int>3</int>
+							</property>
+							<property name="textOptions">
+								<int>2</int>
+							</property>
+							<property name="searchAndReplaceVector">
+								<object class="java.util.Vector"/>
+							</property>
+							<property name="substituteIAVariables">
+								<boolean>true</boolean>
+							</property>
+							<property name="backup">
+								<boolean>true</boolean>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.DumpDebugInfo" objectID="105cf64c92e3">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="printingToConsole">
+								<boolean>true</boolean>
+							</property>
+							<property name="printingToFile">
+								<boolean>true</boolean>
+							</property>
+							<property name="outputPath">
+								<string><![CDATA[$USER_INSTALL_DIR$$/$$ATG_PRODUCT_NAME_SHORT$$ATG_VERSION$_debug.txt]]></string>
+							</property>
+							<property name="selectedModulesVector">
+								<object class="java.util.Vector"/>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.ExecuteScript" objectID="105cf64c92e4">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="showPleaseWaitPanel">
+								<boolean>true</boolean>
+							</property>
+							<property name="waitForProcess">
+								<boolean>true</boolean>
+							</property>
+							<property name="script">
+								<string><![CDATA[<No Script Text Specified>]]></string>
+							</property>
+							<property name="showIndeterminateDialog">
+								<boolean>false</boolean>
+							</property>
+							<property name="dialogLabel">
+								<string><![CDATA[Executing Installation Script...]]></string>
+							</property>
+							<property name="comment">
+								<string><![CDATA[------------Change permissions for scripts---------------]]></string>
+							</property>
+							<property name="stdoutVar">
+								<string><![CDATA[$EXECUTE_STDOUT$]]></string>
+							</property>
+							<property name="stderrVar">
+								<string><![CDATA[$EXECUTE_STDERR$]]></string>
+							</property>
+							<property name="exitCodeVar">
+								<string><![CDATA[$EXECUTE_EXITCODE$]]></string>
+							</property>
+							<property name="substituteUnknownVariable">
+								<boolean>false</boolean>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.InstallFinishAction" objectID="105cf64e92e5">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="labelOption">
+								<int>2</int>
+							</property>
+							<property name="labelIndex">
+								<int>5</int>
+							</property>
+							<property name="help">
+								<object class="com.zerog.ia.installer.util.Help" objectID="105cf64d92e6">
+									<property name="showHelp">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</property>
+							<property name="showsInstallStatusMessage">
+								<boolean>true</boolean>
+							</property>
+							<property name="installSuccessMessage">
+								<string><![CDATA[Congratulations! $PRODUCT_NAME$ has been successfully installed to:
+
+     $USER_INSTALL_DIR$
+
+Press "Done" to quit the installer.]]></string>
+							</property>
+							<property name="installWarningMessage">
+								<string><![CDATA[The installation of $PRODUCT_NAME$ is finished, but some warnings occurred during the install.  Please see the installation log for details.]]></string>
+							</property>
+							<property name="installErrorMessage">
+								<string><![CDATA[The installation of $PRODUCT_NAME$ is finished, but some errors occurred during the install.  Please see the installation log for details.]]></string>
+							</property>
+							<property name="installFatalMessage">
+								<string><![CDATA[The installation of $PRODUCT_NAME$ has been rolled back.
+
+ Please see the installation log for details.]]></string>
+							</property>
+							<property name="rebootNotNeededMessage">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="rebootRecommendedMessage">
+								<string><![CDATA[You should restart the system to complete the installation.]]></string>
+							</property>
+							<property name="rebootRequiredMessage">
+								<string><![CDATA[You need to restart the system to complete the installation.]]></string>
+							</property>
+							<property name="showsRebootStatusMessage">
+								<boolean>true</boolean>
+							</property>
+							<property name="allowUserChoice">
+								<boolean>true</boolean>
+							</property>
+							<property name="windowTitle">
+								<string><![CDATA[Install Complete]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.InstallCompleteActionConsole" objectID="105cf64d92e7">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="title">
+								<string><![CDATA[Installation Complete]]></string>
+							</property>
+							<property name="message">
+								<string><![CDATA[Congratulations. $PRODUCT_NAME$ has been successfully installed to:
+
+   $USER_INSTALL_DIR$]]></string>
+							</property>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="installDir">
+				<object class="com.zerog.ia.installer.util.magicfolders.InstallDirMF" factoryID="155" objectID="a0b30985bab2">
+					<property name="solarisMagicFolder">
+						<object class="com.zerog.ia.installer.util.magicfolders.ProgramsDirMF" factoryID="159" objectID="a0b30986bab2"/>
+					</property>
+					<property name="macXMagicFolder">
+						<object refID="a0b30986bab2"/>
+					</property>
+					<property name="win32MagicFolder">
+						<object class="com.zerog.ia.installer.util.magicfolders.SystemDriveRootMF" factoryID="157" objectID="a0b30986bab5"/>
+					</property>
+					<property name="solarisMagicFolderPath">
+						<string><![CDATA[$ATG_HOME$\$ATG_PLATFORM_DIR$]]></string>
+					</property>
+					<property name="macXMagicFolderPath">
+						<string><![CDATA[$ATG_HOME$\$ATG_PLATFORM_DIR$]]></string>
+					</property>
+					<property name="win32MagicFolderPath">
+						<string><![CDATA[$ATG_HOME$\$ATG_PLATFORM_DIR$]]></string>
+					</property>
+					<property name="os400MagicFolderPath">
+						<string><![CDATA[$ATG_HOME$\$ATG_PLATFORM_DIR$]]></string>
+					</property>
+				</object>
+			</property>
+			<property name="shortcutDir">
+				<object class="com.zerog.ia.installer.util.magicfolders.ShortcutsMF" factoryID="158" objectID="a0b30985bab4">
+					<property name="solarisMagicFolder">
+						<object class="com.zerog.ia.installer.util.magicfolders.UserHomeMF" factoryID="994" objectID="a0b2fb4fbab2"/>
+					</property>
+					<property name="macMagicFolder">
+						<object class="com.zerog.ia.installer.util.magicfolders.DesktopMF" factoryID="16" objectID="a0b2fb4cbab0"/>
+					</property>
+					<property name="macXMagicFolder">
+						<object refID="a0b2fb4cbab0"/>
+					</property>
+					<property name="win32MagicFolder">
+						<object class="com.zerog.ia.installer.util.magicfolders.ProgramsMenuMF" factoryID="2" objectID="a0b2fb4cbaaf"/>
+					</property>
+					<property name="solarisMagicFolderPath">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="macMagicFolderPath">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="macXMagicFolderPath">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="win32MagicFolderPath">
+						<string><![CDATA[$PRODUCT_NAME$]]></string>
+					</property>
+					<property name="os400MagicFolderPath">
+						<string><![CDATA[]]></string>
+					</property>
+				</object>
+			</property>
+			<property name="winCodeSign">
+				<object class="com.flexera.ia.designer.windows.codesign.WindowsCodeSign" objectID="cfb6ff0c81f0">
+					<property name="certificationFileLoc">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="url">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="timestampServer">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="password">
+						<string><![CDATA[]]></string>
+					</property>
+				</object>
+			</property>
+			<property name="bundledJREInstall">
+				<int>2</int>
+			</property>
+			<property name="onlyInstallBundledVMIfOneNotFoundInSystem">
+				<boolean>false</boolean>
+			</property>
+			<property name="uninstallJRE">
+				<boolean>true</boolean>
+			</property>
+			<property name="JREInstallDirectory">
+				<int>155</int>
+			</property>
+			<property name="JREDirectoryName">
+				<string><![CDATA[jre]]></string>
+			</property>
+			<property name="buildConfigurations">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="applianceBuildConfigurations">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="rollbackEnabledProject">
+				<boolean>true</boolean>
+			</property>
+			<property name="tags">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="buildSettings">
+				<object class="java.util.Properties">
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.project.save.last.date]]></string>
+						<string><![CDATA[March 23, 2017 8:29:00 PM UTC]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.optimization.platform.merge]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.installer.options.heap.size.max]]></string>
+						<string><![CDATA[120331648]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.linux.vm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.solaris.vm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.named_unix.vm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.hpux.vm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.unix.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.output.merge.read.only]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.optimization.platform.cdrom]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.installer.options.platform.macosx.vm.version]]></string>
+						<string><![CDATA[1.5+]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.auto-populate.labels]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.named_unix.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.aix.vm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.project.build.last.date]]></string>
+						<string><![CDATA[March 23, 2017 8:29:00 PM UTC]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.installer.options.stderr.redirect]]></string>
+						<string><![CDATA[C:\CSA-stderr.txt]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.installer.options.platform.macosx.authentication]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.aix.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.output.merge]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.linux.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.java.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.hpux.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.installer.options.platform.macosx.authentication.gui]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.windows.novm]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.solaris.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.output.web]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.macosx.novm]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.output.cdrom]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.options.optimization.platform.web]]></string>
+						<string><![CDATA[false]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.build.platform.windows.vm]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.project.ImportedToBuildConfiguration]]></string>
+						<string><![CDATA[true]]></string>
+					</method>
+					<method name="put">
+						<string><![CDATA[com.zerog.ia.installer.options.stdout.redirect]]></string>
+						<string><![CDATA[C:\CSA-stderr.txt]]></string>
+					</method>
+				</object>
+			</property>
+			<property name="installFrameConfigurator">
+				<object class="com.zerog.ia.installer.util.InstallFrameConfigurator" objectID="105cf66e930d">
+					<property name="decorationType">
+						<int>2</int>
+					</property>
+					<property name="bevelDecoration">
+						<boolean>false</boolean>
+					</property>
+					<property name="resizePanelDecorations">
+						<boolean>true</boolean>
+					</property>
+					<property name="useLabelBackgroundImage">
+						<boolean>false</boolean>
+					</property>
+					<property name="labelBackgroundImagePath">
+						<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+					</property>
+					<property name="labelBackgroundImageName">
+						<string><![CDATA[labelBackground.png]]></string>
+					</property>
+					<property name="useBackgroundImage">
+						<boolean>true</boolean>
+					</property>
+					<property name="backgroundImagePath">
+						<string><![CDATA[$CSA_PROJECT_DIR$/graphics/]]></string>
+					</property>
+					<property name="backgroundImageName">
+						<string><![CDATA[sidebar.png]]></string>
+					</property>
+					<property name="mirrorBidiImage">
+						<string><![CDATA[2]]></string>
+					</property>
+					<property name="currentLabelIconPath">
+						<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+					</property>
+					<property name="currentLabelIconName">
+						<string><![CDATA[activeLabelIcon.png]]></string>
+					</property>
+					<property name="previousLabelIconPath">
+						<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+					</property>
+					<property name="previousLabelIconName">
+						<string><![CDATA[completedLabelIcon.png]]></string>
+					</property>
+					<property name="futureLabelIconPath">
+						<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+					</property>
+					<property name="futureLabelIconName">
+						<string><![CDATA[upcomingLabeIcon.png]]></string>
+					</property>
+					<property name="enablePathSubst">
+						<boolean>true</boolean>
+					</property>
+					<property name="fitBackgroundImageHorizontally">
+						<boolean>true</boolean>
+					</property>
+					<property name="fitBackgroundImageVertically">
+						<boolean>true</boolean>
+					</property>
+					<property name="zerogBannerUI">
+						<boolean>false</boolean>
+					</property>
+					<property name="uninstallerTitle">
+						<string><![CDATA[Uninstall $PRODUCT_NAME$]]></string>
+					</property>
+					<property name="maintModeTitle">
+						<string><![CDATA[Configure $PRODUCT_NAME$]]></string>
+					</property>
+					<property name="panelBorder">
+						<boolean>true</boolean>
+					</property>
+					<property name="titleTextColorRGB">
+						<int>-1</int>
+					</property>
+					<property name="installFrameWidth">
+						<int>780</int>
+					</property>
+					<property name="installFrameHeight">
+						<int>520</int>
+					</property>
+					<property name="useSystemTitleTextColorRGB">
+						<boolean>true</boolean>
+					</property>
+					<property name="useSystemBackgroundColorForInstallLabels">
+						<boolean>false</boolean>
+					</property>
+					<property name="installPanelBackgroundSettings">
+						<object class="com.zerog.ia.installer.util.BackgroundColorConfigurator" objectID="105cf66e930e">
+							<property name="behavior">
+								<int>0</int>
+							</property>
+							<property name="colorRGB">
+								<int>-16777216</int>
+							</property>
+						</object>
+					</property>
+					<property name="installStepsBackgroundSettings">
+						<object class="com.zerog.ia.installer.util.BackgroundColorConfigurator" objectID="105cf66e930f">
+							<property name="behavior">
+								<int>0</int>
+							</property>
+							<property name="colorRGB">
+								<int>-16777216</int>
+							</property>
+						</object>
+					</property>
+					<property name="allowLabelTextToWrap">
+						<boolean>false</boolean>
+					</property>
+				</object>
+			</property>
+			<property name="customInstallSet">
+				<object class="com.zerog.ia.installer.InstallSet" objectID="105cf671930f">
+					<property name="belongsToUninstallPhase">
+						<boolean>false</boolean>
+					</property>
+					<property name="rollbackEnabledCancel">
+						<boolean>true</boolean>
+					</property>
+					<property name="rollbackEnabledError">
+						<boolean>true</boolean>
+					</property>
+					<property name="ruleExpression">
+						<string><![CDATA[DNIR795]]></string>
+					</property>
+					<property name="imagePath">
+						<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+					</property>
+					<property name="description">
+						<string><![CDATA[Choose this option to customize the features to be installed.]]></string>
+					</property>
+					<property name="imageName">
+						<string><![CDATA[customIcon.png]]></string>
+					</property>
+					<property name="shortName">
+						<string><![CDATA[Custom]]></string>
+					</property>
+					<property name="installSetName">
+						<string><![CDATA[Custom]]></string>
+					</property>
+					<property name="preferredLocalizationVariant">
+						<string><![CDATA[custom]]></string>
+					</property>
+					<rules logicalOperation="AND">
+						<object class="com.zerog.ia.installer.DoNotInstallRule" objectID="cfb700b3a208">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+						</object>
+					</rules>
+					<installChildren>
+						<object class="com.zerog.ia.installer.InstallBundle" objectID="105cf6979339">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="bundleName">
+								<string><![CDATA[Complete]]></string>
+							</property>
+							<property name="description">
+								<string><![CDATA[This installs the application feature.]]></string>
+							</property>
+							<property name="shortName">
+								<string><![CDATA[Complete]]></string>
+							</property>
+							<property name="preferredLocalizationVariant">
+								<string><![CDATA[application]]></string>
+							</property>
+							<installChildren>
+								<object class="com.zerog.ia.installer.InstallComponent" objectID="105cf697933c">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="componentName">
+										<string><![CDATA[Common]]></string>
+									</property>
+									<property name="comment">
+										<string><![CDATA[This component holds resources (e.g., files, folders, actions) common to all Product Features]]></string>
+									</property>
+									<property name="shortName">
+										<string><![CDATA[Common]]></string>
+									</property>
+									<property name="uniqueId">
+										<object class="com.zerog.registry.UUID">
+											<method name="update">
+												<string><![CDATA[a0b48728-1f1a-11b2-baf4-e753543ea68c]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="versionMajor">
+										<int>1</int>
+									</property>
+									<property name="versionMinor">
+										<int>0</int>
+									</property>
+									<property name="versionRevision">
+										<int>0</int>
+									</property>
+									<property name="versionSubRevision">
+										<int>0</int>
+									</property>
+									<property name="dependency">
+										<object class="com.zerog.ia.installer.ComponentDependency" objectID="105cf699933d">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="matchesKeyFile">
+												<boolean>false</boolean>
+											</property>
+											<property name="matchingKeyFileReturnVariable">
+												<string><![CDATA[$Common_MATCHED_KEY_FILE$]]></string>
+											</property>
+											<property name="checksLowerBound">
+												<boolean>false</boolean>
+											</property>
+											<property name="checksUpperBound">
+												<boolean>false</boolean>
+											</property>
+											<property name="lowerBoundComponentVersion">
+												<object class="com.zerog.ia.installer.util.ComponentVersion" objectID="105cf699933e">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="versionMajor">
+														<int>1</int>
+													</property>
+													<property name="versionMinor">
+														<int>0</int>
+													</property>
+													<property name="versionRevision">
+														<int>0</int>
+													</property>
+													<property name="versionSubrevision">
+														<int>0</int>
+													</property>
+												</object>
+											</property>
+											<property name="upperBoundComponentVersion">
+												<object class="com.zerog.ia.installer.util.ComponentVersion" objectID="105cf699933f">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="versionMajor">
+														<int>1</int>
+													</property>
+													<property name="versionMinor">
+														<int>0</int>
+													</property>
+													<property name="versionRevision">
+														<int>0</int>
+													</property>
+													<property name="versionSubrevision">
+														<int>0</int>
+													</property>
+												</object>
+											</property>
+											<property name="parentComponent">
+												<object refID="105cf697933c"/>
+											</property>
+											<property name="dependencyFailedMessage">
+												<string><![CDATA[Common dependency has failed.]]></string>
+											</property>
+											<property name="dependencyFailedMessageVariableName">
+												<string><![CDATA[$Common_DEPENDENCY_STATE_VARIABLE$]]></string>
+											</property>
+										</object>
+									</property>
+									<property name="checksDependency">
+										<boolean>false</boolean>
+									</property>
+									<property name="hasSomethingToInstall">
+										<boolean>true</boolean>
+									</property>
+									<property name="updateExistingRegistry">
+										<boolean>false</boolean>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.InstallComponent" objectID="105cf6999342">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="componentName">
+										<string><![CDATA[InstallAnywhere Uninstall Component]]></string>
+									</property>
+									<property name="comment">
+										<string><![CDATA[This component is intended to hold this project's Uninstaller and any resources specific to the uninstallation of the product installed by this project]]></string>
+									</property>
+									<property name="shortName">
+										<string><![CDATA[Uninstall_ZG-IA]]></string>
+									</property>
+									<property name="uniqueId">
+										<object class="com.zerog.registry.UUID">
+											<method name="update">
+												<string><![CDATA[a0b4872a-1f1a-11b2-baf6-e753543ea68c]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="versionMajor">
+										<int>1</int>
+									</property>
+									<property name="versionMinor">
+										<int>0</int>
+									</property>
+									<property name="versionRevision">
+										<int>0</int>
+									</property>
+									<property name="versionSubRevision">
+										<int>0</int>
+									</property>
+									<property name="keyFile">
+										<object refID="105cf64592d6"/>
+									</property>
+									<property name="dependency">
+										<object class="com.zerog.ia.installer.ComponentDependency" objectID="105cf69b9343">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="matchesKeyFile">
+												<boolean>false</boolean>
+											</property>
+											<property name="matchingKeyFileReturnVariable">
+												<string><![CDATA[$InstallAnywhere_Uninstall_Component_MATCHED_KEY_FILE$]]></string>
+											</property>
+											<property name="checksLowerBound">
+												<boolean>false</boolean>
+											</property>
+											<property name="checksUpperBound">
+												<boolean>false</boolean>
+											</property>
+											<property name="lowerBoundComponentVersion">
+												<object class="com.zerog.ia.installer.util.ComponentVersion" objectID="105cf69b9344">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="versionMajor">
+														<int>1</int>
+													</property>
+													<property name="versionMinor">
+														<int>0</int>
+													</property>
+													<property name="versionRevision">
+														<int>0</int>
+													</property>
+													<property name="versionSubrevision">
+														<int>0</int>
+													</property>
+												</object>
+											</property>
+											<property name="upperBoundComponentVersion">
+												<object class="com.zerog.ia.installer.util.ComponentVersion" objectID="105cf69b9345">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="versionMajor">
+														<int>1</int>
+													</property>
+													<property name="versionMinor">
+														<int>0</int>
+													</property>
+													<property name="versionRevision">
+														<int>0</int>
+													</property>
+													<property name="versionSubrevision">
+														<int>0</int>
+													</property>
+												</object>
+											</property>
+											<property name="parentComponent">
+												<object refID="105cf6999342"/>
+											</property>
+											<property name="dependencyFailedMessage">
+												<string><![CDATA[InstallAnywhere Uninstall Component dependency has failed.]]></string>
+											</property>
+											<property name="dependencyFailedMessageVariableName">
+												<string><![CDATA[$InstallAnywhere_Uninstall_Component_DEPENDENCY_STATE_VARIABLE$]]></string>
+											</property>
+										</object>
+									</property>
+									<property name="checksDependency">
+										<boolean>false</boolean>
+									</property>
+									<property name="hasSomethingToInstall">
+										<boolean>true</boolean>
+									</property>
+									<property name="updateExistingRegistry">
+										<boolean>false</boolean>
+									</property>
+									<installChildren>
+										<object refID="105cf64592d6"/>
+										<object class="com.zerog.ia.installer.actions.ExpandFile" objectID="105cf69b9346">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="sourceName">
+												<string><![CDATA[OCSA.zip]]></string>
+											</property>
+											<property name="sourcePath">
+												<string><![CDATA[$CSA_DIST_DIR$/]]></string>
+											</property>
+											<property name="existingFilePath">
+												<string><![CDATA[$CSA_DIST_DIR$$/$OCSA.zip]]></string>
+											</property>
+											<property name="sourceFileType">
+												<int>0</int>
+											</property>
+											<property name="shouldUninstall">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="sizeOfArchive">
+												<long>244777696</long>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+										</object>
+										<object refID="105cf64492d5"/>
+										<object refID="105cf64292d2"/>
+										<object refID="105cf64492d4"/>
+										<object refID="105cf64392d3"/>
+										<object refID="105cf64292d1"/>
+									</installChildren>
+								</object>
+								<object class="com.zerog.ia.installer.VMComponent" objectID="105cf69d9348">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="componentName">
+										<string><![CDATA[InstallAnywhere VM Component]]></string>
+									</property>
+									<property name="comment">
+										<string><![CDATA[<Enter Install Component comment here -- do not forget to assign this Component to desired Product Features>]]></string>
+									</property>
+									<property name="shortName">
+										<string><![CDATA[VM]]></string>
+									</property>
+									<property name="uniqueId">
+										<object class="com.zerog.registry.UUID">
+											<method name="update">
+												<string><![CDATA[a0b48728-1f1a-11b2-baf9-e753543ea68c]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="versionMajor">
+										<int>1</int>
+									</property>
+									<property name="versionMinor">
+										<int>0</int>
+									</property>
+									<property name="versionRevision">
+										<int>0</int>
+									</property>
+									<property name="versionSubRevision">
+										<int>0</int>
+									</property>
+									<property name="dependency">
+										<object class="com.zerog.ia.installer.ComponentDependency" objectID="105cf69d934a">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="matchesKeyFile">
+												<boolean>false</boolean>
+											</property>
+											<property name="matchingKeyFileReturnVariable">
+												<string><![CDATA[$InstallAnywhere_VM_Component_MATCHED_KEY_FILE$]]></string>
+											</property>
+											<property name="checksLowerBound">
+												<boolean>false</boolean>
+											</property>
+											<property name="checksUpperBound">
+												<boolean>false</boolean>
+											</property>
+											<property name="lowerBoundComponentVersion">
+												<object class="com.zerog.ia.installer.util.ComponentVersion" objectID="105cf69d934b">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="versionMajor">
+														<int>1</int>
+													</property>
+													<property name="versionMinor">
+														<int>0</int>
+													</property>
+													<property name="versionRevision">
+														<int>0</int>
+													</property>
+													<property name="versionSubrevision">
+														<int>0</int>
+													</property>
+												</object>
+											</property>
+											<property name="upperBoundComponentVersion">
+												<object class="com.zerog.ia.installer.util.ComponentVersion" objectID="105cf69d934c">
+													<property name="belongsToUninstallPhase">
+														<boolean>false</boolean>
+													</property>
+													<property name="rollbackEnabledCancel">
+														<boolean>true</boolean>
+													</property>
+													<property name="rollbackEnabledError">
+														<boolean>true</boolean>
+													</property>
+													<property name="ruleExpression">
+														<string><![CDATA[]]></string>
+													</property>
+													<property name="versionMajor">
+														<int>1</int>
+													</property>
+													<property name="versionMinor">
+														<int>0</int>
+													</property>
+													<property name="versionRevision">
+														<int>0</int>
+													</property>
+													<property name="versionSubrevision">
+														<int>0</int>
+													</property>
+												</object>
+											</property>
+											<property name="parentComponent">
+												<object refID="105cf69d9348"/>
+											</property>
+											<property name="dependencyFailedMessage">
+												<string><![CDATA[InstallAnywhere VM Component dependency has failed.]]></string>
+											</property>
+											<property name="dependencyFailedMessageVariableName">
+												<string><![CDATA[$InstallAnywhere_VM_Component_DEPENDENCY_STATE_VARIABLE$]]></string>
+											</property>
+										</object>
+									</property>
+									<property name="checksDependency">
+										<boolean>false</boolean>
+									</property>
+									<property name="hasSomethingToInstall">
+										<boolean>true</boolean>
+									</property>
+									<property name="updateExistingRegistry">
+										<boolean>false</boolean>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.Billboard" objectID="105cf6a0934c">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="imagePath">
+										<string><![CDATA[$CSA_PROJECT_DIR$/graphics/]]></string>
+									</property>
+									<property name="imageName">
+										<string><![CDATA[billboard.jpg]]></string>
+									</property>
+								</object>
+							</installChildren>
+						</object>
+					</installChildren>
+				</object>
+			</property>
+			<property name="fileModificationTimestampBehavior">
+				<int>0</int>
+			</property>
+			<property name="fileModificationTimestamp">
+				<long>-1</long>
+			</property>
+			<property name="suiteObjects">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.Project" objectID="105cf6709311">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="name">
+								<string><![CDATA[CSA]]></string>
+							</property>
+							<property name="projectLocation">
+								<string><![CDATA[Same as current product]]></string>
+							</property>
+							<property name="requiresServiceSupport">
+								<boolean>false</boolean>
+							</property>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="advertisedVariables">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="isMergeModule">
+				<boolean>false</boolean>
+			</property>
+			<property name="installerInfoData">
+				<object class="com.zerog.ia.installer.util.InstallerInfoData" objectID="cfb6ff0d96f1">
+					<property name="installerTitle">
+						<string><![CDATA[$INSTALLER_TITLE$]]></string>
+					</property>
+					<property name="installerName">
+						<string><![CDATA[install]]></string>
+					</property>
+					<property name="productName">
+						<string><![CDATA[$PRODUCT_NAME$]]></string>
+					</property>
+					<property name="productID">
+						<object class="com.zerog.registry.UUID">
+							<method name="update">
+								<string><![CDATA[a0b486f9-1f1a-11b2-bad5-e753543ea68c]]></string>
+							</method>
+						</object>
+					</property>
+					<property name="productURL">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="productDescription">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="productVersion">
+						<object class="com.zerog.ia.installer.util.Version" objectID="cfb6ff0ca455">
+							<property name="major">
+								<int>1</int>
+							</property>
+							<property name="minor">
+								<int>0</int>
+							</property>
+							<property name="revision">
+								<int>0</int>
+							</property>
+							<property name="subRevision">
+								<int>0</int>
+							</property>
+						</object>
+					</property>
+					<property name="supportURL">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="vendorID">
+						<object class="com.zerog.registry.UUID">
+							<method name="update">
+								<string><![CDATA[cfb6ff0d-1f52-11b2-b044-a66d355f9c9f]]></string>
+							</method>
+						</object>
+					</property>
+					<property name="copyright">
+						<string><![CDATA[2022]]></string>
+					</property>
+					<property name="license">
+						<string><![CDATA[Commercial]]></string>
+					</property>
+				</object>
+			</property>
+			<property name="installLogUninstall">
+				<boolean>false</boolean>
+			</property>
+			<property name="neverReboots">
+				<boolean>false</boolean>
+			</property>
+			<property name="dIMReferences">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="maintModeConfigs">
+				<object class="com.zerog.ia.installer.MaintModeConfiguration" objectID="105cf6729315">
+					<property name="maintModeSupportEnabled">
+						<boolean>false</boolean>
+					</property>
+					<property name="addFeaturesEnabled">
+						<boolean>false</boolean>
+					</property>
+					<property name="removeFeaturesEnabled">
+						<boolean>false</boolean>
+					</property>
+					<property name="firstTimeMaintModeAutoPopulateDone">
+						<boolean>false</boolean>
+					</property>
+					<property name="firstTimeAddFeaturesPopulationDone">
+						<boolean>false</boolean>
+					</property>
+					<property name="firstTimeRemoveFeaturesPopulationDone">
+						<boolean>false</boolean>
+					</property>
+					<property name="firstTimeRepairProductPopulationDone">
+						<boolean>false</boolean>
+					</property>
+					<property name="repairInstallsEnabled">
+						<boolean>false</boolean>
+					</property>
+					<property name="uninstProductEnabled">
+						<boolean>false</boolean>
+					</property>
+					<property name="runtimePanelSettings">
+						<object class="com.zerog.ia.installer.MaintenenceModeRuntimePanelSettings" objectID="105cf6729316">
+							<property name="addLabel">
+								<string><![CDATA[Add Features]]></string>
+							</property>
+							<property name="addDesc">
+								<string><![CDATA[Add features to the installed product]]></string>
+							</property>
+							<property name="addImageName">
+								<string><![CDATA[addfeature.png]]></string>
+							</property>
+							<property name="repLabel">
+								<string><![CDATA[Repair Product]]></string>
+							</property>
+							<property name="repDesc">
+								<string><![CDATA[Repair the installed product]]></string>
+							</property>
+							<property name="repImageName">
+								<string><![CDATA[repairproduct.png]]></string>
+							</property>
+							<property name="remLabel">
+								<string><![CDATA[Remove Features]]></string>
+							</property>
+							<property name="remDesc">
+								<string><![CDATA[Remove features from the installed product]]></string>
+							</property>
+							<property name="remImageName">
+								<string><![CDATA[removefeature.png]]></string>
+							</property>
+							<property name="uninstLabel">
+								<string><![CDATA[Uninstall Product]]></string>
+							</property>
+							<property name="uninstDesc">
+								<string><![CDATA[Uninstall the product]]></string>
+							</property>
+							<property name="uninstImageName">
+								<string><![CDATA[uninstall.png]]></string>
+							</property>
+							<property name="instructions">
+								<string><![CDATA[Select one of the following options:]]></string>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Maintenance Mode]]></string>
+							</property>
+							<property name="panelTitle">
+								<string><![CDATA[Configure]]></string>
+							</property>
+							<property name="defaultImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+							<property name="addImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+							<property name="removeImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+							<property name="repairImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+							<property name="uninstallImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+						</object>
+					</property>
+				</object>
+			</property>
+			<property name="instanceDefinition">
+				<object class="com.zerog.ia.installer.InstanceDefinition" objectID="cfb6ff0ca1c2">
+					<property name="enableInstanceManagement">
+						<boolean>false</boolean>
+					</property>
+					<property name="instanceType">
+						<int>2</int>
+					</property>
+					<property name="numInstances">
+						<int>-1</int>
+					</property>
+					<property name="instanceDefinitionBy">
+						<int>10</int>
+					</property>
+					<property name="versionPartIdentifiesInstance">
+						<int>20</int>
+					</property>
+					<property name="overtopBehaviour">
+						<int>30</int>
+					</property>
+					<property name="enableOvertopCheck">
+						<boolean>false</boolean>
+					</property>
+					<property name="instanceManagementTitle">
+						<string><![CDATA[Manage Instances]]></string>
+					</property>
+					<property name="instanceManagementInstruction">
+						<string><![CDATA[Manage instances by selecting one of the following options:]]></string>
+					</property>
+					<property name="instanceManagementNewInstance">
+						<string><![CDATA[&Install a New Instance]]></string>
+					</property>
+					<property name="instanceManagementModifyInstance">
+						<string><![CDATA[&Modify an Existing Instance]]></string>
+					</property>
+				</object>
+			</property>
+			<property name="enableWOW64Install">
+				<boolean>false</boolean>
+			</property>
+			<property name="enableWOW64Uninstall">
+				<boolean>false</boolean>
+			</property>
+			<property name="enableWOW64Services">
+				<boolean>true</boolean>
+			</property>
+			<property name="launcher64BitLaunchSetting">
+				<int>0</int>
+			</property>
+			<property name="help">
+				<object class="com.zerog.ia.installer.util.Help" objectID="cfb6ff0b8e61">
+					<property name="showHelp">
+						<boolean>false</boolean>
+					</property>
+				</object>
+			</property>
+			<property name="useInstallerHelp">
+				<boolean>false</boolean>
+			</property>
+			<property name="contextualHelp">
+				<boolean>true</boolean>
+			</property>
+			<property name="htmlHelp">
+				<boolean>true</boolean>
+			</property>
+			<property name="defaultTargetCheckKind">
+				<int>1</int>
+			</property>
+			<property name="preUninstallActions">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallIntroAction" objectID="105cf6739319">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Uninstall $PRODUCT_NAME$]]></string>
+							</property>
+							<property name="message">
+								<string><![CDATA[About to uninstall...
+
+$PRODUCT_NAME$
+
+InstallAnywhere will remove the features that were installed during product installation.  Files and folders created after installation will not be removed.]]></string>
+							</property>
+							<property name="justification">
+								<int>0</int>
+							</property>
+							<property name="alignment">
+								<int>3</int>
+							</property>
+							<property name="labelOption">
+								<int>3</int>
+							</property>
+							<property name="labelIndex">
+								<int>0</int>
+							</property>
+							<property name="help">
+								<object class="com.zerog.ia.installer.util.Help" objectID="105cf6769319">
+									<property name="showHelp">
+										<boolean>false</boolean>
+									</property>
+								</object>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallAllOrFeaturesAction" objectID="105cf674931b">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="allLabel">
+								<string><![CDATA[Complete Uninstall]]></string>
+							</property>
+							<property name="allDescription">
+								<string><![CDATA[Completely remove all features and components of $PRODUCT_NAME$ that were installed by InstallAnywhere. Files and folders created after the installation will not be affected.]]></string>
+							</property>
+							<property name="someLabel">
+								<string><![CDATA[Uninstall Specific Features]]></string>
+							</property>
+							<property name="someDescription">
+								<string><![CDATA[Choose specific features of $PRODUCT_NAME$ that were installed by InstallAnywhere to be uninstalled.]]></string>
+							</property>
+							<property name="allImageName">
+								<string><![CDATA[typicalIconUninstall.png]]></string>
+							</property>
+							<property name="allImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+							<property name="someImageName">
+								<string><![CDATA[customIconUninstall.png]]></string>
+							</property>
+							<property name="someImagePath">
+								<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+							</property>
+							<property name="instructions">
+								<string><![CDATA[Please select one of the following options:]]></string>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Uninstall Options]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.CustomizeBundles" objectID="105cf675931c">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="installPanelClassName">
+								<string><![CDATA[com.zerog.ia.installer.installpanels.CustomizeBundlesPanel]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="labelOption">
+								<int>3</int>
+							</property>
+							<property name="labelIndex">
+								<int>0</int>
+							</property>
+							<property name="title">
+								<string><![CDATA[Choose Product Features]]></string>
+							</property>
+							<property name="checkMeansUninstall">
+								<boolean>false</boolean>
+							</property>
+							<property name="checkInstructions">
+								<string><![CDATA[Check features that you want to uninstall. Unchecked features will remain installed.]]></string>
+							</property>
+							<property name="uncheckInstructions">
+								<string><![CDATA[Uncheck features that you want to uninstall. Checked features will remain installed.]]></string>
+							</property>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="postUninstallActions">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCompleteAction" objectID="105cf676931d">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="imageOption">
+								<int>1</int>
+							</property>
+							<property name="stepTitle">
+								<string><![CDATA[Uninstall Complete]]></string>
+							</property>
+							<property name="justification">
+								<int>0</int>
+							</property>
+							<property name="alignment">
+								<int>3</int>
+							</property>
+							<property name="labelOption">
+								<int>3</int>
+							</property>
+							<property name="labelIndex">
+								<int>0</int>
+							</property>
+							<property name="uninstallSuccessMessage">
+								<string><![CDATA[All items were successfully uninstalled.]]></string>
+							</property>
+							<property name="uninstallIncompleteMessage">
+								<string><![CDATA[The following items could not be removed:]]></string>
+							</property>
+							<property name="rebootNotNeededMessage">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="rebootRecommendedMessage">
+								<string><![CDATA[You should restart the system to complete the uninstallation.]]></string>
+							</property>
+							<property name="rebootRequiredMessage">
+								<string><![CDATA[You need to restart the system to complete the uninstallation.]]></string>
+							</property>
+							<property name="allowUserChoice">
+								<boolean>true</boolean>
+							</property>
+							<property name="showsRebootStatusMessage">
+								<boolean>true</boolean>
+							</property>
+							<property name="showsInstallStatusMessage">
+								<boolean>true</boolean>
+							</property>
+							<property name="showsUnhandledFileList">
+								<boolean>true</boolean>
+							</property>
+							<property name="uninstallSkippedMessage">
+								<string><![CDATA[Unable to uninstall $PRODUCT_NAME$.]]></string>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.RebootAction" objectID="105cf678931d">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[CIAV72 && CIAV905]]></string>
+							</property>
+							<rules logicalOperation="AND">
+								<object class="com.zerog.ia.installer.rules.CompareVariable" objectID="105cf67a931d">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="operation">
+										<string><![CDATA[contains]]></string>
+									</property>
+									<property name="operandOne">
+										<string><![CDATA[$RESTART_NEEDED$]]></string>
+									</property>
+									<property name="operandTwo">
+										<string><![CDATA[YES]]></string>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[CIAV72]]></string>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.rules.CompareVariable" objectID="105cf67a931e">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="operation">
+										<string><![CDATA[does not contain]]></string>
+									</property>
+									<property name="operandOne">
+										<string><![CDATA[$USER_REQUESTED_RESTART$]]></string>
+									</property>
+									<property name="operandTwo">
+										<string><![CDATA[NO]]></string>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[CIAV905]]></string>
+									</property>
+								</object>
+							</rules>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="uninstallCategories">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf67a931f">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[Files]]></string>
+							</property>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryFiles" objectID="105cf67a9320">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf67c9320">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[LaunchAnywheres]]></string>
+							</property>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryLAX" objectID="105cf67c9321">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf6849321">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[Shortcuts/Links/Aliases]]></string>
+							</property>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryLinks" objectID="105cf6849322">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf6849323">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[CP328]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[Registry Entries]]></string>
+							</property>
+							<rules logicalOperation="AND">
+								<object class="com.zerog.ia.installer.rules.PlatformChk" objectID="105cf6849324">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="installOnPlatformList">
+										<object class="java.util.Vector">
+											<method name="addElement">
+												<string><![CDATA[^Windows.*]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="doNotInstallOnPlatformList">
+										<object class="java.util.Vector">
+											<method name="addElement">
+												<string><![CDATA[Mac OS X]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Solaris]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[SunOS]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[HP-UX]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Linux]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[AIX]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[FreeBSD]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[NetWare]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[OS/400]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Unlisted Platforms]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[CP328]]></string>
+									</property>
+								</object>
+							</rules>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryRegistries" objectID="105cf6869324">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf6869325">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[CP374]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[Native Packages]]></string>
+							</property>
+							<rules logicalOperation="AND">
+								<object class="com.zerog.ia.installer.rules.PlatformChk" objectID="105cf6869326">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+									<property name="installOnPlatformList">
+										<object class="java.util.Vector">
+											<method name="addElement">
+												<string><![CDATA[AIX]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Linux]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[HP-UX]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Solaris]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Mac OS X]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[SunOS]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[FreeBSD]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[NetWare]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[OS/400]]></string>
+											</method>
+											<method name="addElement">
+												<string><![CDATA[Unlisted Platforms]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="doNotInstallOnPlatformList">
+										<object class="java.util.Vector">
+											<method name="addElement">
+												<string><![CDATA[^Windows.*]]></string>
+											</method>
+										</object>
+									</property>
+									<property name="ruleId">
+										<string><![CDATA[CP374]]></string>
+									</property>
+								</object>
+							</rules>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryNativePackages" objectID="105cf6869327">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryAIX" objectID="105cf6869328">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryRAIR" objectID="105cf6889328">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf6889329">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[Folders]]></string>
+							</property>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryFolders" objectID="105cf688932a">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.actions.UninstallCategory" objectID="105cf688932b">
+							<property name="belongsToUninstallPhase">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="categoryName">
+								<string><![CDATA[Others Category]]></string>
+							</property>
+							<visualChildren>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryJEEArchive" objectID="105cf688932c">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryDBScript" objectID="105cf688932d">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+								<object class="com.zerog.ia.installer.actions.ExecuteUninstallCategoryMergeModules" objectID="105cf68b932d">
+									<property name="belongsToUninstallPhase">
+										<boolean>false</boolean>
+									</property>
+									<property name="rollbackEnabledCancel">
+										<boolean>true</boolean>
+									</property>
+									<property name="rollbackEnabledError">
+										<boolean>true</boolean>
+									</property>
+									<property name="ruleExpression">
+										<string><![CDATA[]]></string>
+									</property>
+								</object>
+							</visualChildren>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="inputLanguage">
+				<string><![CDATA[en]]></string>
+			</property>
+			<property name="runtimeAccessType">
+				<string><![CDATA[off]]></string>
+			</property>
+			<property name="categoriesTable">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<string><![CDATA[Files=UninstallPhase.category.default.name.file]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[LaunchAnywheres=UninstallPhase.category.default.name.lax]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[Shortcuts/Links/Aliases=UninstallPhase.category.default.name.link]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[Registry Entries=UninstallPhase.category.default.name.reg]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[Native Packages=UninstallPhase.category.default.name.native]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[Others Category=UninstallPhase.category.default.name.others]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[Folders=UninstallPhase.category.default.name.folder]]></string>
+					</method>
+				</object>
+			</property>
+			<property name="SolutionInstallPackages">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="replayVariablesExcluded">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="responseFileEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="useJCEEncryption">
+				<boolean>false</boolean>
+			</property>
+			<property name="sortLocaleKeys">
+				<boolean>true</boolean>
+			</property>
+			<property name="removeUnreferencedLocaleKeys">
+				<boolean>false</boolean>
+			</property>
+			<property name="notUpdateGlobalRegistry">
+				<boolean>false</boolean>
+			</property>
+			<property name="externalResourceBundles">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="vmListSearchBehavior">
+				<int>0</int>
+			</property>
+			<property name="windowsVmSearchPaths">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf68a932e">
+							<property name="location">
+								<string><![CDATA[<PATH_ENVIRONMENT_VARIABLE>]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf68a932f">
+							<property name="location">
+								<string><![CDATA[<WINDOWS_REGISTRY>]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="unixVmSearchPaths">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf68a9330">
+							<property name="location">
+								<string><![CDATA[<PATH_ENVIRONMENT_VARIABLE>]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf68a9331">
+							<property name="location">
+								<string><![CDATA[/bin]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf68a9332">
+							<property name="location">
+								<string><![CDATA[/usr/bin]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf6929332">
+							<property name="location">
+								<string><![CDATA[/usr/local/bin]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf6929333">
+							<property name="location">
+								<string><![CDATA[/opt]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf6929334">
+							<property name="location">
+								<string><![CDATA[/opt/gnu/bin]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+					<method name="addElement">
+						<object class="com.zerog.ia.installer.jvm.JVMSearchPath" objectID="105cf6959334">
+							<property name="location">
+								<string><![CDATA[/usr/gnu/bin]]></string>
+							</property>
+							<property name="searchType">
+								<int>0</int>
+							</property>
+						</object>
+					</method>
+				</object>
+			</property>
+			<property name="windowsVmSearchExePatterns">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<string><![CDATA[java.exe]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[bin\java.exe]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[jre\bin\java.exe]]></string>
+					</method>
+				</object>
+			</property>
+			<property name="unixVmSearchExePatterns">
+				<object class="java.util.Vector">
+					<method name="addElement">
+						<string><![CDATA[java]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[bin/java]]></string>
+					</method>
+					<method name="addElement">
+						<string><![CDATA[jre/bin/java]]></string>
+					</method>
+				</object>
+			</property>
+			<property name="runtimeUIMode">
+				<object class="com.zerog.ia.installer.RuntimeUIMode" objectID="cfb6ff0da913">
+					<property name="defaultWinInstallerUIMode">
+						<string><![CDATA[GUI]]></string>
+					</property>
+					<property name="defaultWinUninstallerUIMode">
+						<string><![CDATA[SAME_AS_INSTALLER]]></string>
+					</property>
+					<property name="defaultWin64InstallerUIMode">
+						<string><![CDATA[GUI]]></string>
+					</property>
+					<property name="defaultWin64UninstallerUIMode">
+						<string><![CDATA[SAME_AS_INSTALLER]]></string>
+					</property>
+					<property name="defaultUnixInstallerUIMode">
+						<string><![CDATA[GUI]]></string>
+					</property>
+					<property name="defaultUnixUninstallerUIMode">
+						<string><![CDATA[SAME_AS_INSTALLER]]></string>
+					</property>
+					<property name="defaultPureJavaInstallerUIMode">
+						<string><![CDATA[GUI]]></string>
+					</property>
+					<property name="defaultPureJavaUninstallerUIMode">
+						<string><![CDATA[SAME_AS_INSTALLER]]></string>
+					</property>
+					<property name="pureJavaFollowsPlatformUIMode">
+						<boolean>true</boolean>
+					</property>
+				</object>
+			</property>
+			<property name="ruleExpression">
+				<string><![CDATA[]]></string>
+			</property>
+			<property name="multipleLaunch">
+				<boolean>false</boolean>
+			</property>
+			<property name="cancelButtonEnabledDuringInstall">
+				<boolean>true</boolean>
+			</property>
+			<property name="unsubstitutableVariables">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="installerIconPath">
+				<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+			</property>
+			<property name="installerIconName">
+				<string><![CDATA[Icon1.ico]]></string>
+			</property>
+			<property name="installerIconImagePath">
+				<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+			</property>
+			<property name="installerIconImageName">
+				<string><![CDATA[iaIcon.png]]></string>
+			</property>
+			<property name="billboardTimerEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="billboardIntervals">
+				<double>0.5</double>
+			</property>
+			<property name="additionalClasspaths">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="doNotRemoveFoldersRecursively">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="customizedLauncherIcon">
+				<boolean>false</boolean>
+			</property>
+			<property name="restartForRollback">
+				<boolean>false</boolean>
+			</property>
+			<property name="buildTimeVariables">
+				<object class="java.util.Vector"/>
+			</property>
+			<property name="buildVariablePropertyFileAttached">
+				<boolean>false</boolean>
+			</property>
+			<property name="softwareIdentificationTag">
+				<object class="com.zerog.ia.installer.SoftwareIdentificationTag" objectID="cfb6ff0b8d66">
+					<property name="swidRequired">
+						<boolean>true</boolean>
+					</property>
+					<property name="entitlementRequiredIndicator">
+						<boolean>false</boolean>
+					</property>
+					<property name="softwareIdUniqueId">
+						<string><![CDATA[cfb6ff0c-1f52-11b2-83eb-a66d355f9c9f]]></string>
+					</property>
+					<property name="tagCreatorNameFlag">
+						<boolean>false</boolean>
+					</property>
+					<property name="swCreatorNameFlag">
+						<boolean>false</boolean>
+					</property>
+					<property name="swCreatorIdFlag">
+						<boolean>false</boolean>
+					</property>
+					<property name="swLicensorNameFlag">
+						<boolean>false</boolean>
+					</property>
+					<property name="swLicensorIdFlag">
+						<boolean>false</boolean>
+					</property>
+					<property name="productId">
+						<string><![CDATA[cfb6ff0b-1f52-11b2-94c1-a66d355f9c9f]]></string>
+					</property>
+				</object>
+			</property>
+			<property name="swidTagIncluded">
+				<boolean>false</boolean>
+			</property>
+			<property name="codeSignOnMacEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="oldStyleInstallersEnabled">
+				<boolean>false</boolean>
+			</property>
+			<visualChildren>
+				<object class="com.zerog.ia.installer.InstallSet" objectID="105cf6979338">
+					<property name="belongsToUninstallPhase">
+						<boolean>false</boolean>
+					</property>
+					<property name="rollbackEnabledCancel">
+						<boolean>true</boolean>
+					</property>
+					<property name="rollbackEnabledError">
+						<boolean>true</boolean>
+					</property>
+					<property name="ruleExpression">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="imagePath">
+						<string><![CDATA[com/zerog/ia/installer/images/]]></string>
+					</property>
+					<property name="description">
+						<string><![CDATA[The most common application features will be installed.  This option is recommended for most users.]]></string>
+					</property>
+					<property name="imageName">
+						<string><![CDATA[typical.png]]></string>
+					</property>
+					<property name="shortName">
+						<string><![CDATA[Complete]]></string>
+					</property>
+					<property name="installSetName">
+						<string><![CDATA[Complete]]></string>
+					</property>
+					<property name="preferredLocalizationVariant">
+						<string><![CDATA[typical]]></string>
+					</property>
+					<installChildren>
+						<object refID="105cf6979339"/>
+					</installChildren>
+				</object>
+				<object refID="105cf671930f"/>
+				<object refID="105cf6979339"/>
+				<object refID="105cf697933c"/>
+				<object refID="105cf6999342"/>
+				<object refID="105cf69d9348"/>
+				<object class="com.zerog.ia.installer.hosts.OSHost" objectID="105cf69f934d">
+					<property name="belongsToUninstallPhase">
+						<boolean>false</boolean>
+					</property>
+					<property name="rollbackEnabledCancel">
+						<boolean>true</boolean>
+					</property>
+					<property name="rollbackEnabledError">
+						<boolean>true</boolean>
+					</property>
+					<property name="ruleExpression">
+						<string><![CDATA[]]></string>
+					</property>
+					<property name="rollbackEnabledCancel">
+						<boolean>true</boolean>
+					</property>
+					<property name="rollbackEnabledError">
+						<boolean>true</boolean>
+					</property>
+					<property name="belongsToUninstallPhase">
+						<boolean>false</boolean>
+					</property>
+					<property name="ruleExpression">
+						<string><![CDATA[]]></string>
+					</property>
+					<visualChildren>
+						<object class="com.zerog.ia.installer.GhostDirectory" objectID="105cf69f934e">
+							<property name="belongsToUninstallPhase">
+								<boolean>false</boolean>
+							</property>
+							<property name="rollbackEnabledCancel">
+								<boolean>true</boolean>
+							</property>
+							<property name="rollbackEnabledError">
+								<boolean>true</boolean>
+							</property>
+							<property name="ruleExpression">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="destinationFolder">
+								<object refID="a0b30985bab2"/>
+							</property>
+							<property name="destinationName">
+								<string><![CDATA[]]></string>
+							</property>
+							<property name="overrideUnixPermissions">
+								<boolean>false</boolean>
+							</property>
+							<property name="unixPermissions">
+								<string><![CDATA[775]]></string>
+							</property>
+							<visualChildren>
+								<object refID="105cf69b9346"/>
+								<object refID="105cf64292d1"/>
+							</visualChildren>
+						</object>
+					</visualChildren>
+				</object>
+				<object refID="105cf67a931f"/>
+				<object refID="105cf67c9320"/>
+				<object refID="105cf6849321"/>
+				<object refID="105cf6849323"/>
+				<object refID="105cf6869325"/>
+				<object refID="105cf6889329"/>
+				<object refID="105cf688932b"/>
+				<object refID="105cf6a0934c"/>
+			</visualChildren>
+			<installChildren>
+				<object refID="105cf6979338"/>
+				<object refID="105cf671930f"/>
+			</installChildren>
+		</object>
+	</installationObjects>
+	<restorationObjects count="0"/>
+</InstallAnywhere_Deployment_Project>

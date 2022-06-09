@@ -1,0 +1,71 @@
+<gsa-template>
+  <!--
+  This userProfile.xml file defines all of the repository properties that are used by CSA.  This
+  file will be appended to any other userProfile.xml file that has been defined else where.
+  -->
+  <header>
+    <name>Store Related Profile Additions</name>
+    <author>Oracle Commerce</author>
+  </header>
+
+  <!--///////////////////////////////-->
+  <!--            user               -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="user" cache-mode="simple" item-cache-timeout="550000" query-expire-timeout="550000" xml-combine="append">
+    <!-- BCC Advanced tab -->
+    <attribute name="categoryOrderTrackingPriority" value="97"/>
+
+    <!--
+      Adding resouce bundle attributes to the properties that will be used in the repository editors
+      and also additional options to the locale property
+    -->
+    <table name="dps_user">
+      <property name="firstName" category-resource="categoryBasics" required="true"/>
+      <property name="lastName" category-resource="categoryBasics" required="true"/>
+      <property name="email" category-resource="categoryEmail" required="true"/>
+      <property name="locale" xml-combine="append">
+        <option value="fr_US" code="100"/>
+        <option value="es_US" code="101"/>
+        <option value="en_FR" code="102"/>
+        <option value="es_FR" code="103"/>
+        <option value="de_FR" code="104"/>
+        <option value="de_US" code="105"/>
+        <option value="en_DE" code="106"/>
+      </property>
+    </table>
+      
+    <table name="dps_user_address">
+
+      <attribute name="resourceBundle" value="atg.projects.store.profile.UserProfileTemplateResources"/> 
+
+      <!--
+        Adding two additional address properties for billing and shipping to the user item descriptor
+      -->
+      <property name="billingAddress" category-resource="categoryCommerceAddressAndPhone" display-name-resource="billingAddress" cascade="update,delete" column-name="billing_addr_id" item-type="contactInfo" hidden="true" xml-combine="replace">
+        <attribute name="propertySortPriority" value="10"/>
+      </property>
+      <property name="shippingAddress" category-resource="categoryCommerceAddressAndPhone" display-name-resource="shippingAddress" cascade="" column-name="shipping_addr_id" item-type="contactInfo" hidden="true" xml-combine="replace">
+        <attribute name="propertySortPriority" value="20"/>
+      </property>
+    </table>
+
+    <table name="dps_other_addr">
+      <!--
+        Adding the ability to tag seconday addresses.
+      -->
+      <property name="secondaryAddresses" category-resource="categoryCommerceAddressAndPhone" data-type="map" queryable="true" readable="true"  hidden="false" expert="false" required="false" cache-mode="inherit" writable="true" display-name-resource="secondaryAddress" component-item-type="contactInfo">
+        <attribute name="resourceBundle" value="atg.projects.store.profile.UserProfileTemplateResources"/> 
+      </property>
+    </table>    
+  </item-descriptor>
+
+  <!--///////////////////////////////-->
+  <!--         credit-card           -->
+  <!--///////////////////////////////-->
+  <item-descriptor name="credit-card">
+    <table name="dps_credit_card">
+      <property name="creditCardNumber"/>
+    </table>
+  </item-descriptor> 
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/ShoppingCart/src/test/java/atg/projects/store/assembler/cartridge/handler/data/CartEditorHandlerTest/atg/userprofiling/userProfile.xml#1 $$Change: 1385662 $-->

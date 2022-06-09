@@ -1,0 +1,19 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2015-02-20T09:30:52.311Z",
+    "startTime": "",
+    "endTime": "",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:07:05.752-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "Breadcrumbs",
+        "@type": "Breadcrumbs",
+        "displayNamePropertyAlias": "displayName"
+    },
+    "triggers": [{"exactLocation": false}]
+}

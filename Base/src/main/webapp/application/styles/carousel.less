@@ -1,0 +1,141 @@
+@import "../../bower_components/bootstrap/less/carousel.less";
+
+.carousel {
+  margin-bottom: 40px;
+
+  @media only screen and (min-width : @screen-sm-min) {
+    margin-bottom: 0;
+  }
+}
+
+.carousel-caption {
+  text-align: left;
+}
+
+.carousel-caption {
+  
+  color: @gray-base;
+  text-transform: uppercase;
+  padding:0;
+  bottom:55px;
+
+  @media only screen and (min-width : @screen-sm-min) {
+    bottom: 90px;
+    left: 15%;
+    right: 15%;
+  }
+
+  @media only screen and (min-width : @screen-md-min) {
+    bottom: 110px;
+    left: 20%;
+    right: 20%;
+  }
+
+  .csa-hero-title {
+    font-weight: bolder;
+    font-size: 14px;
+    display:none;
+
+    @media only screen and (min-width : @screen-sm-min) {
+      display:block;
+      font-size: 30px;
+    }
+
+    @media only screen and (min-width : @screen-md-min) {
+      font-size: 36px;
+    }
+  }
+
+  .csa-hero-tagline {
+    font-size: 14px;
+    display:none;
+
+    @media only screen and (min-width : @screen-sm-min) {
+      display:block;
+      font-size: 26px; 
+    }
+
+    @media only screen and (min-width : @screen-md-min) {
+      font-size: 30px;
+    }
+  }
+
+  .csa-hero-link {
+    font-size: 14px;
+
+    @media only screen and (min-width : @screen-sm-min) {
+      font-size: 20px;
+    }
+
+    @media only screen and (min-width : @screen-md-min) {
+      font-size: 24px;
+    }
+  }
+}
+
+.csa-carousel-text-wrapper,
+.csa-carousel-promo-text-wrapper {
+  background-color: #fff;
+  display: inline-block;
+  padding: 2px 4px;
+  clear: left;
+  float: left;
+  opacity: 0.8;
+  line-height: 1.1em;
+}
+
+.csa-carousel-promo {
+  position: absolute;
+  bottom: 10px;
+  left: 15%;
+  right: 15%;
+  color: @gray-base;
+  font-size: 12px;
+
+  @media only screen and (min-width : @screen-sm-min) {
+    font-size: 16px;
+    font-weight: bold;
+    bottom:50px;
+  }
+
+  @media only screen and (min-width : @screen-md-min) {
+    bottom:65px;
+    left: 20%;
+    right: 20%;
+    font-size: 18px;
+  }
+}
+
+.csa-carousel-promo-text-wrapper {
+  @media only screen and (min-width : @screen-sm-min) {
+    padding: 6px 4px;
+  }
+}
+
+
+.carousel-indicators {
+  bottom: -48px;
+
+  @media only screen and (min-width : @screen-sm-min) {
+    bottom: 0;
+  } 
+
+  li {
+    text-indent: 0;
+    height: auto;
+    width: auto;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .active {
+    height: auto;
+    width: auto;
+    background-color: transparent;
+
+    >a {
+      background-color: @gray-lighter;
+    }
+  }
+}

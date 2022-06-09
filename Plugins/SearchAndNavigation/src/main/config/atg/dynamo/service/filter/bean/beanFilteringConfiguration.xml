@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+    <repository name="/atg/commerce/catalog/ProductCatalog">
+        <item-descriptor name="product" default-filter="summary">
+            <filter id="productDetailsProduct">
+                <property name="repositoryId"/>
+                <property name="displayName"/>
+                <property name="longDescription"/>
+                <property name="largeImageUrl" target="largeImage.url"/>
+            </filter>
+        </item-descriptor>
+    </repository>
+</bean-filtering>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/src/main/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#1 $$Change: 1385662 $ -->

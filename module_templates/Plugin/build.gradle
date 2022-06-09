@@ -1,0 +1,9 @@
+project(":Plugins:<%= pluginName %>") {
+  description = "Contains cartridges, configuration and code for the new feature."
+
+  dependencies {
+    compile project(":Base")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}

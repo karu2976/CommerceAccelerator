@@ -1,0 +1,70 @@
+<div>
+  <h2>{{ 'checkout.heading.login' | i18n }}</h2>
+  <div class="row">
+    <div class="col-sm-6 col-md-5">
+      <form role="form" class="ws-validate" data-bind="submit: login" method="POST">
+        <fieldset>
+          <legend>{{ 'checkout.subheading.registeredUser' | i18n }}</legend>
+          <div class="form-group">
+            <label class="control-label" data-bind="uniqueFor: 'logInEmailAddress'">{{ 'checkout.label.emailAddress' | i18n }} *</label>
+            <input type="email" class="form-control" required autofocus data-bind="uniqueId: 'logInEmailAddress',value: username" autocomplete="off" autocorrect="off" autocapitalize="off">
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          </div>
+          <div class="form-group">
+            <label class="control-label" data-bind="uniqueFor: 'logInPassword'">{{ 'checkout.label.password' | i18n }} *</label>
+            <input type="password" autocomplete="off" class="form-control" data-bind="uniqueId: 'logInPassword',value: password" required>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          </div> 
+          <button type="submit" class="btn btn-block csa-btn">{{ 'checkout.button.logIn' | i18n }}</button>
+          <div class="text-center csa-v-offset-10">
+            <p><a href="#" data-bypass data-bind="click: showRecoverPassword">{{ 'checkout.link.recoverPassword' | i18n }}</a></p>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-sm-6 col-md-5 col-md-offset-2">
+      <form role="form" class="ws-validate" data-bind="submit: guestCheckout">
+        <fieldset>
+          <legend>{{ 'checkout.subheading.guestCheckout' | i18n }}</legend>
+          <div class="form-group">
+            <label class="control-label" data-bind="uniqueFor: 'guestLogInEmailAddress'">{{ 'checkout.label.emailAddress' | i18n }} *</label>
+            <input type="email" class="form-control" data-bind="uniqueId: 'guestLogInEmailAddress',value: emailAddress" autocomplete="off" autocorrect="off" autocapitalize="off" required>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            <p class="help-block">
+              {{ 'checkout.text.emailAddressRequiredReason' | i18n }}
+            </p>
+          </div>
+          <button type="submit" class="btn btn-block csa-btn">{{ 'checkout.button.guestCheckout' | i18n }}</button>
+          <div class="text-center csa-v-offset-10">
+            <p><a href="#">{{ 'checkout.link.privacyPolicy' | i18n }}</a></p>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="recoverPasswordTitle" aria-hidden="true" data-bind="uniqueId: 'recoverPassword',modal: isRecoverPasswordModalVisible">
+  <!-- ko with: forgotPassword -->
+    <div data-bind="component: $data"></div>
+  <!-- /ko -->
+</div>
+
+<div class="modal fade" data-bind="uniqueId: 'recoverPasswordCompleted'" tabindex="-1" role="dialog" aria-labelledby="recoverPasswordCompletedTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'checkout.button.close' | i18n }}</span></button>
+        <h4 class="modal-title" data-bind="uniqueId: 'recoverPasswordCompletedTitle'">{{ 'checkout.subheading.temporaryPasswordSent' | i18n }}</h4>
+      </div>
+      <div class="modal-body">
+        {{{ 'checkout.text.passwordSentText' | i18n }}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block csa-btn" data-dismiss="modal">
+          {{ 'checkout.button.close' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

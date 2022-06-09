@@ -1,0 +1,20 @@
+{
+    "@description": "${template.description}",
+    "@group": "MainProductContent",
+    "ecr:createDate": "2016-12-06T06:06:16.786-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": []
+    },
+    "typeInfo": {"ProductInformation": {
+        "@propertyType": "ContentItemList",
+        "@group": "ProductInformation"
+    }},
+    "defaultContentItem": {
+        "@name": "Product Detail",
+        "ProductInformation": []
+    },
+    "locales": {}
+}

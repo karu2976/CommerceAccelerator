@@ -1,0 +1,223 @@
+<div data-bind="uniqueId: 'payment-heading'" class="panel-heading">
+  <div class="pull-left">
+    <strong>
+      {{ 'checkout.subheading.payment' | i18n }}: {{ creditCardNumberLast4Digits() }} 
+      <span class="text-capitalize">{{ creditCardType() }}</span>
+    </strong>
+  </div>
+  <div class="pull-right">
+    <button class="btn btn-sm btn-link"
+            data-bind="click: clearPaymentMethod,
+                       uniqueId: 'payment-btn-clear',
+                       visible: checkoutDetails.isPaymentMethodAccordionPanelVisible()">
+      {{ 'checkout.button.clear' | i18n }}
+    </button>
+    <button class="btn btn-sm btn-link"
+            data-bind="click: showPaymentMethodAccordionPanel,
+                       uniqueId: 'payment-btn-edit',
+                       disable: checkoutDetails.isPaymentMethodAccordionPanelVisible()">
+      {{ 'checkout.button.edit' | i18n }}
+    </button>
+    <span class="glyphicon {{ validationIconClass }}"></span>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="panel-collapse collapse"
+     data-bind="uniqueId: 'payment',
+                accordion: {
+                  toggle: checkoutDetails.isPaymentMethodAccordionPanelVisible,
+                  parent: '#' + checkoutDetails.accordionId()
+                }">
+  <form role="form" class="ws-validate"
+        data-bind="submit: validatePaymentMethod,
+                   uniqueId: 'payment-form'">
+    <div class="panel-body">
+      <p data-bind="visible: checkoutDetails.profile.authenticated">
+        <a href="#" data-bypass data-bind="click: showSelectSavedCreditCard">
+          {{{ 'checkout.link.chooseSavedCreditCard' | i18n }}}
+        </a>
+      </p>
+
+      <div class="form-group">
+        <label data-bind="uniqueFor :'cardNumber'">{{ 'checkout.label.cardNumber' | i18n }} *</label>
+        <input data-bind="value: checkoutDetails.creditCardNumber,
+                          disable: checkoutDetails.isCreditCardSelectedFromProfile,
+                          uniqueId: 'cardNumber'" 
+               type="text" name="cardNumber" class="form-control"
+               inputmode="numeric" pattern="[0-9]*" maxlength="16" required>
+      </div>
+      
+      <div class="csa-cc {{ creditCardTypeCssClass }}">
+        <div class="mc"></div>
+        <div class="vc"></div>
+        <div class="dc"></div>
+        <div class="ac"></div>
+      </div>
+      <div class="clearfix"></div>
+      
+      <div class="form-group">
+        <label data-bind="uniqueFor :'expirationDateMonth'">{{ 'checkout.label.expirationMonth' | i18n }} *</label>
+        <select data-bind="value: checkoutDetails.creditCardExpirationMonth, valueAllowUnset: true,
+                           disable: checkoutDetails.isCreditCardSelectedFromProfile,
+                           uniqueId: 'expirationDateMonth'"  name="expirationDateMonth" class="form-control" required>
+          <option value="">{{ 'checkout.placeholder.selectMonth' | i18n }}</option>
+          <option value="01">{{ 'checkout.expiryMonth.01' | i18n }}</option>
+          <option value="02">{{ 'checkout.expiryMonth.02' | i18n }}</option>
+          <option value="03">{{ 'checkout.expiryMonth.03' | i18n }}</option>
+          <option value="04">{{ 'checkout.expiryMonth.04' | i18n }}</option>
+          <option value="05">{{ 'checkout.expiryMonth.05' | i18n }}</option>
+          <option value="06">{{ 'checkout.expiryMonth.06' | i18n }}</option>
+          <option value="07">{{ 'checkout.expiryMonth.07' | i18n }}</option>
+          <option value="08">{{ 'checkout.expiryMonth.08' | i18n }}</option>
+          <option value="09">{{ 'checkout.expiryMonth.09' | i18n }}</option>
+          <option value="10">{{ 'checkout.expiryMonth.10' | i18n }}</option>
+          <option value="11">{{ 'checkout.expiryMonth.11' | i18n }}</option>
+          <option value="12">{{ 'checkout.expiryMonth.12' | i18n }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-bind="uniqueFor :'expirationDateYear'">{{ 'checkout.label.expirationYear' | i18n }} *</label>
+        <select class="form-control" type="text" required name="expirationDateYear"
+          data-bind="options: $parents[1].expiryYears,
+                     value: checkoutDetails.creditCardExpirationYear,
+                     valueAllowUnset: true,
+                     disable: checkoutDetails.isCreditCardSelectedFromProfile,
+                     optionsCaption: expirationYearOptionsText(),
+                     uniqueId: 'expirationDateYear'">
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-bind="uniqueFor :'cardCsv'">{{ 'checkout.label.securityCode' | i18n }} </label>
+        <a href="#" data-bypass data-bind="click: showSecurityCodeExplanation">
+          {{{ 'checkout.link.whatIsASecurityCode' | i18n }}}
+        </a>
+        <input type="text" inputmode="numeric" name="cardCsv" class="form-control"
+               data-bind="value: checkoutDetails.creditCardVerificationNumber,
+                          uniqueId: 'cardCsv',
+                          attr: {pattern: checkoutDetails.creditCardType() === 'americanExpress'? '\\d{4}':'\\d{3}'}" maxlength="4" required>
+      </div>
+      <div class="form-group" data-bind="visible: checkoutDetails.profile.authenticated() && !checkoutDetails.isCreditCardSelectedFromProfile()">
+        <label>
+          <input type="checkbox" data-bind="checked: checkoutDetails.saveCreditCardToProfile"> {{ 'checkout.label.savePaymentType' | i18n }}
+        </label>
+      </div>
+      <div class="form-group" data-bind='visible: checkoutDetails.saveCreditCardToProfile'>      
+        <label data-bind="uniqueFor :'cardNickName'">{{ 'checkout.label.nickname' | i18n }}</label>
+        <input class="form-control" type="text" 
+               data-bind="value: checkoutDetails.cardNickName,
+                          uniqueId: 'cardNickName',
+                          attr.required: checkoutDetails.saveCreditCardToProfile" name="cardNickName" maxlength="42"/>
+        <p class="help-text">
+          {{ 'checkout.text.paymentNicknameRequiredReason' | i18n }}
+        </p>
+      </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-block csa-btn">{{ 'checkout.button.saveAndContinue' | i18n }}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     data-bind="modal: isSelectSavedCreditCardModalVisible,
+                attr: {
+                  'id' : cid() + '-'  + 'selectCreditCardModal',
+                  'data-name' : cid() + '-'  + 'selectCreditCardModal',
+                  'aria-labelledby' : cid() + 'selectCreditCardModalTitle'
+                }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'checkout.button.close' | i18n }}</span></button>
+        <h4 class="modal-title"
+            data-bind="attr: {
+                        'id' : $data.cid() + 'selectCreditCardModalTitle',
+                        'data-name' : 'selectCreditCardModalTitle'
+                      }">
+          {{ 'checkout.subheading.chooseSavedCreditCard' | i18n }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <!-- ko foreach: checkoutDetails.availablePaymentMethods -->
+            <li>
+              <div class="form-group">
+                <div class="radio csa-radio">
+                  <input type="radio"
+                         name="paymentMethod"
+                         data-bind="value: cardNickname,
+                                    checked: $parent.checkoutDetails.currentPaymentMethodSelection,
+                                    uniqueId:'paymentMethod'"/>
+                  <label data-bind="uniqueFor: 'paymentMethod'">{{cardNickname}}</label>
+                </div>
+              </div>
+            </li>
+          <!-- /ko -->
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block csa-btn" data-bind="click: setSelectedPaymentMethod" data-dismiss="modal" data-bypass>
+              {{ 'checkout.button.apply' | i18n }}
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-block btn-default" data-dismiss="modal">
+              {{ 'checkout.button.cancel' | i18n }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     data-bind="modal: isSecurityCodeExplanationModalVisible,
+                attr: {
+                  'id' : cid() + '-'  + 'securityCodeExplanationModal',
+                  'data-name' : cid() + '-'  + 'securityCodeExplanationModal',
+                  'aria-labelledby' : cid() + 'securityCodeExplanationModalTitle'
+                }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ 'checkout.button.close' | i18n }}</span></button>
+        <h4 class="modal-title"
+            data-bind="attr: {
+                        'id' : $data.cid() + 'securityCodeExplanationModalTitle',
+                        'data-name' : 'securityCodeExplanationModalTitle'
+                      }">
+          {{ 'checkout.subheading.whatIsASecurityCode' | i18n }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        {{{ 'checkout.text.securityCodeExplanation' | i18n }}}
+        {{{ 'checkout.text.securityCodeExplanationForVisa' | i18n }}}
+        
+        <img src="/csadocroot/content/images/storefront/cc_visamcdisc.png"
+             alt="{{ 'checkout.text.securityCodeLocation' | i18n }}">
+        
+        {{{ 'checkout.text.securityCodeExplanationForAmex' | i18n }}}
+        
+        <img src="/csadocroot/content/images/storefront/cc_amex.png"
+             alt="{{ 'checkout.text.securityCodeLocationAmEx' | i18n }}">
+        
+        {{{ 'checkout.text.copyrightNotice' | i18n }}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block csa-btn" data-dismiss="modal">
+          {{ 'checkout.button.close' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

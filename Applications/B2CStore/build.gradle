@@ -1,0 +1,82 @@
+project(":Applications:B2CStore") {
+  description = "Demo B2C commerce store project."
+
+  dependencies {
+    compile project(":Applications:B2CStore:Base")
+  }
+  
+  /**
+   * Extension of the base script's composeDeployFromBaseAndPlugins task that will copy the
+   * deployment template libraries (jars) from DAF/Endeca/AppTemplate into the common/lib
+   * directory. It will also copy the common deployment template scripts from the Base module.
+   */
+  composeDeployFromBaseAndPlugins << {
+
+    // Remove the lib directory if it exists. This will ensure that we always have a fresh set
+    // of jars if something changes in DAF.
+    if (project.file("src/main/eac-templates/common/lib").exists()) {
+      ant.delete(includeemptydirs: "true") {
+        fileset(dir: project.file("src/main/eac-templates/common/lib"))
+      }
+    }
+
+    // Copy over the deployment template jars.
+    ant.copy(todir: project.file("src/main/eac-templates/common/lib") , overwrite:"true") {
+      fileset(dir: "$dynamoHome/../DAF/Endeca/AppTemplate/lib")
+    }
+
+    // Remove the script directory if it exists. This will ensure that we always have a fresh set
+    // of script files if something changes in Base.
+    if (project.file("src/main/eac-templates/common/script").exists()) {
+      ant.delete(includeemptydirs: "true") {
+        fileset(dir: project.file("src/main/eac-templates/common/script"))
+      }
+    }
+
+    // Copy over the deployment scripts.
+    ant.copy(todir: project.file("src/main/eac-templates/common/script") , overwrite:"true") {
+      fileset(dir: project(":Base").file("src/main/deploy/script").toString())
+    }
+
+    // Remove the control directory if it exists. This will ensure that we always have a fresh set
+    // of script files if something changes in Base.
+    if (project.file("src/main/eac-templates/common/control").exists()) {
+      ant.delete(includeemptydirs: "true") {
+        fileset(dir: project.file("src/main/eac-templates/common/control"))
+      }
+    }
+
+    // Copy over the deployment control scripts.
+    ant.copy(todir: project.file("src/main/eac-templates/common/control") , overwrite:"true") {
+      fileset(dir: project(":Base").file("src/main/deploy/control").toString())
+    }
+  }
+
+  packageApplication {
+
+    def packageName = 
+      project.getPath().substring(1, project.getPath().length()).replace(":", "-")
+
+    inputs.file "$dynamoHome/../DAF/spring/lib/springtonucleus.jar"
+    inputs.dir "$dynamoHome/../DAS/taglib/dspjspTaglib/1.0/lib"
+    inputs.dir "$dynamoHome/../DAS/taglib/jstl/1.1/lib"
+    outputs.dir "$libsDir/${packageName}.ear/${packageName}.war/WEB-INF/lib"
+
+    doLast {     
+      // Copy over the springtonucleus.jar for the Endeca SEO spring dependency.
+      ant.copy(todir: "$libsDir/${packageName}.ear/${packageName}.war/WEB-INF/lib", file: "$dynamoHome/../DAF/spring/lib/springtonucleus.jar")
+
+      // Copy over the dspjspTaglib1_0.jar so that the DSP tag library can be used in the store.
+      ant.copy(todir: "$libsDir/${packageName}.ear/${packageName}.war/WEB-INF/lib") { 
+        fileset(dir: "$dynamoHome/../DAS/taglib/dspjspTaglib/1.0/lib")
+      }
+
+      // Copy over the JSTL jars from DAS be used in the store.
+      ant.copy(todir: "$libsDir/${packageName}.ear/${packageName}.war/WEB-INF/lib") {
+        fileset(dir: "$dynamoHome/../DAS/taglib/jstl/1.1/lib")
+      }
+    }
+  }
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/build-ship.gradle#1 $$Change: 1385662 $

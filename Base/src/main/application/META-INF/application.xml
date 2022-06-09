@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<application xmlns="http://java.sun.com/xml/ns/j2ee" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd"
+  version="1.4">
+
+  <display-name>
+    CommerceAccelerator.Base
+  </display-name>
+
+  <module>
+    <web>
+      <web-uri>
+        Base.war
+      </web-uri>
+      <context-root>
+        csa/base
+      </context-root>
+    </web>
+  </module>
+
+</application>
+
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Base/src/main/application/META-INF/application.xml#1 $$Change: 1385662 $-->

@@ -1,0 +1,96 @@
+<h2>
+  {{ 'account.heading.login' | i18n }}
+</h2>
+<div class="row">
+  <div class="col-sm-6 col-md-5">
+    <form role="form" class="ws-validate" data-bind="submit: login" method="POST">
+      <fieldset>
+        <legend>
+          {{ 'account.subheading.returningCustomer' | i18n }}
+        </legend>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'logInEmailAddress'">
+            {{ 'account.label.emailAddress' | i18n }} *
+          </label>
+          <input type="email" class="form-control" required autofocus autocomplete="off" autocorrect="off" autocapitalize="off" data-bind="value: username, uniqueId: 'logInEmailAddress'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'logInPassword'">{{ 'account.label.password' | i18n }} *</label>
+          <input type="password" class="form-control" autocomplete="off" required data-bind="value: password, uniqueId: 'logInPassword'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <button type="submit" class="btn btn-block csa-btn">
+          {{ 'account.button.logIn' | i18n }}
+        </button>
+        <div class="text-center csa-v-offset-10">
+          <p>
+            <a href="#" data-bypass data-bind="click: showRecoverPassword">
+              {{ 'account.link.recoverPassword' | i18n }}
+            </a>
+          </p>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2">
+    <form role="form" class="ws-validate" data-bind="submit: register">
+      <fieldset>
+        <legend>
+          {{ 'account.subheading.newUser' | i18n }}
+        </legend>
+        <div class="form-group">
+          <label class="control-label" data-bind="uniqueFor: 'registerEmailAddress'">
+            {{ 'account.label.emailAddress' | i18n }} *
+          </label>
+          <input type="email" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" required data-bind="value: newUser, uniqueId: 'registerEmailAddress'">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+        <button type="submit" class="btn btn-block csa-btn">
+          {{ 'account.button.createAccount' | i18n }}
+        </button>
+        <div class="text-center csa-v-offset-10">
+          <p>
+            <a data-bind="attr: { href: 'privacy' }">
+              {{ 'account.link.privacyPolicy' | i18n }}
+            </a>
+          </p>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="recoverPasswordTitle" aria-hidden="true" data-bind="modal: isRecoverPasswordModalVisible, uniqueId: 'recoverPassword'">
+  <!-- ko with: forgotPassword -->
+    <div data-bind="component: $data"></div>
+  <!-- /ko -->
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="recoverPasswordCompletedTitle" aria-hidden="true" data-bind="modal: isRecoverPasswordCompleteModalVisible, uniqueId: 'recoverPasswordCompleted'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">
+            &times;
+          </span>
+          <span class="sr-only">
+            {{ 'account.button.close' | i18n }}
+          </span>
+        </button>
+        <h4 class="modal-title" id="recoverPasswordCompletedTitle">
+          {{ 'account.subheading.temporaryPasswordSent' | i18n }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        {{{ 'account.text.passwordSentText' | i18n }}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block csa-btn" data-dismiss="modal">
+          {{ 'account.button.close' | i18n }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

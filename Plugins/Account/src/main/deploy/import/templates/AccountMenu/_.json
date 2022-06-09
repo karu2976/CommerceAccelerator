@@ -1,0 +1,14 @@
+{
+    "@description": "${template.description}",
+    "@group": "HeaderAction",
+    "ecr:createDate": "2016-12-06T06:06:16.593-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": []
+    },
+    "typeInfo": {},
+    "defaultContentItem": {"@name": "Account Menu"},
+    "locales": {}
+}

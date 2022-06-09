@@ -1,0 +1,53 @@
+{
+    "workflowNote": "",
+    "userSegments": [],
+    "workflowState": "ACTIVE",
+    "ecr:lastModifiedBy": "admin",
+    "ecr:lastModified": "2016-12-06T06:06:16.473-08:00",
+    "priority": 10,
+    "previewable": true,
+    "ecr:createDate": "2016-12-06T06:06:16.473-08:00",
+    "ecr:type": "content-item",
+    "contentItem": {
+        "@name": "OneColumnPage",
+        "metaKeywords": "",
+        "@type": "OneColumnPage",
+        "title": "Home Page",
+        "metaDescription": "Oracle Commerce reference application.",
+        "footer": [{
+            "ruleLimit": "1",
+            "@name": "Footer Content Slot",
+            "templateTypes": ["Footer"],
+            "templateIds": [],
+            "@type": "ContentSlotFooter",
+            "contentPaths": ["/content/Web/Page Footers"]
+        }],
+        "mainContent": [
+            {
+                "ruleLimit": "1",
+                "@name": "Featured Media",
+                "templateTypes": ["MainContent"],
+                "templateIds": [],
+                "@type": "ContentSlotMain",
+                "contentPaths": ["/content/Web/Scrolling Media"]
+            },
+            {
+                "ruleLimit": "1",
+                "@name": "Featured Products",
+                "templateTypes": ["MainContent"],
+                "templateIds": [],
+                "@type": "ContentSlotMain",
+                "contentPaths": ["/content/Web/Scrolling Products"]
+            }
+        ],
+        "header": [{
+            "ruleLimit": "1",
+            "@name": "Header Content Slot",
+            "templateTypes": ["Header"],
+            "templateIds": [],
+            "@type": "ContentSlotHeader",
+            "contentPaths": ["/content/Web/Page Headers"]
+        }]
+    },
+    "triggers": [{"exactLocation": true}]
+}

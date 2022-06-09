@@ -1,0 +1,9 @@
+{
+  "shoppingCart": {
+    "label": {
+      "color": "Color",
+      "size": "Tamaño",
+      "woodFinish": "Acabado en madera"
+    }
+  }
+}

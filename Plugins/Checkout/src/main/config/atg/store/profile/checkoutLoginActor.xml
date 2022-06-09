@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="skipLogin"
+                xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--  This chain is used to update the user profile with the provided email address. -->		
+  <actor-chain id="skipLogin" transaction="TX_SUPPORTS">
+    <form id="formHandler" name="/atg/store/profile/CheckoutLoginFormHandler"
+          handle="addEmailToAnonymousUser" var="formHandler">
+      <input name="newEmailAddress" value="${param.emailAddress}"/>
+      <input name="addEmailToAnonymousUserSuccessURL"
+             value="/model/atg/store/profile/CheckoutLoginActor/skipLogin-success"/>
+      <input name="addEmailToAnonymousUserErrorURL"
+             value="/model/atg/store/profile/CheckoutLoginActor/skipLogin-error"/>
+    </form>
+  </actor-chain>
+  <actor-chain id="skipLogin-error" transaction="TX_SUPPORTS">
+    <actor id="error" name="/atg/store/profile/CheckoutLoginActor" chain-id="error"
+           return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+  <actor-chain id="skipLogin-success" transaction="TX_SUPPORTS">
+    <component id="profileComponent" name="/atg/userprofiling/Profile" component-var="profileComponent">
+      <output id="profile" name="profile" value="${profileComponent.dataSource}" filter-id="detailed"/>
+    </component>
+    <actor id="securityStatusActor" name="/atg/userprofiling/SecurityStatusActor" chain-id="status"
+           return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+  <actor-chain id="error" transaction="TX_SUPPORTS">
+    <component id="checkoutLoginFormHandler" name="/atg/store/profile/CheckoutLoginFormHandler"
+               component-var="checkoutLoginFormHandler">
+      <output id="formError" name="formError" value="${checkoutLoginFormHandler.formError}"/>
+      <output id="formExceptions" name="formExceptions"
+              value="${checkoutLoginFormHandler.formExceptions}"/>
+    </component>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/main/config/atg/store/profile/checkoutLoginActor.xml#1 $$Change: 1385662 $-->

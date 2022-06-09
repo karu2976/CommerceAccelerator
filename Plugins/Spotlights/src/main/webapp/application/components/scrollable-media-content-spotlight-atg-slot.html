@@ -1,0 +1,35 @@
+<!-- ko if: items().length > 0 -->
+  <div id="scrollable-media-content-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators" data-bind="foreach: items">
+      <li data-target="#scrollable-media-content-carousel"
+          data-bind="attr: { 'data-slide-to': $index() }, css: { 'active': $index() == 0 }">
+      </li>
+    </ol>
+    <div class="carousel-inner" data-bind="foreach: items">
+      <div class="item" data-bind="css: { 'active': $index() == 0 }">
+        <img class="img-responsive center-block"
+             data-bind="img: { src: $data.url, fallback: $component.missingImagePath }, attr: { alt: title }"/>
+        <div class="container">
+          <div class="carousel-caption">
+            <!-- ko if: $data.title -->
+              <h1>{{ $data.title }}</h1>
+            <!-- /ko -->
+            <!-- ko if: $data.description -->
+              <p>{{ $data.description }}</p>
+            <!-- /ko -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <a data-bypass class="left carousel-control" href="#scrollable-media-content-carousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">{{ 'spotlights.link.previous' | i18n }}</span>
+    </a>
+    <a data-bypass class="right carousel-control" href="#scrollable-media-content-carousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">{{ 'spotlights.link.next' | i18n }}</span>
+    </a>
+  </div>
+  <br/>
+<!-- /ko -->

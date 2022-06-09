@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <add-item item-descriptor="priceListFolder" id="PriceListFolder">
+      <set-property name="childItems"><![CDATA[listPrices,salePrices]]></set-property>
+      <set-property name="type"><![CDATA[priceListFolder]]></set-property>
+      <set-property name="name"><![CDATA[Price Lists]]></set-property>
+    </add-item>
+
+    <!-- 2 items of type priceList -->
+
+    <add-item item-descriptor="priceList" id="listPrices">
+      <set-property name="displayName"><![CDATA[List Prices]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="creationDate"><![CDATA[10/20/2008 17:31:51]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[6/18/2014 16:48:57]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="priceList" id="salePrices">
+      <set-property name="displayName"><![CDATA[Sale Prices]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="creationDate"><![CDATA[10/20/2008 17:31:51]]></set-property>
+      <set-property name="lastModifiedDate"><![CDATA[6/18/2014 16:48:57]]></set-property>
+    </add-item>
+
+    <!-- 4 items of type price -->
+
+    <add-item item-descriptor="price" id="lpxsku2531_18">
+      <set-property name="priceList"><![CDATA[listPrices]]></set-property>
+      <set-property name="listPrice"><![CDATA[10.0]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="skuId"><![CDATA[sku40156]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="price" id="lpxsku2531_16">
+      <set-property name="priceList"><![CDATA[listPrices]]></set-property>
+      <set-property name="listPrice"><![CDATA[15.0]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="skuId"><![CDATA[xsku2126]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="price" id="lpxsku2531_17">
+      <set-property name="priceList"><![CDATA[listPrices]]></set-property>
+      <set-property name="listPrice"><![CDATA[30.0]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="skuId"><![CDATA[xsku1182]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="price" id="lpxsku2531_14">
+      <set-property name="priceList"><![CDATA[listPrices]]></set-property>
+      <set-property name="listPrice"><![CDATA[95.0]]></set-property>
+      <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+      <set-property name="skuId"><![CDATA[xsku1041]]></set-property>
+    </add-item>
+  </import-items>
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/test/java/atg/projects/store/order/purchase/data/StorePurchaseProcessHelperTest/pricelists.xml#1 $$Change: 1385662 $-->

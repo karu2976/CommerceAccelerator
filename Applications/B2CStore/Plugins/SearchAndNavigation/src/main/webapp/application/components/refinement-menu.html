@@ -1,0 +1,100 @@
+<!-- ko if: (dimensionName() === 'product.price_range' && refinements().length > 0 && refinements()[0].navigationState.indexOf('sku.activePrice') == -1) || (dimensionName() != 'product.price_range') -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title panel-primary">
+        {{ 'searchAndNavigation.subheading.' + dimensionName() | i18n }}
+      </h3>
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills nav-stacked">
+        <!-- ko foreach: refinements -->
+          <li>
+            <a data-bind="attr: { href: $component.contentPath() + navigationState + $component.showFilterQueryStringName() + '=false' }">
+              <!-- ko if: $component.dimensionName() === 'product.price_range' -->
+                {{ label.split('-')[0] | currency }}
+                <span aria-hidden="true">
+                  &ndash;
+                </span>
+                <span class="sr-only">
+                  {{{ 'searchAndNavigation.link.to' | i18n }}}
+                </span>
+                {{ label.split('-')[1] | currency }}
+              <!-- /ko -->
+              <!-- ko ifnot: $component.dimensionName() === 'product.price_range' -->
+                <!-- ko if: $component.dimensionName() === 'product.category' -->
+                  <span data-bind="preview: {category: properties['category.repositoryId']}">
+                    {{ label }}
+                  </span>
+                <!-- /ko -->
+              <!-- ko ifnot: $component.dimensionName() === 'product.category' -->
+                {{ label }}
+              <!-- /ko -->
+              <!-- /ko -->
+              <span class="csa-text-in-link">
+                ({{{ 'searchAndNavigation.link.item' | i18nPlural:count }}})
+              </span>
+            </a>
+          </li>
+        <!-- /ko -->
+        <!-- ko if: $component.moreLink() -->
+          <li>
+            <a class="small pull-right" data-bind="attr: { href: contentPath() + moreLink().navigationState + showFilterQueryStringName() + '=true' }">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ moreLink().label }}
+            </a>
+          </li>
+        <!-- /ko -->
+        <!-- ko if: $component.lessLink() -->
+          <li>
+            <a class="small pull-right" data-bind="attr: { href: contentPath() + lessLink().navigationState + showFilterQueryStringName() + '=true' }">
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> {{ lessLink().label }}
+            </a>
+          </li>
+        <!-- /ko -->
+      </ul>
+      <!-- ko if: dimensionName() === 'product.price_range' -->
+        <hr>
+        <form role="form" data-bind="submit: submitPriceRange" class="ws-validate">
+          <div class="form-group">
+            <label class="control-label" data-bind="uniqueFor: 'priceMin'">
+              {{ 'searchAndNavigation.label.minPrice' | i18n }}
+            </label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                {{ currencySymbol }}
+              </span>
+              <input type="text"
+                     inputmode="numeric"
+                     autocomplete="off"
+                     required
+                     class="form-control"
+                     pattern="[0-9]*(\.[0-9][0-9]?)?"
+                     data-errormessage="{{ 'searchAndNavigation.alert.validPrice' | i18n }}"
+                     data-bind="value: minPrice, uniqueId: 'priceMin'">
+              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" data-bind="uniqueFor: 'priceMax'">{{ 'searchAndNavigation.label.maxPrice' | i18n }}</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                {{ currencySymbol }}
+              </span>
+              <input type="text"
+                     inputmode="numeric"
+                     autocomplete="off"
+                     required
+                     class="form-control"
+                     pattern="[0-9]*(\.[0-9][0-9]?)?"
+                     data-errormessage="{{ 'searchAndNavigation.alert.validPrice' | i18n }}"
+                     data-bind="value: maxPrice, uniqueId: 'priceMax'">
+              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block csa-v-offset-20" type="submit">
+            {{ 'searchAndNavigation.button.apply' | i18n }}
+          </button>
+        </form>
+      <!-- /ko -->
+    </div>
+  </div>
+<!-- /ko -->

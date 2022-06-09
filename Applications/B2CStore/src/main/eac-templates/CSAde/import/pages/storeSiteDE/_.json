@@ -1,0 +1,7 @@
+{
+  "ecr:type":"site-home",
+  "urlPattern" : "",
+  "displayName" : "Store Germany",
+  "description" : "",
+  "linkServiceUrl": "http://@@PREVIEW_HOST@@:@@PREVIEW_PORT@@/@@PREVIEW_CONTEXT_ROOT@@/link.json?pushSite=storeSiteDE"
+}

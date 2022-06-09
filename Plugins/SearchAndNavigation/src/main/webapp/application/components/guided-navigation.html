@@ -1,0 +1,10 @@
+<!-- ko if: validNavigationPath() === true -->
+  <button data-toggle="collapse" data-target="#filters" class="btn btn-default btn-block hidden-sm hidden-md hidden-lg csa-v-offset-10">
+    {{ 'searchAndNavigation.button.filter' | i18n }}
+  </button>
+  <div data-bind="css: { in: showFilter, collapse: true, 'csa-guided-nav-panel': true }" id="filters">
+    <!-- ko foreach: navigation -->
+      <div data-bind="component: $data"></div>
+    <!-- /ko -->
+  </div>
+<!-- /ko -->

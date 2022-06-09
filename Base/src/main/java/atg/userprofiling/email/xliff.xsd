@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="alt-trans">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="source" minOccurs="0"/>
+        <xs:element ref="target" maxOccurs="100"/>
+        <xs:choice minOccurs="0" maxOccurs="100">
+          <xs:element ref="note"/>
+          <xs:element ref="context-group"/>
+          <xs:element ref="prop-group"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="exstyle" type="xs:string"/>
+      <xs:attribute name="style" type="xs:string"/>
+      <xs:attribute name="css-style" type="xs:string"/>
+      <xs:attribute name="font" type="xs:string"/>
+      <xs:attribute name="coord" type="xs:string"/>
+      <xs:attribute name="menu-name" type="xs:string"/>
+      <xs:attribute name="menu-option" type="xs:string"/>
+      <xs:attribute name="menu" type="xs:string"/>
+      <xs:attribute name="help-id" type="xs:string"/>
+      <xs:attribute name="extype" type="xs:string"/>
+      <xs:attribute name="extradata" type="xs:string"/>
+      <xs:attribute name="resname" type="xs:string"/>
+      <xs:attribute name="restype" type="xs:string"/>
+      <xs:attribute name="ts" type="xs:string"/>
+      <xs:attribute name="datatype" type="xs:string"/>
+      <xs:attribute name="origin" type="xs:string"/>
+      <xs:attribute name="crc" type="xs:string"/>
+      <xs:attribute name="tool" type="xs:string"/>
+      <xs:attribute name="match-quality" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bin-source">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="100">
+          <xs:element ref="internal-file"/>
+          <xs:element ref="external-file"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="ts" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bin-target">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="100">
+          <xs:element ref="internal-file"/>
+          <xs:element ref="external-file"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="resname" type="xs:string"/>
+      <xs:attribute name="restype" type="xs:string"/>
+      <xs:attribute name="phase-name" type="xs:string"/>
+      <xs:attribute name="state" type="xs:string"/>
+      <xs:attribute name="ts" type="xs:string"/>
+      <xs:attribute name="mime-type" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bin-unit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="bin-source"/>
+        <xs:element ref="bin-target" minOccurs="0"/>
+        <xs:choice minOccurs="0" maxOccurs="100">
+          <xs:element ref="note"/>
+          <xs:element ref="context-group"/>
+          <xs:element ref="prop-group"/>
+          <xs:element ref="trans-unit"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="phase-name" type="xs:string"/>
+      <xs:attribute name="resname" type="xs:string"/>
+      <xs:attribute name="restype" type="xs:string"/>
+      <xs:attribute name="ts" type="xs:string"/>
+      <xs:attribute name="reformat" type="xs:string"/>
+      <xs:attribute name="translate" type="xs:string"/>
+      <xs:attribute name="approved" type="xs:string"/>
+      <xs:attribute name="mime-type" type="xs:string" use="required"/>
+      <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="100">
+          <xs:element ref="group"/>
+          <xs:element ref="trans-unit"/>
+          <xs:element ref="bin-unit"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="context">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="crc" type="xs:string"/>
+          <xs:attribute name="match-mandatory" type="xs:string"/>
+          <xs:attribute name="context-type" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="context-group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="context" maxOccurs="100"/>
+      </xs:sequence>
+      <xs:attribute name="crc" type="xs:string"/>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="count">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="unit" type="xs:string"/>
+          <xs:attribute name="count-type" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="count-group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="count" nillable="true" minOccurs="0" maxOccurs="100">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="unit" type="xs:string"/>
+                <xs:attribute name="count-type" type="xs:string"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="external-file">
+    <xs:complexType>
+      <xs:sequence/>
+      <xs:attribute name="uid" type="xs:string"/>
+      <xs:attribute name="crc" type="xs:string"/>
+      <xs:attribute name="href" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="file">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="body"/>
+      </xs:sequence>
+      <xs:attribute name="build-num" type="xs:string"/>
+      <xs:attribute name="product-version" type="xs:string"/>
+      <xs:attribute name="product-name" type="xs:string"/>
+      <xs:attribute name="target-language" type="xs:string"/>
+      <xs:attribute name="category" type="xs:string"/>
+      <xs:attribute name="ts" type="xs:string"/>
+      <xs:attribute name="date" type="xs:string"/>
+      <xs:attribute name="tool" type="xs:string"/>
+      <xs:attribute name="datatype" type="xs:string" use="required"/>
+      <xs:attribute name="source-language" type="xs:string" use="required"/>
+      <xs:attribute name="original" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="glossary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="100">
+          <xs:element ref="internal-file"/>
+          <xs:element ref="external-file"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="context-group" minOccurs="0" maxOccurs="100"/>
+        <xs:element ref="count-group" minOccurs="0" maxOccurs="100"/>
+        <xs:element ref="prop-group" minOccurs="0" maxOccurs="100"/>
+        <xs:element name="note" nillable="true" minOccurs="0" maxOccurs="100">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="from" type="xs:string"/>
+                <xs:attribute name="priority" type="xs:string"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:choice minOccurs="0" maxOccurs="100">
+          <xs:element ref="group"/>
+          <xs:element ref="trans-unit"/>
+          <xs:element ref="bin-unit"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="exstyle" type="xs:string"/>
+      <xs:attribute name="style" type="xs:string"/>
+      <xs:attribute name="css-style" type="xs:string"/>
+      <xs:attribute name="font" type="xs:string"/>
+      <xs:attribute name="coord" type="xs:string"/>
+      <xs:attribute name="menu-name" type="xs:string"/>
+      <xs:attribute name="menu-option" type="xs:string"/>
+      <xs:attribute name="menu" type="xs:string"/>
+      <xs:attribute name="help-id" type="xs:string"/>
+      <xs:attribute name="extype" type="xs:string"/>
+      <xs:attribute name="extradata" type="xs:string"/>
+      <xs:attribute name="resname" type="xs:string"/>
+      <xs:attribute name="restype" type="xs:string"/>
+      <xs:attribute name="ts" type="xs:string"/>
+      <xs:attribute name="datatype" type="xs:string"/>
+      <xs:attribute name="id" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="header">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="skl" minOccurs="0"/>
+        <xs:element ref="phase-group" minOccurs="0"/>
+        <xs:choice minOccurs="0" maxOccurs="100">
+          <xs:element ref="prop-group"/>
+          <xs:element ref="glossary"/>
+          <xs:element ref="reference"/>
+          <xs:element ref="note"/>
+          <xs:element ref="count-group"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="internal-file">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="crc" type="xs:string"/>
+          <xs:attribute name="form" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="from" type="xs:string"/>
+          <xs:attribute name="priority" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="phase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="note" nillable="true" minOccurs="0" maxOccurs="100">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="from" type="xs:string"/>
+                <xs:attribute name="priority" type="xs:string"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="contact-phone" type="xs:string"/>
+      <xs:attribute name="contact-email" type="xs:string"/>
+      <xs:attribute name="contact-name" type="xs:string"/>
+      <xs:attribute name="job-id" type="xs:string"/>
+      <xs:attribute name="date" type="xs:string"/>
+      <xs:attribute name="tool" type="xs:string"/>
+      <xs:attribute name="company-name" type="xs:string"/>
+      <xs:attribute name="process-name" type="xs:string" use="required"/>
+      <xs:attribute name="phase-name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="phase-group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="phase" maxOccurs="100"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="prop">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="prop-type" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="prop-group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="prop" maxOccurs="100"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reference">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="100">
+          <xs:element ref="internal-file"/>
+          <xs:element ref="external-file"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="skl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="100">
+          <xs:element ref="internal-file"/>
+          <xs:element ref="external-file"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="source">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="ts" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="target">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="exstyle" type="xs:string"/>
+          <xs:attribute name="style" type="xs:string"/>
+          <xs:attribute name="css-style" type="xs:string"/>
+          <xs:attribute name="font" type="xs:string"/>
+          <xs:attribute name="coord" type="xs:string"/>
+          <xs:attribute name="resname" type="xs:string"/>
+          <xs:attribute name="restype" type="xs:string"/>
+          <xs:attribute name="ts" type="xs:string"/>
+          <xs:attribute name="phase-name" type="xs:string"/>
+          <xs:attribute name="state" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="trans-unit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="source"/>
+        <xs:element ref="target" minOccurs="0"/>
+        <xs:choice minOccurs="0" maxOccurs="100">
+          <xs:element ref="count-group"/>
+          <xs:element ref="note"/>
+          <xs:element ref="context-group"/>
+          <xs:element ref="prop-group"/>
+          <xs:element ref="alt-trans"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="phase-name" type="xs:string"/>
+      <xs:attribute name="charclass" type="xs:string"/>
+      <xs:attribute name="minbytes" type="xs:string"/>
+      <xs:attribute name="maxbytes" type="xs:string"/>
+      <xs:attribute name="minheight" type="xs:string"/>
+      <xs:attribute name="maxheight" type="xs:string"/>
+      <xs:attribute name="minwidth" type="xs:string"/>
+      <xs:attribute name="maxwidth" type="xs:string"/>
+      <xs:attribute name="size-unit" type="xs:string"/>
+      <xs:attribute name="exstyle" type="xs:string"/>
+      <xs:attribute name="style" type="xs:string"/>
+      <xs:attribute name="css-style" type="xs:string"/>
+      <xs:attribute name="font" type="xs:string"/>
+      <xs:attribute name="coord" type="xs:string"/>
+      <xs:attribute name="menu-name" type="xs:string"/>
+      <xs:attribute name="menu-option" type="xs:string"/>
+      <xs:attribute name="menu" type="xs:string"/>
+      <xs:attribute name="help-id" type="xs:string"/>
+      <xs:attribute name="extype" type="xs:string"/>
+      <xs:attribute name="extradata" type="xs:string"/>
+      <xs:attribute name="resname" type="xs:string"/>
+      <xs:attribute name="restype" type="xs:string"/>
+      <xs:attribute name="ts" type="xs:string"/>
+      <xs:attribute name="datatype" type="xs:string"/>
+      <xs:attribute name="reformat" type="xs:string"/>
+      <xs:attribute name="translate" type="xs:string"/>
+      <xs:attribute name="approved" type="xs:string"/>
+      <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="xliff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="file" maxOccurs="100"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

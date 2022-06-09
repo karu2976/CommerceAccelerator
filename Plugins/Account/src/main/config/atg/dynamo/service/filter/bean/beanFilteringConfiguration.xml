@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean-filtering>
+
+  <!--
+    Profile
+  -->
+  <bean name="atg.userprofiling.Profile">
+    <!-- Return the secondary addresses as a List of maps, with additional properties included in each map -->
+    <filter id="addresslistshort">
+      <property name="secondaryAddresses" property-customizer="/atg/dynamo/service/filter/bean/ShortAddressPropertyCustomizer"/>
+    </filter>
+    <filter id="addresslistsummary">
+      <property name="secondaryAddresses" property-customizer="/atg/dynamo/service/filter/bean/SummaryAddressPropertyCustomizer"/>
+    </filter>
+    <filter id="cardlistshort">
+      <property name="creditCards" property-customizer="/atg/dynamo/service/filter/bean/ShortCardPropertyCustomizer"/>
+    </filter>
+    <filter id="cardlistsummary">
+      <property name="creditCards" property-customizer="/atg/dynamo/service/filter/bean/SummaryCardPropertyCustomizer"/>
+    </filter>
+  </bean>
+
+  <!--
+    Order
+  -->
+  <bean name="atg.commerce.order.Order">
+    <!--
+      short:
+        Returns minimal order data.
+    -->
+    <filter id="short">
+      <property name="id"/>
+      <property name="state"/>
+      <property name="siteId"/>
+      <property name="submittedDate"/>
+      <property name="totalCommerceItemCount"/>
+    </filter>
+
+    <!--
+      detail:
+        Returns more indepth order data.
+    -->
+    <filter id="detailed">
+      <property name="lastModifiedTime" xml-combine="remove"/>
+      <property name="shippingGroupCount" xml-combine="remove"/>
+      <property name="paymentGroupCount" xml-combine="remove"/>
+      <property name="profileId" xml-combine="remove"/>
+      <property name="originOfOrder" xml-combine="remove"/>
+      <property name="creationTime" xml-combine="remove"/>
+      <property name="salesChannel" xml-combine="remove"/>
+      <property name="relationships" xml-combine="remove"/>
+    </filter>
+  </bean>
+
+  <!--
+    CreditCard
+  -->
+  <bean name="atg.commerce.order.CreditCard">
+    <filter id="detailed">
+      <property name="expirationMonth" property-customizer="/atg/dynamo/service/filter/bean/ExpirationMonthPropertyCustomizer"/>
+      <property name="expirationYear" property-customizer="/atg/dynamo/service/filter/bean/ExpirationYearPropertyCustomizer"/>
+    </filter>
+  </bean>
+
+  <!--
+    ProfileAdapterRepository
+  -->
+  <repository name="/atg/userprofiling/ProfileAdapterRepository">
+    <item-descriptor name="credit-card">
+      <filter id="short">
+        <property name="id"/>
+        <property name="creditCardNumber" property-customizer="/atg/commerce/payment/filter/bean/CreditCardNumberPropertyCustomizer"/>
+        <property name="expirationMonth" property-customizer="/atg/dynamo/service/filter/bean/ExpirationMonthPropertyCustomizer"/>
+        <property name="expirationYear" property-customizer="/atg/dynamo/service/filter/bean/ExpirationYearPropertyCustomizer"/>
+        <property name="firstName" target="billingAddress.firstName"/>
+        <property name="lastName" target="billingAddress.lastName"/>
+      </filter>
+      <filter id="summary">
+        <property name="creditCardNumber" property-customizer="/atg/commerce/payment/filter/bean/CreditCardNumberPropertyCustomizer"/>
+        <property name="expirationMonth" property-customizer="/atg/dynamo/service/filter/bean/ExpirationMonthPropertyCustomizer"/>
+        <property name="expirationYear" property-customizer="/atg/dynamo/service/filter/bean/ExpirationYearPropertyCustomizer">
+          <attribute name="format" value="yyyy" /> <!-- 4 digit year -->
+        </property>
+      </filter>
+    </item-descriptor>
+    <item-descriptor name="contactInfo">
+      <filter id="summary">
+        <property name="middleName" xml-combine="remove"/>
+        <property name="address2"/>
+        <property name="phoneNumber"/>
+      </filter>
+      <filter id="short">
+        <property name="address1"/>
+        <property name="firstName"/>
+        <property name="lastName"/>
+      </filter>
+    </item-descriptor>
+    <item-descriptor  name="user" default-filter="short">
+      <filter id="short">
+        <property name="email"/>
+        <property name="securityStatus"/>
+        <property name="middleName" xml-combine="remove"/>
+      </filter>
+      <filter id="summary">
+        <property name="gender"/>
+        <property name="dateOfBirth" property-customizer="/atg/dynamo/service/filter/bean/LocalizedDatePropertyCustomizer"/>
+        <property name="email"/>
+        <property name="postalCode" target="homeAddress.postalCode"/>
+        <property name="middleName" xml-combine="remove"/>
+      </filter>
+    </item-descriptor>
+  </repository>
+</bean-filtering>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/main/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#1 $$Change: 1385662 $-->

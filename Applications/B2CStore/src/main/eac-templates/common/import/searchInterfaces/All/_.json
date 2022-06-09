@@ -1,0 +1,51 @@
+{
+    "ecr:type": "search-interface",
+    "crossFieldMatch": "always",
+    "fields": [
+        {
+            "attribute":"allAncestors.displayName"
+        },
+        {
+            "attribute":"product.displayName"
+        },
+        {
+            "attribute":"sku.displayName"
+        },
+        {
+            "attribute":"product.brand"
+        },
+        {
+            "attribute":"product.repositoryId"
+        },
+        {
+            "attribute":"sku.repositoryId"
+        },
+        {
+            "attribute":"product.briefDescription"
+        },
+        {
+            "attribute":"product.description"
+        },
+        {
+            "attribute":"product.longDescription"
+        },
+        {
+            "attribute":"product.keywords"
+        },
+        {
+            "attribute":"clothing-sku.color"
+        },
+        {
+            "attribute":"clothing-sku.size"
+        },
+        {
+            "attribute":"furniture-sku.woodFinish"
+        },
+        {
+            "attribute":"sku.manufacturer_part_number"
+        },
+        {
+            "attribute":"ecr:crossField"
+        }
+    ]
+}

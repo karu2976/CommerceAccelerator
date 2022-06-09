@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+  <import-items>
+    <!-- 2 items of type siteGroup -->
+
+    <add-item item-descriptor="siteGroup" id="sitesDE">
+      <set-property name="displayName"><![CDATA[Sites (DE)]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteDE]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="siteGroup" id="sitesUS">
+      <set-property name="displayName"><![CDATA[Sites (US)]]></set-property>
+      <set-property name="sites"><![CDATA[storeSiteUS]]></set-property>
+    </add-item>
+
+    <!-- 2 items of type siteConfiguration -->
+
+    <add-item item-descriptor="siteConfiguration" id="storeSiteDE">
+      <set-property name="changePasswordFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.de>]]></set-property>
+      <set-property name="defaultCountry"><![CDATA[DE]]></set-property>
+      <set-property name="description"><![CDATA[CSA Store Germany site]]></set-property>
+      <set-property name="sitePriority"><![CDATA[2]]></set-property>
+      <set-property name="languages"><![CDATA[en,de]]></set-property>
+      <set-property name="contextRoot"><![CDATA[/csa]]></set-property>
+      <set-property name="productionURL"><![CDATA[/csa/storede]]></set-property>
+      <set-property name="registeredUserFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.de>]]></set-property>
+      <set-property name="defaultLanguage"><![CDATA[de]]></set-property>
+      <set-property name="creationTime"><![CDATA[6/24/2014 17:16:50]]></set-property>
+      <set-property name="newPasswordFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.de>]]></set-property>
+      <set-property name="enabled"><![CDATA[true]]></set-property>
+      <set-property name="siteTypes"><![CDATA[commerce]]></set-property>
+      <set-property name="defaultListPriceList"><![CDATA[plist3080002]]></set-property>
+      <set-property name="lastModifiedBy"><![CDATA[portal-admin]]></set-property>
+      <set-property name="modificationTime"><![CDATA[6/26/2014 09:39:13]]></set-property>
+      <set-property name="defaultCatalog"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="defaultSalePriceList"><![CDATA[plist3080003]]></set-property>
+      <set-property name="endecaSiteId"><![CDATA[/storeSiteDE]]></set-property>
+      <set-property name="orderConfirmationFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.de>]]></set-property>
+      <set-property name="name"><![CDATA[CSA Store Germany]]></set-property>
+    </add-item>
+
+    <add-item item-descriptor="siteConfiguration" id="storeSiteUS">
+      <set-property name="changePasswordFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="defaultCountry"><![CDATA[US]]></set-property>
+      <set-property name="description"><![CDATA[CSA Store site]]></set-property>
+      <set-property name="sitePriority"><![CDATA[1]]></set-property>
+      <set-property name="languages"><![CDATA[en,es]]></set-property>
+      <set-property name="contextRoot"><![CDATA[/csa]]></set-property>
+      <set-property name="productionURL"><![CDATA[/csa/storeus]]></set-property>
+      <set-property name="registeredUserFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="defaultLanguage"><![CDATA[en]]></set-property>
+      <set-property name="creationTime"><![CDATA[6/24/2014 17:16:48]]></set-property>
+      <set-property name="newPasswordFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="enabled"><![CDATA[true]]></set-property>
+      <set-property name="siteTypes"><![CDATA[commerce]]></set-property>
+      <set-property name="defaultListPriceList"><![CDATA[listPrices]]></set-property>
+      <set-property name="lastModifiedBy"><![CDATA[portal-admin]]></set-property>
+      <set-property name="modificationTime"><![CDATA[6/26/2014 09:39:13]]></set-property>
+      <set-property name="defaultCatalog"><![CDATA[masterCatalog]]></set-property>
+      <set-property name="defaultSalePriceList"><![CDATA[salePrices]]></set-property>
+      <set-property name="endecaSiteId"><![CDATA[/storeSiteUS]]></set-property>
+      <set-property name="orderConfirmationFromAddress"><![CDATA[CSA Store Service <CSAStoreService@example.com>]]></set-property>
+      <set-property name="name"><![CDATA[CSA Store]]></set-property>
+    </add-item>
+
+  </import-items>
+
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Account/src/test/java/atg/projects/store/assembler/cartridge/handler/data/AccountOrderHistoryHandlerTest/sites.xml#1 $$Change: 1385662 $-->

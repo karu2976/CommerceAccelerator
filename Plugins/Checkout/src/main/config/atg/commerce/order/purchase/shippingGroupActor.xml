@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template>
+  <!--  This chain is used to update shipping group with address and method. -->
+  <actor-chain id="shipToAddress">
+    <form id="shippingGroupFormHandler" 
+          name="/atg/commerce/order/purchase/ShippingGroupFormHandler"
+          handle="shipToAddress">
+      <input name="shippingAddressUserInputValues.addressNickname" value="${param.nickName}"/>
+      <input name="shippingAddressUserInputValues.saveShippingAddress" value="${param.saveShippingAddressToProfile}"/>
+      <input name="shippingAddressUserInputValues.email" value="${param.shippingEmail}"/>
+      <input name="shippingAddressUserInputValues.firstName" value="${param.shippingFirstName}"/>
+      <input name="shippingAddressUserInputValues.middleName" value="${param.shippingMiddleName}"/>
+      <input name="shippingAddressUserInputValues.lastName" value="${param.shippingLastName}"/>
+      <input name="shippingAddressUserInputValues.address1" value="${param.shippingAddress1}"/>
+      <input name="shippingAddressUserInputValues.address2" value="${param.shippingAddress2}"/>
+      <input name="shippingAddressUserInputValues.city" value="${param.shippingCity}"/>
+      <input name="shippingAddressUserInputValues.state" value="${param.shippingState}"/>
+      <input name="shippingAddressUserInputValues.postalCode" value="${param.shippingPostalCode}"/>
+      <input name="shippingAddressUserInputValues.country" value="${param.shippingCountry}"/>
+      <input name="shippingAddressUserInputValues.phoneNumber" value="${param.shippingPhoneNumber}"/>
+      <input name="shippingAddressUserInputValues.useAsDefaultShippingAddress" value="${param.useAsDefaultShippingAddress}"/>
+      <input name="shippingMethod" value="${param.shippingMethod}"/>
+      <input name="shipToAddressSuccessURL" value="/model/atg/commerce/order/purchase/ShippingGroupActor/shipToAddress-success" />
+      <input name="shipToAddressErrorURL" value="/model/atg/commerce/order/purchase/ShippingGroupActor/error" />
+    </form>
+  </actor-chain>
+  <actor-chain id="shipToAddress-success" transaction="TX_SUPPORTS">
+    <component id="shoppingCart" name="/atg/commerce/ShoppingCart" component-var="shoppingCart">
+      <output id="order" name="order" value="${shoppingCart.current}" filter-id="summary"/>
+    </component>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/main/config/atg/commerce/order/purchase/shippingGroupActor.xml#1 $$Change: 1385662 $-->

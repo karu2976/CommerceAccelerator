@@ -1,0 +1,9 @@
+{
+  "checkout": {    
+    "label": {
+      "color": "Farbe",
+      "size": "Größe",
+      "woodFinish": "Holzoberfläche"
+    }
+  }
+}

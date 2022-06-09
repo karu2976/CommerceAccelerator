@@ -1,0 +1,11 @@
+project(":Plugins:SearchAndNavigation") {
+  description = "Contains cartridges, configuration and code for search and navigation features."
+
+  dependencies {
+    compile project(":Base")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/SearchAndNavigation/build-ship.gradle#1 $$Change: 1385662 $

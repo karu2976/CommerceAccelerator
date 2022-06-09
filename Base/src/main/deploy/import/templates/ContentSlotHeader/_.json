@@ -1,0 +1,25 @@
+{
+    "@description": "${template.description}",
+    "@group": "Header",
+    "ecr:createDate": "2016-12-06T06:06:16.673-08:00",
+    "@thumbnailUrl": "thumbnail.png",
+    "ecr:type": "template",
+    "editorPanel": {
+        "editor": "editors/DefaultEditorPanel",
+        "children": [{"editor": "editors/DynamicSlotEditor"}]
+    },
+    "typeInfo": {
+        "ruleLimit": {"@propertyType": "String"},
+        "templateTypes": {"@propertyType": "List"},
+        "templateIds": {"@propertyType": "List"},
+        "contentPaths": {"@propertyType": "List"}
+    },
+    "defaultContentItem": {
+        "@name": "Header Slot",
+        "ruleLimit": "1",
+        "templateTypes": ["Header"],
+        "templateIds": [],
+        "contentPaths": []
+    },
+    "locales": {}
+}

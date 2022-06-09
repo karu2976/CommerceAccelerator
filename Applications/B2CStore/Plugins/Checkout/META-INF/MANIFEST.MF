@@ -1,0 +1,7 @@
+ATG-Product: The Commerce Accelerator Checkout Plugin Extension Module
+Manifest-Version: 1.0
+ATG-Class-Path: build/libs/Checkout.jar
+ATG-EAR-Module: build/libs/Applications-B2CStore-Plugins-Checkout.ear
+ATG-J2EE: build/libs/Applications-B2CStore-Plugins-Checkout.ear
+ATG-Config-Path: build/libs/config/config.jar
+ATG-Required: CommerceAccelerator.Applications.B2CStore.Base CommerceAccelerator.Plugins.Checkout

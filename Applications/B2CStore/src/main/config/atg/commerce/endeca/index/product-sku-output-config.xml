@@ -1,0 +1,181 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+  Indexing Dependency Schema for Commerce Catalogs
+
+  @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/config/atg/commerce/endeca/index/product-sku-output-config.xml#1 $
+  @updated $DateTime: 2017/03/09 10:29:42 $
+-->
+
+<!--
+  Item: product
+
+  Properties:
+    - startDate: The date this product starts.
+
+    - endDate: The default end date is set to 1/1/3000. This is necessary as we can only use the Endeca RangeFiltern once
+      per property. For example, it's not possible to create a RangeFilter: if endDate == 0 OR endDate >= currentDate.
+      Defining a fake future date allows us to only check if the endDate >= currentDate.
+
+    - displayName: The products display name.
+
+    - briefDescription: CSA Extension. Briefly describes the product.
+
+    - repositoryId: The repository id.
+
+    - keywords: A list of keywords associated with the product.
+
+    - description: A long description of the product.
+
+    - childSKUs: SKU repository items of the product.
+
+    - smallImage: A media repository item small image.
+
+    - largeImage: A media repository item large image.
+
+    - thumbnailImage: A media repository item thumbnail image.
+
+  Dimensions:
+    - brand: The brand of the product.
+
+  Remove the following product properties:
+    - parentCategories: Categories this product belongs to. Repository item.
+
+    - listPrice:
+-->
+<item item-descriptor-name="product">
+  <properties>
+    <!-- Properties -->
+    <property name="startDate" default-value="0" type="date" xml-combine="replace"/>
+    <property name="endDate" default-value="32506394714894" type="date" xml-combine="replace"/>
+    <property name="displayName" type="string" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" wildcard-searchable="true" text-searchable="true"/>
+    <property name="briefDescription" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" text-searchable="true"/>
+    <property name="$repositoryId" is-rollup-key="true" is-dimension="false" type="string" text-searchable="true"/>
+    <property name="keywords" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" filter="concat" text-searchable="true"/>
+    <property name="description" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" text-searchable="true"/>
+    <property name="longDescription" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" text-searchable="true"/>
+
+    <!-- Dimensions -->
+    <property name="brand" text-searchable="true" filter="unique" is-dimension="true" multiselect-type="multi-or" type="string"/>
+
+    <!-- Remove -->
+    <property name="listPrice" text-searchable="true" xml-combine="remove"/>
+  </properties>
+
+  <!--
+    Item: ancestorCategories
+      Filter out items in the configured GSAPropertyFilter
+
+    Properties:
+      - displayName: The category display name.
+  -->
+  <item property-name="ancestorCategories" is-multi="true" filter="/atg/commerce/endeca/index/GSAPropertyFilter">
+    <properties>
+      <property name="displayName" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" text-searchable="true"/>
+    </properties>
+  </item>
+
+  <!--
+    Item: childSKUs
+
+    Properties:
+      - sku.activePrice: Non repository property. Index the active price for this sku. The active price will be the sale
+        price if one exists, otherwise the list price for this particular pricelist pair. Record variants of this sku
+        will be produced for different price list pairs.
+
+      - repositoryId: The SKU repository id.
+
+      - startDate: The date the SKU starts on.
+
+      - endDate: The default end date is set to 1/1/3000. This is necessary as we can only use the Endeca RangeFiltern once
+        per property. For example, it's not possible to create a RangeFilter: if endDate == 0 OR endDate >= currentDate.
+        Defining a fake future date allows us to only check if the endDate >= currentDate.
+
+      - description: A description of the SKU.
+
+      - displayName: The SKU display name.
+
+    Dimensions:
+      - color: CSA Extension. Represents a clothing skus color.
+
+      - size: CSA Extension. Represents a clothing skus size.
+
+      - woodFinish: CSA Extension. Represents a furniture skus wood finish.
+
+    Remove:
+      - listPrice:
+  -->
+  <item property-name="childSKUs">
+    <properties>
+      <!-- Properties -->
+      <property name="priceRange" output-name="sku.priceRange" is-dimension="true" autogen-dimension-values="false" is-non-repository-property="true" property-accessor="/atg/commerce/endeca/index/accessor/ActivePriceAccessor" type="float"/>
+      <property name="price" output-name="sku.activePrice" is-non-repository-property="true" 
+        property-accessor="/atg/commerce/endeca/index/accessor/ActivePriceAccessor" 
+        type="float"/>
+      <property name="$repositoryId" text-searchable="true"/>
+      <property name="startDate" default-value="0" type="date" xml-combine="replace"/>
+      <property name="endDate" default-value="32506394714894" type="date" xml-combine="replace"/>
+      <property name="manufacturer_part_number" type="string" filter="unique" text-searchable="true"/>
+      <property name="description" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" filter="unique" text-searchable="true"/>
+      <property name="displayName" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" filter="unique" text-searchable="true"/>
+
+      <!-- Dimensions -->
+      <property name="color" multiselect-type="multi-or" subtype="clothing-sku"  is-dimension="true" type="string" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" filter="unique" text-searchable="true"/>
+      <property name="woodFinish" multiselect-type="multi-or" subtype="furniture-sku" is-dimension="true" type="string" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" filter="unique" text-searchable="true"/>
+      <property name="size" multiselect-type="multi-or" subtype="clothing-sku" is-dimension="true" type="string" property-accessor="/atg/commerce/endeca/index/LanguagePropertyAccessor" filter="unique" text-searchable="true"/>
+
+      <!-- Remove -->
+      <property name="listPrice" property-accessor="pricePropertyAccessor" type="float" xml-combine="remove"/>
+    </properties>
+  </item>
+
+  <!--
+    Item: smallImage
+
+    Properties:
+      - url: The image URL
+  -->
+  <item property-name="smallImage">
+    <properties>
+      <property name="url" subtype="media" text-searchable="false" type="string"/>
+      <property name="$repositoryId" suppress="true"/>
+    </properties>
+  </item>
+
+  <!--
+    Item: largeImage
+
+    Properties:
+      - url: The image URL
+  -->
+  <item property-name="largeImage">
+    <properties>
+      <property name="url" subtype="media" text-searchable="false" type="string"/>
+      <property name="$repositoryId" suppress="true"/>
+    </properties>
+  </item>
+
+  <!--
+    Item: thumbnailImage
+
+    Properties:
+      - url: The image URL
+  -->
+  <item property-name="thumbnailImage">
+    <properties>
+      <property name="url" subtype="media" text-searchable="false" type="string"/>
+      <property name="$repositoryId" suppress="true"/>
+    </properties>
+  </item>
+
+  <!--
+    Remove:
+      - keywords:
+  -->
+  <item property-name="parentCategories" parent-property="childProducts" >
+    <properties>
+      <!-- Remove -->
+      <property name="keywords" text-searchable="true" xml-combine="remove"/>
+    </properties>
+  </item>
+</item>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/B2CStore/src/main/config/atg/commerce/endeca/index/product-sku-output-config.xml#1 $$Change: 1385662 $-->

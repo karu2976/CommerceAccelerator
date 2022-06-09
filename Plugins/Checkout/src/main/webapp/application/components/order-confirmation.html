@@ -1,0 +1,57 @@
+<!-- ko ifnot: currentOrder() -->
+  <h3>{{ 'checkout.subheading.orderDetailsAreUnavailable' | i18n }}</h3>
+  <div class="row csa-v-offset-10">
+    <div class="col-xs-12">
+      <div class="alert alert-danger" role="alert">
+        <p>
+          {{ 'checkout.text.orderDetailsAreUnavailableMessage' | i18n }}
+        </p>
+      </div>
+      <div class="text-center csa-v-offset-10">
+        <p>
+          {{ 'checkout.text.thankYouForVisiting' | i18n }}
+          <a href="#" data-bind="attr: { href: 'home' }">
+            CSA
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+<!-- /ko -->
+<!-- ko if: currentOrder -->
+<div class="row">
+  <div class="col-sm-8 col-md-6">
+    <h2>{{ 'checkout.heading.success' | i18n }}</h2>
+
+    <h3>{{ 'checkout.subheading.yourOrderHasBeenPlaced' | i18n }}</h3>
+    <p>
+      {{ 'checkout.text.thankYouForYourOrder' | i18n }}.
+      <a href="#" data-bind="attr: { href: 'account/orders/view?orderId='+currentOrder().id }">
+        {{ 'checkout.link.viewOrderInOrderHistory' | i18n:currentOrder().id }}
+      </a>
+    </p>
+    <p>
+      {{ 'checkout.text.printOrderDetails' | i18n }}.
+      <a href="#" data-bind="click: printOrderDetail.bind($data, currentOrder().id), clickBubble: false">
+        <span class="sr-only">{{ 'checkout.link.opensNewWindow' | i18n }}</span>
+        {{ 'checkout.link.printOrder' | i18n:currentOrder().id }}
+        <span class="glyphicon glyphicon-new-window"></span>
+      </a>
+    </p>
+  </div>
+
+  <!-- ko ifnot: profile.authenticated -->
+  <div class="col-sm-4 col-md-6">
+    <h2>{{ 'checkout.subheading.signMeUp' | i18n }}</h2>
+
+    <p class="lead">
+      {{ 'checkout.text.signMeUpDetails' | i18n }}
+    </p>
+    <button type="button" class="btn btn-block csa-btn" data-bind="click: registerForAccount">
+      {{ 'checkout.button.register' | i18n }}
+    </button>
+  </div>
+  <!-- /ko -->
+
+</div>
+<!-- /ko -->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="cancelOrder"
+                xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--  This chain is used to cancel current order. -->
+  <actor-chain id="cancelOrder" transaction="TX_SUPPORTS">
+    <form id="cancelOrderFormHandler" name="/atg/commerce/order/purchase/CancelOrderFormHandler"
+          var="cancelOrderFormHandler" handle="cancelCurrentOrder">
+      <input name="cancelOrderSuccessURL"
+             value="/model/atg/store/order/purchase/CancelOrderCheckoutActor/cancelOrder-success"/>
+      <input name="cancelOrderErrorURL"
+             value="/model/atg/store/order/purchase/CancelOrderCheckoutActor/cancelOrder-error"/>
+    </form>
+  </actor-chain>
+  <actor-chain id="cancelOrder-success" transaction="TX_SUPPORTS">
+    <component id="shoppingCart" name="/atg/commerce/ShoppingCart" component-var="shoppingCart">
+      <output id="order" name="order" value="${shoppingCart.current}" filter-id="summary"/>
+    </component>    
+  </actor-chain>
+  <actor-chain id="cancelOrder-error" transaction="TX_SUPPORTS">
+    <actor id="error" name="/atg/store/order/purchase/CancelOrderCheckoutActor" chain-id="error"
+           return-model-var="model">
+      <output id="model" add-map-children="true" value="${model}"/>
+    </actor>
+  </actor-chain>
+  <actor-chain id="error" transaction="TX_SUPPORTS">
+    <component id="cancelOrderFormHandler" name="/atg/commerce/order/purchase/CancelOrderFormHandler"
+               component-var="cancelOrderFormHandler">
+      <output id="formError" name="formError" value="${cancelOrderFormHandler.formError}"/>
+      <output id="formExceptions" name="formExceptions" value="${cancelOrderFormHandler.formExceptions}"/>
+    </component>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Checkout/src/main/config/atg/store/order/purchase/cancelOrderCheckoutActor.xml#1 $$Change: 1385662 $-->

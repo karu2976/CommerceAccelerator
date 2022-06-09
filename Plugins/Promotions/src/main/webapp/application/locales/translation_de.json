@@ -1,0 +1,17 @@
+{
+  "promotions": {
+    "button":{
+      "apply": "Anwenden",
+      "remove": "Entfernen"
+    },
+    "label": {
+      "actions": "Aktionen",
+      "claimACoupon": "Coupon einlösen",
+      "couponCode": "Couponcode",
+      "couponTableSummary": "Liste der Coupons, die für diese Bestellung verwendet wurden"
+    },
+    "subheading":{
+      "claimedCoupon": "Eingelöster Coupon"
+    }
+  }
+}

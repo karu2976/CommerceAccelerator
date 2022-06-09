@@ -1,0 +1,11 @@
+project(":Plugins:Promotions") {
+  description = "Contains cartridges, configuration and code for promotions features."
+  
+  dependencies {
+    compile project(":Base")
+  }
+
+  compileWebapp.dependsOn ":Base:compileWebapp"
+}
+
+//@version $Id: //hosting-blueprint/CSA/version/11.3/Plugins/Promotions/build-ship.gradle#1 $$Change: 1385662 $

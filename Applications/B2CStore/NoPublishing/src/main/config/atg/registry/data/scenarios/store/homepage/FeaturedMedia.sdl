@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE process SYSTEM "dynamosystemresource:/atg/dtds/pdl/pdl_1.0.dtd">
+<process author="admin" creation-time="1418044812276" enabled="true" last-modified-by="admin" modification-time="1418048145317">
+  <segment migrate-subjects="true">
+    <segment-name>Media</segment-name>
+    <!--================================-->
+    <!--== Items requested by slot FeaturedMedia  -->
+    <!--================================-->
+    <event id="1">
+      <event-name>atg.dss.SlotItemRequest</event-name>
+      <filter operator="eq">
+        <event-property>
+          <property-name>slotName</property-name>
+        </event-property>
+        <constant>/atg/registry/Slots/FeaturedMedia</constant>
+      </filter>
+    </event>
+    <!--================================-->
+    <!--== Add items to slot named FeaturedMedia from targeter FeaturedMedia  -->
+    <!--================================-->
+    <action id="2">
+      <action-name>fillSlot</action-name>
+      <action-param name="slot">
+        <nucleus-property>
+          <nucleus-path>/atg/registry/Slots/FeaturedMedia</nucleus-path>
+        </nucleus-property>
+      </action-param>
+      <action-param name="targeter">
+        <nucleus-property>
+          <nucleus-path>/atg/registry/RepositoryTargeters/MediaContent/FeaturedMedia</nucleus-path>
+        </nucleus-property>
+      </action-param>
+    </action>
+  </segment>
+</process>

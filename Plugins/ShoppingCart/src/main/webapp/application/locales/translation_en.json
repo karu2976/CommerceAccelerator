@@ -1,0 +1,47 @@
+{
+  "shoppingCart": {
+    "alert": {
+      "emptyCart": "Your shopping cart is empty."
+    },
+    "button": {
+      "checkout": "Checkout",
+      "close": "Close",
+      "remove": "Remove",
+      "update": "Update"
+    },
+    "heading": {
+      "yourShoppingCart": "Your Shopping Cart"
+    },
+    "label": {
+      "discount": "Discount",
+      "listPrice": "List price",
+      "orderSummaryTableSummary": "Order summary includes subtotal, discounts, shipping, tax and total",
+      "priceBeforeReduction": "Price before reduction",
+      "quantity": "Quantity",
+      "salePrice": "Sale price",
+      "shipping": "Shipping",
+      "subtotal": "Subtotal",
+      "tax": "Tax",
+      "total": "Total",
+      "was": "Was"
+    },
+    "link": {
+      "checkout": "Checkout",
+      "continueShopping": "Continue shopping",
+      "itemInYourShoppingCart": "Item in your shopping cart",
+      "itemInYourShoppingCart_plural": "Items in your shopping cart",
+      "viewCart": "View cart"
+    },
+    "subheading": {
+      "cartSummary": "Cart summary",
+      "itemInYourShoppingCart": "Item in your shopping cart",
+      "itemInYourShoppingCart_plural": "Items in your shopping cart",
+      "orderSummary": "Order summary ({{0}} item)",
+      "orderSummary_plural": "Order summary ({{0}} items)"
+    },
+    "text": {
+      "1000": "In stock",
+      "1001": "Out of stock"
+    }
+  }
+}

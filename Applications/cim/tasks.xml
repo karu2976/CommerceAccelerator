@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tasks SYSTEM "http://www.atg.com/dtds/task_1_0.dtd">
+<tasks>
+
+  <!-- Task for Endeca Application configuration with Experience Manager Preview  -->
+
+  <task id="EndecaCSADeployConfigWriterTask" class="atg.cim.productconfig.endeca.CsaEndecaDeployConfigWriterTask">
+    <property name="appName">
+      <input type="text">
+        <label>Enter the CSA EAC Application Name</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Application Name cannot be blank."/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="deploymentPath">
+      <input type="path">
+        <label>Enter the CSA EAC Application Deployment Path</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Deployment Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator id="DirectoryExistsValidator" phase="POSTINPUT">
+          <if-false>
+            <command type="DISPLAY_TEXT"
+              value="Deployment Path doesn't exist." />
+            <command type="REDO_INPUT" />
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="eacPort">
+      <value>8888</value>
+      <input type="text">
+        <label>Enter the EAC Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="dgraphPort">
+      <value>15000</value>
+      <input type="text">
+        <label>Enter the Dgraph Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property> 
+    <property name="authoringPort">
+      <value>15002</value>
+      <input type="text">
+        <label>Enter the Authoring Dgraph Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>   
+    <property name="logserverPort">
+      <value>15010</value>
+      <input type="text">
+        <label>Enter the Log Server Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="casPort">
+      <value>8500</value>
+      <input type="text">
+        <label>Enter the CAS Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="casPath">
+      <input type="path">
+        <label>Enter the CAS Path using Unix-style forward slashes, including the
+version number (e.g. C:/Endeca/CAS/11.3.0).</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="workbenchPort">
+      <value>8006</value>
+      <input type="text">
+        <label>Enter the Workbench Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="workbenchEnabled">
+      <value>true</value>
+    </property>
+    <property name="productionAppServerHost">
+      <value>localhost</value>
+      <input type="text">
+        <label>Enter the host name for the server that hosts the Oracle Commerce application. [Default: localhost]</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Oracle Commerce application server name cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="productionAppServerPort">
+      <value>8080</value>
+      <input type="text">
+        <label>Enter the HTTP port for the server that hosts the Oracle Commerce application.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="previewHost">
+      <value>localhost</value>
+      <input type="text">
+        <label>Enter the host name for the server that hosts the Experience Manager 
+preview application. [Default: localhost]</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Preview Host name cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="previewPort">
+      <value>8080</value>
+      <input type="text">
+        <label>Enter the HTTP port for the server that hosts the Experience Manager 
+preview application.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="previewContextRoot">
+      <value>csa</value>
+      <input type="text">
+        <label>Enter the context root of the Experience Manager preview application.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Preview context root cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="userSegmentsHost">
+      <value>localhost</value>
+      <input type="text">
+        <label>Enter the hostname of the user segment server. Oracle recommends using the 
+Publishing server for this purpose. If your environment does not have a 
+Publishing server, enter the Production server host name and refer to the 
+Guided Search Integration Guide for additional configuration requirements.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Hostname cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="userSegmentsPort">
+      <value>8080</value>
+      <input type="text">
+        <label>Enter the HTTP port of the user segment server. Oracle recommends using 
+the Publishing server for this purpose. If your environment does not have  
+a Publishing server, enter the Production server HTTP port and refer to 
+the Guided Search Integration Guide for additional configuration 
+requirements.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="jpsConfigFileLocation">
+      <value>C:\Endeca\ToolsAndFrameworks\11.3.0\server\workspace\credential_store\jps-config.xml</value>
+      <input type="text">
+        <label>Enter the path for the Oracle Wallet jps-config.xml file.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Oracle Wallet jps-config.xml file path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>    
+    <property name="applicationConfigExportArchive">
+      <value>${EndecaCSADeployConfigWriterTask.deploymentPath}/${EndecaCSADeployConfigWriterTask.appName}/data/workbench/application_export_archive</value>
+      <input type="text">
+        <label>Enter the directory where the application configuration archives should be exported to</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Application configuration archive export directory path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="authoringApplicationExportDirectory">
+      <value>${EndecaCSADeployConfigWriterTask.deploymentPath}/${EndecaCSADeployConfigWriterTask.appName}/data/workbench/generation_data</value>
+      <input type="text">
+        <label>Enter the directory where the authoring application configuration archives should be exported to using Unix-style forward slashes</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Authoring application export directory path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="inputPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/B2CStore/CIMExtension/plugins/Base/filetemplate/endeca/deploy-prompt.xml</value>
+    </property>
+    <property name="outputPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/cim/data/tmp/deploy-prompt.xml</value>
+    </property>
+  </task>
+
+  <task id="CSAEndecaDeployTask" class="atg.cim.productconfig.endeca.EndecaDeployTask" longRunning="true">
+    <property name="deployXMLPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/B2CStore/build/deploy/${EndecaCSADeployConfigWriterTask.appName}/deploy.xml</value>
+      <input type="path">
+        <label>Enter the path to the deploy.xml file for the EAC application being deployed</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="FileExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="The deploy.xml file must exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="toolsAndFrameworksRootPath">
+      <value>C:\Endeca\ToolsAndFrameworks\11.3.0</value>
+      <input type="path">
+        <label>Enter the path to the ToolsAndFrameworks directory (including version number) </label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="endecaMDEXRootPath">
+      <value>C:\Endeca\MDEX\6.5.3</value>
+      <input type="path">
+        <label>Enter the path to the MDEX directory (including version number)</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="endecaPlatformServicesRootPath">
+      <value>C:\Endeca\PlatformServices\11.3.0</value>
+      <input type="path">
+        <label>Enter the path to the Platform Services directory (including version number)</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="promptXMLPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/cim/data/tmp/deploy-prompt.xml</value>
+    </property>
+  </task>
+
+  <task id="EndecaInitializeTask" class="atg.cim.productconfig.endeca.EndecaInitializeTask"  longRunning="true">
+    <property name="endecaAppRootPath">
+      <value>${EndecaCSADeployConfigWriterTask.deploymentPath}/${EndecaCSADeployConfigWriterTask.appName}</value>
+    </property>
+    <property name="endecaMDEXRootPath">
+      <value>${CSAEndecaDeployTask.endecaMDEXRootPath}</value>
+    </property>
+    <property name="endecaPlatformServicesRootPath">
+      <value>${CSAEndecaDeployTask.endecaPlatformServicesRootPath}</value>
+    </property>    
+  </task>
+  
+  <!-- Task for Endeca Application configuration without Experience Manager Preview  -->
+  
+  <task id="EndecaCSADeployNoPreviewConfigWriterTask" class="atg.cim.productconfig.endeca.CsaEndecaDeployConfigWriterTask">
+    <property name="appName">
+      <input type="text">
+        <label>Enter the CSA EAC Application Name</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Application Name cannot be blank."/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="deploymentPath">
+      <input type="path">
+        <label>Enter the CSA EAC Application Deployment Path</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Deployment Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator id="DirectoryExistsValidator" phase="POSTINPUT">
+          <if-false>
+            <command type="DISPLAY_TEXT"
+              value="Deployment Path doesn't exist." />
+            <command type="REDO_INPUT" />
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="eacPort">
+      <value>8888</value>
+      <input type="text">
+        <label>Enter the EAC Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="dgraphPort">
+      <value>15000</value>
+      <input type="text">
+        <label>Enter the Dgraph Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property> 
+    <property name="authoringPort">
+      <value>15002</value>
+      <input type="text">
+        <label>Enter the Authoring Dgraph Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>   
+    <property name="logserverPort">
+      <value>15010</value>
+      <input type="text">
+        <label>Enter the Log Server Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="casPort">
+      <value>8500</value>
+      <input type="text">
+        <label>Enter the CAS Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="casPath">
+      <input type="path">
+        <label>Enter the CAS Path using Unix-style forward slashes, including the
+version number (e.g. C:/Endeca/CAS/11.3.0).</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="workbenchPort">
+      <value>8006</value>
+      <input type="text">
+        <label>Enter the Workbench Port Number</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="workbenchEnabled">
+      <value>true</value>
+    </property>
+    <property name="productionAppServerHost">
+      <value>localhost</value>
+      <input type="text">
+        <label>Enter the host name for the server that hosts the Oracle Commerce application. [Default: localhost]</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Oracle Commerce application server name cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="productionAppServerPort">
+      <value>8080</value>
+      <input type="text">
+        <label>Enter the HTTP port for the server that hosts the Oracle Commerce application.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="previewHost">
+      <value>localhost</value>
+    </property>
+    <property name="previewPort">
+      <value>7003</value>
+    </property>
+    <property name="previewContextRoot">
+      <value>csa</value>
+    </property>
+    <property name="userSegmentsHost">
+      <value>localhost</value>
+      <input type="text">
+        <label>Enter the hostname of the user segment server. Oracle recommends using the 
+Publishing server for this purpose. If your environment does not have a 
+Publishing server, enter the Production server host name and refer to the 
+Guided Search Integration Guide for additional configuration requirements.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Hostname cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="userSegmentsPort">
+      <value>8080</value>
+      <input type="text">
+        <label>Enter the HTTP port of the user segment server. Oracle recommends using 
+the Publishing server for this purpose. If your environment does not have  
+a Publishing server, enter the Production server HTTP port and refer to 
+the Guided Search Integration Guide for additional configuration 
+requirements.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Port cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="PortNumberInputValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Must be a valid port number"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="jpsConfigFileLocation">
+      <value>C:/Endeca/ToolsAndFrameworks/11.3.0/server/workspace/credential_store/jps-config.xml</value>
+      <input type="text">
+        <label>Enter the path for the Oracle Wallet jps-config.xml file.</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Oracle Wallet jps-config.xml file path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="applicationConfigExportArchive">
+      <value>${EndecaCSADeployNoPreviewConfigWriterTask.deploymentPath}/${EndecaCSADeployNoPreviewConfigWriterTask.appName}/data/workbench/application_export_archive</value>
+        <input type="text">
+          <label>Enter the directory where the application configuration archives should be exported to</label>
+          <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Application configuration archive export directory path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="authoringApplicationExportDirectory">
+      <value>${EndecaCSADeployNoPreviewConfigWriterTask.deploymentPath}/${EndecaCSADeployNoPreviewConfigWriterTask.appName}/data/workbench/generation_data</value>
+        <input type="text">
+          <label>Enter the directory where the authoring application configuration archives should be exported to using Unix-style forward slashes</label>
+          <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Application configuration archive export directory path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="inputPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/B2CStore/CIMExtension/plugins/Base/filetemplate/endeca/deploy-prompt.xml</value>
+    </property>
+    <property name="outputPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/cim/data/tmp/deploy-prompt.xml</value>
+    </property>
+  </task>
+
+  <task id="CSAEndecaNoPreviewDeployTask" class="atg.cim.productconfig.endeca.EndecaDeployTask" longRunning="true">
+    <property name="deployXMLPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/B2CStore/build/deploy/${EndecaCSADeployNoPreviewConfigWriterTask.appName}/deploy.xml</value>
+      <input type="path">
+        <label>Enter the path to the deploy.xml file for the EAC application being deployed</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="FileExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="The deploy.xml file must exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="toolsAndFrameworksRootPath">
+      <value>C:\Endeca\ToolsAndFrameworks\11.3.0</value>
+      <input type="path">
+        <label>Enter the path to the ToolsAndFrameworks directory (including version number) </label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="endecaMDEXRootPath">
+      <value>C:\Endeca\MDEX\6.5.3</value>
+      <input type="path">
+        <label>Enter the path to the MDEX directory (including version number)</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="endecaPlatformServicesRootPath">
+      <value>C:\Endeca\PlatformServices\11.3.0</value>
+      <input type="path">
+        <label>Enter the path to the Platform Services directory (including version number)</label>
+        <validator phase="POSTINPUT" id="CannotBeBlankValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path cannot be blank"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+        <validator phase="POSTINPUT" id="DirectoryExistsValidator">
+          <if-false>
+            <command type="DISPLAY_TEXT" value="Path doesn't exist"/>
+            <command type="REDO_INPUT"/>
+          </if-false>
+        </validator>
+      </input>
+    </property>
+    <property name="promptXMLPath">
+      <value>${cim.home}../CommerceAccelerator/Applications/cim/data/tmp/deploy-prompt.xml</value>
+    </property>
+  </task>
+    
+  <task id="EndecaInitializeNoPreviewTask" class="atg.cim.productconfig.endeca.EndecaInitializeTask" longRunning="true">
+    <property name="endecaAppRootPath">
+      <value>${EndecaCSADeployNoPreviewConfigWriterTask.deploymentPath}/${EndecaCSADeployNoPreviewConfigWriterTask.appName}</value>
+    </property>
+    <property name="endecaMDEXRootPath">
+      <value>${CSAEndecaNoPreviewDeployTask.endecaMDEXRootPath}</value>
+    </property>
+    <property name="endecaPlatformServicesRootPath">
+      <value>${CSAEndecaNoPreviewDeployTask.endecaPlatformServicesRootPath}</value>
+    </property>
+  </task>
+
+</tasks>
+<!-- @version $Id: //hosting-blueprint/CSA/version/11.3/Applications/cim/tasks.xml#1 $$Change: 1385662 $-->

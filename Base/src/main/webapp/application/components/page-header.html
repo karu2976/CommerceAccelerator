@@ -1,0 +1,60 @@
+<button type="button" class="btn btn-link sr-only sr-only-focusable small" data-bind="click: skipToContent">
+  {{ 'base.link.skipToMainContent' | i18n }}
+</button>
+
+<!-- ko foreach: headerContent -->
+  <!-- ko if: $data['@type']() === 'SitePreferences' -->
+    <div class="container">
+      <div data-bind="component: $data"></div>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">{{ 'base.button.toggleNavigation' | i18n }}</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" data-bind="attr: { href: 'home' }">
+          <img class="img-responsive" 
+            data-bind="attr: {
+                src: siteLogo.src,
+                alt: siteLogo.alt,
+                title: siteLogo.title,
+                height: siteLogo.height,
+                width: siteLogo.width
+              }">
+        </a>
+      </div>
+      <!-- ko foreach: headerContent -->
+        <!-- ko if: $data['@type']() === 'MainMenu' -->
+          <div class="collapse navbar-collapse" id="categoryNav">
+            <div data-bind="component: $data"></div>
+          </div>
+        <!-- /ko -->
+      <!-- /ko -->
+  </div>
+</nav>
+
+<div class="container">
+  <div class="csa-header-secondary-wrapper">
+    <div class="csa-header-secondary-row">
+      <!-- ko foreach: headerContent -->
+        <!-- ko if: $data['@type']() == 'Search' -->
+          <div class="csa-header-secondary-cell">
+            <div data-bind="component: $data"></div>
+          </div>
+        <!-- /ko -->
+      <!-- /ko -->
+      <div class="csa-header-secondary-cell csa-header-secondary-cell-btns">
+        <!-- ko foreach: headerActions -->
+          <div data-bind="component: $data" class="csa-inline-block"></div>
+        <!-- /ko -->
+      </div>
+    </div>
+  </div>
+</div>

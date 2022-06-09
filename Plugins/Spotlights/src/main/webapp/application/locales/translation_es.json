@@ -1,0 +1,11 @@
+{
+  "spotlights": {
+    "link": {
+      "next": "Siguiente",
+      "previous": "Anterior"
+    },
+    "text": {
+      "sale": "Venta"
+    }
+  }
+}

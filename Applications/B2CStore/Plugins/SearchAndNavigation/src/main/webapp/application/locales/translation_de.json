@@ -1,0 +1,50 @@
+{
+  "searchAndNavigation": {
+    "alert": {
+      "validPrice": "Geben Sie einen gültigen Preis ein"
+    },
+    "button": {
+      "close": "Schließen"
+    },
+    "label": {
+      "size": "Größe",
+      "color": "Farbe",
+      "woodFinish": "Holzoberfläche"
+    },
+    "link": {
+      "sizeChart": "Größendiagramm"
+    },
+    "placeholder": {
+      "size": "Größe auswählen",
+      "color": "Farbe auswählen",
+      "woodFinish": "Holzoberfläche auswählen"
+    },
+    "subheading": {
+      "bust": "Oberweite",
+      "chest": "Brust",
+      "europe": "Europa",
+      "euroSize": "Europäische<br>Größe",
+      "hip": "Hüfte",
+      "inseam": "Beininnenlänge",
+      "japan": "Japan",
+      "mensShirts": "Herrenshirts",
+      "mensShoes": "Herrenschuhe",
+      "mexico": "Mexiko",
+      "neck": "Hals",
+      "sizeInfo": "Größeninformationen",
+      "sleeve": "Ärmel",
+      "uk": "GB",
+      "us": "USA",
+      "usSize": "Amerikanische<br>Größe",
+      "waist": "Taille",
+      "womensShirt": "Damenshirt",
+      "womensShoes": "Damenschuhe"
+    },
+    "text": {
+      "mensShirtSizes": "Shirtgrößen Herren",
+      "mensShoeSizes": "Schuhgrößen Herren",
+      "womensShirtSizes": "Shirtgrößen Damen",
+      "womensShoeSizes": "Schuhgrößen Damen"
+    }
+  }
+}
