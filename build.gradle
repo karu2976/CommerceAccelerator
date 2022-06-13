@@ -717,6 +717,7 @@ configure(subprojects.findAll {
             fileset(dir: "$libsDir/${packageName}.ear") {
                 include(name: '**.*')
             }
+      }
     }
   }
 
