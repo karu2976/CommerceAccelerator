@@ -713,15 +713,32 @@ configure(subprojects.findAll {
       ant.copy(todir: "$libsDir/${packageName}.ear/${packageName}.war") {
         fileset(dir: "build/compile/main/webapp", includes:"**/*")
       }
-      ant.zip(destfile: "$libsDir/${packageName}.ear") {
+      
+      
+    }
+  }
+
+/**
+task compressApplication(
+      description: "Compress the Packaged application as an EAR....",
+      group: "CSA Custom",
+      dependsOn: [
+        packageApplication
+      ]) {
+
+     def packageName = 
+      project.getPath().substring(1, project.getPath().length()).replace(":", "-")
+
+      ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
             fileset(dir: "$libsDir/${packageName}.ear") {
                 include(name: '**.*')
             }
       }
-    }
-  }
-
+}
+ */
+ 
   all.dependsOn packageApplication
+  //all.dependsOn compressApplication
 
   /**
    * Run the JavaScript unit tests.
