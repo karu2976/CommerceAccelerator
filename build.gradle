@@ -713,6 +713,10 @@ configure(subprojects.findAll {
       ant.copy(todir: "$libsDir/${packageName}.ear/${packageName}.war") {
         fileset(dir: "build/compile/main/webapp", includes:"**/*")
       }
+      ant.zip(destfile: "$libsDir/${packageName}.ear") {
+            fileset(dir: "$libsDir/${packageName}.ear") {
+                include(name: '**.*')
+            }
     }
   }
 
