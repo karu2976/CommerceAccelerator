@@ -714,12 +714,17 @@ configure(subprojects.findAll {
         fileset(dir: "build/compile/main/webapp", includes:"**/*")
       }
       
-      
+      ant.echo('About to Create an EAR Archive .................')
+      ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
+            fileset(dir: "$libsDir/${packageName}.ear", includes:"**/*") 
+      }
+      ant.echo('Completed an EAR Archive .................')
     }
   }
 
-/**
+
 task compressApplication(
+      type: Zip,
       description: "Compress the Packaged application as an EAR....",
       group: "CSA Custom",
       dependsOn: [
@@ -729,13 +734,22 @@ task compressApplication(
      def packageName = 
       project.getPath().substring(1, project.getPath().length()).replace(":", "-")
 
+      doLast{
+      
+      
       ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
             fileset(dir: "$libsDir/${packageName}.ear") {
-                include(name: '**.*')
+                include(name: '**.**')
             }
       }
+      
+      //  from "${libsDir}/${packageName}.ear/"
+       // include '**/*'
+       // archiveFileName = "${packageName}.ear"
+       // destinationDirectory = file("${libsDir}/ears/")
+      }
 }
- */
+
  
   all.dependsOn packageApplication
   //all.dependsOn compressApplication
