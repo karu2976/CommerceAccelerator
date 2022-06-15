@@ -715,7 +715,7 @@ configure(subprojects.findAll {
       }
       
       ant.echo('About to Create an EAR Archive .................')
-      ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
+      ant.zip(destfile: "$libsDir/../ears/${packageName}.ear") {
             fileset(dir: "$libsDir/${packageName}.ear", includes:"**/*") 
       }
       ant.echo('Completed an EAR Archive .................')
@@ -735,18 +735,24 @@ task compressApplication(
       project.getPath().substring(1, project.getPath().length()).replace(":", "-")
 
       doLast{
-      
-      
-      ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
-            fileset(dir: "$libsDir/${packageName}.ear") {
-                include(name: '**.**')
-            }
-      }
+
+      //ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
+      //      fileset(dir: "$libsDir/${packageName}.ear") {
+      //          include(name: '**.**')
+      //      }
+      //}
       
       //  from "${libsDir}/${packageName}.ear/"
        // include '**/*'
        // archiveFileName = "${packageName}.ear"
        // destinationDirectory = file("${libsDir}/ears/")
+
+      ant.echo('About to Create an EAR Archive .................')
+      ant.zip(destfile: "$libsDir/ears/${packageName}.ear") {
+            fileset(dir: "$libsDir/${packageName}.ear", includes:"**/*") 
+      }
+      ant.echo('Completed an EAR Archive .................')
+
       }
 }
 
