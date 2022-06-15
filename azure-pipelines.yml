@@ -29,3 +29,78 @@ steps:
     PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/build/ears/Applications-B2CStore.ear'
     ArtifactName: 'Applications-B2CStore.ear'
     publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/Base/build/ears/Applications-B2CStore-Base.ear'
+    ArtifactName: 'Applications-B2CStore-Base.ear'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/Plugins/SearchAndNavigation/build/ears/Applications-B2CStore-Plugins-SearchAndNavigation.ear'
+    ArtifactName: 'Applications-B2CStore-Plugins-SearchAndNavigation.ear'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/Plugins/ShoppingCart/build/ears/Applications-B2CStore-Plugins-ShoppingCart.ear'
+    ArtifactName: 'Applications-B2CStore-Plugins-ShoppingCart.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/Plugins/Checkout/build/ears/Applications-B2CStore-Plugins-Checkout.ear'
+    ArtifactName: 'Applications-B2CStore-Plugins-Checkout.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/Plugins/Account/build/ears/Applications-B2CStore-Plugins-Account.ear'
+    ArtifactName: 'Applications-B2CStore-Plugins-Account.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/Plugins/Spotlights/build/ears/Applications-B2CStore-Plugins-Spotlights.ear'
+    ArtifactName: 'Applications-B2CStore-Plugins-Spotlights.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Base/build/ears/Base.ear'
+    ArtifactName: 'Base.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/SearchAndNavigation/build/ears/Plugins-SearchAndNavigation.ear'
+    ArtifactName: 'Plugins-SearchAndNavigation.ear'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/ShoppingCart/build/ears/Plugins-ShoppingCart.ear'
+    ArtifactName: 'Plugins-ShoppingCart.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/Checkout/build/ears/Plugins-Checkout.ear'
+    ArtifactName: 'Plugins-Checkout.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/Account/build/ears/Plugins-Account.ear'
+    ArtifactName: 'Plugins-Account.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/Spotlights/build/ears/Plugins-Spotlights.ear'
+    ArtifactName: 'Plugins-Spotlights.ear'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/Preview/build/ears/Plugins-Preview.ear'
+    ArtifactName: 'Plugins-Preview.ear'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.Repository.LocalPath)/Plugins/Promotions/build/ears/Plugins-Promotions.ear'
+    ArtifactName: 'Plugins-Promotions.ear'
+    publishLocation: 'Container'
