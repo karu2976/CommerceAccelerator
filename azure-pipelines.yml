@@ -27,7 +27,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.Repository.LocalPath)/Applications/B2CStore/build/ears/Applications-B2CStore.ear'
-    ArtifactName: 'Applications-B2CStore.ear'
+    ArtifactName: 'Applications-B2CStore'
     publishLocation: 'Container'
 
 - task: PublishBuildArtifacts@1
